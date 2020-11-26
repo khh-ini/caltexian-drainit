@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/tvAbout"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:textColor="@color/textColorSecondary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ivImage"
         android:text="Splash 1"
         android:fontFamily="@font/poppins_medium"
+        android:textAlignment="center"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@ class ViewPagerAdapter(private var details: List<String>,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerAdapter.Pager2ViewHolder {
-        return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.splash, parent, false))
+        return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_splash, parent, false))
     }
 
     override fun getItemCount(): Int {

@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity() {
     private var descList = mutableListOf<String>()
     private var imagesList = mutableListOf<Int>()
 
+    var desc = arrayOf("Laporkan kerusakan jaringan drainase manapun dengan mudah","Ditangani langsung oleh Pemerintah Kota Pekanbaru")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
@@ -30,8 +32,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun postToList() {
-        for (i in 1..2) {
-            addToList("$i", R.drawable.hprusak)
+        for (i in 0..1) {
+            addToList(desc[i], R.drawable.hprusak)
         }
     }
 }
