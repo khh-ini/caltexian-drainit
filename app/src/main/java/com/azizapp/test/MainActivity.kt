@@ -3,6 +3,7 @@ package com.azizapp.test
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import kotlinx.android.synthetic.main.splash.*
 import me.relex.circleindicator.CircleIndicator3
 
 class MainActivity : AppCompatActivity() {
