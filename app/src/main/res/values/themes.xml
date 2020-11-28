@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Test" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -10,7 +10,35 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="TextView.Bold" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="TextView.Medium" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="TextView.Regular" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:background">@drawable/bg_edittext_rounded</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:paddingTop">@dimen/dimen2x</item>
+        <item name="android:paddingBottom">@dimen/dimen2x</item>
+        <item name="android:paddingLeft">@dimen/dimen3x</item>
+        <item name="android:paddingRight">@dimen/dimen3x</item>
+        <item name="android:elevation">@dimen/dimen2x</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
 </resources>
