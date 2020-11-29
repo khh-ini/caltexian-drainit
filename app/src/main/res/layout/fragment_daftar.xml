@@ -6,117 +6,139 @@
     android:layout_height="match_parent"
     android:background="#F6F6F6">
 
-    <EditText
-        android:id="@+id/editTextNama"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="292dp"
-        android:layout_height="49dp"
-        android:background="@drawable/shapes"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Nama"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/textColorSecondary"
-        android:textSize="24sp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-/>
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Nomor Handphone"
-        android:textColor="@color/textColorSecondary"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNama"
-        tools:ignore="MissingConstraints" />
+        <RelativeLayout
+            android:id="@+id/nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editTextNoHp"
-        android:layout_width="292dp"
-        android:layout_height="49dp"
-        android:background="@drawable/shapes"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/tvNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Nama"
+            android:textColor="@color/textColorSecondary"
+            android:visibility="visible"
+            tools:ignore="MissingConstraints"/>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Email"
-        android:textColor="@color/textColorSecondary"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNoHp"
-        tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/editTextNama"
+            style="@style/Widget.AppCompat.AutoCompleteTextView"
+            android:layout_width="292dp"
+            android:layout_height="49dp"
+            android:background="@drawable/shapes"
+            android:ems="10"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Nama"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="24sp"
+            android:layout_below="@id/tvNama"/>
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="292dp"
-        android:layout_height="49dp"
-        android:background="@drawable/shapes"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="MissingConstraints" />
+        </RelativeLayout>
 
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="292dp"
-        android:layout_height="49dp"
-        android:background="@drawable/shapes"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="MissingConstraints" />
+        <RelativeLayout
+            android:id="@+id/NoHp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/nama">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Password"
-        android:textColor="@color/textColorSecondary"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
-        tools:ignore="MissingConstraints"/>
+        <TextView
+            android:id="@+id/tvNoHp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Nomor Handphone"
+            android:textColor="@color/textColorSecondary"
+            tools:ignore="MissingConstraints"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Nama"
-        android:textColor="@color/textColorSecondary"
-        android:visibility="visible"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNama"
-        tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/editTextNoHp"
+            android:layout_width="292dp"
+            android:layout_height="49dp"
+            android:background="@drawable/shapes"
+            android:ems="10"
+            android:inputType="textPassword"
+            tools:ignore="MissingConstraints"
+            android:layout_below="@id/tvNoHp"/>
+        </RelativeLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="292dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/shapes"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Daftar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
-        tools:ignore="MissingConstraints" />
+        <RelativeLayout
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/NoHp">
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Email"
+            android:textColor="@color/textColorSecondary"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="50dp"
+            tools:layout_editor_absoluteY="358dp" />
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="292dp"
+                android:layout_height="49dp"
+                android:background="@drawable/shapes"
+                android:ems="10"
+                android:inputType="textPassword"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="50dp"
+                tools:layout_editor_absoluteY="382dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/nama">
 
 
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Password"
+            android:textColor="@color/textColorSecondary"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="50dp"
+            tools:layout_editor_absoluteY="472dp" />
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="292dp"
+                android:layout_height="49dp"
+                android:background="@drawable/shapes"
+                android:ems="10"
+                android:inputType="textPassword"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="50dp"
+                tools:layout_editor_absoluteY="496dp" />
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="292dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapes"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Daftar"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@id/password"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
