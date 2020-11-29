@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.azizapp.test.databinding.ActivityLoginBinding
-import com.google.android.material.snackbar.Snackbar
 
 class LoginActivity : AppCompatActivity() {
 
