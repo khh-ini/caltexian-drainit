@@ -35,10 +35,11 @@
         <item name="android:textColorHint">@color/textColorHint</item>
         <item name="android:paddingTop">@dimen/dimen2x</item>
         <item name="android:paddingBottom">@dimen/dimen2x</item>
-        <item name="android:paddingLeft">@dimen/dimen3x</item>
-        <item name="android:paddingRight">@dimen/dimen3x</item>
-        <item name="android:elevation">@dimen/dimen2x</item>
+        <item name="android:paddingLeft">@dimen/dimen5x</item>
+        <item name="android:paddingRight">@dimen/dimen5x</item>
+        <item name="android:backgroundTint">@color/white</item>
         <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>
