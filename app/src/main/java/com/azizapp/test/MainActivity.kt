@@ -1,5 +1,6 @@
 package com.azizapp.test
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
 
         val indicator = findViewById<CircleIndicator3>(R.id.indicator)
         indicator.setViewPager(view_pager2)
+
+        btnBuatAkun.setOnClickListener {
+            val intent = Intent(this, daftar::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun addToList(description: String, image: Int) {

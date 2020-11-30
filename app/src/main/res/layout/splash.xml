@@ -10,7 +10,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager2"
         android:layout_width="match_parent"
-        android:layout_height="400dp"/>
+        android:layout_height="450dp"/>
 
     <me.relex.circleindicator.CircleIndicator3
         android:id="@+id/indicator"
@@ -53,11 +53,12 @@
             android:id="@+id/linkMasuk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/tvMasuk"
+            android:clickable="true"
             android:fontFamily="@font/poppins_bold"
             android:text="Masuk"
-            android:textColor="@color/primary"
-            android:layout_marginLeft="5dp"/>
+            android:textColor="@color/primary" />
     </RelativeLayout>
 
 </RelativeLayout>
