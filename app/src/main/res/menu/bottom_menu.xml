@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/newFile"
+        android:icon="@drawable/iconmaterial_newfile"
+        android:title="New"
+        app:cnb_iconColor="@color/primary"/>
+    <item
+        android:id="@+id/map"
+        android:icon="@drawable/iconmaterial_map"
+        android:title="map"
+        app:cnb_iconColor="@color/primary"/>
+    <item
+        android:id="@+id/history"
+        android:icon="@drawable/iconmaterial_history"
+        android:title="History"
+        app:cnb_iconColor="@color/primary" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/iconmaterial_profiles"
+        android:title="Profile"
+        app:cnb_iconColor="@color/primary" />
+</menu>
