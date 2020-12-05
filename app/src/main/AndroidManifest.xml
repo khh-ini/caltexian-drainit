@@ -10,21 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test">
 
-<<<<<<< Updated upstream
         <activity android:name=".daftar">
 =======
         <activity android:name=".LoginActivity"/>
 
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashScreen">
->>>>>>> Stashed changes
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
