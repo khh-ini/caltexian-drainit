@@ -10,7 +10,8 @@
     <com.esri.arcgisruntime.mapping.view.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="MissingClass">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:background="@drawable/shapes_edit_text"
+                android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Cari Disini"

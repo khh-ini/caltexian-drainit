@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -55,7 +57,7 @@
                         android:id="@+id/google"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/shapes_edit_text"
+                        android:background="@drawable/shape_rounded_white"
                         android:clickable="true">
 
                         <ImageView
@@ -63,7 +65,7 @@
                             android:layout_height="32dp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:background="@drawable/shapes_edit_text"
+                            android:background="@drawable/shape_rounded_white"
                             android:src="@drawable/googlelogo" />
                     </RelativeLayout>
 
@@ -73,7 +75,7 @@
                         android:layout_height="64dp"
                         android:layout_marginStart="20dp"
                         android:layout_toRightOf="@id/google"
-                        android:background="@drawable/shapes_edit_text"
+                        android:background="@drawable/shape_rounded_white"
                         android:clickable="true">
 
                         <ImageView
@@ -81,7 +83,7 @@
                             android:layout_height="32dp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:background="@drawable/shapes_edit_text"
+                            android:background="@drawable/shape_rounded_white"
                             android:src="@drawable/fblogo" />
                     </RelativeLayout>
                 </RelativeLayout>
@@ -95,7 +97,9 @@
                     android:text="atau daftar dengan email"
                     android:textColor="@color/textColorSecondary" />
             </RelativeLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,12 +134,13 @@
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvNama"
-                android:background="@drawable/shapes_edit_text"
+                android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:fontFamily="@font/poppins_medium"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/textColorSecondary"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:padding="10dp" />
 
         </RelativeLayout>
 
@@ -161,11 +166,12 @@
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvNoHp"
-                android:background="@drawable/shapes_edit_text"
+                android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:inputType="textPassword"
                 tools:ignore="MissingConstraints"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:padding="10dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -190,11 +196,12 @@
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvEmail"
-                android:background="@drawable/shapes_edit_text"
+                android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:inputType="textPassword"
                 tools:ignore="MissingConstraints"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:padding="10dp"/>
 
         </RelativeLayout>
 
@@ -220,20 +227,20 @@
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvPassword"
-                android:background="@drawable/shapes_edit_text"
+                android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:inputType="textPassword"
                 tools:ignore="MissingConstraints"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:padding="10dp"/>
         </RelativeLayout>
-
 
         <Button
             android:id="@+id/button"
             android:layout_width="292dp"
             android:layout_height="60dp"
             android:layout_marginTop="40dp"
-            android:background="@drawable/shapes_edit_text"
+            android:background="@drawable/shape_rounded_white"
             android:fontFamily="@font/poppins_bold"
             android:text="Daftar"
             android:textAllCaps="false"
@@ -269,6 +276,7 @@
                 android:textColor="@color/primary"
                 android:layout_marginLeft="5dp"/>
         </RelativeLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
