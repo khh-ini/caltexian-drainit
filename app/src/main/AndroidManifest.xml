@@ -10,12 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test">
 
-        <activity android:name=".daftar">
-=======
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".daftar"/>
+        <activity android:name=".SplashScreen"/>
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

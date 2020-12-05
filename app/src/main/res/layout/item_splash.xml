@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -7,17 +7,17 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true">
+
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/tvAbout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/hprusak"/>
 
     <TextView
@@ -25,13 +25,12 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:textColor="@color/textColorSecondary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:text="Splash 1"
         android:fontFamily="@font/poppins_medium"
         android:textAlignment="center"
+        android:layout_below="@id/ivImage"
         tools:ignore="MissingConstraints" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
+</RelativeLayout>
