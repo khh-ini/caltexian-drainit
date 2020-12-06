@@ -15,7 +15,7 @@
         <activity android:name=".SplashScreen"/>
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".Home1">
+        <activity android:name=".HistoryPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
