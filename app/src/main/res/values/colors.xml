@@ -16,7 +16,7 @@
     <color name="textColorSecondary">#838383</color>
     <color name="textPrimary">#55585C</color>
     <color name="textColorHint">#A1A1A1</color>
-
+    <color name="unselectedHistory">#EFEFEF</color>
     <!--Background Color-->
     <color name="lightGreyBackground">#F1F1F1</color>
 
