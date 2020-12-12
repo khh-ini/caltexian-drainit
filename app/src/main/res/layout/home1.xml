@@ -19,7 +19,8 @@
     <com.esri.arcgisruntime.mapping.view.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="MissingClass">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
