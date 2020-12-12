@@ -40,7 +40,7 @@
                 android:id="@+id/api"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/daftar"
                 app:layout_constraintTop_toTopOf="parent">
@@ -72,10 +72,9 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginStart="20dp"
-                        android:layout_toEndOf="@id/google"
+                        android:layout_toRightOf="@id/google"
                         android:background="@drawable/shapes_edit_text"
-                        android:clickable="true"
-                        android:focusable="true">
+                        android:clickable="true">
 
                         <ImageView
                             android:layout_width="32dp"
@@ -86,6 +85,7 @@
                             android:src="@drawable/fblogo" />
                     </RelativeLayout>
                 </RelativeLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,6 +193,7 @@
                 android:background="@drawable/shapes_edit_text"
                 android:ems="10"
                 android:inputType="textPassword"
+                tools:ignore="MissingConstraints"
                 android:layout_marginTop="5dp"/>
 
         </RelativeLayout>

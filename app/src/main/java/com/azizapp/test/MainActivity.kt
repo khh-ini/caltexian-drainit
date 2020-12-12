@@ -31,6 +31,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, daftar::class.java)
             startActivity(intent)
         }
+
+        linkMasuk.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun addToList(description: String, image: Int) {
