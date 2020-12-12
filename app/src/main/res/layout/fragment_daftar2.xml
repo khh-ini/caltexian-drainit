@@ -68,7 +68,9 @@
                 android:fontFamily="@font/poppins_medium"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
-                android:textColor="@color/textColorSecondary" />
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/textColorSecondary"
+                android:textSize="14dp"/>
 
         </RelativeLayout>
 
@@ -99,7 +101,8 @@
                 android:ems="10"
                 android:inputType="textPassword"
                 android:padding="10dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:textSize="14dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -129,7 +132,8 @@
                 android:ems="10"
                 android:inputType="textPassword"
                 android:padding="10dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:textSize="14dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -159,7 +163,8 @@
                 android:ems="10"
                 android:inputType="textPassword"
                 android:padding="10dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:textSize="14dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -190,7 +195,8 @@
                 android:ems="10"
                 android:inputType="textPassword"
                 android:padding="10dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:textSize="14dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -221,7 +227,8 @@
                 android:ems="10"
                 android:inputType="textPassword"
                 android:padding="10dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:textSize="14dp"/>
         </RelativeLayout>
 
         <Button

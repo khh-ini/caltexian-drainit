@@ -140,7 +140,8 @@
                 android:inputType="textEmailAddress"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginTop="5dp"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textSize="14dp"/>
 
         </RelativeLayout>
 
@@ -171,7 +172,8 @@
                 android:inputType="textPassword"
                 tools:ignore="MissingConstraints"
                 android:layout_marginTop="5dp"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:textSize="14dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -201,7 +203,8 @@
                 android:inputType="textPassword"
                 tools:ignore="MissingConstraints"
                 android:layout_marginTop="5dp"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:textSize="14dp"/>
 
         </RelativeLayout>
 
@@ -232,7 +235,8 @@
                 android:inputType="textPassword"
                 tools:ignore="MissingConstraints"
                 android:layout_marginTop="5dp"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:textSize="14dp"/>
         </RelativeLayout>
 
         <Button
