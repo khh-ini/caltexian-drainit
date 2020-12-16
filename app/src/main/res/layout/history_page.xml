@@ -21,7 +21,7 @@
         android:id="@+id/shapeableImageView7"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/shapes_edit_text"
+        android:src="@drawable/shape_rounded_white"
         app:layout_constraintBottom_toTopOf="@+id/shapeableImageView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".06"
