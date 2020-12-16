@@ -1,5 +1,6 @@
 package com.azizapp.test
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginSuccess() {
         Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, MainActivityNav::class.java)
+        startActivity(intent)
     }
 
 }
