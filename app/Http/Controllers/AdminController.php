@@ -16,6 +16,11 @@ class AdminController extends Controller
         return Admin::find($id);
     }
 
+    public function profile(){
+        $id = auth()->user()->id;
+        return Admin::find($id);
+    }
+
     public function register(Request $request)
     {
         $validateData = $request->validate([
