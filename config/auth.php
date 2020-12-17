@@ -42,8 +42,25 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'api-admin' => [
+            'driver' => 'passport',
+            'provider' => 'admins',
+            'hash' => false,
+        ],
+        'api-petugas' => [
+            'driver' => 'passport',
+            'provider' => 'petugas',
+            'hash' => false,
+        ],
+
+        'api-masyarakat' => [
+            'driver' => 'passport',
+            'provider' => 'masyarakats',
             'hash' => false,
         ],
     ],
@@ -70,6 +87,21 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
+        'petugas' => [
+            'driver' => 'eloquent',
+            'model' => App\Petugas::class,
+        ],
+
+        'masyarakats' =>[
+            'driver' => 'eloquent',
+            'model' => App\Masyarakat::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
