@@ -16,7 +16,7 @@ class PetugasController extends Controller
         return Petugas::find($id);
     }
 
-    public function user(){
+    public function profile(){
         $id = auth()->user()->id;
         return Petugas::find($id);
     }
