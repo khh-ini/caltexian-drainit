@@ -35,6 +35,7 @@ class TitikBanjirController extends Controller
             'nama_jalan' => 'required',
             'geometry' => 'required',
             'foto'=> 'required',
+            'keterangan' => 'nullable',
             'kondisi_kerusakan' => 'required',
         ]);
 
@@ -53,6 +54,7 @@ class TitikBanjirController extends Controller
             'nama_jalan' => 'required',
             'geometry' => 'required',
             'foto'=> 'required',
+            'keterangan' => 'nullable',
             'kondisi_kerusakan' => 'required',
         ]);
 
@@ -62,6 +64,7 @@ class TitikBanjirController extends Controller
         $data->nama_jalan = $request->nama_jalan;
         $data->kondisi_kerusakan = $request->kondisi_kerusakan;
         $data->foto = $request->foto;
+        $data->keterangan = $request->$keterangan;
         $data->save();
         
         $data->geometry = json_decode($request->geometry);

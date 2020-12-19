@@ -526,6 +526,7 @@ class ComposerStaticInitf98e508bdac36f26fa3fda4355bb3b24
     );
 
     public static $classMap = array (
+        'AdminSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminSeeder.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Drainase' => __DIR__ . '/../..' . '/app/Drainase.php',
@@ -541,6 +542,7 @@ class ComposerStaticInitf98e508bdac36f26fa3fda4355bb3b24
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DrainaseController' => __DIR__ . '/../..' . '/app/Http/Controllers/DrainaseController.php',
         'App\\Http\\Controllers\\MasyarakatController' => __DIR__ . '/../..' . '/app/Http/Controllers/MasyarakatController.php',
+        'App\\Http\\Controllers\\PengaduanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PengaduanController.php',
         'App\\Http\\Controllers\\PetugasController' => __DIR__ . '/../..' . '/app/Http/Controllers/PetugasController.php',
         'App\\Http\\Controllers\\TitikBanjirController' => __DIR__ . '/../..' . '/app/Http/Controllers/TitikBanjirController.php',
         'App\\Http\\Controllers\\TitikTersumbatController' => __DIR__ . '/../..' . '/app/Http/Controllers/TitikTersumbatController.php',
@@ -2859,6 +2861,7 @@ class ComposerStaticInitf98e508bdac36f26fa3fda4355bb3b24
         'League\\OAuth2\\Server\\ResponseTypes\\BearerTokenResponse' => __DIR__ . '/..' . '/league/oauth2-server/src/ResponseTypes/BearerTokenResponse.php',
         'League\\OAuth2\\Server\\ResponseTypes\\RedirectResponse' => __DIR__ . '/..' . '/league/oauth2-server/src/ResponseTypes/RedirectResponse.php',
         'League\\OAuth2\\Server\\ResponseTypes\\ResponseTypeInterface' => __DIR__ . '/..' . '/league/oauth2-server/src/ResponseTypes/ResponseTypeInterface.php',
+        'MasyarakatSeeder' => __DIR__ . '/../..' . '/database/seeds/MasyarakatSeeder.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerForV5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerForV5.php',
         'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerForV6' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerForV6.php',
@@ -3490,6 +3493,7 @@ class ComposerStaticInitf98e508bdac36f26fa3fda4355bb3b24
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PetugasSeeder' => __DIR__ . '/../..' . '/database/seeds/PetugasSeeder.php',
         'PharIo\\Manifest\\Application' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Application.php',
         'PharIo\\Manifest\\ApplicationName' => __DIR__ . '/..' . '/phar-io/manifest/src/values/ApplicationName.php',
         'PharIo\\Manifest\\Author' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Author.php',
