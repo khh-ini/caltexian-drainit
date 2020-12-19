@@ -19,6 +19,7 @@ class CreateTitikBanjirsTable extends Migration
             $table->geometry('geometry');
             $table->string('nama_jalan',50);
             $table->text('kondisi_kerusakan');
+            $table->text('keterangan')->nullable();
             $table->string('foto');
             $table->timestamps();
         });

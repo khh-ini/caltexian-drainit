@@ -35,7 +35,7 @@ class AdminController extends Controller
         $user = Admin::create($validateData);
         $accessToken = $user->createToken('authToken')->accessToken;
 
-        return response()->json(['message'=>'admin created successfully!','user'=>$user,'access_token'=>$accessToken],201);
+        return response()->json(['message'=>'account created successfully!','user'=>$user,'access_token'=>$accessToken],201);
         
     }
     public function login(Request $request)
