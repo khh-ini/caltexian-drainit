@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.esri.arcgisruntime.mapping.ArcGISMap
 import com.esri.arcgisruntime.mapping.Basemap
 import kotlinx.android.synthetic.main.home1.*
+import kotlinx.android.synthetic.main.item_splash.*
 
 class HomeFragment : Fragment() {
 
