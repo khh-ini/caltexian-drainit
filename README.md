@@ -68,8 +68,19 @@
 # Api Register
 ## End point
 - `api/register/admin` -> Register akun admin
+  - Request `POST`
+  - membutuhkan creadential admin tambahkan Authorization pada request header
+  
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
 
-request POST
+request data :
 ```
 {
   "email" : "[USER_EMAIL]",
@@ -80,7 +91,7 @@ request POST
 }
 ```
 
-response
+response :
 ```
 {
   "message": "account created successfully!",
@@ -97,9 +108,19 @@ response
 }
 ```
 
-- `api/login/petugas` -> Register akun petugas
-
-request POST
+- `api/register/masyarakat` -> Register akun masyarakat
+  - Request `POST`
+  - membutuhkan creadential admin tambahkan Authorization pada request header
+  
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+request data :
 ```
 {
   "email" : "[USER_EMAIL]",
@@ -112,7 +133,7 @@ request POST
 }
 ```
 
-response
+response :
 ```
 {
   "message": "account created successfully!",
@@ -131,9 +152,10 @@ response
 }
 ```
 
-- `api/login/masyarakat` -> Register akun petugas
-
-request POST
+- `api/register/petugas` -> Register akun petugas
+  - request `POST`
+  
+request data :
 ```
 {
   "email" : "[USER_EMAIL]",
@@ -147,7 +169,7 @@ request POST
 }
 ```
 
-response
+response :
 ```
 {
   "message": "log in successfully!",
@@ -171,16 +193,17 @@ response
 # Api Login
 ## End point
 - `api/login/admin` -> Login dengan credentials admin
-
-request POST
-```
+  - request `POST` 
+  
+request data :
+``` 
 {
   "email" : "[USER_EMAIL]",
   "password" : "[PASSWORD_USER]"
 }
 ```
 
-response
+response :
 ```
 {
   "message": "log in successfully!",
@@ -197,9 +220,10 @@ response
 }
 ```
 
-- `api/login/petugas` -> Login dengan credentials petugas
-
-request POST
+- `api/login/masyarakat` -> Login dengan credentials masyarakat
+  - request `POST`
+ 
+request data :
 ```
 {
   "email" : "[USER_EMAIL]",
@@ -207,7 +231,7 @@ request POST
 }
 ```
 
-response
+response :
 ```
 {
   "message": "log in successfully!",
@@ -226,9 +250,10 @@ response
 }
 ```
 
-- `api/login/masyarakat` -> Login dengan credentials petugas
-
-request POST
+- `api/login/petugas` -> Login dengan credentials petugas
+  - request `POST`
+  
+request data :
 ```
 {
   "email" : "[USER_EMAIL]",
@@ -236,7 +261,7 @@ request POST
 }
 ```
 
-response
+response :
 ```
 {
   "message": "log in successfully!",
@@ -256,3 +281,426 @@ response
   "access_token": "[ACCESS_TOKEN]"
 }
 ```
+# Api Admin
+Api Admin Membuthkan credential admin, tambahjkan Authorization pada requrest Header untuk mengakses API Admin
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+## End Point
+- `/api/admin/` 
+  - request `GET` Mengembalikan list data admin
+
+response :
+```
+[
+  {
+    "id": "[ID_USER]",
+    "email": "[EMAIL_USER]",
+    "email_verified_at": null,
+    "nama": "[NAMA_USER]",
+    "no_hp": "[NO_HP_USER]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+  ....
+]
+```
+
+- `/api/admin/{id}`
+  - Request `GET` Mengembalikan data admin berdasarkan id
+
+response : 
+```
+{
+  "id": "[ID_USER]",
+  "email": "[EMAIL_USER]",
+  "email_verified_at": null,
+  "nama": "[NAMA_USER]",
+  "no_hp": "[NO_HP_USER]",
+  "created_at": "2020-12-17 09:39:52",
+  "updated_at": "2020-12-17 09:39:52"
+},
+```
+
+- `/api/admin/profile`
+  - Request `GET` Mengembalikan data admin yang login
+
+response : 
+```
+{
+  "id": "[ID_USER]",
+  "email": "[EMAIL_USER]",
+  "email_verified_at": null,
+  "nama": "[NAMA_USER]",
+  "no_hp": "[NO_HP_USER]",
+  "created_at": "2020-12-17 09:39:52",
+  "updated_at": "2020-12-17 09:39:52"
+},
+```
+
+- `/api/admin/`
+  - Request `PUT` Mengupdate data admin yang terlogin pada sistem
+ 
+request data: 
+```
+{
+  "email" : "[USER_EMAIL]",
+  "password" : "[PASSWORD_USER]",
+  "password_confirmation" : "[PASSWORD_USER]",
+  "nama": "[nama_user]",
+  "no_hp": "[no_hp]",
+}
+```
+
+response :
+```
+{
+  "message": "data updated successfully!",
+  "user": {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+}
+```
+- `/api/admin/{id}`
+  - Request `DELETE` Menghapus data admin berdasarkan id
+  - membutuhkan credential admin
+
+response : 
+```
+null,204
+```
+
+# API Petugas
+## End point
+- `/api/petugas/
+  - request `GET` Mengembalikan list data petugas
+  - membutuhkan credentials admin
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response :
+```
+[
+  {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "foto": "[foto_user]",
+    "posisi_petugas": "[posisi_petugas]",
+    "tempat_lahir": "[tempat_lahir_petugas]",
+    "tgl_lahir": "[tanggal_lahir_petugas]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+  ....
+]
+```
+
+- `/api/petugas/{id}`
+  - Request `GET` Mengembalikan data petugas berdasarkan id
+  - membutuhkan credential admin
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response : 
+```
+{
+  "id": "[user_id]",
+  "email": "[user_email]",
+  "email_verified_at": null,
+  "nama": "[nama_user]",
+  "no_hp": "[no_hp]",
+  "foto": "[foto_user]",
+  "posisi_petugas": "[posisi_petugas]",
+  "tempat_lahir": "[tempat_lahir_petugas]",
+  "tgl_lahir": "[tanggal_lahir_petugas]",
+  "created_at": "2020-12-17 09:39:52",
+  "updated_at": "2020-12-17 09:39:52"
+},
+```
+
+- `/api/petugas/profile`
+  - Request `GET` Mengembalikan data petugas yang login
+  - membutuhkan credential petugas
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response : 
+```
+{
+  "id": "[user_id]",
+  "email": "[user_email]",
+  "email_verified_at": null,
+  "nama": "[nama_user]",
+  "no_hp": "[no_hp]",
+  "foto": "[foto_user]",
+  "posisi_petugas": "[posisi_petugas]",
+  "tempat_lahir": "[tempat_lahir_petugas]",
+  "tgl_lahir": "[tanggal_lahir_petugas]",
+  "created_at": "2020-12-17 09:39:52",
+  "updated_at": "2020-12-17 09:39:52"
+},
+```
+
+- `/api/petugas/`
+  - Request `PUT` Mengupdate data petugas yang terlogin pada sistem
+  - membutuhkan credential petugas
+  
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+ 
+request data: 
+```
+{
+  "email" : "[USER_EMAIL]",
+  "password" : "[PASSWORD_USER]",
+  "password_confirmation" : "[PASSWORD_USER]",
+  "nama": "[nama_user]",
+  "no_hp": "[no_hp]",
+  "foto": "[foto_user]",
+  "posisi_petugas": "[posisi_petugas]",
+  "tempat_lahir": "[tempat_lahir_petugas]",
+  "tgl_lahir": "[tanggal_lahir_petugas]",
+}
+```
+
+response :
+```
+{
+  "message": "data updated successfully!",
+  "user": {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "foto": "[foto_user]",
+    "posisi_petugas": "[posisi_petugas]",
+    "tempat_lahir": "[tempat_lahir_petugas]",
+    "tgl_lahir": "[tanggal_lahir_petugas]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+}
+```
+- `/api/admin/{id}`
+  - Request `DELETE` Menghapus data petugas berdasarkan id
+  - membutuhkan credential admin
+  
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response : 
+```
+null,204
+```
+
+# API Masyarakat
+## End point
+- `/api/masyarakat/
+  - request `GET` Mengembalikan list data masyarakat
+  - membutuhkan credentials admin
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response :
+```
+[
+  {
+    "id": "[ID_USER]",
+    "email": "[EMAIL_USER]",
+    "email_verified_at": null,
+    "nama": "[NAMA_USER]",
+    "no_hp": "[NO_HP_USER]",
+    "foto": "[foto_user]",
+    "alamat": "[alamat_user]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+  ....
+]
+```
+
+- `/api/masyarakat/{id}`
+  - Request `GET` Mengembalikan data masyarakat berdasarkan id
+  - membutuhkan credential admin
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response : 
+```
+{
+  "id": "[ID_USER]",
+  "email": "[EMAIL_USER]",
+  "email_verified_at": null,
+  "nama": "[NAMA_USER]",
+  "no_hp": "[NO_HP_USER]",
+  "foto": "[foto_user]",
+  "alamat": "[alamat_user]",
+  "created_at": "2020-12-17 09:39:52",
+  "updated_at": "2020-12-17 09:39:52"
+},
+```
+
+- `/api/masyarakat/profile`
+  - Request `GET` Mengembalikan data masyarakat yang login
+  - membutuhkan credential masyarakat
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response : 
+```
+{
+  "id": "[ID_USER]",
+  "email": "[EMAIL_USER]",
+  "email_verified_at": null,
+  "nama": "[NAMA_USER]",
+  "no_hp": "[NO_HP_USER]",
+  "foto": "[foto_user]",
+  "alamat": "[alamat_user]",
+  "created_at": "2020-12-17 09:39:52",
+  "updated_at": "2020-12-17 09:39:52"
+},
+```
+
+- `/api/petugas/`
+  - Request `PUT` Mengupdate data masyarakat yang terlogin pada sistem
+  - membutuhkan credential msayarakat
+  
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+ 
+request data: 
+```
+{
+  "email" : "[USER_EMAIL]",
+  "password" : "[PASSWORD_USER]",
+  "password_confirmation" : "[PASSWORD_USER]",
+  "nama": "[nama_user]",
+  "no_hp": "[no_hp]",
+  "foto": "[foto_user]",
+  "alamat": "[alamat_user]",
+}
+```
+
+response :
+```
+{
+  "message": "data updated successfully!",
+  "user": {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "foto": "[foto_user]",
+    "alamat": "[alamat_user]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+}
+```
+- `/api/admin/{id}`
+  - Request `DELETE` Menghapus data masyarakat berdasarkan id
+  - membutuhkan credential admin
+  
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response : 
+```
+null,204
+```
+
+# API Drainase
+
+
+# API Titik Banjir
+
+
+# API Titik Tersumbat
+
+
+# API Pengaduan
+
