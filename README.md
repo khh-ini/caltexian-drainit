@@ -1,78 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Route List
+```
++--------+----------+-----------------------------------------+-----------------------------------+---------------------------------------------------------------------------+-------------------------+
+| Domain | Method   | URI                                     | Name                              | Action                                                                    | Middleware              |
++--------+----------+-----------------------------------------+-----------------------------------+---------------------------------------------------------------------------+-------------------------+
+|        | GET|HEAD | /                                       |                                   | Closure                                                                   | web                     |
+|        | GET|HEAD | api/admin                               | get.admin                         | App\Http\Controllers\AdminController@index                                | api,auth:api-admin      |
+|        | PUT      | api/admin                               | update.admin                      | App\Http\Controllers\AdminController@update                               | api,auth:api-admin      |
+|        | GET|HEAD | api/admin/profile                       | get_loged_in_user.admin           | App\Http\Controllers\AdminController@profile                              | api,auth:api-admin      |
+|        | GET|HEAD | api/admin/{id}                          | get_by_id.admin                   | App\Http\Controllers\AdminController@show                                 | api,auth:api-admin      |
+|        | DELETE   | api/admin/{id}                          | delete.admin                      | App\Http\Controllers\AdminController@delete                               | api,auth:api-admin      |
+|        | POST     | api/drainase                            | create.drainase                   | App\Http\Controllers\DrainaseController@create                            | api,auth:api-admin      |
+|        | GET|HEAD | api/drainase                            | get.drainase                      | App\Http\Controllers\DrainaseController@index                             | api                     |
+|        | GET|HEAD | api/drainase/{id}                       | get_by_id.drainase                | App\Http\Controllers\DrainaseController@show                              | api                     |
+|        | DELETE   | api/drainase/{i}                        | delete.drainase                   | App\Http\Controllers\DrainaseController@delete                            | api,auth:api-admin      |
+|        | PUT      | api/drainase/{i}                        | update.drainase                   | App\Http\Controllers\DrainaseController@update                            | api,auth:api-admin      |
+|        | POST     | api/login/admin                         | login.admin                       | App\Http\Controllers\AdminController@login                                | api                     |
+|        | POST     | api/login/masyarakat                    | login.masyarakat                  | App\Http\Controllers\MasyarakatController@login                           | api                     |
+|        | POST     | api/login/petugas                       | login.petugas                     | App\Http\Controllers\PetugasController@login                              | api                     |
+|        | GET|HEAD | api/masyarakat                          | get.masyarakat                    | App\Http\Controllers\MasyarakatController@index                           | api,auth:api-admin      |
+|        | PUT      | api/masyarakat                          | update.masyarakat                 | App\Http\Controllers\MasyarakatController@update                          | api,auth:api-masyarakat |
+|        | GET|HEAD | api/masyarakat/profile                  | get_loged_in_user.masyarakat      | App\Http\Controllers\MasyarakatController@profile                         | api,auth:api-masyarakat |
+|        | DELETE   | api/masyarakat/{id}                     | delete.masyarakat                 | App\Http\Controllers\MasyarakatController@delete                          | api,auth:api-admin      |
+|        | GET|HEAD | api/masyarakat/{id}                     | get_by_id.masyarakat              | App\Http\Controllers\MasyarakatController@show                            | api,auth:api-admin      |
+|        | GET|HEAD | api/pengaduan                           | get.pengaduan                     | App\Http\Controllers\PengaduanController@index                            | api                     |
+|        | POST     | api/pengaduan                           | create.pengaduan                  | App\Http\Controllers\PengaduanController@create                           | api,auth:api-masyarakat |
+|        | DELETE   | api/pengaduan/{id}                      | delete.pengaduan                  | App\Http\Controllers\PengaduanController@delete                           | api,auth:api-admin      |
+|        | GET|HEAD | api/pengaduan/{id}                      | get_by_id.pengaduan               | App\Http\Controllers\PengaduanController@index                            | api                     |
+|        | GET|HEAD | api/petugas                             | get.petugas                       | App\Http\Controllers\PetugasController@index                              | api,auth:api-admin      |
+|        | PUT      | api/petugas                             | update.petugas                    | App\Http\Controllers\PetugasController@update                             | api,auth:api-petugas    |
+|        | GET|HEAD | api/petugas/profile                     | get_loged_in_user.petugas         | App\Http\Controllers\PetugasController@profile                            | api,auth:api-petugas    |
+|        | DELETE   | api/petugas/{id}                        | delete.petugas                    | App\Http\Controllers\PetugasController@delete                             | api,auth:api-admin      |
+|        | GET|HEAD | api/petugas/{id}                        | get_by_id.petugas                 | App\Http\Controllers\PetugasController@show                               | api,auth:api-admin      |
+|        | POST     | api/register/admin                      | register.admin                    | App\Http\Controllers\AdminController@register                             | api,auth:api-admin      |
+|        | POST     | api/register/masyarakat                 | register.masyarakat               | App\Http\Controllers\MasyarakatController@register                        | api                     |
+|        | POST     | api/register/petugas                    | register.petugas                  | App\Http\Controllers\PetugasController@register                           | api,auth:api-admin      |
+|        | GET|HEAD | api/titik_banjir                        | get.titk_banjir                   | App\Http\Controllers\TitikBanjirController@index                          | api                     |
+|        | POST     | api/titik_banjir                        | create.titik_bajir                | App\Http\Controllers\TitikBanjirController@create                         | api,auth:api-admin      |
+|        | GET|HEAD | api/titik_banjir/{id}                   | get_by_id.titik_banjir            | App\Http\Controllers\TitikBanjirController@show                           | api                     |
+|        | PUT      | api/titik_banjir/{id}                   | update.titik_bajir                | App\Http\Controllers\TitikBanjirController@update                         | api,auth:api-admin      |
+|        | DELETE   | api/titik_banjir/{id}                   | delete.titik_banjir               | App\Http\Controllers\TitikBanjirController@delete                         | api,auth:api-admin      |
+|        | GET|HEAD | api/titik_tersumbat                     | get.titik_tersumbat               | App\Http\Controllers\TitikTersumbatController@index                       | api                     |
+|        | POST     | api/titik_tersumbat                     | create.titik_tersumbat            | App\Http\Controllers\TitikTersumbatController@create                      | api,auth:api-admin      |
+|        | DELETE   | api/titik_tersumbat/{id}                | delete.titik_tersumbat            | App\Http\Controllers\TitikTersumbatController@delete                      | api,auth:api-admin      |
+|        | GET|HEAD | api/titik_tersumbat/{id}                | get_by_id.titik_tersumbat         | App\Http\Controllers\TitikTersumbatController@show                        | api                     |
+|        | PUT      | api/titik_tersumbat/{id}                | update.titik_tersumbat            | App\Http\Controllers\TitikTersumbatController@update                      | api,auth:api-admin      |
+|        | PUT      | api/update_pengaduan/admin/{id}         | update_pengaduan.admin            | App\Http\Controllers\PengaduanController@updateAdmin                      | api,auth:api-admin      |
+|        | PUT      | api/update_pengaduan/masyarakat/{id}    | feedback_pengaduan.masyarakat     | App\Http\Controllers\PengaduanController@feedbackMasyarakat               | api,auth:api-masyarakat |
+|        | PUT      | api/update_pengaduan/petugas/{id}       | update_pengaduan.petugas          | App\Http\Controllers\PengaduanController@updatePetugas                    | api,auth:api-petugas    |
+|        | GET|HEAD | api/user                                |                                   | Closure                                                                   | api,auth:api-admin      |
+|        | DELETE   | oauth/authorize                         | passport.authorizations.deny      | Laravel\Passport\Http\Controllers\DenyAuthorizationController@deny        | web,auth                |
+|        | GET|HEAD | oauth/authorize                         | passport.authorizations.authorize | Laravel\Passport\Http\Controllers\AuthorizationController@authorize       | web,auth                |
+|        | POST     | oauth/authorize                         | passport.authorizations.approve   | Laravel\Passport\Http\Controllers\ApproveAuthorizationController@approve  | web,auth                |
+|        | POST     | oauth/clients                           | passport.clients.store            | Laravel\Passport\Http\Controllers\ClientController@store                  | web,auth                |
+|        | GET|HEAD | oauth/clients                           | passport.clients.index            | Laravel\Passport\Http\Controllers\ClientController@forUser                | web,auth                |
+|        | DELETE   | oauth/clients/{client_id}               | passport.clients.destroy          | Laravel\Passport\Http\Controllers\ClientController@destroy                | web,auth                |
+|        | PUT      | oauth/clients/{client_id}               | passport.clients.update           | Laravel\Passport\Http\Controllers\ClientController@update                 | web,auth                |
+|        | GET|HEAD | oauth/personal-access-tokens            | passport.personal.tokens.index    | Laravel\Passport\Http\Controllers\PersonalAccessTokenController@forUser   | web,auth                |
+|        | POST     | oauth/personal-access-tokens            | passport.personal.tokens.store    | Laravel\Passport\Http\Controllers\PersonalAccessTokenController@store     | web,auth                |
+|        | DELETE   | oauth/personal-access-tokens/{token_id} | passport.personal.tokens.destroy  | Laravel\Passport\Http\Controllers\PersonalAccessTokenController@destroy   | web,auth                |
+|        | GET|HEAD | oauth/scopes                            | passport.scopes.index             | Laravel\Passport\Http\Controllers\ScopeController@all                     | web,auth                |
+|        | POST     | oauth/token                             | passport.token                    | Laravel\Passport\Http\Controllers\AccessTokenController@issueToken        | throttle                |
+|        | POST     | oauth/token/refresh                     | passport.token.refresh            | Laravel\Passport\Http\Controllers\TransientTokenController@refresh        | web,auth                |
+|        | GET|HEAD | oauth/tokens                            | passport.tokens.index             | Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@forUser | web,auth                |
+|        | DELETE   | oauth/tokens/{token_id}                 | passport.tokens.destroy           | Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@destroy | web,auth                |
++--------+----------+-----------------------------------------+-----------------------------------+---------------------------------------------------------------------------+-------------------------+
+```
