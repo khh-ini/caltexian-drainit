@@ -19,28 +19,5 @@ class Home1:AppCompatActivity(){
 
         val map = ArcGISMap(Basemap.Type.OPEN_STREET_MAP, 0.5695578669076772, 101.42584214573947, 14)
         mapView.map = map
-        navMenu.setOnItemSelectedListener { id ->
-            when(id){
-                R.id.history->viewpager.currentItem=0
-                R.id.succesPage->viewpager.currentItem=1
-            }
-        }
-        viewpager.setOnTouchListener(View.OnTouchListener{v, event->true})
-        viewpager.adapter = ViewPageAdapterBottomBar(supportFragmentManager).apply { list = ArrayList<String>().apply {
-            add("Home")
-            add("Home")
-            add("Home")
-            add("Home")
-        } }
-    }
-
-    fun bottomMenu(){
-        var chipNavigationBar = navMenu
-        chipNavigationBar.setOnItemSelectedListener(object : OnItemSelectedListener {
-            override fun onItemSelected(id: Int) {
-
-            }
-        })
-
     }
 }
