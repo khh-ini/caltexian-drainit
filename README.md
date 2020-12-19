@@ -64,3 +64,195 @@
 |        | DELETE   | oauth/tokens/{token_id}                 | passport.tokens.destroy           | Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@destroy | web,auth                |
 +--------+----------+-----------------------------------------+-----------------------------------+---------------------------------------------------------------------------+-------------------------+
 ```
+
+# Api Register
+## End point
+- `api/register/admin` -> Register akun admin
+
+request POST
+```
+{
+  "email" : "[USER_EMAIL]",
+  "password" : "[PASSWORD_USER]",
+  "password_confirmation" : "[PASSWORD_USER]",
+  "nama": "[nama_user]",
+  "no_hp": "[no_hp]",
+}
+```
+
+response
+```
+{
+  "message": "account created successfully!",
+  "user": {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+  "access_token": "[ACCESS_TOKEN]"
+}
+```
+
+- `api/login/petugas` -> Register akun petugas
+
+request POST
+```
+{
+  "email" : "[USER_EMAIL]",
+  "password" : "[PASSWORD_USER]",
+  "password_confirmation" : "[PASSWORD_USER]",
+  "nama": "[nama_user]",
+  "no_hp": "[no_hp]",
+  "foto": "[foto_user]",
+  "alamat": "[alamat_user]"
+}
+```
+
+response
+```
+{
+  "message": "account created successfully!",
+  "user": {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "foto": "[foto_user]",
+    "alamat": "[alamat_user]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+  "access_token": "[ACCESS_TOKEN]"
+}
+```
+
+- `api/login/masyarakat` -> Register akun petugas
+
+request POST
+```
+{
+  "email" : "[USER_EMAIL]",
+  "password" : "[PASSWORD_USER]",
+  "password_confirmation" : "[PASSWORD_USER]",
+  "nama": "[nama_user]",
+  "no_hp": "[no_hp]",
+  "foto": "[foto_user]",
+  "posisi_petugas": "[posisi_petugas]",
+  "tempat_lahir": "[tempat_lahir_petugas]",
+}
+```
+
+response
+```
+{
+  "message": "log in successfully!",
+  "user": {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "foto": "[foto_user]",
+    "posisi_petugas": "[posisi_petugas]",
+    "tempat_lahir": "[tempat_lahir_petugas]",
+    "tgl_lahir": "[tanggal_lahir_petugas]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+  "access_token": "[ACCESS_TOKEN]"
+}
+```
+
+# Api Login
+## End point
+- `api/login/admin` -> Login dengan credentials admin
+
+request POST
+```
+{
+  "email" : "[USER_EMAIL]",
+  "password" : "[PASSWORD_USER]"
+}
+```
+
+response
+```
+{
+  "message": "log in successfully!",
+  "user": {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+  "access_token": "[ACCESS_TOKEN]"
+}
+```
+
+- `api/login/petugas` -> Login dengan credentials petugas
+
+request POST
+```
+{
+  "email" : "[USER_EMAIL]",
+  "password" : "[PASSWORD_USER]"
+}
+```
+
+response
+```
+{
+  "message": "log in successfully!",
+  "user": {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "foto": "[foto_user]",
+    "alamat": "[alamat_user]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+  "access_token": "[ACCESS_TOKEN]"
+}
+```
+
+- `api/login/masyarakat` -> Login dengan credentials petugas
+
+request POST
+```
+{
+  "email" : "[USER_EMAIL]",
+  "password" : "[PASSWORD_USER]"
+}
+```
+
+response
+```
+{
+  "message": "log in successfully!",
+  "user": {
+    "id": "[user_id]",
+    "email": "[user_email]",
+    "email_verified_at": null,
+    "nama": "[nama_user]",
+    "no_hp": "[no_hp]",
+    "foto": "[foto_user]",
+    "posisi_petugas": "[posisi_petugas]",
+    "tempat_lahir": "[tempat_lahir_petugas]",
+    "tgl_lahir": "[tanggal_lahir_petugas]",
+    "created_at": "2020-12-17 09:39:52",
+    "updated_at": "2020-12-17 09:39:52"
+  },
+  "access_token": "[ACCESS_TOKEN]"
+}
+```
