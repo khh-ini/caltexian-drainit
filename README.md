@@ -47,7 +47,6 @@
 |        | PUT      | api/update_pengaduan/admin/{id}         | update_pengaduan.admin            | App\Http\Controllers\PengaduanController@updateAdmin                      | api,auth:api-admin      |
 |        | PUT      | api/update_pengaduan/masyarakat/{id}    | feedback_pengaduan.masyarakat     | App\Http\Controllers\PengaduanController@feedbackMasyarakat               | api,auth:api-masyarakat |
 |        | PUT      | api/update_pengaduan/petugas/{id}       | update_pengaduan.petugas          | App\Http\Controllers\PengaduanController@updatePetugas                    | api,auth:api-petugas    |
-|        | GET|HEAD | api/user                                |                                   | Closure                                                                   | api,auth:api-admin      |
 |        | DELETE   | oauth/authorize                         | passport.authorizations.deny      | Laravel\Passport\Http\Controllers\DenyAuthorizationController@deny        | web,auth                |
 |        | GET|HEAD | oauth/authorize                         | passport.authorizations.authorize | Laravel\Passport\Http\Controllers\AuthorizationController@authorize       | web,auth                |
 |        | POST     | oauth/authorize                         | passport.authorizations.approve   | Laravel\Passport\Http\Controllers\ApproveAuthorizationController@approve  | web,auth                |
