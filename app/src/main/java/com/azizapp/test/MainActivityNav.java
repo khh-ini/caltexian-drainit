@@ -42,6 +42,9 @@ public class MainActivityNav extends AppCompatActivity {
             public void onItemSelected(int id) {
                 Fragment fragment = null;
                 switch (id){
+                    case R.id.nav_new:
+                        fragment = new LaporanFragment();
+                        break;
                     case R.id.nav_home:
                         fragment = new HomeFragment();
                         break;
