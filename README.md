@@ -7,7 +7,7 @@
 - [API Petugas](https://github.com/khh-ini/gis_api/blob/master/README.md#api-petugas)
 - [API Drainase](https://github.com/khh-ini/gis_api/blob/master/README.md#api-drainase)
 - [API Titik Banjir](https://github.com/khh-ini/gis_api/blob/master/README.md#api-titik-banjir)
-- [API Titik Tersumbat](https://github.com/khh-ini/gis_api/blob/master/README.md#api-titi-tersumbat)
+- [API Titik Tersumbat](https://github.com/khh-ini/gis_api/blob/master/README.md#api-titik-tersumbat)
 - [API Pengaduan](https://github.com/khh-ini/gis_api/blob/master/README.md#api-pengaduan)
 
 # Route List
