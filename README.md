@@ -1303,7 +1303,22 @@ response:
   - End point : `/api/pengaduan/{id}`
 
 response : 
-
+```
+{
+  "id": "9a01e678-d440-4fa3-a1c5-a30f6d3e765a",
+  "id_masyarakat": "e5923414-2bf7-444c-b312-51778f30eb11",
+  "id_admin": null,
+  "id_petugas": null,
+  "nama_jalan": "jalan pesisir",
+  "foto": "<img src=update Gambar\/>",
+  "tipe_pengaduan": "banjir",
+  "deskripsi_pengaduan": "banjir udh dua bulan belum ada penanganan banjir sampe masuk rumah",
+  "status_pengaduan": "Menunggu Konfirmasi",
+  "laporan_petugas": null,
+  "feedback_masyarakat": null,
+  "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+}
+```
 
 - Menambahkan pengaduan
   - Request : `POST`
@@ -1336,6 +1351,7 @@ request data :
 }
 ```
   - note : `input geometry dalam format geojson`
+ 
 response : 
 ```
 {
@@ -1360,6 +1376,138 @@ response :
   }
 }
 ```
+
+- Update Admin ( Verifikasi Pengaduan )
+  - Request : `PUT`
+  - End point : `/api/update_pengaduan/admin/{id}`
+  - credential : `admin`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+request data : 
+```
+{
+  "status_pengaduan" : "[STATUS_PENGADUAN]"
+}
+```
+
+response :
+```
+{
+  "message": "Admin Update Successfully!",
+  "data": {
+    "id": "9a01e678-d440-4fa3-a1c5-a30f6d3e765a",
+    "id_masyarakat": "e5923414-2bf7-444c-b312-51778f30eb11",
+    "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+    "id_petugas": null,
+    "nama_jalan": "jalan pesisir",
+    "foto": "<img src=update Gambar\/>",
+    "tipe_pengaduan": "banjir",
+    "deskripsi_pengaduan": "banjir udh dua bulan belum ada penanganan banjir sampe masuk rumah",
+    "status_pengaduan": "Verifikasi Admin",
+    "laporan_petugas": null,
+    "feedback_masyarakat": null,
+    "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}",
+    "updated_at": "2020-12-22 13:46:47"
+  }
+}
+```
+
+- Update Petugas ( Laporan Petugas )
+  - Request : `PUT`
+  - End point : `/api/update_pengaduan/petugas/{id}`
+  - credential : `petugas`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+request data : 
+```
+{
+  "status_pengaduan" : "[STATUS_PENGADUAN]",
+  "laporan_petugas" : "[LAPORAN_PETUGAS]",
+}
+```
+
+response :
+```
+{
+  "message": "Perugas, Update Successfully!",
+  "data": {
+    "id": "9a01e678-d440-4fa3-a1c5-a30f6d3e765a",
+    "id_masyarakat": "e5923414-2bf7-444c-b312-51778f30eb11",
+    "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+    "id_petugas": null,
+    "nama_jalan": "jalan pesisir",
+    "foto": "<img src=update Gambar\/>",
+    "tipe_pengaduan": "banjir",
+    "deskripsi_pengaduan": "banjir udh dua bulan belum ada penanganan banjir sampe masuk rumah",
+    "status_pengaduan": "Verifikasi Admin",
+    "laporan_petugas": null,
+    "feedback_masyarakat": null,
+    "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}",
+    "updated_at": "2020-12-22 13:46:47"
+  }
+}
+```
+
+
+- Update Masyarakat ( Feedbacek dari masyarakat )
+  - Request : `PUT`
+  - End point : `/api/update_pengaduan/masyarakat/{id}`
+  - credential : `masyarakat`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+request data : 
+```
+{
+  "feedback_masyarakat" : "[FEEDBACK_MASYARAKAT]",
+}
+```
+
+response :
+```
+{
+  "message": "Perugas, Update Successfully!",
+  "data": {
+    "id": "9a01e678-d440-4fa3-a1c5-a30f6d3e765a",
+    "id_masyarakat": "e5923414-2bf7-444c-b312-51778f30eb11",
+    "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+    "id_petugas": null,
+    "nama_jalan": "jalan pesisir",
+    "foto": "<img src=update Gambar\/>",
+    "tipe_pengaduan": "banjir",
+    "deskripsi_pengaduan": "banjir udh dua bulan belum ada penanganan banjir sampe masuk rumah",
+    "status_pengaduan": "Verifikasi Admin",
+    "laporan_petugas": null,
+    "feedback_masyarakat": null,
+    "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}",
+    "updated_at": "2020-12-22 13:46:47"
+  }
+}
+```
+
 
 - Menghapus data pengaduan
   - Request : `DELETE`
