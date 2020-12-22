@@ -1019,6 +1019,7 @@ request data :
   "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
 }
 ```
+  - note : `input geometry dalam format geojson`
 
 response : 
 ```
@@ -1071,6 +1072,7 @@ request data :
   "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
 }
 ```
+  - note : `input geometry dalam format geojson`
 
 response : 
 ```
@@ -1096,7 +1098,7 @@ response :
 }
 ```
 
-- Menghapus data draianase
+- Menghapus data titk banjir
   - Request : `DELETE`
   - End point : `/api/titik_banjir/{id}`
   - Credential : `admin`
@@ -1176,6 +1178,7 @@ request data :
   "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
 }
 ```
+  - note : `input geometry dalam format geojson`
 
 response : 
 ```
@@ -1200,11 +1203,10 @@ response :
 }
 ```
 
-- Menambahkan data titik banjir
+- Mengupdate data titik banjir
   - Request : `PUT`
   - End poitn : `/api/titik_tersumbat/{id}`
   - Credential : `admin`
-  
 request header :
 ```
 {
@@ -1214,6 +1216,157 @@ request header :
  }
 ```
 
+request data : 
+
+```
+{
+  "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+  "nama_jalan": "Jln. Pesisir",
+  "foto": "<img src=#\/>",
+  "keterangan": "banjir setinggi 1m",
+  "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+}
+```
+  - note : `input geometry dalam format geojson`
+
+response : 
+```
+{
+  "message": "Data Updated Successfully!",
+  "data": {
+    "nama_jalan": "Jln. Pesisir",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        30,
+        10
+      ]
+    },
+    "foto": "<img src=#\/>",
+    "keterangan": "banjir setinggi 1m" 
+    "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+    "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+    "updated_at": "2020-12-22 12:44:35",
+    "created_at": "2020-12-22 12:44:35"
+  }
+}
+```
+
+- Menghapus data titk tersumbat
+  - Request : `DELETE`
+  - End point : `/api/titiK_tersumbat/{id}`
+  - Credential : `admin`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response : 
+```
+null,204
+```
+
 # API Pengaduan
 ## End point
+- Mendapatkan list data pengaduan
+  - Request : `GET`
+  - End point : `/api/pengaduan/`
 
+response:
+```
+[
+  {
+    "id": "9a01e678-d440-4fa3-a1c5-a30f6d3e765a",
+    "id_masyarakat": "e5923414-2bf7-444c-b312-51778f30eb11",
+    "id_admin": null,
+    "id_petugas": null,
+    "nama_jalan": "jalan pesisir",
+    "foto": "<img src=update Gambar\/>",
+    "tipe_pengaduan": "banjir",
+    "deskripsi_pengaduan": "banjir udh dua bulan belum ada penanganan banjir sampe masuk rumah",
+    "status_pengaduan": "Menunggu Konfirmasi",
+    "laporan_petugas": null,
+    "feedback_masyarakat": null,
+    "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+  },
+  ...
+]
+```
+
+- Mendapatkan data pengaduan berdasarkan id
+  - Request : `GET`
+  - End point : `/api/pengaduan/{id}`
+
+response : 
+
+
+- Menambahkan pengaduan
+  - Request : `POST`
+  - End point : `/api/pengaduan/`
+  - Credential : `masyarakat`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+request data :
+```
+{
+  "nama_jalan": "jalan pesisir",
+  "foto": "<img src=update Gambar\/>",
+  "tipe_pengaduan": "banjir",
+  "deskripsi_pengaduan": "banjir udh dua bulan belum ada penanganan banjir sampe masuk rumah",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      30,
+      10
+    ]
+  },
+}
+```
+  - note : `input geometry dalam format geojson`
+response : 
+```
+{
+  "message": "Added Successfully!",
+  "data": {
+    "nama_jalan": "jalan pesisir",
+    "foto": "<img src=update Gambar\/>",
+    "tipe_pengaduan": "banjir",
+    "deskripsi_pengaduan": "banjir udh dua bulan belum ada penanganan banjir sampe masuk rumah",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        30,
+        10
+      ]
+    },
+    "id_masyarakat": "e5923414-2bf7-444c-b312-51778f30eb11",
+    "status_pengaduan": "Menunggu Konfirmasi",
+    "id": "9a01e678-d440-4fa3-a1c5-a30f6d3e765a",
+    "updated_at": "2020-12-22 13:24:02",
+    "created_at": "2020-12-22 13:24:02"
+  }
+}
+```
+
+- Menghapus data pengaduan
+  - Request : `DELETE`
+  - End point : `/api/pengaduan/{id}`
+  - Credential : `admin`
+ 
+response : 
+```
+null,204
+```
