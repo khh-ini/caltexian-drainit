@@ -100,7 +100,7 @@ Route::prefix('drainase')->group(function (){
 
 Route::prefix('pengaduan')->group(function (){  
     Route::get('/','PengaduanController@index')->name('get.pengaduan');
-    Route::get('/{id}','PengaduanController@index')->name('get_by_id.pengaduan');
+    Route::get('/{id}','PengaduanController@show')->name('get_by_id.pengaduan');
     
     Route::middleware('auth:api-masyarakat')->group(function (){
         Route::post('/','PengaduanController@create')->name('create.pengaduan'); 
