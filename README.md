@@ -1,4 +1,4 @@
-# Contont
+# Content
 - [Route List](https://github.com/khh-ini/gis_api/blob/master/README.md#route-list)
 - [API Register](https://github.com/khh-ini/gis_api/blob/master/README.md#api-register)
 - [API Login](https://github.com/khh-ini/gis_api/blob/master/README.md#api-login)
@@ -79,9 +79,10 @@
 
 # Api Register
 ## End point
-- `api/register/admin` -> Register akun admin
-  - Request `POST`
-  - membutuhkan creadential admin tambahkan Authorization pada request header
+- Register akun admin
+  - Request : `POST`
+  - End point : `api/register/admin`
+  - Creadential `admin`
   
 request header :
 ```
@@ -120,18 +121,10 @@ response :
 }
 ```
 
-- `api/register/masyarakat` -> Register akun masyarakat
-  - Request `POST`
-  - membutuhkan creadential admin tambahkan Authorization pada request header
+- Register akun masyarakat
+  - Request : `POST`
+  - End point : `api/register/masyarakat`
   
-request header :
-```
-{
-  ...
-  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
-  ...
- }
-```
 request data :
 ```
 {
@@ -164,8 +157,19 @@ response :
 }
 ```
 
-- `api/register/petugas` -> Register akun petugas
-  - request `POST`
+- Register akun petugas
+  - Request : `POST`
+  - End point : `api/register/petugas`
+  - Creadential : `admin`
+  
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
   
 request data :
 ```
@@ -204,8 +208,9 @@ response :
 
 # Api Login
 ## End point
-- `api/login/admin` -> Login dengan credentials admin
-  - request `POST` 
+- Login dengan credentials admin
+  - Request : `POST`
+  - End point : `api/login/admin`
   
 request data :
 ``` 
@@ -232,8 +237,9 @@ response :
 }
 ```
 
-- `api/login/masyarakat` -> Login dengan credentials masyarakat
-  - request `POST`
+- Login dengan credentials masyarakat
+  - Request : `POST`
+  - End point : `api/login/masyarakat`
  
 request data :
 ```
@@ -262,8 +268,9 @@ response :
 }
 ```
 
-- `api/login/petugas` -> Login dengan credentials petugas
-  - request `POST`
+- Login dengan credentials petugas
+  - Request : `POST`
+  - End point : `api/login/petugas`
   
 request data :
 ```
@@ -294,7 +301,12 @@ response :
 }
 ```
 # Api Admin
-Api Admin Membuthkan credential admin, tambahjkan Authorization pada requrest Header untuk mengakses API Admin
+
+## End Point
+- Mengembalikan list data admin
+  - Request : `GET` 
+  - End point : `/api/admin/`
+  - Credential : `admin`
 
 request header :
 ```
@@ -304,10 +316,6 @@ request header :
   ...
  }
 ```
-
-## End Point
-- `/api/admin/` 
-  - request `GET` Mengembalikan list data admin
 
 response :
 ```
@@ -325,8 +333,19 @@ response :
 ]
 ```
 
-- `/api/admin/{id}`
-  - Request `GET` Mengembalikan data admin berdasarkan id
+- Mengembalikan data admin berdasarkan id
+  - Request : `GET`
+  - End point : `/api/admin/{id}`
+  - Credential : `admin`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
 
 response : 
 ```
@@ -341,8 +360,19 @@ response :
 },
 ```
 
-- `/api/admin/profile`
-  - Request `GET` Mengembalikan data admin yang login
+- Mengembalikan data admin yang login
+  - Request : `GET` 
+  - End point : `/api/admin/profile`
+  - Credential : `admin`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
 
 response : 
 ```
@@ -357,8 +387,19 @@ response :
 },
 ```
 
-- `/api/admin/`
-  - Request `PUT` Mengupdate data admin yang terlogin pada sistem
+- Mengupdate data admin yang terlogin pada sistem
+  - Request : `PUT` 
+  - End point : `/api/admin/`
+  - Credential : `admin`
+ 
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
  
 request data: 
 ```
@@ -386,9 +427,19 @@ response :
   },
 }
 ```
-- `/api/admin/{id}`
-  - Request `DELETE` Menghapus data admin berdasarkan id
-  - membutuhkan credential admin
+- Menghapus data admin berdasarkan id
+  - Request : `DELETE` 
+  - End point : `/api/admin/{id}`
+  - Credential : `admin`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
 
 response : 
 ```
@@ -397,9 +448,10 @@ null,204
 
 # API Petugas
 ## End point
-- `/api/petugas/
-  - request `GET` Mengembalikan list data petugas
-  - membutuhkan credentials admin
+- Mengembalikan list data petugas
+  - Request : `GET` 
+  - End point : `/api/petugas/`
+  - Credentials : `admin`
 
 request header :
 ```
@@ -430,9 +482,10 @@ response :
 ]
 ```
 
-- `/api/petugas/{id}`
-  - Request `GET` Mengembalikan data petugas berdasarkan id
-  - membutuhkan credential admin
+- Mengembalikan data petugas berdasarkan id
+  - Request : `GET` 
+  - End point : `/api/petugas/{id}`
+  - Credential : `admin`
 
 request header :
 ```
@@ -460,9 +513,10 @@ response :
 },
 ```
 
-- `/api/petugas/profile`
-  - Request `GET` Mengembalikan data petugas yang login
-  - membutuhkan credential petugas
+- Mengembalikan data petugas yang login
+  - Request : `GET` 
+  - End point : `/api/petugas/profile`
+  - Credential : `petugas`
 
 request header :
 ```
@@ -490,9 +544,10 @@ response :
 },
 ```
 
-- `/api/petugas/`
-  - Request `PUT` Mengupdate data petugas yang terlogin pada sistem
-  - membutuhkan credential petugas
+- Mengupdate data petugas yang terlogin pada sistem
+  - Request : `PUT` 
+  - End point : `/api/petugas/`
+  - Credential `petugas`
   
 request header :
 ```
@@ -537,9 +592,10 @@ response :
   },
 }
 ```
-- `/api/admin/{id}`
-  - Request `DELETE` Menghapus data petugas berdasarkan id
-  - membutuhkan credential admin
+- Menghapus data petugas berdasarkan id
+  - Request : `DELETE` 
+  - End point : `/api/petugas/{id}`
+  - Credential : `admin`
   
 request header :
 ```
@@ -557,9 +613,10 @@ null,204
 
 # API Masyarakat
 ## End point
-- `/api/masyarakat/
-  - request `GET` Mengembalikan list data masyarakat
-  - membutuhkan credentials admin
+- Mengembalikan list data masyarakat
+  - Request : `GET` 
+  - End point : `/api/masyarakat/
+  - Credentials : `admin`
 
 request header :
 ```
@@ -588,9 +645,10 @@ response :
 ]
 ```
 
-- `/api/masyarakat/{id}`
-  - Request `GET` Mengembalikan data masyarakat berdasarkan id
-  - membutuhkan credential admin
+- Mengembalikan data masyarakat berdasarkan id
+  - Request : `GET` 
+  - End Point : `/api/masyarakat/{id}`
+  - Credential `admin`
 
 request header :
 ```
@@ -616,9 +674,10 @@ response :
 },
 ```
 
-- `/api/masyarakat/profile`
-  - Request `GET` Mengembalikan data masyarakat yang login
-  - membutuhkan credential masyarakat
+- Mengembalikan data masyarakat yang login
+  - Request : `GET` 
+  - End point :  `/api/masyarakat/profile`
+  - Credential : `masyarakat`
 
 request header :
 ```
@@ -644,9 +703,10 @@ response :
 },
 ```
 
-- `/api/petugas/`
-  - Request `PUT` Mengupdate data masyarakat yang terlogin pada sistem
-  - membutuhkan credential msayarakat
+- Mengupdate data masyarakat yang terlogin pada sistem
+  - endpoint : `/api/masyarakat/`
+  - Request : `PUT` 
+  - Credential : `masyarakat`
   
 request header :
 ```
@@ -687,9 +747,10 @@ response :
   },
 }
 ```
-- `/api/admin/{id}`
-  - Request `DELETE` Menghapus data masyarakat berdasarkan id
-  - membutuhkan credential admin
+-  Menghapus data masyarakat berdasarkan id 
+  - Request : `DELETE`
+  - End point : `/api/masyarakat/{id}`
+  - Credential : `admin`
   
 request header :
 ```
@@ -706,9 +767,353 @@ null,204
 ```
 
 # API Drainase
+## End point :
+- Mengembalikan list data drainase
+  - Request : `GET`
+  - End point : `/api/drainase/`
 
+response : 
+```
+[
+  {
+    "id": "a350781a-13dd-4fc8-b63e-5341386a77bb",
+    "nama_jalan": "jalan pesisir",
+    "lebar": 17,
+    "panjang": 12,
+    "kedalaman": 0.3,
+    "bahan": "beton",
+    "kondisi": "Not Good",
+    "akhir_pembuangan": "sungai",
+    "arah_alir": "selatan",
+    "foto": "<img src=update Gambar\/>",
+    "tipe_drainase": "parit",
+    "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+  },
+  ...
+]
+```
+  - note : `output geometry dalam format geojson`
+
+- Mengembalikan list data drainase
+  - Request : `GET`
+  - End point : `/api/drainase/{id}`
+
+response : 
+```
+{
+  "id": "a350781a-13dd-4fc8-b63e-5341386a77bb",
+  "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+  "nama_jalan": "jalan pesisir",
+  "lebar": 17,
+  "panjang": 12,
+  "kedalaman": 0.3,
+  "bahan": "beton",
+  "kondisi": "Not Good",
+  "akhir_pembuangan": "sungai",
+  "arah_alir": "selatan",
+  "foto": "<img src=update Gambar\/>",
+  "tipe_drainase": "parit",
+  "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+}
+```
+  - note : `output geometry dalam format geojson`
+
+- Menambahkan data drainase
+  - Request : `POST`
+  - End point : `/api/drainase/`
+  - Credential : `admin`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+request data : 
+```
+{
+  "nama_jalan": "[NAMA_JALAN]",
+  "lebar": "[LEBAR]",
+  "panjang": "[NAMA_USER]",
+  "kedalaman": "[NO_HP_USER]",
+  "bahan": "[BAHAN]",
+  "kondisi" : "[KONDISI]",
+  "akhir_pembuangan": "[AKHIR_PEMBUANGAN]",
+  "arah_alir": "[ARAH_ALIR]",
+  "foto": "[FOTO]",
+  "tipe_drainase" : "[TIPE_DRAINASE]",
+  "geometry" : "[GEOMETRY]"
+}
+```
+  - note : `input geometry dalam format geojson`
+respose : 
+```
+{
+  "message": "Data Added Successfully!",
+  "data": {
+    "nama_jalan": "jalan pesisir",
+    "lebar": "17",
+    "panjang": "12",
+    "kedalaman": "0.3",
+    "bahan": "beton",
+    "kondisi": "Not Good",
+    "akhir_pembuangan": "sungai",
+    "arah_alir": "selatan",
+    "foto": "<img src=update Gambar\/>",
+    "tipe_drainase": "parit",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        30,
+        10
+      ]
+    },
+    "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+    "id": "a350781a-13dd-4fc8-b63e-5341386a77bb",
+    "updated_at": "2020-12-22 12:38:36",
+    "created_at": "2020-12-22 12:38:36"
+  }
+}
+```
+- Mengupdate data drainase
+  - Request : `PUT`
+  - End point : `/api/drianase/{id}`
+  - Crendential : `admin`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+request data : 
+```
+{
+  "nama_jalan": "[NAMA_JALAN]",
+  "lebar": "[LEBAR]",
+  "panjang": "[NAMA_USER]",
+  "kedalaman": "[NO_HP_USER]",
+  "bahan": "[BAHAN]",
+  "kondisi" : "[KONDISI]",
+  "akhir_pembuangan": "[AKHIR_PEMBUANGAN]",
+  "arah_alir": "[ARAH_ALIR]",
+  "foto": "[FOTO]",
+  "tipe_drainase" : "[TIPE_DRAINASE]",
+  "geometry" : "[GEOMETRY]"
+}
+```
+  - note : `input geometry dalam format geojson`
+respose : 
+```
+{
+  "message": "Data Updated Successfully!",
+  "data": {
+    "nama_jalan": "jalan pesisir",
+    "lebar": "17",
+    "panjang": "12",
+    "kedalaman": "0.3",
+    "bahan": "beton",
+    "kondisi": "Not Good",
+    "akhir_pembuangan": "sungai",
+    "arah_alir": "selatan",
+    "foto": "<img src=update Gambar\/>",
+    "tipe_drainase": "parit",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        30,
+        10
+      ]
+    },
+    "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+    "id": "a350781a-13dd-4fc8-b63e-5341386a77bb",
+    "updated_at": "2020-12-22 12:38:36",
+    "created_at": "2020-12-22 12:38:36"
+  }
+}
+```
+
+- Menghapus data draianase
+  - Request : `DELETE`
+  - End point : `/api/drainase/{id}`
+  - Credential : `admin`
+ 
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response : 
+```
+null,204
+```
 
 # API Titik Banjir
+## End point 
+
+- Mendapatkan data titik banjir 
+  - Request : `GET`
+  - End poitn : `/api/titik_banjir/`
+
+response : 
+```
+[
+  {
+    "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+    "nama_jalan": "Jln. Pesisir",
+    "kondisi_kerusakan": "Udh mendingan lah",
+    "foto": "<img src=#\/>",
+    "keterangan": "banjir setinggi 1m",
+    "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+  },
+  ...
+]
+```
+- Mendapatkan data titik banjir berdasarkan id
+  - Request : `GET`
+  - End poitn : `/api/titik_banjir/{id}`
+
+response : 
+```
+{
+  "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+  "nama_jalan": "Jln. Pesisir",
+  "kondisi_kerusakan": "Udh mendingan lah",
+  "foto": "<img src=#\/>",
+  "keterangan": "banjir setinggi 1m",
+  "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+}
+```
+
+- Menambahkan data titik banjir
+  - Request : `POST`
+  - End poitn : `/api/titik_banjir/`
+  - Credential : `admin`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+request data : 
+
+```
+{
+  "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+  "nama_jalan": "Jln. Pesisir",
+  "kondisi_kerusakan": "Udh mendingan lah",
+  "foto": "<img src=#\/>",
+  "keterangan": "banjir setinggi 1m",
+  "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+}
+```
+
+response : 
+```
+{
+  "message": "Data Added Successfully!",
+  "data": {
+    "nama_jalan": "Jln. Pesisir",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        30,
+        10
+      ]
+    },
+    "foto": "<img src=#\/>",
+    "kondisi_kerusakan": "Udh mendingan lah",
+    "keterangan": "banjir setinggi 1m" 
+    "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+    "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+    "updated_at": "2020-12-22 12:44:35",
+    "created_at": "2020-12-22 12:44:35"
+  }
+}
+```
+
+
+- Menambahkan data titik banjir
+  - Request : `PUT`
+  - End poitn : `/api/titik_banjir/{id}`
+  - Credential : `admin`
+  
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+request data : 
+
+```
+{
+  "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+  "nama_jalan": "Jln. Pesisir",
+  "kondisi_kerusakan": "Udh mendingan lah",
+  "foto": "<img src=#\/>",
+  "keterangan": "banjir setinggi 1m",
+  "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+}
+```
+
+response : 
+```
+{
+  "message": "Data Added Successfully!",
+  "data": {
+    "nama_jalan": "Jln. Pesisir",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        30,
+        10
+      ]
+    },
+    "foto": "<img src=#\/>",
+    "kondisi_kerusakan": "Udh mendingan lah",
+    "keterangan": "banjir setinggi 1m" 
+    "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+    "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+    "updated_at": "2020-12-22 12:44:35",
+    "created_at": "2020-12-22 12:44:35"
+  }
+}
+```
+
+- Menghapus data draianase
+  - Request : `DELETE`
+  - End point : `/api/titik_banjir/{id}`
+  - Credential : `admin`
+ 
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+response : 
+```
+null,204
+```
 
 
 # API Titik Tersumbat
