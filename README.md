@@ -1117,7 +1117,103 @@ null,204
 
 
 # API Titik Tersumbat
+## End point
+- Mendapatkan list data titik tersumbat
+  - Request : `PUT`
+  - End point : `/api/titik_tersumbat/`
 
+response :
+```
+[
+  {
+    "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+    "nama_jalan": "Jln. Pesisir",
+    "foto": "<img src=#\/>",
+    "keterangan": "banjir setinggi 1m",
+    "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+  },
+  ...
+]
+```
+
+- Mendapatkan data titik tersumbat berdasarkan id
+  - Request : `PUT`
+  - End point : `/api/titik_tersumbat/{id}`
+
+response : 
+```
+{
+  "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+  "nama_jalan": "Jln. Pesisir",
+  "foto": "<img src=#\/>",
+  "keterangan": "banjir setinggi 1m",
+  "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+}
+```
+
+- Menambahkan data titik tersumbat
+  - Request : `POST`
+  - End point : `/api/titik_tersumbat/`
+  - Credential : `admin`
+
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
+
+request data : 
+
+```
+{
+  "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+  "nama_jalan": "Jln. Pesisir",
+  "foto": "<img src=#\/>",
+  "keterangan": "banjir setinggi 1m",
+  "geometry": "{\"type\": \"Point\", \"coordinates\": [30, 10]}"
+}
+```
+
+response : 
+```
+{
+  "message": "Data Added Successfully!",
+  "data": {
+    "nama_jalan": "Jln. Pesisir",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        30,
+        10
+      ]
+    },
+    "foto": "<img src=#\/>",
+    "keterangan": "banjir setinggi 1m" 
+    "id_admin": "b152057a-5a28-41ed-9f7b-bad7c5bef110",
+    "id": "e2119f32-bd89-484a-aaa8-8b8893237546",
+    "updated_at": "2020-12-22 12:44:35",
+    "created_at": "2020-12-22 12:44:35"
+  }
+}
+```
+
+- Menambahkan data titik banjir
+  - Request : `PUT`
+  - End poitn : `/api/titik_tersumbat/{id}`
+  - Credential : `admin`
+  
+request header :
+```
+{
+  ...
+  "Authoriztion" : "Bearer [ACCESS_TOKEN]"
+  ...
+ }
+```
 
 # API Pengaduan
+## End point
 
