@@ -17,4 +17,8 @@ class Drainase extends Model
     protected $spatialFields = [
         'geometry'
     ];
+    protected $hidden = [
+        'id_admin',
+    ];
+
 }
