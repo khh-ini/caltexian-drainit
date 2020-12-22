@@ -14,7 +14,8 @@ class TitikBanjirController extends Controller
             'id_admin',
             'nama_jalan',
             'kondisi_kerusakan',
-            'foto', 
+            'foto',
+            'keterangan',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->get();
     }
@@ -25,7 +26,8 @@ class TitikBanjirController extends Controller
             'id_admin',
             'nama_jalan',
             'kondisi_kerusakan',
-            'foto', 
+            'foto',
+            'keterangan', 
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->where('id',$id)->first();;
     }
