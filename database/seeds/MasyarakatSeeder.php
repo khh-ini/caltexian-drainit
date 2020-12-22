@@ -15,7 +15,7 @@ class MasyarakatSeeder extends Seeder
             'id' => Str::uuid(),
             'nama' => 'Masyarakat',
             'email' => 'masyarakat@gmail.com',
-            'password' => Hash::make('petugas'),
+            'password' => Hash::make('masyarakat'),
             'no_hp' => '012304902',
             'foto' => '<img src=# />',
             'alamat' => 'jln. di tepi jalan'
