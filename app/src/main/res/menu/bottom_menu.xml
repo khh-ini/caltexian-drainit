@@ -2,9 +2,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/nav_new"
-        android:icon="@drawable/iconmaterial_newfile"
+        android:icon="@drawable/ic_contract"
         android:title="New"
-        app:cnb_iconColor="@color/primary"/>
+        app:cnb_iconColor="@color/primary" />
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_map"
@@ -12,12 +12,12 @@
         app:cnb_iconColor="@color/primary" />
     <item
         android:id="@+id/nav_history"
-        android:icon="@drawable/iconmaterial_history"
+        android:icon="@drawable/ic_history"
         android:title="History"
         app:cnb_iconColor="@color/primary" />
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/iconmaterial_profiles"
+        android:icon="@drawable/ic_user"
         android:title="Profile"
         app:cnb_iconColor="@color/primary" />
 </menu>

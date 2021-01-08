@@ -31,15 +31,15 @@
         app:layout_constraintVertical_bias="0.53"
         app:layout_constraintWidth_percent="0.12"/>
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/shapeableImageView9"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/iconmaterial_back"
-        app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView7"
-        app:layout_constraintEnd_toEndOf="@+id/shapeableImageView7"
-        app:layout_constraintStart_toStartOf="@+id/shapeableImageView7"
-        app:layout_constraintTop_toTopOf="@+id/shapeableImageView7" />
+<!--    <com.google.android.material.imageview.ShapeableImageView-->
+<!--        android:id="@+id/shapeableImageView9"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:src=""-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView7"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/shapeableImageView7"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/shapeableImageView7"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/shapeableImageView7" />-->
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView5"
@@ -62,8 +62,6 @@
         app:layout_constraintStart_toEndOf="@+id/shapeableImageView7"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.551" />
-
-
 
     <com.google.android.material.imageview.ShapeableImageView
         android:elevation="10dp"
