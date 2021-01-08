@@ -25,38 +25,38 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="20dp">
 
-            <RelativeLayout
-                android:id="@+id/logoapi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true">
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/logoapi"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true">-->
 
-                <RelativeLayout
-                    android:id="@+id/back"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/shape_rounded_white"
-                    android:clickable="true">
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/back"-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:background="@drawable/shape_rounded_white"-->
+<!--                    android:clickable="true">-->
 
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:icon="@drawable/ic_back" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="32dp"-->
+<!--                        android:layout_height="32dp"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:icon="@drawable/ic_back" />-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
-            </RelativeLayout>
+<!--            </RelativeLayout>-->
 
         </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins_bold"
             android:text="Riwayat"
-            android:textColor="@color/black"
+            android:textColor="@color/textPrimary"
             android:textSize="26dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +96,7 @@
             android:fontFamily="@font/poppins_medium"
             android:text="Lokasi"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
             android:fontFamily="@font/poppins_medium"
             android:text="Status"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
 
     </RelativeLayout>
 

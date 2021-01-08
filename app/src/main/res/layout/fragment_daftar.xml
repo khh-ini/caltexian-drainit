@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Daftar"
-                android:textColor="@color/black"
+                android:textColor="@color/textPrimary"
                 android:textSize="35dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,39 +53,33 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true">
 
-                    <RelativeLayout
+                    <ImageButton
                         android:id="@+id/google"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/shape_rounded_white"
-                        android:clickable="true">
+                        android:clickable="true"
+                        android:src="@drawable/googlelogo"
+                        android:adjustViewBounds="true"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter">
 
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:background="@drawable/shape_rounded_white"
-                            android:src="@drawable/googlelogo" />
-                    </RelativeLayout>
+                    </ImageButton>
 
-                    <RelativeLayout
+                    <ImageButton
                         android:id="@+id/facebook"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_marginStart="20dp"
                         android:layout_toRightOf="@id/google"
                         android:background="@drawable/shape_rounded_white"
-                        android:clickable="true">
+                        android:clickable="true"
+                        android:src="@drawable/fblogo"
+                        android:adjustViewBounds="true"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter">
 
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:background="@drawable/shape_rounded_white"
-                            android:src="@drawable/fblogo" />
-                    </RelativeLayout>
+                    </ImageButton>
                 </RelativeLayout>
 
                 <TextView
@@ -130,18 +124,16 @@
 
             <EditText
                 android:id="@+id/editTextNama"
-                style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvNama"
                 android:background="@drawable/shape_rounded_white"
                 android:ems="10"
-                android:fontFamily="@font/poppins_medium"
                 android:inputType="text"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginTop="5dp"
                 android:padding="10dp"
-                android:textSize="14dp"/>
+                android:textSize="16dp"/>
 
         </RelativeLayout>
 
@@ -173,7 +165,8 @@
                 tools:ignore="MissingConstraints"
                 android:layout_marginTop="5dp"
                 android:padding="10dp"
-                android:textSize="14dp"/>
+                android:textSize="16dp"
+                android:textColor="@color/textColorSecondary"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -204,7 +197,8 @@
                 tools:ignore="MissingConstraints"
                 android:layout_marginTop="5dp"
                 android:padding="10dp"
-                android:textSize="14dp"/>
+                android:textSize="16dp"
+                android:textColor="@color/textColorSecondary"/>
 
         </RelativeLayout>
 
@@ -236,20 +230,22 @@
                 tools:ignore="MissingConstraints"
                 android:layout_marginTop="5dp"
                 android:padding="10dp"
-                android:textSize="14dp"/>
+                android:textSize="16dp"
+                android:textColor="@color/textColorSecondary"/>
         </RelativeLayout>
 
         <Button
             android:id="@+id/button"
-            android:layout_width="292dp"
-            android:layout_height="60dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/shape_rounded_white"
             android:fontFamily="@font/poppins_bold"
             android:text="Daftar"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textColor="@color/textPrimary"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password"
             tools:ignore="MissingConstraints" />
 
@@ -271,14 +267,15 @@
                 android:textColor="@color/textColorSecondary" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tvLinkMasuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tvMasuk"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Masuk"
                 android:textColor="@color/primary"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:clickable="true"/>
         </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent">
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/navMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/shapeableImageView"
-        tools:ignore="NotSibling" />
+    android:background="@android:color/white"
+    tools:context=".HomeFragment">
 
     <com.esri.arcgisruntime.mapping.view.MapView
         android:id="@+id/mapView"
@@ -37,11 +28,9 @@
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/shapes_edit_text"
-                android:ems="10"
-                android:fontFamily="@font/poppins_medium"
+                android:background="@drawable/shape_rounded_white"
                 android:hint="Cari Disini"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:textColor="@color/textColorSecondary"
@@ -57,7 +46,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/iconmaterial_search"
+                android:src="@drawable/ic_search"
                 app:layout_constraintBottom_toBottomOf="@+id/cariDaerah"
                 app:layout_constraintEnd_toEndOf="@+id/cariDaerah"
                 app:layout_constraintHorizontal_bias="0.962"
@@ -65,15 +54,15 @@
                 app:layout_constraintTop_toTopOf="@+id/cariDaerah"
                 app:layout_constraintVertical_bias="0.476" />
 
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.esri.arcgisruntime.mapping.view.MapView>
-    <com.ismaeldivita.chipnavigation.ChipNavigationBar
-        android:id="@+id/navMenu"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@android:color/white"
-        app:cnb_menuResource="@menu/bottom_menu"
-        app:cnb_textAppearance="@font/poppins_bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent=".1" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

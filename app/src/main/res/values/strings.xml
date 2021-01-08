@@ -8,4 +8,16 @@
     <string name="login_password">Password</string>
     <string name="login_sample_email">sample@email.com</string>
     <string name="login_password_hint">********</string>
+
+    <string name="nama_user">Deanira Fadrinaldi</string>
+    <string name="noHp_user">082392074446</string>
+    <string name="email_user">deanira18ti@mahasiswa.pcr.ac.id</string>
+    <string name="tempatLahir_user">Deanira Fadrinaldi</string>
+    <string name="tanggalLahir_user">Deanira Fadrinaldi</string>
+    <string name="alamat_user">Deanira Fadrinaldi</string>
+
+    <string-array name="TipePengaduan">
+        <item>Titik Banjir</item>
+        <item>Titik Tersumbat</item>
+    </string-array>
 </resources>
