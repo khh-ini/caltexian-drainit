@@ -35,20 +35,28 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
         map?.let {
             googleMap = it
         }
-        val sydney = LatLng(-33.852, 151.211)
-        //val perth = LatLng(-31.953512, 115.857048)
+        val pekanbaru = LatLng(0.510440, 101.438309)
+        val perth = LatLng(0.5694928254013343, 101.42484671181263)
+        val drainase3=LatLng(0.5716080649752078, 101.41617693789138)
         googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(this.activity))
         marker = googleMap.addMarker(
                 MarkerOptions()
-                        .position(sydney)
-                        .title("Marker in Sydney").snippet("Population: 4,137,400")
+                        .position(pekanbaru)
+                        .title("Drainase 1").snippet("Kondisi : Baik\nJenis : Alami")
         )
-//        googleMap.addMarker(
-//                MarkerOptions()
-//                        .position(perth)
-//                        .title("Marker in Sydney").snippet("Population: 23,213,231")
-//        )
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        googleMap.addMarker(
+                MarkerOptions()
+                        .position(perth)
+                        .title("Drainase 2").snippet("Kondisi : Baik\n" +
+                            "Jenis : Buatan")
+        )
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(drainase3)
+                .title("Drainase 3").snippet("Kondisi : Rusak\n" +
+                        "Jenis : Alami")
+        )
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
   }
 
 }
