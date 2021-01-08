@@ -22,5 +22,6 @@
     <color name="orange">#FB7834</color>
     <!--Background Color-->
     <color name="lightGreyBackground">#F1F1F1</color>
+    <color name="background">#F6F6F6</color>
 
 </resources>

@@ -29,7 +29,7 @@ public class MainActivityNav extends AppCompatActivity {
         mMainNav = findViewById(R.id.main_nav);
 
         if (savedInstanceState==null){
-            mMainNav.setItemSelected(R.id.home, true);
+            mMainNav.setItemSelected(R.id.nav_home, true);
             fragmentManager = getSupportFragmentManager();
             HomeFragment homeFragment = new HomeFragment();
             fragmentManager.beginTransaction()
@@ -69,10 +69,8 @@ public class MainActivityNav extends AppCompatActivity {
     }
 
     private void setFragment(Fragment fragment) {
-
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame, fragment);
         fragmentTransaction.commit();
-
     }
 }

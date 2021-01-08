@@ -9,20 +9,22 @@
     tools:context=".DatePickerFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/yellow_header_shape"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent=".20"
+        app:layout_constraintHeight_percent=".16"
         tools:ignore="MissingConstraints"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:text="Laporkan Titik Banjir"
-        android:textColor="@color/black"
+        android:textColor="@color/textPrimary"
         android:textSize="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,26 +33,55 @@
         android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintBottom_toBottomOf="@id/scrollView"
+            app:layout_constraintEnd_toEndOf="@id/scrollView"
+            app:layout_constraintStart_toStartOf="@id/scrollView"
+            app:layout_constraintTop_toTopOf="@id/scrollView">
+
+            <RelativeLayout
+                android:id="@+id/tipePengaduan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/tvTipePengaduan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Tipe Pengaduan"
+                    android:textColor="@color/textColorSecondary"
+                    android:visibility="visible"
+                    tools:ignore="MissingConstraints" />
+
+                <Spinner
+                    android:id="@+id/spinnerTipePengaduan"
+                    android:layout_below="@id/tvTipePengaduan"
+                    android:layout_width="292dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:background="@drawable/shape_rounded_white"
+                    android:padding="10dp"
+                    />
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/namaJalan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/tipePengaduan"
                 tools:ignore="MissingConstraints">
 
                 <TextView
@@ -72,12 +103,11 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/shape_rounded_white"
                     android:ems="10"
-                    android:fontFamily="@font/poppins_medium"
                     android:inputType="text"
                     android:padding="10dp"
                     android:textColor="@color/textColorSecondary"
                     android:textColorHint="@color/textColorSecondary"
-                    android:textSize="14dp"/>
+                    android:textSize="16dp" />
 
             </RelativeLayout>
 
@@ -105,11 +135,12 @@
                     android:layout_below="@id/tvLokasi"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/shape_rounded_white"
+                    android:textColor="@color/textColorSecondary"
                     android:ems="10"
                     android:inputType="text"
                     android:padding="10dp"
-                    tools:ignore="MissingConstraints"
-                    android:textSize="14dp"/>
+                    android:textSize="16dp"
+                    tools:ignore="MissingConstraints" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -137,10 +168,11 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/shape_rounded_white"
                     android:ems="10"
+                    android:textColor="@color/textColorSecondary"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
-                    tools:ignore="MissingConstraints"
-                    android:textSize="14dp"/>
+                    android:textSize="16dp"
+                    tools:ignore="MissingConstraints" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -170,21 +202,21 @@
                     android:ems="10"
                     android:inputType="text"
                     android:padding="10dp"
-                    tools:ignore="MissingConstraints"
-                    android:textSize="14dp"/>
+                    android:textSize="16dp"
+                    tools:ignore="MissingConstraints" />
             </RelativeLayout>
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="292dp"
                 android:layout_height="60dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/shape_rounded_white"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Simpan"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/textPrimary"
                 android:textSize="18dp"
-                android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@id/foto"
                 tools:ignore="MissingConstraints" />
 

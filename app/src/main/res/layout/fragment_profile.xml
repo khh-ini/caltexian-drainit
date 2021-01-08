@@ -70,7 +70,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/settings"
+        android:id="@+id/ibEditProfile"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -78,7 +78,7 @@
         android:src="@drawable/ic_setting_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toEndOf="@+id/ivFotoProfil"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.23"
@@ -112,7 +112,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="Deanira Fadrinaldi"
         android:textColor="@color/black"
-        android:textSize="22dp"
+        android:textSize="18dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="082392074446"
         android:textColor="@color/textColorSecondary"
-        android:textSize="18dp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -150,16 +150,17 @@
             android:layout_height="50dp"
             android:background="@drawable/shape_rounded_green"
             android:layout_centerVertical="true"/>
+
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/ivEmail"
+            android:fontFamily="@font/poppins_medium"
             android:text="Email"
             android:textColor="@color/black"
-            android:textSize="18dp"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_toEndOf="@id/ivEmail"
-            android:layout_marginStart="10dp"/>
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/tvEmailDetails"
@@ -171,7 +172,7 @@
             android:fontFamily="@font/poppins_medium"
             android:text="deanira18ti@mahasiswa.pcr.ac.id"
             android:textColor="@color/textColorSecondary"
-            android:textSize="14dp" />
+            android:textSize="12dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -190,23 +191,24 @@
             android:layout_height="50dp"
             android:background="@drawable/shape_rounded_green"
             android:layout_centerVertical="true"/>
+
         <TextView
             android:id="@+id/tvSecond"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/ivSecond"
+            android:fontFamily="@font/poppins_medium"
             android:text="Second"
             android:textColor="@color/black"
-            android:textSize="18dp"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_toEndOf="@id/ivSecond"
-            android:layout_marginStart="10dp"/>
+            android:textSize="16dp" />
         <TextView
             android:id="@+id/tvSecondDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="deanira18ti@mahasiswa.pcr.ac.id"
             android:textColor="@color/textColorSecondary"
-            android:textSize="14dp"
+            android:textSize="12dp"
             android:fontFamily="@font/poppins_medium"
             android:layout_toEndOf="@id/ivSecond"
             android:layout_below="@id/tvSecond"
@@ -235,7 +237,7 @@
             android:layout_height="wrap_content"
             android:text="Third"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:fontFamily="@font/poppins_medium"
             android:layout_toEndOf="@id/ivThird"
             android:layout_marginStart="10dp"/>
@@ -245,7 +247,7 @@
             android:layout_height="wrap_content"
             android:text="deanira18ti@mahasiswa.pcr.ac.id"
             android:textColor="@color/textColorSecondary"
-            android:textSize="14dp"
+            android:textSize="12dp"
             android:fontFamily="@font/poppins_medium"
             android:layout_toEndOf="@id/ivThird"
             android:layout_below="@id/tvThird"
