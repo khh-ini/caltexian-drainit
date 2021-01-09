@@ -17,8 +17,8 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".daftar"/>
         <activity android:name=".LoginActivity"/>
-        <activity android:name=".MainActivityNav" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen" />
+        <activity android:name=".MainActivityNav">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

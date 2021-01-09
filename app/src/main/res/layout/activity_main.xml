@@ -14,7 +14,7 @@
         android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bottom_menu_rounded"
+        android:background="@drawable/shape_bottom_menu"
         app:cnb_menuResource="@menu/bottom_menu"
         app:cnb_textAppearance="@font/poppins_bold" />
 
