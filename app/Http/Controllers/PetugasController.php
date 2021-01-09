@@ -40,8 +40,8 @@ class PetugasController extends Controller
         $user = Petugas::create($validateData);
         $accessToken = $user->createToken('authToken')->accessToken;
 
-        return response()->json(['message'=>'petugas created successfully!','user'=>$user,'access_token'=>$accessToken],201);
-        
+        return response()->json(['message'=>'petugas created successfully!','user'=>$user,'access_token'=>$accessToken,'status_code'=>201],201);
+
     }
     public function login(Request $request)
     {
@@ -51,13 +51,13 @@ class PetugasController extends Controller
         ]);
         $user = Petugas::where('email',$loginData['email'])->first();
 
-        if(!$user || Hash::check($user->password, $request->password)){
+        if(!$user || !Hash::check( $loginData['password'],$user->password)){
             return response(['message'=>'invalid credentials']);
         }
 
         $accessToken = $user->createToken('authToken')->accessToken;
 
-        return response()->json(['message'=>'log in successfully!','user'=>$user,'access_token'=>$accessToken],200);
+        return response()->json(['message'=>'log in successfully!','user'=>$user,'access_token'=>$accessToken,'status_code'=>200],200);
     }
     public function update(request $request){
         $validateData = $request->validate([
@@ -85,13 +85,17 @@ class PetugasController extends Controller
         $data->alamat = $request->alamat;
         $data->save();
 
-        return response()->json(["message" => "Data Updated Successfully!", "data" => $data],200);
+        return response()->json(["message" => "Data Updated Successfully!", "data" => $data,'status_code'=>200],200);
     }
 
     public function delete($id){
         $data = Petugas::find($id);
-        $data->delete();
+        if($data){
+          $data->delete();
+        }else{
+          return response()->json(['status_code'=>400],400);
+        }
 
-        return response()->json(null,204);
+        return response()->json(['status_code'=>204],204);
     }
 }

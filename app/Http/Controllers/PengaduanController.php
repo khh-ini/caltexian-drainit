@@ -29,36 +29,9 @@ class PengaduanController extends Controller
         $validate['geometry'] = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
         $data = Pengaduan::create($validate);
         $data->geometry = json_decode($request->geometry);
-        // $data = new Pengaduan;
-        // $data->id_masyarakat = auth()->user()->id;
-        // $data->nama_jalan = $request->nama_jalan;
-        // $data->foto = $request->foto;
-        // $data->tipe_pengaduan = $request->tipe_pengaduan;
-        // $data->deskripsi_pengaduan = $request->deskripsi_pengaduan;
-        // $data->status_pengaduan = "";
-        // $data->geometry = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
-        // $data->save();
 
-        return response()->json(["message" => "Added Successfully!", "data" => $data],201);
+        return response()->json(["message" => "Added Successfully!", "data" => $data, 'status_code'=>201],201);
     }
-
-    // public function update(request $request, $id){
-    //     $data = Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->where('id',$id)->first();
-    //     $data->id_masyarakat = $request->id_masyarakat;
-    //     $data->id_admin = $request->id_admin;
-    //     $data->id_petugas = $request->id_petugas;
-    //     $data->nama_jalan = $request->nama_jalan;
-    //     $data->foto = $request->foto;
-    //     $data->tipe_pengaduan = $request->tipe_pengaduan;
-    //     $data->deskripsi_pengaduan = $request->deskripsi_pengaduan;
-    //     $data->status_pengaduan = $request->status_pengaduan;
-    //     $data->laporan_petugas = $request->laporan_petugas;
-    //     $data->feedback_masyarakat = $request->feedback_masyarakat;
-    //     $data->geometry = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
-    //     $data->save();
-
-    //     return response()->json(["message" => "Updated Successfully!", "data" => $data],200);
-    // }
 
     public function updateAdmin(request $request, $id){
         $validate = $request->validate([
@@ -71,7 +44,7 @@ class PengaduanController extends Controller
         $data->status_pengaduan = $request->status_pengaduan;
         $data->save();
 
-        return response()->json(["message" => "Admin Update Successfully!", "data" => $data],200);
+        return response()->json(["message" => "Admin, Update Successfully!", "data" => $data,'status_code'=>200],200);
     }
 
     public function updatePetugas(request $request, $id){
@@ -85,7 +58,7 @@ class PengaduanController extends Controller
         $data->laporan_petugas = $request->laporan_petugas;
         $data->save();
 
-        return response()->json(["message" => "Petugas Update Successfully!", "data" => $data],200);
+        return response()->json(["message" => "Petugas, Update Successfully!", "data" => $data, 'status_code'=>200],200);
     }
 
     public function feedbackMasyarakat(request $request, $id){
@@ -96,14 +69,18 @@ class PengaduanController extends Controller
         $data->feedback_masyarakat = $request->feedback_masyarakat;
         $data->save();
 
-        return response()->json(["message" => "Feedback Updated Successfully!", "data" => $data],200);
+        return response()->json(["message" => "Feedback Updated Successfully!", "data" => $data,'status_code'=>200],200);
     }
-    
+
 
     public function delete($id){
         $data = Pengaduan::find($id);
-        $data->delete();
+        if($data){
+          $data->delete();
+        }else{
+          return response()->json(['status_code'=>400],400);
+        }
 
-        return response()->json(null,204);
+        return response()->json(['status_code'=>204],204);
     }
 }

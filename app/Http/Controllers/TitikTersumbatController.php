@@ -13,7 +13,7 @@ class TitikTersumbatController extends Controller
             'id',
             'id_admin',
             'nama_jalan',
-            'foto', 
+            'foto',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->get();
     }
@@ -23,13 +23,13 @@ class TitikTersumbatController extends Controller
             'id',
             'id_admin',
             'nama_jalan',
-            'foto', 
+            'foto',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->where('id',$id)->first();;
     }
 
     public function create(request $request){
-        
+
         $validated = $request->validate([
             'nama_jalan' => 'required',
             'geometry' => 'required',
@@ -44,11 +44,11 @@ class TitikTersumbatController extends Controller
 
         $data->geometry = json_decode($request->geometry);
 
-        return response()->json(["message" => "Data Added Successfully!", "data" => $data],201);
+        return response()->json(["message" => "Data Added Successfully!", "data" => $data,'status_code'=>201],201);
     }
 
     public function update(request $request, $id){
-        
+
         $validated = $request->validate([
             'nama_jalan' => 'required',
             'geometry' => 'required',
@@ -63,16 +63,20 @@ class TitikTersumbatController extends Controller
         $data->foto = $request->foto;
         $data->keterangan = $request->keterangan;
         $data->save();
-        
+
         $data->geometry = json_decode($request->geometry);
 
-        return response()->json(["message" => "Data Updated Successfully!", "data" => $data],200);
+        return response()->json(["message" => "Data Updated Successfully!", "data" => $data,'status_code'=>200],200);
     }
 
     public function delete($id){
         $data = TitikTersumbat::find($id);
-        $data->delete();
+        if($data){
+          $data->delete();
+        }else{
+          return response()->json(['status_code'=>400],400);
+        }
 
-        return response()->json(null,204);
+        return response()->json(['status_code'=>204],204);
     }
 }

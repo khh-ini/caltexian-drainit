@@ -47,7 +47,7 @@ class DrainaseController extends Controller
             'tipe_drainase' => 'required',
             'geometry' => 'required|JSON'
         ]);
-        
+
         $validated['id_admin'] = auth()->user()->id;
         $validated['geometry'] = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
 
@@ -55,7 +55,7 @@ class DrainaseController extends Controller
 
         $data->geometry = json_decode($request->geometry);
 
-        return response()->json(["message" => "Data Added Successfully!", "data" => $data],201);
+        return response()->json(["message" => "Data Added Successfully!", "data" => $data,'status_code'=>201],201);
     }
 
     public function update(request $request, $id){
@@ -90,13 +90,17 @@ class DrainaseController extends Controller
 
         $data->geometry = json_decode($request->geometry);
 
-        return response()->json(["message" => "Data Updated Successfully!", "data" => $data],200);
+        return response()->json(["message" => "Data Updated Successfully!", "data" => $data,'status_code'=>200],200);
     }
 
     public function delete($id){
         $data = Drainase::find($id);
-        $data->delete();
+        if($data){
+          $data->delete();
+        }else{
+          return response()->json(['status_code'=>400],400);
+        }
 
-        return response()->json(null,204);
+        return response()->json(['status_code'=>204],204);
     }
 }

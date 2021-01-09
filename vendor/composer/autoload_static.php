@@ -98,6 +98,7 @@ class ComposerStaticInitf98e508bdac36f26fa3fda4355bb3b24
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
+            'Spatie\\Cors\\' => 12,
         ),
         'R' => 
         array (
@@ -324,6 +325,10 @@ class ComposerStaticInitf98e508bdac36f26fa3fda4355bb3b24
         'Symfony\\Bridge\\PsrHttpMessage\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/psr-http-message-bridge',
+        ),
+        'Spatie\\Cors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-cors/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -4227,6 +4232,11 @@ class ComposerStaticInitf98e508bdac36f26fa3fda4355bb3b24
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Spatie\\Cors\\Cors' => __DIR__ . '/..' . '/spatie/laravel-cors/src/Cors.php',
+        'Spatie\\Cors\\CorsProfile\\CorsProfile' => __DIR__ . '/..' . '/spatie/laravel-cors/src/CorsProfile/CorsProfile.php',
+        'Spatie\\Cors\\CorsProfile\\DefaultProfile' => __DIR__ . '/..' . '/spatie/laravel-cors/src/CorsProfile/DefaultProfile.php',
+        'Spatie\\Cors\\CorsServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-cors/src/CorsServiceProvider.php',
+        'Spatie\\Cors\\Exceptions\\InvalidCorsProfile' => __DIR__ . '/..' . '/spatie/laravel-cors/src/Exceptions/InvalidCorsProfile.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Bridge\\PsrHttpMessage\\Factory\\HttpFoundationFactory' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/Factory/HttpFoundationFactory.php',
         'Symfony\\Bridge\\PsrHttpMessage\\Factory\\PsrHttpFactory' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/Factory/PsrHttpFactory.php',
