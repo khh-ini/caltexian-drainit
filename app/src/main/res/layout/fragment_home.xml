@@ -19,8 +19,8 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/shapeableImageView"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/primary"
+                android:layout_height="70dp"
+                android:background="@drawable/yellow_header_shape"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
@@ -28,7 +28,7 @@
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/shape_rounded_white"
+                android:background="@drawable/shape_rounded_border_gray"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="15dp"
                 android:hint="Cari Disini"

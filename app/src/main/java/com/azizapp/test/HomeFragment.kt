@@ -13,10 +13,6 @@ import kotlinx.android.synthetic.main.fragment_home.mapView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -65,6 +61,7 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
                         "Jenis : Alami")
         )
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
-  }
+        googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) );
+    }
 
 }

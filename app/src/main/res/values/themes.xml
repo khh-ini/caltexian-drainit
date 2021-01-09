@@ -43,4 +43,11 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <!--button-->
+    <style name="ButtonWithStroke">
+        <item name="android:fillColor">@null</item>
+        <item name="android:background">@drawable/shape_rounded_border_yellow</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
 </resources>
