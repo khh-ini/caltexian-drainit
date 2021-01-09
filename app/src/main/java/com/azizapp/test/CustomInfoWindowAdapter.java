@@ -1,5 +1,6 @@
 package com.azizapp.test;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,11 @@ import com.google.android.gms.maps.model.Marker;
 
 
 public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter{
-    private View mWindow;
-    private Context mContext;
+    private Activity context;
 
-    public CustomInfoWindowAdapter(View mWindow,  Context context) {
-        mContext = context;
-        mWindow = LayoutInflater.from(context).inflate(R.layout.custom_info_layout,null);
+    public CustomInfoWindowAdapter(Activity context) {
+        this.context=context;
+
     }
     private void renderWindowText(Marker marker, View view){
         String title = marker.getTitle();
@@ -33,13 +33,19 @@ public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter{
 
     @Override
     public View getInfoWindow(Marker marker) {
-        renderWindowText(marker,mWindow);
         return null;
     }
 
     @Override
     public View getInfoContents(Marker marker) {
-        renderWindowText(marker,mWindow);
-        return null;
+        View view = context.getLayoutInflater().inflate(R.layout.custom_info_layout, null);
+
+        TextView tvTitle = (TextView) view.findViewById(R.id.tvTitleMarker);
+        TextView tvSubTitle = (TextView) view.findViewById(R.id.tvSnippet);
+
+        tvTitle.setText(marker.getTitle());
+        tvSubTitle.setText(marker.getSnippet());
+
+        return view;
     }
 }

@@ -1,6 +1,5 @@
 package com.azizapp.test
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,8 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() , OnMapReadyCallback{
-    private lateinit var googleMap : GoogleMap
+    private lateinit var googleMap: GoogleMap
+    private lateinit var marker : Marker
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -29,9 +29,6 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
-//       val map = ArcGISMap(Basemap.Type.OPEN_STREET_MAP, 0.5695578669076772, 101.42584214573947, 14)
-//        mapView.map = map
-
     }
 
     override fun onMapReady(map: GoogleMap?) {
@@ -39,12 +36,19 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
             googleMap = it
         }
         val sydney = LatLng(-33.852, 151.211)
-        googleMap.addMarker(
+        //val perth = LatLng(-31.953512, 115.857048)
+        googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(this.activity))
+        marker = googleMap.addMarker(
                 MarkerOptions()
                         .position(sydney)
                         .title("Marker in Sydney").snippet("Population: 4,137,400")
         )
+//        googleMap.addMarker(
+//                MarkerOptions()
+//                        .position(perth)
+//                        .title("Marker in Sydney").snippet("Population: 23,213,231")
+//        )
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-    }
+  }
 
 }
