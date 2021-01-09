@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.esri.arcgisruntime.mapping.ArcGISMap
 import com.esri.arcgisruntime.mapping.Basemap
+import com.google.android.gms.maps.CameraUpdateFactory
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.mapView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() , OnMapReadyCallback{
@@ -36,5 +38,8 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
         map?.let {
             googleMap = it
         }
+        val pku = LatLng(0.5071, 101.4478)
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(pku))
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo( 12.0f ));
     }
 }
