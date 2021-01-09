@@ -19,8 +19,8 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/shapeableImageView"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/primary"
+                android:layout_height="80dp"
+                android:background="@drawable/yellow_header_shape"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
@@ -28,31 +28,23 @@
                 style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/shape_rounded_white"
+                android:background="@drawable/shape_very_rounded_white"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableTint="@color/primaryVariant"
+                android:drawablePadding="15dp"
                 android:hint="Cari Disini"
-                android:textSize="12dp"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:textColor="@color/textColorSecondary"
-                android:textColorHint="#070707"
+                android:textColorHint="@color/textColorSecondary"
+                android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".07"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent=".75"
-                app:layout_constraintHeight_percent=".06"
-                />
+                app:layout_constraintWidth_percent=".92" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_search"
-                app:layout_constraintBottom_toBottomOf="@+id/cariDaerah"
-                app:layout_constraintEnd_toEndOf="@+id/cariDaerah"
-                app:layout_constraintHorizontal_bias="0.962"
-                app:layout_constraintStart_toStartOf="@+id/cariDaerah"
-                app:layout_constraintTop_toTopOf="@+id/cariDaerah"
-                app:layout_constraintVertical_bias="0.476" />
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView2"
