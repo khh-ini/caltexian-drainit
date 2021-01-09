@@ -6,11 +6,12 @@
     android:background="#FFFFFF" >
 
     <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/imageInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/parit1"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        />
 
     <TextView
         android:id="@+id/tvTitleMarker"
@@ -18,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Drainase 1"
-        android:textSize="10sp"
+        android:textSize="13sp"
         android:textStyle="bold"
         android:layout_gravity="center"
         android:gravity="center"/>
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="Kondisi : Baik\nJenis : Alami"
         android:layout_gravity="center"
-        android:textSize="8sp"
+        android:textSize="10sp"
         android:gravity="center"/>
 
 </LinearLayout>

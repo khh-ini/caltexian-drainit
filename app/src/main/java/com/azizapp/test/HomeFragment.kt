@@ -1,6 +1,7 @@
 package com.azizapp.test
 
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,8 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
         val pekanbaru = LatLng(0.510440, 101.438309)
         val perth = LatLng(0.5694928254013343, 101.42484671181263)
         val drainase3=LatLng(0.5716080649752078, 101.41617693789138)
-        googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(this.activity))
+        val drainase4=LatLng(0.5756080649752078, 101.41617693789138)
+        googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(activity))
         marker = googleMap.addMarker(
                 MarkerOptions()
                         .position(pekanbaru)
@@ -56,7 +58,12 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
                 .title("Drainase 3").snippet("Kondisi : Rusak\n" +
                         "Jenis : Alami")
         )
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(drainase4)
+                .title("Drainase 4").snippet("Kondisi : Baik\n" +
+                        "Jenis : Buatan")
+        )
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
   }
-
 }
