@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.RelativeLayout
 import android.widget.Spinner
 import kotlinx.android.synthetic.main.fragment_daftar.*
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -17,9 +18,9 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val i = inflater.inflate(R.layout.fragment_profile, container, false)
-        val ibEditProfile : ImageButton = i.findViewById(R.id.ibEditProfile)
+        val ubahProfil : RelativeLayout = i.findViewById(R.id.ubahProfil)
 
-        ibEditProfile.setOnClickListener {
+        ubahProfil.setOnClickListener {
             val intent = Intent(activity, fragment_editProfile::class.java)
             startActivity(intent)
         }

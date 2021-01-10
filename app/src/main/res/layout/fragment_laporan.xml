@@ -61,25 +61,13 @@
                     android:layout_height="wrap_content"
                     tools:ignore="MissingConstraints">
 
-                    <TextView
-                        android:id="@+id/tvTipePengaduan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Tipe Pengaduan"
-                        android:textColor="@color/textColorSecondary"
-                        android:visibility="visible"
-                        tools:ignore="MissingConstraints" />
-
-                    <Spinner
+                    <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/spinnerTipePengaduan"
-                        android:layout_width="292dp"
-                        android:layout_height="40dp"
-                        android:layout_below="@id/tvTipePengaduan"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/shape_rounded_white"
-                        android:ems="10"
-                        android:padding="10dp" />
+                        android:layout_width="308dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/spinner_bg"
+                        app:spinnerMode="dialog"
+                        android:outlineAmbientShadowColor="@color/primaryVariant"/>
 
                 </RelativeLayout>
 
@@ -91,31 +79,26 @@
                     app:layout_constraintTop_toBottomOf="@id/tipePengaduan"
                     tools:ignore="MissingConstraints">
 
-                    <TextView
-                        android:id="@+id/tvNamaJalan"
+                    <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Nama Jalan"
-                        android:textColor="@color/textColorSecondary"
-                        android:visibility="visible"
-                        tools:ignore="MissingConstraints" />
+                        app:borderColor="@color/primaryVariant"
+                        app:borderWidth="2dp"
+                        app:cornerRadius="8dp"
+                        android:padding="16dp">
 
-                    <EditText
-                        android:id="@+id/editTextNamaJalan"
-                        style="@style/Widget.AppCompat.AutoCompleteTextView"
-                        android:layout_width="292dp"
-                        android:layout_height="40dp"
-                        android:layout_below="@id/tvNamaJalan"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/shape_rounded_white"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:textColor="@color/textColorSecondary"
-                        android:textColorHint="@color/textColorSecondary"
-                        android:textSize="16dp" />
+                        <EditText
+                            android:id="@+id/editTextNamaJalan"
+                            android:layout_width="292dp"
+                            android:layout_height="40dp"
+                            android:hint="Nama Jalan"
+                            android:layout_marginTop="5dp"
+                            android:padding="10dp"
+                            android:textColor="@color/textColorSecondary"
+                            android:textColorHint="@color/textColorSecondary"
+                            android:textSize="16dp" />
 
+                    </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -126,28 +109,26 @@
                     app:layout_constraintTop_toBottomOf="@id/namaJalan"
                     tools:ignore="MissingConstraints">
 
-                    <TextView
-                        android:id="@+id/tvLokasi"
+                    <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Lokasi"
-                        android:textColor="@color/textColorSecondary"
-                        tools:ignore="MissingConstraints" />
+                        app:borderColor="@color/primaryVariant"
+                        app:borderWidth="2dp"
+                        app:cornerRadius="8dp"
+                        android:padding="16dp">
 
-                    <EditText
-                        android:id="@+id/editTextLokasi"
-                        android:layout_width="292dp"
-                        android:layout_height="40dp"
-                        android:layout_below="@id/tvLokasi"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/shape_rounded_white"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:padding="10dp"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="16dp"
-                        tools:ignore="MissingConstraints" />
+                        <EditText
+                            android:id="@+id/editTextLokasi"
+                            android:layout_width="292dp"
+                            android:layout_height="40dp"
+                            android:hint="Lokasi"
+                            android:layout_marginTop="5dp"
+                            android:padding="10dp"
+                            android:textColor="@color/textColorSecondary"
+                            android:textColorHint="@color/textColorSecondary"
+                            android:textSize="16dp" />
+
+                    </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -158,28 +139,26 @@
                     app:layout_constraintTop_toBottomOf="@id/lokasi"
                     tools:ignore="MissingConstraints">
 
-                    <TextView
-                        android:id="@+id/tvDeskripsi"
+                    <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Deskripsi Laporan"
-                        android:textColor="@color/textColorSecondary"
-                        tools:ignore="MissingConstraints" />
+                        app:borderColor="@color/primaryVariant"
+                        app:borderWidth="2dp"
+                        app:cornerRadius="8dp"
+                        android:padding="16dp">
 
-                    <EditText
-                        android:id="@+id/editTextDeskripsi"
-                        android:layout_width="292dp"
-                        android:layout_height="40dp"
-                        android:layout_below="@id/tvDeskripsi"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/shape_rounded_white"
-                        android:ems="10"
-                        android:inputType="textEmailAddress"
-                        android:padding="10dp"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="16dp"
-                        tools:ignore="MissingConstraints" />
+                        <EditText
+                            android:id="@+id/editTextDeskripsi"
+                            android:layout_width="292dp"
+                            android:layout_height="40dp"
+                            android:hint="Deskripsi"
+                            android:layout_marginTop="5dp"
+                            android:padding="10dp"
+                            android:textColor="@color/textColorSecondary"
+                            android:textColorHint="@color/textColorSecondary"
+                            android:textSize="16dp" />
+
+                    </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
                 </RelativeLayout>
 
                 <RelativeLayout
