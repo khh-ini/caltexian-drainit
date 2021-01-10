@@ -25,9 +25,8 @@ Route::prefix('login')->group(function (){
 });
 
 Route::prefix('register')->group(function(){
-    Route::post('admin','AdminController@register')->name('register.admin');
     Route::middleware('auth:api-admin')->group(function (){
-        // Route::post('admin','AdminController@register')->name('register.admin');
+        Route::post('admin','AdminController@register')->name('register.admin');
         Route::post('petugas','PetugasController@register')->name('register.petugas');
     });
     Route::post('masyarakat','MasyarakatController@register')->name('register.masyarakat');
@@ -37,6 +36,7 @@ Route::middleware('auth:api-admin')->prefix('admin')->group(function () {
     Route::get('/','AdminController@index')->name('get.admin');
     Route::get('/{id}','AdminController@show')->name('get_by_id.admin');
     Route::get('/profile','AdminController@profile')->name('get_loged_in_user.admin');
+    Route::post('/logout','AdminController@logoutApi')->name('logout.admin');
     Route::put('/','AdminController@update')->name('update.admin');
     Route::delete('/{id}','AdminController@delete')->name('delete.admin');
 });
@@ -45,6 +45,7 @@ Route::prefix('masyarakat')->group(function(){
     Route::middleware('auth:api-masyarakat')->group(function (){
         Route::get('/profile','MasyarakatController@profile')->name('get_loged_in_user.masyarakat');;
         Route::put('/','MasyarakatController@update')->name('update.masyarakat');
+        Route::post('/logout','MasyarakatController@logoutApi')->name('logout.masyarakat');
     });
     Route::middleware('auth:api-admin')->group(function(){
         Route::get('/','MasyarakatController@index')->name('get.masyarakat');
@@ -57,6 +58,7 @@ Route::prefix('petugas')->group(function (){
     Route::middleware('auth:api-petugas')->group(function () {
         Route::get('/profile','PetugasController@profile')->name('get_loged_in_user.petugas');
         Route::put('/','PetugasController@update')->name('update.petugas');
+        Route::post('/logout','PetugasController@logoutApi')->name('logout.petugas');
     });
     Route::middleware('auth:api-admin')->group(function (){
         Route::get('/','PetugasController@index')->name('get.petugas');

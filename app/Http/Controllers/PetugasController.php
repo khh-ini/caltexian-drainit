@@ -98,4 +98,12 @@ class PetugasController extends Controller
 
         return response()->json(['status_code'=>204],204);
     }
+    public function logoutApi()
+    { 
+        $data = DB::table('oauth_access_tokens')->where('user_id', auth()->user()->id);
+        if($data){
+            $data->delete();
+        }
+        return response()->json(['status_code'=>200],200);
+    }
 }

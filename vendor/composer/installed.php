@@ -6,11 +6,20 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'e8473e8337af7ebb00e027c6efd7badc33cc62d9',
+    'reference' => '74fc0ab2a45ec0ce171b9333784a2fe112872623',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
   array (
+    'asm89/stack-cors' => 
+    array (
+      'pretty_version' => 'v2.0.2',
+      'version' => '2.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8d8f88b3b3830916be94292c1fbce84433efb1aa',
+    ),
     'cordoval/hamcrest-php' => 
     array (
       'replaced' => 
@@ -150,6 +159,15 @@
       array (
       ),
       'reference' => 'feb0e820b8436873675fd3aca04f3728eb2185cb',
+    ),
+    'fruitcake/laravel-cors' => 
+    array (
+      'pretty_version' => 'v2.0.3',
+      'version' => '2.0.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '01de0fe5f71c70d1930ee9a80385f9cc28e0f63a',
     ),
     'goldspecdigital/laravel-eloquent-uuid' => 
     array (
@@ -424,7 +442,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'e8473e8337af7ebb00e027c6efd7badc33cc62d9',
+      'reference' => '74fc0ab2a45ec0ce171b9333784a2fe112872623',
     ),
     'laravel/passport' => 
     array (
@@ -947,15 +965,6 @@
       array (
       ),
       'reference' => '99732be0ddb3361e16ad77b68ba41efc8e979019',
-    ),
-    'spatie/laravel-cors' => 
-    array (
-      'pretty_version' => '1.6.0',
-      'version' => '1.6.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'd74099d57821d5a72ae21416c0be0dcd58779355',
     ),
     'swiftmailer/swiftmailer' => 
     array (
