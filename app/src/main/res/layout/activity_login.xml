@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.azizapp.test.LoginViewModel" />
+            type="com.azizapp.test.ui.login.LoginViewModel" />
 
     </data>
 
@@ -69,6 +69,7 @@
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_email"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,12 +102,13 @@
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_password"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_password_hint"
                 android:inputType="textPassword"
-                android:text="@={viewModel.tvPass}" />
+                android:text="@={viewModel.tvPassword}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,7 +119,7 @@
             android:layout_below="@id/et_login_password"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen2x"
-            android:visibility="@{viewModel.loadingEnabled ? View.VISIBLE : View.GONE}"
+            android:visibility="@{viewModel.loadingEnable ? View.VISIBLE : View.GONE}"
             tools:visibility="gone" />
 
         <Button
@@ -128,11 +130,11 @@
             android:layout_marginHorizontal="@dimen/dimen3x"
             android:layout_marginTop="@dimen/dimen2x"
             android:fontFamily="@font/poppins_bold"
-            android:onClick="@{() -> viewModel.masuk()}"
+            android:onClick="@{() -> viewModel.btnLoginClick()}"
             android:text="@string/login_masuk"
             android:textColor="@color/textPrimary"
             android:textSize="18sp"
-            android:visibility="@{viewModel.loadingEnabled ? View.GONE : View.VISIBLE}" />
+            android:visibility="@{viewModel.loadingEnable ? View.GONE : View.VISIBLE}" />
 
         <LinearLayout
             android:layout_width="wrap_content"
