@@ -37,8 +37,8 @@ class MasyarakatController extends Controller
         $user = Masyarakat::create($validateData);
         $accessToken = $user->createToken('authToken')->accessToken;
 
-        return response()->json(['message'=>'account created successfully!','user'=>$user,'access_token'=>$accessToken],201);
-        
+        return response()->json(['message'=>'account created successfully!','user'=>$user,'access_token'=>$accessToken,'status_code'=>201],201);
+
     }
     public function login(Request $request)
     {
@@ -48,13 +48,13 @@ class MasyarakatController extends Controller
         ]);
         $user = Masyarakat::where('email',$loginData['email'])->first();
 
-        if(!$user || Hash::check($user->password, $request->password)){
-            return response(['message'=>'invalid credentials']);
+        if(!$user || !Hash::check( $loginData['password'],$user->password)){
+            return response(['message'=>'invalid credentials','status_code'=>401],401);
         }
 
         $accessToken = $user->createToken('authToken')->accessToken;
 
-        return response()->json(['message'=>'log in successfully!','user'=>$user,'access_token'=>$accessToken],200);
+        return response()->json(['message'=>'log in successfully!','user'=>$user,'access_token'=>$accessToken,'status_code'=>200],200);
     }
     public function update(request $request){
         $validateData = $request->validate([
@@ -76,13 +76,25 @@ class MasyarakatController extends Controller
         $data->foto = $request->foto;
         $data->save();
 
-        return response()->json(["message" => "Data Updated Successfully!", "data" => $data],200);
+        return response()->json(["message" => "Data Updated Successfully!", "data" => $data,'status_code'=>200],200);
     }
 
     public function delete($id){
         $data = Masyarakat::find($id);
-        $data->delete();
+        if($data){
+          $data->delete();
+        }else{
+          return response()->json(['status_code'=>400],400);
+        }
 
-        return response()->json(null,204);
+        return response()->json(['status_code'=>204],204);
+    }
+    public function logoutApi()
+    { 
+        $data = DB::table('oauth_access_tokens')->where('user_id', auth()->user()->id);
+        if($data){
+            $data->delete();
+        }
+        return response()->json(['status_code'=>200],200);
     }
 }
