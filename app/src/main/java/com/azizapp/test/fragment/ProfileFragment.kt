@@ -1,4 +1,4 @@
-package com.azizapp.test
+package com.azizapp.test.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.RelativeLayout
-import android.widget.Spinner
-import kotlinx.android.synthetic.main.fragment_daftar.*
-import kotlinx.android.synthetic.main.fragment_profile.*
+import com.azizapp.test.R
+import com.azizapp.test.fragment_editProfile
 
 class ProfileFragment : Fragment() {
     override fun onCreateView(

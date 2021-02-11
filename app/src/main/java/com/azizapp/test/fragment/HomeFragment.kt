@@ -1,26 +1,31 @@
-package com.azizapp.test
+package com.azizapp.test.fragment
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import com.esri.arcgisruntime.mapping.ArcGISMap
-import com.esri.arcgisruntime.mapping.Basemap
+import com.azizapp.test.CustomInfoWindowAdapter
+import com.azizapp.test.R
 import com.google.android.gms.maps.CameraUpdateFactory
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.mapView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.layout_persistent_bottom_sheet.view.*
 
 
 class HomeFragment : Fragment() , OnMapReadyCallback{
     private lateinit var googleMap: GoogleMap
     private lateinit var marker : Marker
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -31,8 +36,30 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
+        val i = inflater.inflate(R.layout.fragment_home, container, false)
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        bottomSheetBehavior = BottomSheetBehavior.from(i.bottomsheet)
+
+        bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+                    }
+                    BottomSheetBehavior.STATE_EXPANDED ->{}
+                    BottomSheetBehavior.STATE_COLLAPSED ->{}
+                    BottomSheetBehavior.STATE_DRAGGING -> {
+                    }
+                    BottomSheetBehavior.STATE_SETTLING -> {
+                    }
+                }
+            }
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            }
+        })
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        return i
     }
 
     override fun onMapReady(map: GoogleMap?) {
@@ -61,7 +88,12 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
                         "Jenis : Alami")
         )
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
-        googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) );
+        googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) )
+        googleMap.setOnMarkerClickListener { marker ->
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            Log.d(TAG, "Clicked on  ${marker.tag}")
+            true
+        }
     }
 
 }

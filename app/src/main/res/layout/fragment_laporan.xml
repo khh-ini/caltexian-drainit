@@ -55,28 +55,27 @@
                 app:layout_constraintTop_toBottomOf="@id/header"
                 android:layout_marginBottom="20dp">
 
-                <RelativeLayout
-                    android:id="@+id/tipePengaduan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:ignore="MissingConstraints">
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/tipePengaduan"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    tools:ignore="MissingConstraints">-->
 
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spinnerTipePengaduan"
-                        android:layout_width="308dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/spinner_bg"
-                        app:spinnerMode="dialog"
-                        android:outlineAmbientShadowColor="@color/primaryVariant"/>
+<!--                    <androidx.appcompat.widget.AppCompatSpinner-->
+<!--                        android:id="@+id/spinnerTipePengaduan"-->
+<!--                        android:layout_width="308dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:background="@drawable/spinner_bg"-->
+<!--                        app:spinnerMode="dialog"-->
+<!--                        android:outlineAmbientShadowColor="@color/primaryVariant"/>-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
                 <RelativeLayout
                     android:id="@+id/namaJalan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@id/tipePengaduan"
                     tools:ignore="MissingConstraints">
 
                     <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
@@ -150,13 +149,15 @@
                         <EditText
                             android:id="@+id/editTextDeskripsi"
                             android:layout_width="292dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:hint="Deskripsi"
                             android:layout_marginTop="5dp"
                             android:padding="10dp"
                             android:textColor="@color/textColorSecondary"
                             android:textColorHint="@color/textColorSecondary"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            android:scrollbarAlwaysDrawVerticalTrack="true"
+                            android:scrollbars="vertical"/>
 
                     </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
                 </RelativeLayout>

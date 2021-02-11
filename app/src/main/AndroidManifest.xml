@@ -14,11 +14,11 @@
         android:theme="@style/Theme.Test">
 
         <activity android:name=".HistoryPage"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".daftar"/>
+        <activity android:name=".MainActivityNav"/>
+        <activity android:name=".fragment.daftar"/>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".SplashScreen" />
-        <activity android:name=".MainActivityNav">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
