@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
-        android:text="Laporkan Titik Banjir"
+        android:text="Laporkan"
         android:textColor="@color/textPrimary"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/header"

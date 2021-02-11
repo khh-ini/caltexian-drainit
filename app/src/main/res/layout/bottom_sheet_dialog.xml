@@ -4,21 +4,33 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Pilih Jenis Laporan"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:padding="15dp"
+        android:background="@drawable/shape_stroke_bottom"
+        android:backgroundTint="@color/primary"/>
+
     <LinearLayout
         android:id="@+id/titik_tersumbat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
+        android:background="@drawable/shape_stroke_bottom"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="15dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="Titik Tersumbat"
             android:textColor="#737373"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/titik_banjir"
@@ -27,13 +39,13 @@
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="15dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="Titik Banjir"
             android:textColor="#737373"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>
