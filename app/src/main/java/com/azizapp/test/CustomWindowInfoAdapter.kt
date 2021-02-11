@@ -26,7 +26,7 @@ class CustomWindowInfoAdapter(context: Context) : GoogleMap.InfoWindowAdapter {
         if (snippet != ""){
             tvSnippet.text = snippet
         }
-        val image = view.findViewById<ImageView>(R.id.imageInfo)
+        //val image = view.findViewById<ImageView>(R.id.imageInfo)
     }
 
     override fun getInfoContents(marker: Marker): View {

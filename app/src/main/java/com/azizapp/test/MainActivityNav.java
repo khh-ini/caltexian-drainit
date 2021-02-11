@@ -2,7 +2,6 @@ package com.azizapp.test;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +18,6 @@ public class MainActivityNav extends AppCompatActivity {
     private ProfileFragment profileFragment;
     private RiwayatFragment riwayatFragment;
     private FragmentManager fragmentManager;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

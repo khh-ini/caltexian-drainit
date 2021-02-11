@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.splash.*
 class LoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding
-    val loginViewModel: LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
