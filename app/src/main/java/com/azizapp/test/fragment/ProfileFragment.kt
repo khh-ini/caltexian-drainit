@@ -1,4 +1,4 @@
-package com.azizapp.test
+package com.azizapp.test.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
-import com.azizapp.test.ui.profile.ActivityEditProfile
+import com.azizapp.test.R
+import com.azizapp.test.fragment_editProfile
 
 class ProfileFragment : Fragment() {
     override fun onCreateView(
@@ -18,7 +19,7 @@ class ProfileFragment : Fragment() {
         val ubahProfil : RelativeLayout = i.findViewById(R.id.ubahProfil)
 
         ubahProfil.setOnClickListener {
-            val intent = Intent(activity, ActivityEditProfile::class.java)
+            val intent = Intent(activity, fragment_editProfile::class.java)
             startActivity(intent)
         }
         // Inflate the layout for this fragment

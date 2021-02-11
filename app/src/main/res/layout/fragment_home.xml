@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:id="@+id/MapFragment"
-    tools:context=".HomeFragment">
+    tools:context=".fragment.HomeFragment">
+
+    <com.esri.arcgisruntime.mapping.view.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -52,4 +56,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+    </com.esri.arcgisruntime.mapping.view.MapView>
+
+    <include layout="@layout/layout_persistent_bottom_sheet" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

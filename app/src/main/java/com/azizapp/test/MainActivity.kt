@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
-import com.azizapp.test.ui.login.LoginActivity
+import com.azizapp.test.fragment.daftar
 import kotlinx.android.synthetic.main.splash.*
 import me.relex.circleindicator.CircleIndicator3
 

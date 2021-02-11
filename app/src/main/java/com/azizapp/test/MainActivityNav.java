@@ -9,6 +9,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.azizapp.test.fragment.HomeFragment;
+import com.azizapp.test.fragment.LaporanFragment;
+import com.azizapp.test.fragment.ProfileFragment;
+import com.azizapp.test.fragment.RiwayatFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MainActivityNav extends AppCompatActivity {
