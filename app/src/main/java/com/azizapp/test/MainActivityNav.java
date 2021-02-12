@@ -23,7 +23,6 @@ public class MainActivityNav extends AppCompatActivity {
     private RiwayatFragment riwayatFragment;
     private FragmentManager fragmentManager;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
