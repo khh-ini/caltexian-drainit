@@ -1,12 +1,17 @@
 package com.azizapp.test.ui.profile
 
+import android.se.omapi.Session
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.azizapp.test.model.Masyarakat
 import com.azizapp.test.repository.MainRepository
+import com.azizapp.test.ui.login.LoginViewModel
 import com.azizapp.test.utill.Resource
 import com.azizapp.test.utill.Session.bearer
+import androidx.lifecycle.viewModelScope
+import com.azizapp.test.R
+import kotlinx.android.synthetic.main.fragment_edit_profile.view.*
 import kotlinx.coroutines.launch
 
 class EditProfileViewModel @ViewModelInject constructor(
@@ -20,10 +25,9 @@ class EditProfileViewModel @ViewModelInject constructor(
     val alamat = MutableLiveData<String>()
 
     fun onLoad() {
-
-        val bearer: String = "Bearer $bearer"
+        val bearer: String? = "Bearer " + com.azizapp.test.utill.Session.bearer
         viewModelScope.launch {
-            when (val response = bearer.let { repository.getMasyarakatData(it) }) {
+            when (val response = bearer?.let { repository.getMasyarakatData(it) }) {
                 is Resource.Success -> {
                     nama.postValue(response.data?.nama)
                     noHp.postValue(response.data?.noHp)
@@ -32,6 +36,7 @@ class EditProfileViewModel @ViewModelInject constructor(
                 }
                 is Resource.Error -> {
                     loadingEnable.postValue(false)
+                    // action.postValue(LoginViewModel.ACTION_LOGIN_ERROR)
                 }
             }
         }

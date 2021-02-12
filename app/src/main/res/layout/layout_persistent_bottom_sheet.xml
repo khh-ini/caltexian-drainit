@@ -5,7 +5,7 @@
     android:id="@+id/bottomsheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:behavior_hideable="false"
+    app:behavior_hideable="true"
     app:behavior_peekHeight="@dimen/dimen_32"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     android:background="@color/white">

@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import com.azizapp.test.MainActivityNav
 import com.azizapp.test.R
 import com.azizapp.test.databinding.ActivityLoginBinding
+import com.azizapp.test.fragment.daftar
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
@@ -19,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding
     private val loginViewModel: LoginViewModel by viewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +40,10 @@ class LoginActivity : AppCompatActivity() {
 
         })
 
+        tv_login_daftar.setOnClickListener{
+            val intent = Intent(this, daftar::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun loginError() {
