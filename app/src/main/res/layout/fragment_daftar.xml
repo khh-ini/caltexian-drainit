@@ -96,10 +96,18 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/header">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -110,6 +118,8 @@
             android:id="@+id/nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints">
 
             <TextView
@@ -127,13 +137,13 @@
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvNama"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:inputType="text"
-                android:textColor="@color/textColorSecondary"
-                android:layout_marginTop="5dp"
                 android:padding="10dp"
-                android:textSize="16dp"/>
+                android:textColor="@color/textColorSecondary"
+                android:textSize="16dp" />
 
         </RelativeLayout>
 
@@ -142,6 +152,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nama"
             tools:ignore="MissingConstraints">
 
@@ -159,14 +171,14 @@
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvNoHp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:inputType="phone"
-                tools:ignore="MissingConstraints"
-                android:layout_marginTop="5dp"
                 android:padding="10dp"
+                android:textColor="@color/textColorSecondary"
                 android:textSize="16dp"
-                android:textColor="@color/textColorSecondary"/>
+                tools:ignore="MissingConstraints" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -174,6 +186,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/NoHp"
             tools:ignore="MissingConstraints">
 
@@ -191,14 +205,14 @@
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvEmail"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                tools:ignore="MissingConstraints"
-                android:layout_marginTop="5dp"
                 android:padding="10dp"
+                android:textColor="@color/textColorSecondary"
                 android:textSize="16dp"
-                android:textColor="@color/textColorSecondary"/>
+                tools:ignore="MissingConstraints" />
 
         </RelativeLayout>
 
@@ -207,6 +221,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email"
             tools:ignore="MissingConstraints">
 
@@ -224,14 +240,48 @@
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvPassword"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:inputType="textPassword"
-                tools:ignore="MissingConstraints"
-                android:layout_marginTop="5dp"
                 android:padding="10dp"
+                android:textColor="@color/textColorSecondary"
                 android:textSize="16dp"
-                android:textColor="@color/textColorSecondary"/>
+                tools:ignore="MissingConstraints" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/confirm_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/tvKonfirmasiPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Konfirmasi Password"
+                android:textColor="@color/textColorSecondary"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/editTextKonfirmasiPassword"
+                android:layout_width="292dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/tvKonfirmasiPassword"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rounded_white"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="16dp"
+                tools:ignore="MissingConstraints" />
         </RelativeLayout>
 
         <Button
@@ -246,7 +296,7 @@
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password"
+            app:layout_constraintTop_toBottomOf="@id/confirm_password"
             tools:ignore="MissingConstraints" />
 
         <RelativeLayout
@@ -279,5 +329,5 @@
         </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

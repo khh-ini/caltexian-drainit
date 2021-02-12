@@ -25,7 +25,7 @@ class EditProfileViewModel @ViewModelInject constructor(
     val alamat = MutableLiveData<String>()
 
     fun onLoad() {
-        val bearer: String? = com.azizapp.test.utill.Session.bearer
+        val bearer: String? = "Bearer " + com.azizapp.test.utill.Session.bearer
         viewModelScope.launch {
             when (val response = bearer?.let { repository.getMasyarakatData(it) }) {
                 is Resource.Success -> {
