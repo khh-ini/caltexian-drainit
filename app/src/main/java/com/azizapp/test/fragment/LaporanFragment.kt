@@ -28,7 +28,7 @@ class LaporanFragment : Fragment() {
         // Inflate the layout for this fragment
         pilihLaporan()
         val i = inflater.inflate(R.layout.fragment_laporan, container, false)
-        tv_laporkan.setText("Laporkan " + jenisPengaduan)
+        tv_laporkan?.setText("Laporkan " + jenisPengaduan)
         return i
     }
 

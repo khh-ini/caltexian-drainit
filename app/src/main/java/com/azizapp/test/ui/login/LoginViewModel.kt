@@ -1,7 +1,6 @@
 package com.azizapp.test.ui.login
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -29,18 +28,18 @@ LoginViewModel @ViewModelInject constructor(
 
     val loadingEnable = MutableLiveData<Boolean>()
 
-    fun btnLoginClick(){
+    fun btnLoginClick() {
         loadingEnable.value = true
 
         viewModelScope.launch {
-            if (!tvEmail.value.isNullOrEmpty() && !tvPassword.value.isNullOrEmpty()){
+            if (!tvEmail.value.isNullOrEmpty() && !tvPassword.value.isNullOrEmpty()) {
                 val masyarakat = Masyarakat(
                     email = tvEmail.value,
                     password = tvPassword.value
                 )
-                when(val response = repository.masyarakatLogin(masyarakat)){
+                when (val response = repository.masyarakatLogin(masyarakat)) {
                     is Resource.Success -> {
-                        when(response.data?.statusCode){
+                        when (response.data?.statusCode) {
                             200 -> {
                                 loadingEnable.postValue(false)
                                 Session.bearer = response.data.accessToken
@@ -52,11 +51,14 @@ LoginViewModel @ViewModelInject constructor(
                             }
                         }
                     }
-                    is  Resource.Error -> {
+                    is Resource.Error -> {
                         loadingEnable.postValue(false)
                         action.postValue(ACTION_LOGIN_ERROR)
                     }
                 }
+            } else {
+                loadingEnable.postValue(false)
+                action.postValue(ACTION_LOGIN_ERROR)
             }
         }
 
