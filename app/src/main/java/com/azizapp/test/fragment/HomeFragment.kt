@@ -19,9 +19,11 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.android.synthetic.main.layout_persistent_bottom_sheet.view.*
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() , OnMapReadyCallback{
     private lateinit var googleMap: GoogleMap
     private lateinit var marker : Marker

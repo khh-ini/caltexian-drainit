@@ -15,6 +15,9 @@ import com.azizapp.test.fragment.ProfileFragment;
 import com.azizapp.test.fragment.RiwayatFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivityNav extends AppCompatActivity {
     private static final String TAG = MainActivityNav.class.getSimpleName();
     private ChipNavigationBar mMainNav;
