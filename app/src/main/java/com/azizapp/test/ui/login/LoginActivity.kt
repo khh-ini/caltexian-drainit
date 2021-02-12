@@ -5,10 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.azizapp.test.AuthListener
 import com.azizapp.test.MainActivityNav
 import com.azizapp.test.R
 import com.azizapp.test.databinding.ActivityLoginBinding

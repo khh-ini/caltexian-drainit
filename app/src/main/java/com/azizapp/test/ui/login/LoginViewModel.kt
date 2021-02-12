@@ -11,7 +11,8 @@ import com.azizapp.test.utill.Resource
 import com.azizapp.test.utill.Session
 import kotlinx.coroutines.launch
 
-class LoginViewModel @ViewModelInject constructor(
+class
+LoginViewModel @ViewModelInject constructor(
     val repository: MainRepository
 ) : ViewModel() {
 

@@ -48,18 +48,4 @@ object NetworkModule {
             .client(okHttpClient)
             .build()
     }
-
-//    fun provideToken(){
-//        TokenInterceptor interceptor=new TokenInterceptor();
-//
-//        OkHttpClient client = new OkHttpClient.Builder()
-//            .addInterceptor(interceptor).
-//            .build();
-//
-//        Retrofit retrofit = new Retrofit.Builder()
-//            .client(client)
-//            .baseUrl("add your url here")
-//            .addConverterFactory(JacksonConverterFactory.create())
-//            .build();
-//    }
 }

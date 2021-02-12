@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModelDaftar"
+            type="com.azizapp.test.ui.daftar.DaftarViewModel" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6F6F6">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
@@ -130,6 +138,7 @@
                 android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:inputType="text"
+                android:text="@={viewModelDaftar.nama}"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginTop="5dp"
                 android:padding="10dp"
@@ -162,6 +171,7 @@
                 android:background="@drawable/shape_rounded_white"
                 android:ems="10"
                 android:inputType="phone"
+                android:text="@={viewModelDaftar.noHp}"
                 tools:ignore="MissingConstraints"
                 android:layout_marginTop="5dp"
                 android:padding="10dp"
@@ -193,6 +203,7 @@
                 android:layout_below="@id/tvEmail"
                 android:background="@drawable/shape_rounded_white"
                 android:ems="10"
+                android:text="@={viewModelDaftar.email}"
                 android:inputType="textEmailAddress"
                 tools:ignore="MissingConstraints"
                 android:layout_marginTop="5dp"
@@ -219,19 +230,70 @@
                 android:textColor="@color/textColorSecondary"
                 tools:ignore="MissingConstraints" />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editTextPassword"
                 android:layout_width="292dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/tvPassword"
                 android:background="@drawable/shape_rounded_white"
                 android:ems="10"
+                android:elevation="@dimen/dimen2x"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/textColorHint"
+                app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_password"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_password_hint"
                 android:inputType="textPassword"
-                tools:ignore="MissingConstraints"
-                android:layout_marginTop="5dp"
-                android:padding="10dp"
-                android:textSize="16dp"
-                android:textColor="@color/textColorSecondary"/>
+
+                android:text="@={viewModelDaftar.password}" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/password_confirmation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/tvPassword_confirmation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Password Confirmation"
+                android:textColor="@color/textColorSecondary"
+                tools:ignore="MissingConstraints" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editTextPassword_confitmation"
+                android:layout_width="292dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/tvPassword_confirmation"
+                android:background="@drawable/shape_rounded_white"
+                android:ems="10"
+                android:elevation="@dimen/dimen2x"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/textColorHint"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_password_confirmation"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/login_password_hint"
+                    android:inputType="textPassword"
+                    android:textColor="@color/textColorSecondary"
+                    android:text="@={viewModelDaftar.passwordConfirmation}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
         </RelativeLayout>
 
         <Button
@@ -246,7 +308,7 @@
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password"
+            app:layout_constraintTop_toBottomOf="@id/password_confirmation"
             tools:ignore="MissingConstraints" />
 
         <RelativeLayout
@@ -281,3 +343,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
