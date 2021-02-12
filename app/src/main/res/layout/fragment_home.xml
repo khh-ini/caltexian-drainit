@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:context=".fragment.HomeFragment">
-    android:id="@+id/MapFragment">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.esri.arcgisruntime.mapping.view.MapView>
+
 
     <include layout="@layout/layout_persistent_bottom_sheet" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

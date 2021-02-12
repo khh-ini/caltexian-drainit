@@ -13,34 +13,28 @@ import com.azizapp.test.CustomInfoWindowAdapter
 import com.azizapp.test.R
 import com.google.android.gms.maps.CameraUpdateFactory
 import kotlinx.android.synthetic.main.fragment_home.*
-import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.android.synthetic.main.layout_persistent_bottom_sheet.view.*
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_home.*
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() , OnMapReadyCallback{
     private lateinit var googleMap: GoogleMap
     private lateinit var marker : Marker
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
-    val bottomSheetFragment = BottomSheetFragment()
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mapView2.onCreate(savedInstanceState)
         mapView2.onResume()
-        mapView2.getMapAsync(this)
 
+        mapView2.getMapAsync(this)
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -74,19 +68,15 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
         map?.let {
             googleMap = it
         }
-
         val pekanbaru = LatLng(0.510440, 101.438309)
         val perth = LatLng(0.5694928254013343, 101.42484671181263)
         val drainase3=LatLng(0.5716080649752078, 101.41617693789138)
-        val drainase4=LatLng(0.5756080649752078, 101.41617693789138)
-        googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(activity))
-        googleMap.addMarker(
+        googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(this.activity))
+        marker = googleMap.addMarker(
                 MarkerOptions()
                         .position(pekanbaru)
-                        .title("Drainase 1").snippet("Kondisi : Baik\nJenis : Alami").icon(
-                        BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                        .title("Drainase 1").snippet("Kondisi : Baik\nJenis : Alami")
         )
-
         googleMap.addMarker(
                 MarkerOptions()
                         .position(perth)
@@ -98,12 +88,6 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
                 .position(drainase3)
                 .title("Drainase 3").snippet("Kondisi : Rusak\n" +
                         "Jenis : Alami")
-        )
-        googleMap.addMarker(
-            MarkerOptions()
-                .position(drainase4)
-                .title("Drainase 4").snippet("Kondisi : Baik\n" +
-                        "Jenis : Buatan")
         )
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
         googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) )
