@@ -1,5 +1,37 @@
 <resources>
-    <string name="app_name">Test</string>
+    <string name="app_name">DRAINIT</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_masuk">Masuk</string>
+    <string name="login_akses">Akses Akun</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_sample_email">sample@email.com</string>
+    <string name="login_password_hint">********</string>
+
+    <string name="nama_user">Deanira Fadrinaldi</string>
+    <string name="noHp_user">082392074446</string>
+    <string name="email_user">deanira18ti@mahasiswa.pcr.ac.id</string>
+    <string name="tempatLahir_user">Deanira Fadrinaldi</string>
+    <string name="tanggalLahir_user">Deanira Fadrinaldi</string>
+    <string name="alamat_user">Deanira Fadrinaldi</string>
+
+    <!--bottom sheet-->
+    <string name="btn_persistent">Persistent Bottom Sheet</string>
+    <string name="btn_modal">Modal Bottom Sheet</string>
+    <string name="tv_title_bottomsheet">Detail Drainase</string>
+    <string name="tv_description_bottomsheet">
+        A BottomSheet is a component that is used to display some information by sliding
+        the view up in the screen and also you can hide this BottomSheet when the message
+        is conveyed to the users. This is a nice way of conveying some message or performing
+        some task in Android. Types of BottomSheet \n\nA BottomSheet is of two types: \n\nPersistent BottomSheet \n\nModal BottomSheet</string>
+    <string name="btn_one">Button 1</string>
+    <string name="btn_two">Button 2</string>
+    <string name="btn_three">Button 3</string>
+
+    <string-array name="TipePengaduan">
+        <item>Titik Banjir</item>
+        <item>Titik Tersumbat</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>

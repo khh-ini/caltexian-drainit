@@ -1,8 +1,11 @@
 package com.azizapp.test
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import com.azizapp.test.fragment.daftar
+import com.azizapp.test.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.splash.*
 import me.relex.circleindicator.CircleIndicator3
 
@@ -12,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private var imagesList = mutableListOf<Int>()
 
     var desc = arrayOf("Laporkan kerusakan jaringan drainase manapun dengan mudah","Ditangani langsung oleh Pemerintah Kota Pekanbaru")
+    var image = intArrayOf(R.drawable.hprusak, R.drawable.pemerintahlogo)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +28,16 @@ class MainActivity : AppCompatActivity() {
 
         val indicator = findViewById<CircleIndicator3>(R.id.indicator)
         indicator.setViewPager(view_pager2)
+
+        btnBuatAkun.setOnClickListener {
+            val intent = Intent(this, daftar::class.java)
+            startActivity(intent)
+        }
+
+        linkMasuk.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun addToList(description: String, image: Int) {
@@ -33,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun postToList() {
         for (i in 0..1) {
-            addToList(desc[i], R.drawable.hprusak)
+            addToList(desc[i], image[i])
         }
     }
 }
