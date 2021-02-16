@@ -47,7 +47,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -76,23 +76,24 @@
                     android:id="@+id/namaJalan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="MissingConstraints">
 
                     <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="16dp"
                         app:borderColor="@color/primaryVariant"
                         app:borderWidth="2dp"
-                        app:cornerRadius="8dp"
-                        android:padding="16dp">
+                        app:cornerRadius="8dp">
 
                         <EditText
                             android:id="@+id/editTextNamaJalan"
                             android:layout_width="292dp"
                             android:layout_height="40dp"
-                            android:hint="Nama Jalan"
                             android:layout_marginTop="5dp"
+                            android:hint="Nama Jalan"
                             android:padding="10dp"
                             android:textColor="@color/textColorSecondary"
                             android:textColorHint="@color/textColorSecondary"
@@ -106,23 +107,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/namaJalan"
                     tools:ignore="MissingConstraints">
 
                     <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="16dp"
                         app:borderColor="@color/primaryVariant"
                         app:borderWidth="2dp"
-                        app:cornerRadius="8dp"
-                        android:padding="16dp">
+                        app:cornerRadius="8dp">
 
                         <EditText
                             android:id="@+id/editTextLokasi"
                             android:layout_width="292dp"
                             android:layout_height="40dp"
-                            android:hint="Lokasi"
                             android:layout_marginTop="5dp"
+                            android:hint="Lokasi"
                             android:padding="10dp"
                             android:textColor="@color/textColorSecondary"
                             android:textColorHint="@color/textColorSecondary"
@@ -136,29 +139,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/lokasi"
                     tools:ignore="MissingConstraints">
 
                     <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="16dp"
                         app:borderColor="@color/primaryVariant"
                         app:borderWidth="2dp"
-                        app:cornerRadius="8dp"
-                        android:padding="16dp">
+                        app:cornerRadius="8dp">
 
                         <EditText
                             android:id="@+id/editTextDeskripsi"
                             android:layout_width="292dp"
                             android:layout_height="wrap_content"
-                            android:hint="Deskripsi"
                             android:layout_marginTop="5dp"
+                            android:hint="Deskripsi"
                             android:padding="10dp"
+                            android:scrollbarAlwaysDrawVerticalTrack="true"
+                            android:scrollbars="vertical"
                             android:textColor="@color/textColorSecondary"
                             android:textColorHint="@color/textColorSecondary"
-                            android:textSize="16dp"
-                            android:scrollbarAlwaysDrawVerticalTrack="true"
-                            android:scrollbars="vertical"/>
+                            android:textSize="16dp" />
 
                     </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
                 </RelativeLayout>
@@ -168,6 +173,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/deskripsi"
                     tools:ignore="MissingConstraints">
 
@@ -199,13 +206,14 @@
                     android:layout_width="292dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/shape_rounded_white"
                     android:fontFamily="@font/poppins_bold"
                     android:text="Lapor"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/foto"
                     tools:ignore="MissingConstraints" />
 
