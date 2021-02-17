@@ -23,4 +23,10 @@ interface MasyarakatService {
     suspend fun daftarMasyarakat(
         @Body masyarakatDaftar: MasyarakatDaftar
     ):Response<MasyarakatDaftarResponse>
+
+    @POST("/api/pengaduan")
+    suspend fun pengaduanMasyarakat(
+        @Header("Authorization") token: String,
+        @Body dataPengaduan: DataPengaduan
+    ) : Response<MasyarakatDaftarResponse>
 }

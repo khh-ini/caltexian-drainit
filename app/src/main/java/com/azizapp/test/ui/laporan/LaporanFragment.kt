@@ -1,25 +1,21 @@
-package com.azizapp.test.fragment
+package com.azizapp.test.ui.laporan
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.appcompat.widget.AppCompatSpinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.azizapp.test.R
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.android.synthetic.main.bottom_sheet_dialog.*
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_laporan.*
-import java.lang.StringBuilder
+import kotlinx.android.synthetic.main.fragment_laporan.view.*
 
 
 class LaporanFragment : Fragment() {
 
-    private lateinit var jenisPengaduan: String
+    lateinit var jenisPengaduan: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +23,9 @@ class LaporanFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         pilihLaporan()
+        jenisPengaduan = ""
         val i = inflater.inflate(R.layout.fragment_laporan, container, false)
-        tv_laporkan?.setText("Laporkan " + jenisPengaduan)
+        i.tv_laporkan?.setText("Laporkan " + jenisPengaduan)
         return i
     }
 
@@ -38,16 +35,16 @@ class LaporanFragment : Fragment() {
         dialog.setContentView(view)
         dialog.show()
 
-        view.titik_tersumbat.setOnClickListener{
+        view.titik_tersumbat.setOnClickListener {
             jenisPengaduan = "Titik Tersumbat"
             Toast.makeText(
-                        activity,
-                        "Anda melaporkan Titik Tersumbat", Toast.LENGTH_SHORT
-                    ).show()
+                activity,
+                "Anda melaporkan Titik Tersumbat", Toast.LENGTH_SHORT
+            ).show()
             dialog.dismiss()
         }
 
-        view.titik_banjir.setOnClickListener{
+        view.titik_banjir.setOnClickListener {
             jenisPengaduan = "Titik Banjir"
             Toast.makeText(
                 activity,
