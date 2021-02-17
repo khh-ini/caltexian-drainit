@@ -212,11 +212,12 @@
         android:layout_marginTop="@dimen/dimen2x"
         android:visibility="@{viewModeEditProfile.loadingEnable ? View.VISIBLE : View.GONE}"
         tools:visibility="gone" />
+
     <Button
         android:id="@+id/button"
-        android:layout_weight="0"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_weight="0"
         android:background="#ffc736"
         android:fontFamily="@font/poppins_bold"
         android:text="Simpan"
@@ -225,6 +226,6 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </LinearLayout>
 </layout>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NamaJalanFragment"
+    tools:context=".ui.laporan.LaporanActivity"
     android:background="@color/white">
 
     <!-- TODO: Update blank fragment layout -->
@@ -15,7 +15,6 @@
         android:layout_height="56dp"
         android:layout_marginTop="30dp"
         android:hint="Nama Jalan"
-        android:text="@={viewModeEditProfile.noHp}"
         android:textColor="@color/textColorSecondary"
         app:activeHintColor="@color/primaryVariant"
         app:activeUnderlineColor="@color/primaryVariant"
