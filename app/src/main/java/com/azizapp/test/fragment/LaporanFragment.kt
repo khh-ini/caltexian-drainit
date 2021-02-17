@@ -1,5 +1,6 @@
 package com.azizapp.test.fragment
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +10,14 @@ import android.widget.*
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.fragment.app.Fragment
 import com.azizapp.test.R
+import com.azizapp.test.ui.laporan.LaporanActivity
+import com.azizapp.test.ui.profile.ActivityEditProfile
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.*
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_laporan.*
+import kotlinx.android.synthetic.main.fragment_laporan.view.*
 import java.lang.StringBuilder
 
 
@@ -25,35 +29,52 @@ class LaporanFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Bundle bundle = getArgument()
         // Inflate the layout for this fragment
+        if (arguments!= null) {
+            val latLng = requireArguments().getString("latlng")
+            editTextNamaJalan.setText(latLng)
+        }
+
         pilihLaporan()
-        val i = inflater.inflate(R.layout.fragment_laporan, container, false)
-        tv_laporkan.setText("Laporkan " + jenisPengaduan)
-        return i
+        val inflater = inflater.inflate(R.layout.fragment_laporan, container, false)
+        tv_laporkan?.setText("Laporkan $jenisPengaduan")
+
+        inflater.til_nama_jalan.setOnClickListener {
+            val intent = Intent(activity, LaporanActivity::class.java)
+            startActivity(intent)
+        }
+
+        inflater.editTextNamaJalan.setOnClickListener {
+            val intent = Intent(activity, LaporanActivity::class.java)
+            startActivity(intent)
+        }
+
+        return inflater
     }
 
-    private fun pilihLaporan() {
+    fun pilihLaporan() {
         val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
         val dialog = BottomSheetDialog(requireActivity())
         dialog.setContentView(view)
         dialog.show()
 
         view.titik_tersumbat.setOnClickListener{
-            jenisPengaduan = "Titik Tersumbat"
             Toast.makeText(
                         activity,
                         "Anda melaporkan Titik Tersumbat", Toast.LENGTH_SHORT
                     ).show()
             dialog.dismiss()
+            jenisPengaduan = "Titik Tersumbat"
         }
 
         view.titik_banjir.setOnClickListener{
-            jenisPengaduan = "Titik Banjir"
             Toast.makeText(
                 activity,
                 "Anda melaporkan Titik Banjir", Toast.LENGTH_SHORT
             ).show()
             dialog.dismiss()
+            jenisPengaduan = "Titik Banjir"
         }
     }
 }

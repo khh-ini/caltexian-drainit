@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6F6F6"
-    tools:context=".DatePickerFragment"
+    tools:context=".fragment.LaporanFragment"
     android:orientation="vertical">
 
     <ScrollView
@@ -81,12 +81,14 @@
                     tools:ignore="MissingConstraints">
 
                     <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+                        android:id="@+id/til_nama_jalan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
                         app:borderColor="@color/primaryVariant"
                         app:borderWidth="2dp"
-                        app:cornerRadius="8dp">
+                        app:cornerRadius="8dp"
+                        android:clickable="true">
 
                         <EditText
                             android:id="@+id/editTextNamaJalan"
