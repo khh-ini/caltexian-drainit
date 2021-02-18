@@ -1,8 +1,6 @@
 package com.azizapp.test.api
 
-import com.azizapp.test.model.Masyarakat
-import com.azizapp.test.model.MasyarakatLoginResponse
-import com.azizapp.test.model.ProfileMasyarakat
+import com.azizapp.test.model.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -20,4 +18,15 @@ interface MasyarakatService {
     suspend fun profileMasyarakat(
         @Header("Authorization") token: String
     ):Response<ProfileMasyarakat>
+
+    @POST("api/register/masyarakat")
+    suspend fun daftarMasyarakat(
+        @Body masyarakatDaftar: MasyarakatDaftar
+    ):Response<MasyarakatDaftarResponse>
+
+    @POST("/api/pengaduan")
+    suspend fun pengaduanMasyarakat(
+        @Header("Authorization") token: String,
+        @Body dataPengaduan: DataPengaduan
+    ) : Response<MasyarakatDaftarResponse>
 }

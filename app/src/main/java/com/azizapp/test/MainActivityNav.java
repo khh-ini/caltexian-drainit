@@ -10,9 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.azizapp.test.fragment.HomeFragment;
-import com.azizapp.test.fragment.LaporanFragment;
+import com.azizapp.test.ui.laporan.LaporanFragment;
 import com.azizapp.test.fragment.ProfileFragment;
 import com.azizapp.test.fragment.RiwayatFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
@@ -38,6 +37,14 @@ public class MainActivityNav extends AppCompatActivity {
 
         mMainNav = findViewById(R.id.main_nav);
 
+        if (getIntent().hasExtra("lat")&&getIntent().hasExtra("long")){
+            mMainNav.setItemSelected(R.id.nav_new, true);
+            fragmentManager = getSupportFragmentManager();
+            LaporanFragment laporanFragment = new LaporanFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, laporanFragment)
+                    .commit();
+        }
         if (savedInstanceState==null){
             mMainNav.setItemSelected(R.id.nav_home, true);
             fragmentManager = getSupportFragmentManager();

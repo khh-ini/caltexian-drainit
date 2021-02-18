@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.azizapp.test.CustomInfoWindowAdapter
@@ -22,6 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.android.synthetic.main.layout_persistent_bottom_sheet.view.*
+import kotlinx.android.synthetic.main.splashscreen.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() , OnMapReadyCallback{
@@ -95,6 +97,9 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             Log.d(TAG, "Clicked on  ${marker.tag}")
             true
+        }
+        googleMap.setOnMapClickListener {point ->
+            Toast.makeText(context,"Titik : ${point.latitude}, ${point.longitude}",Toast.LENGTH_SHORT)
         }
     }
 

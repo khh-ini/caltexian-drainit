@@ -15,6 +15,8 @@ import kotlinx.coroutines.runBlocking
 object Session {
 
     private const val TOKEN_BEARER_KEY = "token"
+    private const val NAMA_JALAN = "jalan"
+
 
     private var dataStore: DataStore<Preferences>? = null
 
@@ -41,6 +43,23 @@ object Session {
         set(value) {
             GlobalScope.launch {
                 val da = stringPreferencesKey(TOKEN_BEARER_KEY)
+                dataStore?.edit { session ->
+                    session[da] = value ?: ""
+                }
+            }
+        }
+
+    var namaJalan: String?
+        get() =
+            runBlocking {
+                val dataStoreKey = stringPreferencesKey(NAMA_JALAN)
+                val preferences = dataStore?.data?.first()
+
+                preferences?.get(dataStoreKey)
+            }
+        set(value) {
+            GlobalScope.launch {
+                val da = stringPreferencesKey(NAMA_JALAN)
                 dataStore?.edit { session ->
                     session[da] = value ?: ""
                 }

@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
-import com.azizapp.test.fragment.daftar
+import com.azizapp.test.ui.daftar.DaftarActivity
 import com.azizapp.test.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.splash.*
 import me.relex.circleindicator.CircleIndicator3
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         indicator.setViewPager(view_pager2)
 
         btnBuatAkun.setOnClickListener {
-            val intent = Intent(this, daftar::class.java)
+            val intent = Intent(this, DaftarActivity::class.java)
             startActivity(intent)
         }
 
