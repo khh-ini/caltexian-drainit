@@ -28,21 +28,18 @@ class LaporanFragment : Fragment() {
 
     private lateinit var jenisPengaduan: String
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        //pilihLaporan()
+        pilihLaporan()
         val inflater = inflater.inflate(R.layout.fragment_laporan, container, false)
-        //tv_laporkan?.setText("Laporkan $jenisPengaduan")
 
         inflater.editTextNamaJalan.setOnClickListener {
             val intent = Intent(activity, LaporanActivity::class.java)
             startActivityForResult(intent, 100)
         }
+        inflater.tv_laporkan.text = "Laporkan $jenisPengaduan"
         return inflater
     }
 
@@ -56,7 +53,6 @@ class LaporanFragment : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
             val lat = data.getDoubleExtra("LAT",0.0)
             val long = data.getDoubleExtra("LONG",0.0)
@@ -64,6 +60,7 @@ class LaporanFragment : Fragment() {
             editTextLokasi.setText("[$lat,$long]")
         }
     }
+
     fun pilihLaporan() {
         val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
         val dialog = BottomSheetDialog(requireActivity())
