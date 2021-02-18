@@ -27,12 +27,21 @@ class MasyarakatController extends Controller
             'nama' => 'required|max:55',
             'email' => 'email|required|unique:masyarakats',
             'password'=> 'required|confirmed',
-            'foto'=>'required',
+            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
             'no_hp'=> 'required',
             'alamat'=> 'required',
         ]);
 
         $validateData['password'] = Hash::make($request->password);
+        if(is_null($request->foto)){
+            $validated['foto'] = 'defaultmasyarakat.png';
+        }else{
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $validated['foto'] = basename($image_uploaded_path);
+        }
+        
 
         $user = Masyarakat::create($validateData);
         $accessToken = $user->createToken('authToken')->accessToken;
@@ -61,19 +70,26 @@ class MasyarakatController extends Controller
             'nama' => 'required|max:55',
             'email' => 'email|required',
             'password'=> 'required|confirmed',
-            'foto'=>'required',
+            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
             'no_hp'=> 'required',
             'alamat'=> 'required',
         ]);
         $id = auth()->user()->id;
-
+        
         $data = Masyarakat::find($id);
         $data->nama = $request->nama;
         $data->no_hp = $request->no_hp;
         $data->email = $request->email;
         $data->password = Hash::make($request->password);
         $data->alamat = $request->alamat;
-        $data->foto = $request->foto;
+
+        if(!is_null($request->foto)){
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $data->foto = basename($image_uploaded_path);
+        }
+        
         $data->save();
 
         return response()->json(["message" => "Data Updated Successfully!", "data" => $data,'status_code'=>200],200);

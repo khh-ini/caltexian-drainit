@@ -19,7 +19,7 @@ class PengaduanController extends Controller
     public function create(request $request){
         $validate = $request->validate([
             'nama_jalan'=> 'required',
-            'foto'=> 'required',
+            'foto'=> 'required|image:jpeg,png,jpg,gif,svg|max:2048',
             'tipe_pengaduan' => 'required',
             'deskripsi_pengaduan'=>'required',
             'geometry' => 'required|JSON'
@@ -27,6 +27,16 @@ class PengaduanController extends Controller
         $validate['id_masyarakat'] = auth()->user()->id;
         $validate['status_pengaduan'] = "Menunggu Konfirmasi";
         $validate['geometry'] = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
+
+        if(is_null($request->foto)){
+            $validated['foto'] = 'defaultpengaduan.png';
+        }else{
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $validated['foto'] = basename($image_uploaded_path);
+        }
+
         $data = Pengaduan::create($validate);
         $data->geometry = json_decode($request->geometry);
 

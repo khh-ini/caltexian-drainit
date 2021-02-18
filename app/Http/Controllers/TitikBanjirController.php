@@ -36,13 +36,23 @@ class TitikBanjirController extends Controller
         $validated = $request->validate([
             'nama_jalan' => 'required',
             'geometry' => 'required',
-            'foto'=> 'required',
+            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
             'keterangan' => 'nullable',
             'kondisi_kerusakan' => 'required',
         ]);
 
         $validated['id_admin'] = auth()->user()->id;
         $validated['geometry'] = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
+        
+        if(is_null($request->foto)){
+            $validated['foto'] = 'defaultbanjir.png';
+        }else{
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $validated['foto'] = basename($image_uploaded_path);
+        }
+        
 
         $data = TitikBanjir::create($validated);
 
@@ -55,7 +65,7 @@ class TitikBanjirController extends Controller
         $validated = $request->validate([
             'nama_jalan' => 'required',
             'geometry' => 'required',
-            'foto'=> 'required',
+            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
             'keterangan' => 'nullable',
             'kondisi_kerusakan' => 'required',
         ]);
@@ -65,8 +75,13 @@ class TitikBanjirController extends Controller
         $data->geometry = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
         $data->nama_jalan = $request->nama_jalan;
         $data->kondisi_kerusakan = $request->kondisi_kerusakan;
-        $data->foto = $request->foto;
-        $data->keterangan = $request->$keterangan;
+        $data->keterangan = $request->keterangan;
+        if(!is_null($request->foto)){
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $data->foto = basename($image_uploaded_path);
+        }
         $data->save();
 
         $data->geometry = json_decode($request->geometry);

@@ -27,7 +27,7 @@ class PetugasController extends Controller
             'nama' => 'required|max:55',
             'email' => 'email|required|unique:petugas',
             'password'=> 'required|confirmed',
-            'foto' => 'required',
+            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
             'posisi_petugas' => 'required',
             'tempat_lahir' => 'required',
             'tgl_lahir' => 'required',
@@ -37,6 +37,14 @@ class PetugasController extends Controller
 
         $validateData['password'] = Hash::make($request->password);
 
+        if(is_null($request->foto)){
+            $validated['foto'] = 'defaultpetugas.png';
+        }else{
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $validated['foto'] = basename($image_uploaded_path);
+        }
         $user = Petugas::create($validateData);
         $accessToken = $user->createToken('authToken')->accessToken;
 
@@ -64,7 +72,7 @@ class PetugasController extends Controller
             'nama' => 'required|max:55',
             'email' => 'email|required',
             'password'=> 'required|confirmed',
-            'foto' => 'required',
+            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
             'posisi_petugas' => 'required',
             'tempat_lahir' => 'required',
             'tgl_lahir' => 'required',
@@ -78,11 +86,51 @@ class PetugasController extends Controller
         $data->no_hp = $request->no_hp;
         $data->email = $request->email;
         $data->password = Hash::make($request->password);
-        $data->foto = $request->foto;
         $data->posisi_petugas = $request->posisi_petugas;
         $data->tempat_lahir = $request->tempat_lahir;
         $data->tgl_lahir = $request->tgl_lahir;
         $data->alamat = $request->alamat;
+
+        if(!is_null($request->foto)){
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $data->foto = basename($image_uploaded_path);
+        }
+
+        $data->save();
+
+        return response()->json(["message" => "Data Updated Successfully!", "data" => $data,'status_code'=>200],200);
+    }
+
+    public function update_by_admin(request $request, $id){
+        $validateData = $request->validate([
+            'nama' => 'required|max:55',
+            'email' => 'email|required',
+            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
+            'posisi_petugas' => 'required',
+            'tempat_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'alamat'=> 'required',
+            'no_hp'=> 'required',
+        ]);
+
+        $data = Petugas::find($id);
+        $data->nama = $request->nama;
+        $data->no_hp = $request->no_hp;
+        $data->email = $request->email;
+        $data->posisi_petugas = $request->posisi_petugas;
+        $data->tempat_lahir = $request->tempat_lahir;
+        $data->tgl_lahir = $request->tgl_lahir;
+        $data->alamat = $request->alamat;
+
+        if(!is_null($request->foto)){
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $data->foto = basename($image_uploaded_path);
+        }
+
         $data->save();
 
         return response()->json(["message" => "Data Updated Successfully!", "data" => $data,'status_code'=>200],200);
