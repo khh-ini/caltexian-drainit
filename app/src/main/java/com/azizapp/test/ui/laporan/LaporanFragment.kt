@@ -27,7 +27,6 @@ import kotlinx.android.synthetic.main.fragment_laporan.view.*
 class LaporanFragment : Fragment() {
 
     private lateinit var jenisPengaduan: String
-    private val sharedViewModel: MapFragmentViewModel by activityViewModels()
 
 
 
@@ -35,12 +34,6 @@ class LaporanFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        // Inflate the layout for this fragment
-        if (arguments!= null) {
-            val latLng = requireArguments().getString("latlng")
-            editTextNamaJalan.setText(latLng)
-        }
 
         //pilihLaporan()
         val inflater = inflater.inflate(R.layout.fragment_laporan, container, false)
@@ -66,8 +59,10 @@ class LaporanFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            val lat = data.getDoubleExtra("LAT",0.0)
+            val long = data.getDoubleExtra("LONG",0.0)
             editTextNamaJalan.setText(data.getStringExtra("ADDRESS"))
-            editTextLokasi.setText(data.getStringExtra("LATLONG"))
+            editTextLokasi.setText("[$lat,$long]")
         }
     }
     fun pilihLaporan() {

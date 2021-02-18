@@ -12,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_nama_jalan.*
+import java.lang.reflect.InvocationTargetException
 import java.util.*
 
 
@@ -19,7 +20,8 @@ class LaporanActivity : AppCompatActivity(), OnMapReadyCallback {
 
     var address = "";
     var city = "";
-    lateinit var latlong:LatLng
+    var lat: Double = 0.0
+    var long: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +31,13 @@ class LaporanActivity : AppCompatActivity(), OnMapReadyCallback {
         map.onResume()
 
         map.getMapAsync(this)
+
         btn_simpan.setOnClickListener {
             val output = Intent()
             output.putExtra("ADDRESS", address)
             output.putExtra("CITY", city)
-            output.putExtra("LATLONG",latlong)
+            output.putExtra("LAT", lat)
+            output.putExtra("LONG", long)
             setResult(RESULT_OK, output)
             finish()
         }
@@ -47,17 +51,26 @@ class LaporanActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f))
         googleMap.setOnMapClickListener { point ->
-            val addresses: MutableList<Address>? =
-                geocoder.getFromLocation(point.latitude, point.longitude, 1)
-            address = addresses?.get(0)?.getAddressLine(0).toString()
-            city = addresses?.get(0)?.getLocality().toString()
-            latlong = LatLng(point.latitude,point.longitude)
-            Toast.makeText(
-                this,
-                "$address, $city",
-                Toast.LENGTH_SHORT
-            ).show()
-            tv_namaJalan.setText("$address, $city")
+            try {
+                val addresses: MutableList<Address>? =
+                    geocoder.getFromLocation(point.latitude, point.longitude, 1)
+                address = addresses?.get(0)?.getAddressLine(0).toString()
+                city = addresses?.get(0)?.getLocality().toString()
+                lat = point.latitude
+                long = point.longitude
+                Toast.makeText(
+                    this,
+                    "$address, $city",
+                    Toast.LENGTH_SHORT
+                ).show()
+                tv_namaJalan.setText("$address, $city")
+            } catch (e: InvocationTargetException) {
+                Toast.makeText(
+                    this,
+                    "Kesalahan Terjadi Saat Pengambilan Data! : ${e.cause.toString()}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }
