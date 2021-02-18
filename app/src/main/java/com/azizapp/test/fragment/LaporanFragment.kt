@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.fragment.app.Fragment
+import com.azizapp.test.MainActivityNav
 import com.azizapp.test.R
 import com.azizapp.test.ui.laporan.LaporanActivity
 import com.azizapp.test.ui.profile.ActivityEditProfile
@@ -29,13 +30,7 @@ class LaporanFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Bundle bundle = getArgument()
         // Inflate the layout for this fragment
-        if (arguments!= null) {
-            val latLng = requireArguments().getString("latlng")
-            editTextNamaJalan.setText(latLng)
-        }
-
         pilihLaporan()
         val inflater = inflater.inflate(R.layout.fragment_laporan, container, false)
         tv_laporkan?.setText("Laporkan $jenisPengaduan")
@@ -49,7 +44,6 @@ class LaporanFragment : Fragment() {
             val intent = Intent(activity, LaporanActivity::class.java)
             startActivity(intent)
         }
-
         return inflater
     }
 

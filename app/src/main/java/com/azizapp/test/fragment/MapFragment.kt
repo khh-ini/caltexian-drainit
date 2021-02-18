@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.azizapp.test.MainActivityNav
 import com.azizapp.test.R
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
@@ -15,9 +16,7 @@ import kotlinx.android.synthetic.main.fragment_map.*
 class MapFragment : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private lateinit var marker : Marker
-    private lateinit var lat:String
-    private lateinit var lang:String
+    private lateinit var latLng: LatLng
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,17 +29,8 @@ class MapFragment : AppCompatActivity(), OnMapReadyCallback {
         map.getMapAsync(this)
 
         btn_konfirmasi.setOnClickListener {
-//            val intent = Intent(this, LaporanFragment::class.java)
-//            intent.putExtra("latLng", latLng)
-            val newBundle = Bundle().apply {
-                putString("lat", lat)
-                putString("lang", lang)
-            }
-            val objects = LaporanFragment()
-            objects.arguments = newBundle
-
-            val intent = Intent(this, LaporanFragment::class.java)
-            intent.putExtras(newBundle)
+            val intent = Intent(this, MainActivityNav::class.java)
+            intent.putExtra("latLng", latLng.toString())
             startActivity(intent)
         }
     }
@@ -53,12 +43,11 @@ class MapFragment : AppCompatActivity(), OnMapReadyCallback {
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f))
         googleMap.setOnMapClickListener { point ->
             Toast.makeText(
-                this,
+                this,"Anda melaporkan titik dengan koordinat "+
                 point.latitude.toString() + ", " + point.longitude,
                 Toast.LENGTH_SHORT
             ).show()
-            lat=point.latitude.toString()
-            lang=point.longitude.toString()
+            latLng = LatLng(point.latitude, point.longitude)
             //latLng = LatLng(point.latitude, point.longitude)
         }
     }

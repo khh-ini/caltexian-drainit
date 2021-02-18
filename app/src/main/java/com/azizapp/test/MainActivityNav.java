@@ -1,7 +1,9 @@
 package com.azizapp.test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,8 @@ import com.azizapp.test.fragment.RiwayatFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import android.view.LayoutInflater;
+import android.widget.EditText;
 
 @AndroidEntryPoint
 public class MainActivityNav extends AppCompatActivity {
@@ -25,6 +29,7 @@ public class MainActivityNav extends AppCompatActivity {
     private ProfileFragment profileFragment;
     private RiwayatFragment riwayatFragment;
     private FragmentManager fragmentManager;
+    private EditText editText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +45,18 @@ public class MainActivityNav extends AppCompatActivity {
             fragmentManager.beginTransaction()
                     .replace(R.id.main_frame, homeFragment)
                     .commit();
+        }
+        if (getIntent().hasExtra("latLng")){
+            mMainNav.setItemSelected(R.id.nav_new, true);
+            fragmentManager = getSupportFragmentManager();
+            LaporanFragment laporanFragment = new LaporanFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, laporanFragment)
+                    .commit();
+
+            View view = View.inflate(this, R.layout.fragment_laporan, null);
+            editText = (EditText)view.findViewById(R.id.editTextNamaJalan);
+            editText.setText(getIntent().getStringExtra("latLng"));
         }
 
         mMainNav.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {

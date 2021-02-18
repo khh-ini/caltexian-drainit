@@ -99,7 +99,9 @@
                             android:padding="10dp"
                             android:textColor="@color/textColorSecondary"
                             android:textColorHint="@color/textColorSecondary"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            android:clickable="true"
+                            android:inputType="none"/>
 
                     </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
                 </RelativeLayout>
