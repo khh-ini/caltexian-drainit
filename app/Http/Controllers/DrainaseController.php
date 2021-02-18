@@ -43,13 +43,24 @@ class DrainaseController extends Controller
             'kondisi' => 'required',
             'akhir_pembuangan' => 'required',
             'arah_alir' => 'required',
-            'foto' => 'required',
+            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
             'tipe_drainase' => 'required',
             'geometry' => 'required|JSON'
         ]);
 
+        
+
         $validated['id_admin'] = auth()->user()->id;
         $validated['geometry'] = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
+
+        if(is_null($request->foto)){
+            $validated['foto'] = 'defaultmasyarakat.png';
+        }else{
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $validated['foto'] = basename($image_uploaded_path);
+        }
 
         $data = Drainase::create($validated);
 
@@ -68,7 +79,7 @@ class DrainaseController extends Controller
             'kondisi' => 'required',
             'akhir_pembuangan' => 'required',
             'arah_alir' => 'required',
-            'foto' => 'required',
+            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
             'tipe_drainase' => 'required',
             'geometry' => 'required|JSON'
         ]);
@@ -83,9 +94,16 @@ class DrainaseController extends Controller
         $data->kondisi = $request->kondisi;
         $data->akhir_pembuangan = $request->akhir_pembuangan;
         $data->arah_alir = $request->arah_alir;
-        $data->foto = $request->foto;
         $data->tipe_drainase = $request->tipe_drainase;
         $data->geometry = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
+
+        if(!is_null($request->foto)){
+            $uploadFolder = 'images';
+            $image = $request->file('foto');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $data->foto = basename($image_uploaded_path);
+        }
+
         $data->save();
 
         $data->geometry = json_decode($request->geometry);
