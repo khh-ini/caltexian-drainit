@@ -22,6 +22,7 @@
         <activity android:name=".SplashScreen" />
         <activity android:name=".ui.laporan.LaporanActivity" />
         <activity android:name=".ui.laporan.MapActivity" />
+        <activity android:name=".ui.laporan.SuccessPage" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

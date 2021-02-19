@@ -30,5 +30,5 @@ interface MasyarakatService {
         @Header("Authorization") token: String,
         @Header("Accept") accept: String,
         @Body dataPengaduan: DataPengaduanMasyarakat
-    ) : Response<MasyarakatPengaduanResponse>
+    ) : Response<DataPengaduanMasyarakat>
 }

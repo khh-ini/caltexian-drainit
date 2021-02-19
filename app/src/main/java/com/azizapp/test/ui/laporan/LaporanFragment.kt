@@ -66,7 +66,8 @@ class LaporanFragment : Fragment() {
     }
 
     private fun actionSuccess() {
-        Snackbar.make(binding.root,"Success",Snackbar.LENGTH_SHORT).show()
+        val intent = Intent(activity, SuccessPage::class.java)
+        startActivity(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -36,7 +36,7 @@ class MainRepository @Inject constructor(
             return Resource.Error(response.message())
         }
     }
-    suspend fun masyarakatLaporan(bearer: String,dataPengaduanMasyarakat: DataPengaduanMasyarakat):Resource<MasyarakatPengaduanResponse>{
+    suspend fun masyarakatLaporan(bearer: String,dataPengaduanMasyarakat: DataPengaduanMasyarakat):Resource<DataPengaduanMasyarakat>{
         masyarakatService.pengaduanMasyarakat(bearer,"application/json",dataPengaduanMasyarakat).let {response ->
         if (response.isSuccessful){
             response.body()?.let {

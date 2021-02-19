@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.azizapp.test.model.DataPengaduanMasyarakat
-import com.azizapp.test.model.Geometry
 import com.azizapp.test.repository.MainRepository
 import com.azizapp.test.utill.Resource
 import com.azizapp.test.utill.Session
@@ -25,7 +24,6 @@ class LaporanViewModel @ViewModelInject constructor(
     val lokasi = MutableLiveData<String>()
     val deskripsi = MutableLiveData<String>()
     val tipe_pengaduan = MutableLiveData<String>()
-    val geometry = MutableLiveData<Geometry>()
     val loadingEnable = MutableLiveData<Boolean>()
     val action = MutableLiveData<String>()
     fun btnLapor_Click() {
