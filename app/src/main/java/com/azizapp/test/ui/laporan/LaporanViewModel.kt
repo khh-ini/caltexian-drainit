@@ -9,7 +9,6 @@ import com.azizapp.test.repository.MainRepository
 import com.azizapp.test.utill.Resource
 import com.azizapp.test.utill.Session
 import kotlinx.coroutines.launch
-
 class LaporanViewModel @ViewModelInject constructor(
     val repository: MainRepository
 ) : ViewModel() {
@@ -39,6 +38,7 @@ class LaporanViewModel @ViewModelInject constructor(
                     namaJalan = namaJalan.value,
                     foto = null,
                     deskripsiPengaduan = deskripsi.value,
+                    tipePengaduan = tipe_pengaduan.value?.substring(15),
                     geometry = geometry)
                 when (val response = bearer.let { repository.masyarakatLaporan(it, pengaduan) }) {
                     is Resource.Success -> {

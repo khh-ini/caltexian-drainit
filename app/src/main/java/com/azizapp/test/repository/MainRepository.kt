@@ -29,7 +29,7 @@ class MainRepository @Inject constructor(
     }
 
     suspend fun masyarakatDaftar(masyarakatDaftar: MasyarakatDaftar) : Resource<MasyarakatDaftarResponse>{
-        masyarakatService.daftarMasyarakat(masyarakatDaftar).let { response ->
+        masyarakatService.daftarMasyarakat("application/json",masyarakatDaftar).let { response ->
             if (response.isSuccessful) {
                 response.body()?.let { return Resource.Success(it) }
             }
@@ -47,4 +47,12 @@ class MainRepository @Inject constructor(
         }
     }
 
+    suspend fun editPassword(bearer: String, masyarakatDaftar: MasyarakatDaftar) : Resource<MasyarakatDaftarResponse>{
+        masyarakatService.editPassword(bearer,"\"_method\"=\"_PUT\"",masyarakatDaftar).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
 }

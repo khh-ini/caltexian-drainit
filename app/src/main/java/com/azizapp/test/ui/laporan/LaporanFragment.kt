@@ -2,28 +2,23 @@ package com.azizapp.test.ui.laporan
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.content.Intent.getIntent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import android.widget.Toast.LENGTH_SHORT
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.azizapp.test.MainActivityNav
 import com.azizapp.test.R
 import com.azizapp.test.databinding.FragmentLaporanBinding
-import com.azizapp.test.utill.Session
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_laporan.*
-import kotlinx.android.synthetic.main.fragment_laporan.view.*
 
 @AndroidEntryPoint
 class LaporanFragment : Fragment() {
@@ -38,7 +33,7 @@ class LaporanFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //pilihLaporan()
+        pilihLaporan()
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_laporan, container, false)
         //val inflater = inflater.inflate(R.layout.fragment_laporan, container, false)
         binding.apply {
@@ -50,14 +45,14 @@ class LaporanFragment : Fragment() {
             startActivityForResult(intent, 100)
         }
         laporanViewModel.action.observe(this.viewLifecycleOwner, Observer { action ->
-            when(action){
+            when (action) {
                 LaporanViewModel.ACTION_SUCCESS -> actionSuccess()
-                LaporanViewModel.ACTION_ERROR ->actionError()
-                LaporanViewModel.ACTION_FAILED->actionFailed()
+                LaporanViewModel.ACTION_ERROR -> actionError()
+                LaporanViewModel.ACTION_FAILED -> actionFailed()
             }
 
         })
-        inflater.editGambar.setOnClickListener {
+        binding.editGambar.setOnClickListener {
             var intent = Intent()
             intent.setType("image/*")
             intent.setAction(Intent.ACTION_GET_CONTENT)
@@ -67,11 +62,11 @@ class LaporanFragment : Fragment() {
     }
 
     private fun actionFailed() {
-        Snackbar.make(binding.root,"Action Failed", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(binding.root, "Action Failed", Snackbar.LENGTH_SHORT).show()
     }
 
     private fun actionError() {
-        Snackbar.make(binding.root,"Action Error",Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(binding.root, "Action Error", Snackbar.LENGTH_SHORT).show()
     }
 
     private fun actionSuccess() {
@@ -86,11 +81,11 @@ class LaporanFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            val lat = data.getDoubleExtra("LAT",0.0)
-            val long = data.getDoubleExtra("LONG",0.0)
+            val lat = data.getDoubleExtra("LAT", 0.0)
+            val long = data.getDoubleExtra("LONG", 0.0)
             editTextNamaJalan.setText(data.getStringExtra("ADDRESS"))
             editTextLokasi.setText("[$lat,$long]")
-        } else if (requestCode == 1 && data != null){
+        } else if (requestCode == 1 && data != null) {
             imageUri = data.data
             editGambar.setImageURI(imageUri)
         }
@@ -103,7 +98,7 @@ class LaporanFragment : Fragment() {
         dialog.setContentView(view)
         dialog.show()
 
-        view.titik_tersumbat.setOnClickListener{
+        view.titik_tersumbat.setOnClickListener {
             jenis = "Titik Tersumbat"
             Toast.makeText(
                 activity,
@@ -113,7 +108,7 @@ class LaporanFragment : Fragment() {
             tv_laporkan.text = "Laporkan $jenis"
         }
 
-        view.titik_banjir.setOnClickListener{
+        view.titik_banjir.setOnClickListener {
             jenis = "Titik Banjir"
             Toast.makeText(
                 activity,
