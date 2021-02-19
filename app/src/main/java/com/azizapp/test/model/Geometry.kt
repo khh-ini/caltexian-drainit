@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Geometry(
     @SerializedName("coordinates")
-    var coordinates: List<Int>?,
+    var coordinates: String?="",
     @SerializedName("type")
-    var type: String?
+    var type: String? = "Point"
 )

@@ -9,11 +9,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.azizapp.test.repository.MainRepository
 import com.azizapp.test.utill.Session
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import okhttp3.internal.wait
 import java.util.*
 
-class MapFragmentViewModel : ViewModel() {
+class MapActivityViewModel : ViewModel() {
 
+    var address = "";
+    var city = "";
+    var lat: Double = 0.0
+    var long: Double = 0.0
+
+    lateinit var geocoder: Geocoder
+    lateinit var addresses:MutableList<Address>
     companion object {
         const val ACTION_SUCCESS = "ACTION_SUCCESS"
         const val ACTION_FAILED = "ACTION_FAILED"
@@ -25,23 +34,21 @@ class MapFragmentViewModel : ViewModel() {
     val longitude = MutableLiveData<Double>()
 
     fun changeStreetName(context: Context, lat: Double, long: Double) {
-        viewModelScope.launch {
-            val geocoder = Geocoder(context, Locale.getDefault())
-            val addresses: MutableList<Address>? = geocoder.getFromLocation(lat, long, 1)
-            val address: String? = addresses?.get(0)?.getAddressLine(0)
-            val city: String? = addresses?.get(0)?.getLocality()
+            geocoder = Geocoder(context, Locale.getDefault())
+            addresses= geocoder.getFromLocation(lat, long, 1)
+            address = addresses[0].getAddressLine(0).toString()
+            city = addresses[0].locality.toString()
             latitude.postValue(lat)
             longitude.postValue(long)
             namaJalan.postValue("$address $city")
 
-        }
+
     }
 
     fun btnConfirmClick() {
         viewModelScope.launch {
             if (!namaJalan.value.isNullOrEmpty()) {
                 action.postValue(ACTION_SUCCESS)
-                Session.namaJalan = namaJalan.value
             } else {
                 action.postValue(ACTION_FAILED)
             }

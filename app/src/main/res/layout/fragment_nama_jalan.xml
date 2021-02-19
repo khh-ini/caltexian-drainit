@@ -9,7 +9,7 @@
 
         <variable
             name="viewModelJalan"
-            type="com.azizapp.test.ui.laporan.MapFragmentViewModel" />
+            type="com.azizapp.test.ui.laporan.MapActivityViewModel" />
 
     </data>
 
