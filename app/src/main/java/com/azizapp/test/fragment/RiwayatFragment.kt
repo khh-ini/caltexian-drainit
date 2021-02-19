@@ -13,9 +13,11 @@ import com.azizapp.test.R
 import com.azizapp.test.RiwayatRecyclerAdapter
 import com.azizapp.test.databinding.FragmentRiwayatBinding
 import com.azizapp.test.ui.riwayat.RiwayatViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_riwayat.*
 import kotlinx.android.synthetic.main.splash.*
 
+@AndroidEntryPoint
 class RiwayatFragment : Fragment() {
 
     private val riwayatViewModel: RiwayatViewModel by viewModels()
@@ -25,9 +27,7 @@ class RiwayatFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_riwayat, container, false)
+    ): View {
         riwayatAdapter = RiwayatRecyclerAdapter(riwayatViewModel)
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_riwayat, container, false)
         return dataBinding.root
@@ -45,17 +45,20 @@ class RiwayatFragment : Fragment() {
                 RiwayatViewModel.ACTION_RIWAYAT_FETCHED -> listItemUpdate()
             }
         })
+
+        riwayatViewModel.onLoad()
     }
 
     private fun setupRecyclerView() {
         dataBinding.recyclerView.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = riwayatAdapter
+            adapter = this@RiwayatFragment.riwayatAdapter
         }
     }
 
     private fun listItemUpdate() {
         riwayatAdapter.items = riwayatViewModel.listPengaduan
+        riwayatAdapter.notifyDataSetChanged()
     }
 }

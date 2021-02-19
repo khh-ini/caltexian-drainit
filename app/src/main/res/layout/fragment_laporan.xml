@@ -28,9 +28,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:background="@drawable/yellow_header_shape"
-                app:layout_constraintHeight_percent=".16"
+                app:layout_constraintHeight_percent=".12"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp" />
 
             <TextView
                 android:id="@+id/tv_laporkan"

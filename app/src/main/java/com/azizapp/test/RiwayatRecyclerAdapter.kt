@@ -41,9 +41,7 @@ class RiwayatRecyclerAdapter(val riwayatViewModel: RiwayatViewModel) : RecyclerV
         }
     }
 
-    override fun getItemCount(): Int {
-        return items!!.size
-    }
+    override fun getItemCount(): Int = items?.size ?: 0
 
     inner class RiwayatViewHolder(val binding: ItemListRiwayatBinding) :
         RecyclerView.ViewHolder(binding.root)
