@@ -55,4 +55,14 @@ class MainRepository @Inject constructor(
             return Resource.Error(response.message())
         }
     }
+
+    suspend fun getPengaduanMasyarakat(bearer : String) : Resource<PengaduanResponse>{
+        masyarakatService.riwayatMasyarakat(bearer).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
+
 }

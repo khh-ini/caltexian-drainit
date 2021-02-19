@@ -42,4 +42,11 @@ interface MasyarakatService {
         @Body method: String,
         @Body masyarakatDaftar: MasyarakatDaftar
     ): Response<MasyarakatDaftarResponse>
+        @Body dataPengaduan: DataPengaduan
+    ) : Response<MasyarakatDaftarResponse>
+
+    @GET("api/pengaduan_by_masyarakat")
+    suspend fun riwayatMasyarakat(
+        @Header("Authorization") token: String
+    ):Response<PengaduanResponse>
 }
