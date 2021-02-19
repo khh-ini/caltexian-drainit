@@ -36,17 +36,17 @@ class LaporanFragment : Fragment() {
     ): View? {
 
         //pilihLaporan()
-        binding = DataBindingUtil.inflate(inflater, R.layout.activity_login, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_laporan, container, false)
         //val inflater = inflater.inflate(R.layout.fragment_laporan, container, false)
         binding.apply {
-            lifecycleOwner = this@LaporanFragment
+            lifecycleOwner = viewLifecycleOwner
             viewModelLaporan = laporanViewModel
         }
         binding.editTextNamaJalan.setOnClickListener {
             val intent = Intent(activity, LaporanActivity::class.java)
             startActivityForResult(intent, 100)
         }
-        laporanViewModel.action.observe(viewLifecycleOwner, Observer { action ->
+        laporanViewModel.action.observe(this.viewLifecycleOwner, Observer { action ->
             when(action){
                 LaporanViewModel.ACTION_SUCCESS -> actionSuccess()
                 LaporanViewModel.ACTION_ERROR ->actionError()
