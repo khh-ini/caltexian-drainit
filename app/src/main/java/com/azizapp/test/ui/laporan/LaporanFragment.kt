@@ -3,6 +3,7 @@ package com.azizapp.test.ui.laporan
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.Intent.getIntent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,20 +27,27 @@ import kotlinx.android.synthetic.main.fragment_laporan.view.*
 
 class LaporanFragment : Fragment() {
 
-    private lateinit var jenisPengaduan: String
+    var jenisPengaduan: String = ""
+    private var imageUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        pilihLaporan()
         val inflater = inflater.inflate(R.layout.fragment_laporan, container, false)
+        jenisPengaduan = pilihLaporan()
 
         inflater.editTextNamaJalan.setOnClickListener {
             val intent = Intent(activity, LaporanActivity::class.java)
             startActivityForResult(intent, 100)
         }
-        inflater.tv_laporkan.text = "Laporkan $jenisPengaduan"
+
+        inflater.editGambar.setOnClickListener {
+            var intent = Intent()
+            intent.setType("image/*")
+            intent.setAction(Intent.ACTION_GET_CONTENT)
+            startActivityForResult(intent, 1)
+        }
         return inflater
     }
 
@@ -58,31 +66,38 @@ class LaporanFragment : Fragment() {
             val long = data.getDoubleExtra("LONG",0.0)
             editTextNamaJalan.setText(data.getStringExtra("ADDRESS"))
             editTextLokasi.setText("[$lat,$long]")
+        } else if (requestCode == 1 && data != null){
+            imageUri = data.data
+            editGambar.setImageURI(imageUri)
         }
     }
 
-    fun pilihLaporan() {
+    fun pilihLaporan(): String {
         val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
         val dialog = BottomSheetDialog(requireActivity())
+        var jenis: String = ""
         dialog.setContentView(view)
         dialog.show()
 
         view.titik_tersumbat.setOnClickListener{
+            jenis = "Titik Tersumbat"
             Toast.makeText(
                 activity,
-                "Anda melaporkan Titik Tersumbat", Toast.LENGTH_SHORT
+                "Anda melaporkan $jenis", Toast.LENGTH_SHORT
             ).show()
             dialog.dismiss()
-            jenisPengaduan = "Titik Tersumbat"
+            tv_laporkan.text = "Laporkan $jenis"
         }
 
         view.titik_banjir.setOnClickListener{
+            jenis = "Titik Banjir"
             Toast.makeText(
                 activity,
-                "Anda melaporkan Titik Banjir", Toast.LENGTH_SHORT
+                "Anda melaporkan $jenis", Toast.LENGTH_SHORT
             ).show()
             dialog.dismiss()
-            jenisPengaduan = "Titik Banjir"
+            tv_laporkan.text = "Laporkan $jenis"
         }
+        return jenis
     }
 }
