@@ -1,43 +1,58 @@
 package com.azizapp.test.ui.riwayat
 
+import android.content.Intent
+import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.azizapp.test.DetilLaporan
 import com.azizapp.test.model.DataPengaduan
+import com.azizapp.test.model.Pengaduan
 import com.azizapp.test.repository.MainRepository
 import com.azizapp.test.utill.Resource
 import kotlinx.coroutines.launch
+import java.text.FieldPosition
 
 class RiwayatViewModel @ViewModelInject constructor(
     public val repository: MainRepository
 ) : ViewModel() {
 
     val loadingEnable = MutableLiveData<Boolean>()
-    val id_petugas = MutableLiveData<String>()
-    val nama_jalan = MutableLiveData<String>()
-    val tipe_pengaduan = MutableLiveData<String>()
-    val deskripsi_pengaduan = MutableLiveData<String>()
-    val status_pengaduan = MutableLiveData<String>()
-    val laporan_petugas = MutableLiveData<String>()
-    val feedback_masyarakat = MutableLiveData<String>()
-    val listPengaduan: List<DataPengaduan> = mutableListOf()
+    val listPengaduan: ArrayList<Pengaduan> = arrayListOf()
+    val action = MutableLiveData<String>()
+    val actionItemPosition = MutableLiveData<Int>()
+
+    companion object{
+        const val ACTION_RIWAYAT_FETCHED = "RIWAYAT_FETCHED"
+        const val ACTION_RIWAYAT_ONCLICK = "RIWAYAT_CLICKED"
+    }
 
     fun onLoad() {
         val bearer: String? = "Bearer " + com.azizapp.test.utill.Session.bearer
         viewModelScope.launch {
             when (val response = bearer?.let { repository.getPengaduanMasyarakat(it) }) {
                 is Resource.Success -> {
-                while () {
-                    id_petugas.postValue(response.data?.idPetugas)
-                    nama_jalan.postValue(response.data?.namaJalan)
-                    tipe_pengaduan.postValue(response.data?.tipePengaduan)
-                    deskripsi_pengaduan.postValue(response.data?.deskripsiPengaduan)
-                    status_pengaduan.postValue(response.data?.statusPengaduan)
-                    laporan_petugas.postValue(response.data?.laporanPetugas)
-                    feedback_masyarakat.postValue(response.data?.feedbackMasyarakat)
-                }
+                    response.data?.forEach {
+                        val pengaduan = Pengaduan(
+                            deskripsiPengaduan = it.deskripsiPengaduan.toString(),
+                            feedbackMasyarakat = it.feedbackMasyarakat.toString(),
+                            foto = it.foto,
+                            geometry = it.geometry,
+                            id = it.id,
+                            idAdmin = it.idAdmin,
+                            idMasyarakat = it.idMasyarakat,
+                            idPetugas = it.idPetugas.toString(),
+                            laporanPetugas = it.laporanPetugas.toString(),
+                            namaJalan = it.namaJalan.toString(),
+                            statusPengaduan = it.statusPengaduan.toString(),
+                            tipePengaduan = it.tipePengaduan.toString()
+                        )
+
+                        listPengaduan.add(pengaduan)
+                    }
+                    action.postValue(RiwayatViewModel.ACTION_RIWAYAT_FETCHED)
                 }
                 is Resource.Error -> {
                     loadingEnable.postValue(false)
@@ -45,5 +60,10 @@ class RiwayatViewModel @ViewModelInject constructor(
                 }
             }
         }
+    }
+
+    fun itemOnClick(position: Int) {
+        actionItemPosition.value = position
+        action.value = ACTION_RIWAYAT_ONCLICK
     }
 }
