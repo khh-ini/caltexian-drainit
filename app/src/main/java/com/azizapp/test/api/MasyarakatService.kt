@@ -29,4 +29,9 @@ interface MasyarakatService {
         @Header("Authorization") token: String,
         @Body dataPengaduan: DataPengaduan
     ) : Response<MasyarakatDaftarResponse>
+
+    @GET("api/pengaduan_by_masyarakat")
+    suspend fun riwayatMasyarakat(
+        @Header("Authorization") token: String
+    ):Response<DataPengaduan>
 }

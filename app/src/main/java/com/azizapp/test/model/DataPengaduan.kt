@@ -16,12 +16,18 @@ data class DataPengaduan(
     var id: String?,
     @SerializedName("id_masyarakat")
     var idMasyarakat: String?,
+    @SerializedName("id_petugas")
+    var idPetugas: String?,
     @SerializedName("nama_jalan")
     var namaJalan: String?,
     @SerializedName("status_pengaduan")
     var statusPengaduan: String?,
     @SerializedName("tipe_pengaduan")
     var tipePengaduan: String?,
+    @SerializedName("laporan_petugas")
+    var laporanPetugas: String?,
+    @SerializedName("feedback_masyarakat")
+    var feedbackMasyarakat: String?,
     @SerializedName("updated_at")
     var updatedAt: String?
 )
