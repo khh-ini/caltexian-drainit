@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#ffc736"
-        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintHeight_percent=".2"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
@@ -50,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".38" />
+            app:layout_constraintVertical_bias=".25" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -63,7 +63,7 @@
         app:layout_constraintHeight_percent=".9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintVertical_bias="0.518"
+        app:layout_constraintVertical_bias="0.7"
         app:layout_constraintWidth_percent="2" />
 
     <androidx.recyclerview.widget.RecyclerView

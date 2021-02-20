@@ -1,5 +1,6 @@
 package com.azizapp.test.ui.editpassword
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.azizapp.test.R
 import com.azizapp.test.databinding.GantiPasswordLayoutBinding
+import com.azizapp.test.model.ProfileMasyarakat
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,6 +47,8 @@ class EditPasswordActivity : AppCompatActivity() {
     }
 
     private fun editSuccess() {
+        val intent = Intent(this,ProfileMasyarakat::class.java)
+        startActivity(intent)
         Snackbar.make(binding.root,"Edit Success",Snackbar.LENGTH_SHORT).show()
     }
 }

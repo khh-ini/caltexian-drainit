@@ -29,29 +29,45 @@
     </data>
 
 <RelativeLayout
+    android:layout_margin="@dimen/dimen_16"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_rounded_orange"
-    android:onClick="@{()->viewModelRiwayat.itemOnClick(position)}">
+    android:onClick="@{()->viewModelRiwayat.itemOnClick(position)}"
+    android:elevation="3dp">
+
+    <ImageView
+        android:id="@+id/image_pin"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="6dp"
+        android:rotation="30"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        app:srcCompat="@drawable/ic_pin" />
 
     <TextView
+        android:layout_margin="6dp"
         android:id="@+id/tvLokasi"
+        android:layout_toRightOf="@id/image_pin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_regular"
         android:text="@={data.namaJalan}"
         android:textColor="@color/white"
-        android:textSize="18dp" />
+        android:textSize="11dp" />
 
     <TextView
+        android:layout_marginHorizontal="6dp"
+        android:layout_marginBottom="10dp"
         android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvLokasi"
-        android:fontFamily="@font/poppins_medium"
+        android:layout_marginStart="34dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="@={data.statusPengaduan}"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="14dp" />
 
 </RelativeLayout>
 </layout>

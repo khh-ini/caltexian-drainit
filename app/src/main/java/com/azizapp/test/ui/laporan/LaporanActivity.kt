@@ -49,7 +49,7 @@ class LaporanActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f))
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f))
         googleMap.setOnMapClickListener { point ->
             try {
                 val addresses: MutableList<Address>? =
