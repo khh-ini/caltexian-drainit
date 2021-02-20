@@ -39,11 +39,8 @@ interface MasyarakatService {
     @POST("/api/masyarakat/")
     suspend fun editPassword(
         @Header("Authorization") token: String,
-        @Body method: String,
-        @Body masyarakatDaftar: MasyarakatDaftar
-    ): Response<MasyarakatDaftarResponse>
-        @Body dataPengaduan: DataPengaduan
-    ) : Response<MasyarakatDaftarResponse>
+        @Body editMasyarakatRequest: EditMasyarakatRequest
+    ): Response<EditMasyarakatResponse>
 
     @GET("api/pengaduan_by_masyarakat")
     suspend fun riwayatMasyarakat(

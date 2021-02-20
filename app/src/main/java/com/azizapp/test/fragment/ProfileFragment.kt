@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import com.azizapp.test.ActivityGantiPassword
 import com.azizapp.test.R
+import com.azizapp.test.ui.editpassword.EditPasswordActivity
 import com.azizapp.test.ui.profile.ActivityEditProfile
 
 class ProfileFragment : Fragment() {
@@ -26,7 +27,7 @@ class ProfileFragment : Fragment() {
         }
 
         gantiPassword.setOnClickListener {
-            val intent = Intent(activity, ActivityGantiPassword::class.java)
+            val intent = Intent(activity, EditPasswordActivity::class.java)
             startActivity(intent)
         }
         // Inflate the layout for this fragment

@@ -1,19 +1,13 @@
 package com.azizapp.test.ui.riwayat
 
-import android.content.Intent
-import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.azizapp.test.DetilLaporan
-import com.azizapp.test.model.DataPengaduan
 import com.azizapp.test.model.Pengaduan
 import com.azizapp.test.repository.MainRepository
 import com.azizapp.test.utill.Resource
 import kotlinx.coroutines.launch
-import java.text.FieldPosition
 
 class RiwayatViewModel @ViewModelInject constructor(
     public val repository: MainRepository

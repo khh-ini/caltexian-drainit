@@ -47,8 +47,8 @@ class MainRepository @Inject constructor(
         }
     }
 
-    suspend fun editPassword(bearer: String, masyarakatDaftar: MasyarakatDaftar) : Resource<MasyarakatDaftarResponse>{
-        masyarakatService.editPassword(bearer,"\"_method\"=\"_PUT\"",masyarakatDaftar).let { response ->
+    suspend fun editPassword(bearer: String, editMasyarakatRequest: EditMasyarakatRequest) : Resource<EditMasyarakatResponse>{
+        masyarakatService.editPassword(bearer,editMasyarakatRequest).let { response ->
             if (response.isSuccessful) {
                 response.body()?.let { return Resource.Success(it) }
             }
