@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.azizapp.test.CustomInfoWindowAdapter
@@ -19,15 +20,18 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
+import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import kotlinx.android.synthetic.main.layout_persistent_bottom_sheet.view.*
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() , OnMapReadyCallback{
+class HomeFragment : Fragment() , OnMapReadyCallback {
     private lateinit var googleMap: GoogleMap
-    private lateinit var marker : Marker
+    private lateinit var marker: Marker
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    lateinit var jenisPengaduan: String
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -36,27 +40,33 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
 
         mapView2.getMapAsync(this)
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         val i = inflater.inflate(R.layout.fragment_home, container, false)
 
         // Inflate the layout for this fragment
         bottomSheetBehavior = BottomSheetBehavior.from(i.bottomsheet)
 
-        bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+        bottomSheetBehavior.setBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_HIDDEN -> {
                     }
-                    BottomSheetBehavior.STATE_EXPANDED ->{}
-                    BottomSheetBehavior.STATE_COLLAPSED ->{}
+                    BottomSheetBehavior.STATE_EXPANDED -> {
+                    }
+                    BottomSheetBehavior.STATE_COLLAPSED -> {
+                    }
                     BottomSheetBehavior.STATE_DRAGGING -> {
                     }
                     BottomSheetBehavior.STATE_SETTLING -> {
                     }
                 }
             }
+
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
             }
         })
@@ -70,18 +80,18 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
         }
         val pekanbaru = LatLng(0.510440, 101.438309)
         val perth = LatLng(0.5694928254013343, 101.42484671181263)
-        val drainase3=LatLng(0.5716080649752078, 101.41617693789138)
+        val drainase3 = LatLng(0.5716080649752078, 101.41617693789138)
         googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(this.activity))
         marker = googleMap.addMarker(
-                MarkerOptions()
-                        .position(pekanbaru)
-                        .title("Drainase 1").snippet("Kondisi : Baik\nJenis : Alami")
+            MarkerOptions()
+                .position(pekanbaru)
+                .title("Drainase 1").snippet("Kondisi : Baik\nJenis : Alami")
         )
         googleMap.addMarker(
-                MarkerOptions()
-                        .position(perth)
-                        .title("Drainase 2").snippet("Kondisi : Baik\n" +
-                            "Jenis : Buatan")
+            MarkerOptions()
+                .position(perth)
+                .title("Drainase 2").snippet("Kondisi : Baik\n" +
+                        "Jenis : Buatan")
         )
         googleMap.addMarker(
             MarkerOptions()
@@ -90,12 +100,40 @@ class HomeFragment : Fragment() , OnMapReadyCallback{
                         "Jenis : Alami")
         )
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
-        googleMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) )
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f))
         googleMap.setOnMarkerClickListener { marker ->
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             Log.d(TAG, "Clicked on  ${marker.tag}")
             true
         }
+        googleMap.setOnMapLongClickListener { point ->
+            pilihLaporan(point.latitude.toString(),point.longitude.toString())
+        }
     }
 
+    private fun pilihLaporan(lat:String,long:String) {
+        val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+        val dialog = BottomSheetDialog(requireActivity())
+        dialog.setContentView(view)
+        dialog.show()
+
+        view.titik_tersumbat.setOnClickListener {
+            jenisPengaduan = "Titik Tersumbat"
+            Toast.makeText(
+                activity,
+                "Anda melaporkan Titik Tersumbat $lat $long", Toast.LENGTH_SHORT
+            ).show()
+            dialog.dismiss()
+        }
+
+        view.titik_banjir.setOnClickListener {
+            jenisPengaduan = "Titik Banjir"
+            Toast.makeText(
+                activity,
+                "Anda melaporkan Titik Banjir $lat $long", Toast.LENGTH_SHORT
+            ).show()
+            dialog.dismiss()
+        }
+
+    }
 }
