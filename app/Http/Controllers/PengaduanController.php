@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pengaduan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\CustomHelpper;
 
 class PengaduanController extends Controller
 {
@@ -15,29 +16,39 @@ class PengaduanController extends Controller
     public function show($id){
         return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->where('id',$id)->first();
     }
+    public function get_by_masyarakat(){
+        $id = auth()->user()->id;
+        return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->where('id_masyarakat',$id)->get();
+    }
 
     public function create(request $request){
-        $validate = $request->validate([
+        $validated = $request->validate([
             'nama_jalan'=> 'required',
-            'foto'=> 'required|image:jpeg,png,jpg,gif,svg|max:2048',
+            'foto'=> 'nullable',
             'tipe_pengaduan' => 'required',
             'deskripsi_pengaduan'=>'required',
             'geometry' => 'required|JSON'
         ]);
-        $validate['id_masyarakat'] = auth()->user()->id;
-        $validate['status_pengaduan'] = "Menunggu Konfirmasi";
-        $validate['geometry'] = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
+        $validated['id_masyarakat'] = auth()->user()->id;
+        $validated['status_pengaduan'] = "Menunggu Konfirmasi";
+        $validated['geometry'] = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
 
         if(is_null($request->foto)){
             $validated['foto'] = 'defaultpengaduan.png';
         }else{
-            $uploadFolder = 'images';
-            $image = $request->file('foto');
-            $image_uploaded_path = $image->store($uploadFolder, 'public');
-            $validated['foto'] = basename($image_uploaded_path);
+          $fileUploadHelper = new CustomHelpper();
+
+          $encoded_img = $request->foto;
+          $decoded = base64_decode($encoded_img);
+          $mime_type = finfo_buffer(finfo_open(), $decoded, FILEINFO_MIME_TYPE);
+          $extension = $fileUploadHelper->mime2ext($mime_type);
+          $file = uniqid() .'.'. $extension;
+          $file_dir = storage_path('app/public/images/'). $file;
+          file_put_contents($file_dir, $decoded);
+          $validated['foto'] = $file;
         }
 
-        $data = Pengaduan::create($validate);
+        $data = Pengaduan::create($validated);
         $data->geometry = json_decode($request->geometry);
 
         return response()->json(["message" => "Added Successfully!", "data" => $data, 'status_code'=>201],201);

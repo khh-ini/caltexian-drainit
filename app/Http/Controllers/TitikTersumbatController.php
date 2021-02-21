@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\TitikTersumbat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\CustomHelpper;
 
 class TitikTersumbatController extends Controller
 {
@@ -35,7 +36,7 @@ class TitikTersumbatController extends Controller
         $validated = $request->validate([
             'nama_jalan' => 'required',
             'geometry' => 'required',
-            'foto'=> 'required|image:jpeg,png,jpg,gif,svg|max:2048',
+            'foto'=> 'required',
             'keterangan' => 'nullable',
         ]);
 
@@ -45,10 +46,16 @@ class TitikTersumbatController extends Controller
         if(is_null($request->foto)){
             $validated['foto'] = 'defaulttersumbat.png';
         }else{
-            $uploadFolder = 'images';
-            $image = $request->file('foto');
-            $image_uploaded_path = $image->store($uploadFolder, 'public');
-            $validated['foto'] = basename($image_uploaded_path);
+          $fileUploadHelper = new CustomHelpper();
+
+          $encoded_img = $request->foto;
+          $decoded = base64_decode($encoded_img);
+          $mime_type = finfo_buffer(finfo_open(), $decoded, FILEINFO_MIME_TYPE);
+          $extension = $fileUploadHelper->mime2ext($mime_type);
+          $file = uniqid() .'.'. $extension;
+          $file_dir = storage_path('app/public/images/'). $file;
+          file_put_contents($file_dir, $decoded);
+          $validated['foto'] = $file;
         }
 
         $data = TitikTersumbat::create($validated);
@@ -63,7 +70,7 @@ class TitikTersumbatController extends Controller
         $validated = $request->validate([
             'nama_jalan' => 'required',
             'geometry' => 'required',
-            'foto'=> 'nullable|image:jpeg,png,jpg,gif,svg|max:2048',
+            'foto'=> 'nullable',
             'keterangan' => 'nullable',
         ]);
 
@@ -74,10 +81,16 @@ class TitikTersumbatController extends Controller
         $data->keterangan = $request->keterangan;
 
         if(!is_null($request->foto)){
-            $uploadFolder = 'images';
-            $image = $request->file('foto');
-            $image_uploaded_path = $image->store($uploadFolder, 'public');
-            $data->foto = basename($image_uploaded_path);
+          $fileUploadHelper = new CustomHelpper();
+
+          $encoded_img = $request->foto;
+          $decoded = base64_decode($encoded_img);
+          $mime_type = finfo_buffer(finfo_open(), $decoded, FILEINFO_MIME_TYPE);
+          $extension = $fileUploadHelper->mime2ext($mime_type);
+          $file = uniqid() .'.'. $extension;
+          $file_dir = storage_path('app/public/images/'). $file;
+          file_put_contents($file_dir, $decoded);
+          $data->foto = $file;
         }
         $data->save();
 

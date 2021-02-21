@@ -82,7 +82,7 @@ Route::prefix('titik_banjir')->group(function(){
 Route::prefix('titik_tersumbat')->group(function(){
     Route::get('/','TitikTersumbatController@index')->name('get.titik_tersumbat');
     Route::get('/{id}','TitikTersumbatController@show')->name('get_by_id.titik_tersumbat');
-    
+
     Route::middleware('auth:api-admin')->group(function(){
         Route::post('/','TitikTersumbatController@create')->name('create.titik_tersumbat');
         Route::put('/{id}','TitikTersumbatController@update')->name('update.titik_tersumbat');
@@ -101,26 +101,24 @@ Route::prefix('drainase')->group(function (){
     });
 });
 
-Route::prefix('pengaduan')->group(function (){  
+Route::prefix('pengaduan')->group(function (){
     Route::get('/','PengaduanController@index')->name('get.pengaduan');
     Route::get('/{id}','PengaduanController@show')->name('get_by_id.pengaduan');
-    
+
     Route::middleware('auth:api-masyarakat')->group(function (){
-        Route::post('/','PengaduanController@create')->name('create.pengaduan'); 
+        Route::post('/','PengaduanController@create')->name('create.pengaduan');
+
     });
 
-    Route::middleware('auth:api-admin')->group(function (){ 
+    Route::middleware('auth:api-admin')->group(function (){
         Route::delete('/{id}','PengaduanController@delete')->name('delete.pengaduan');;
     });
 });
+
+Route::get('/pengaduan_by_masyarakat','PengaduanController@get_by_masyarakat')->name('get_by_masyarakat.pengaduan')->middleware('auth:api-masyarakat');
 
 Route::prefix('update_pengaduan')->group(function(){
     Route::put('/admin/{id}','PengaduanController@updateAdmin')->middleware('auth:api-admin')->name('update_pengaduan.admin');
     Route::put('/petugas/{id}','PengaduanController@updatePetugas')->middleware('auth:api-petugas')->name('update_pengaduan.petugas');
     Route::put('/masyarakat/{id}','PengaduanController@feedbackMasyarakat')->middleware('auth:api-masyarakat')->name('feedback_pengaduan.masyarakat');;
 });
-
-
-
-
-
