@@ -29,7 +29,35 @@ class MainRepository @Inject constructor(
     }
 
     suspend fun masyarakatDaftar(masyarakatDaftar: MasyarakatDaftar) : Resource<MasyarakatDaftarResponse>{
-        masyarakatService.daftarMasyarakat(masyarakatDaftar).let { response ->
+        masyarakatService.daftarMasyarakat("application/json",masyarakatDaftar).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
+    suspend fun masyarakatLaporan(bearer: String,dataPengaduanMasyarakat: DataPengaduanMasyarakat):Resource<DataPengaduanMasyarakat>{
+        masyarakatService.pengaduanMasyarakat(bearer,"application/json",dataPengaduanMasyarakat).let {response ->
+        if (response.isSuccessful){
+            response.body()?.let {
+                return Resource.Success(it)
+            }
+        }
+            return Resource.Error(response.message())
+        }
+    }
+
+    suspend fun editPassword(bearer: String, editMasyarakatRequest: EditMasyarakatRequest) : Resource<EditMasyarakatResponse>{
+        masyarakatService.editPassword(bearer,editMasyarakatRequest).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
+
+    suspend fun getPengaduanMasyarakat(bearer : String) : Resource<PengaduanResponse>{
+        masyarakatService.riwayatMasyarakat(bearer).let { response ->
             if (response.isSuccessful) {
                 response.body()?.let { return Resource.Success(it) }
             }

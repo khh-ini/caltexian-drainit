@@ -9,5 +9,7 @@ data class MasyarakatDaftarResponse(
     @SerializedName("message")
     var message: String?,
     @SerializedName("user")
-    var masyarakatDaftar: MasyarakatDaftar?
+    var masyarakatDaftar: MasyarakatDaftar?,
+    @SerializedName("status_code")
+    var status_code: String?
 )

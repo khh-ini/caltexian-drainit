@@ -15,11 +15,15 @@
         android:name=".BaseApplication"
         >
 
-        <activity android:name=".HistoryPage"/>
-        <activity android:name=".MainActivityNav"/>
-        <activity android:name=".ui.daftar.DaftarActivity"/>
-        <activity android:name=".ui.login.LoginActivity"/>
+        <activity android:name=".HistoryPage" />
+        <activity android:name=".MainActivityNav" />
+        <activity android:name=".ui.daftar.DaftarActivity" />
+        <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".SplashScreen" />
+        <activity android:name=".ui.laporan.LaporanActivity" />
+        <activity android:name=".ui.laporan.MapActivity" />
+        <activity android:name=".ui.laporan.SuccessPage" />
+        <activity android:name=".ui.editpassword.EditPasswordActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.profile.ActivityEditProfile" />
 
-        <activity android:name=".ui.profile.ActivityEditProfile"/>
-        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBrd6mmPAda0nbkNeVcq_N-KaNDcoYQVeY" />
     </application>
 

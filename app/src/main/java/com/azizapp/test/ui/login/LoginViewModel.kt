@@ -61,8 +61,6 @@ LoginViewModel @ViewModelInject constructor(
                 action.postValue(ACTION_LOGIN_ERROR)
             }
         }
-
     }
-
 }
 

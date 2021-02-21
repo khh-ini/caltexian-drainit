@@ -38,12 +38,12 @@ class DaftarViewModel @ViewModelInject constructor(
                     password_confirmation = tvPasswordConfirmation.value,
                     nama = tvNama.value,
                     noHp = tvNoHp.value,
-                    foto = "NOT_DEFINED_YET",
+                    foto = null,
                     alamat = "NOT_DEFINED_YET"
                 )
                 when (val response = repository.masyarakatDaftar(masyarakatDaftar)) {
                     is Resource.Success -> {
-                        if (response.data?.message == "account created successfully!") {
+                        if (response.data?.status_code == "201") {
                             loadingEnable.postValue(false)
                             action.postValue(ACTION_DAFTAR_SUCCESS)
                         } else {

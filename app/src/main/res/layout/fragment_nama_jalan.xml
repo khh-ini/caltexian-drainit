@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModelJalan"
+            type="com.azizapp.test.ui.laporan.MapActivityViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.laporan.LaporanActivity">
+
+        <com.zigis.materialtextfield.MaterialTextField
+            android:id="@+id/tv_namaJalan"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="30dp"
+            android:elevation="@dimen/dimen_16"
+            android:text="@={viewModelJalan.namaJalan}"
+            android:hint="Nama Jalan"
+            android:textColor="@color/textColorSecondary"
+            app:activeHintColor="@color/primaryVariant"
+            app:activeUnderlineColor="@color/primaryVariant"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".85" />
+        <!-- TODO: Update blank fragment layout -->
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="356dp">
+
+        </com.google.android.gms.maps.MapView>
+
+        <Button
+            android:id="@+id/btn_simpan"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen8x"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/dimen3x"
+            android:layout_marginTop="@dimen/dimen2x"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Simpan"
+            android:onClick="@{() -> viewModelJalan.btnConfirmClick()}"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
