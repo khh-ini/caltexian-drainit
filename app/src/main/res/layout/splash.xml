@@ -43,6 +43,7 @@
             android:background="@drawable/shape_rounded_border_yellow"/>
 
         <RelativeLayout
+            android:id="@+id/rl_masuk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/btnBuatAkun"
@@ -68,5 +69,34 @@
                 android:text="Masuk"
                 android:textColor="@color/primary" />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_masuk"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-8dp">
+
+            <TextView
+                android:id="@+id/tvGuest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="atau lanjutkan sebagai"
+                android:textColor="@color/textColorSecondary" />
+
+            <TextView
+                android:id="@+id/linkGuest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/tvGuest"
+                android:clickable="true"
+                android:fontFamily="@font/poppins_bold"
+                android:text="tamu"
+                android:textColor="@color/primary" />
+        </RelativeLayout>
+
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
