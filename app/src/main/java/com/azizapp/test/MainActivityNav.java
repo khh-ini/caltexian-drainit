@@ -29,15 +29,21 @@ public class MainActivityNav extends AppCompatActivity {
     private RiwayatFragment riwayatFragment;
     private FragmentManager fragmentManager;
     private EditText editText;
+    private SaveSharedPreference SaveSharedPreference;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        if (SaveSharedPreference.getEmail(MainActivityNav.this).length() == 0) {
+            Intent activity = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(activity);
+        } else {
+            // Stay at the current activity.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mMainNav = findViewById(R.id.main_nav);
 
-        if (getIntent().hasExtra("lat")&&getIntent().hasExtra("long")){
+        if (getIntent().hasExtra("lat") && getIntent().hasExtra("long")) {
             mMainNav.setItemSelected(R.id.nav_new, true);
             fragmentManager = getSupportFragmentManager();
             LaporanFragment laporanFragment = new LaporanFragment("login");
@@ -45,7 +51,7 @@ public class MainActivityNav extends AppCompatActivity {
                     .replace(R.id.main_frame, laporanFragment)
                     .commit();
         }
-        if (savedInstanceState==null){
+        if (savedInstanceState == null) {
             mMainNav.setItemSelected(R.id.nav_home, true);
             fragmentManager = getSupportFragmentManager();
             HomeFragment homeFragment = new HomeFragment();
@@ -53,7 +59,7 @@ public class MainActivityNav extends AppCompatActivity {
                     .replace(R.id.main_frame, homeFragment)
                     .commit();
         }
-        if (getIntent().hasExtra("latLng")){
+        if (getIntent().hasExtra("latLng")) {
             mMainNav.setItemSelected(R.id.nav_new, true);
             fragmentManager = getSupportFragmentManager();
             LaporanFragment laporanFragment = new LaporanFragment("login");
@@ -62,7 +68,7 @@ public class MainActivityNav extends AppCompatActivity {
                     .commit();
 
             View view = View.inflate(this, R.layout.fragment_laporan, null);
-            editText = (EditText)view.findViewById(R.id.editTextNamaJalan);
+            editText = (EditText) view.findViewById(R.id.editTextNamaJalan);
             editText.setText(getIntent().getStringExtra("latLng"));
         }
 
@@ -70,7 +76,7 @@ public class MainActivityNav extends AppCompatActivity {
             @Override
             public void onItemSelected(int id) {
                 Fragment fragment = null;
-                switch (id){
+                switch (id) {
                     case R.id.nav_new:
                         fragment = new LaporanFragment("login");
                         break;
@@ -85,7 +91,7 @@ public class MainActivityNav extends AppCompatActivity {
                         break;
                 }
 
-                if (fragment!=null){
+                if (fragment != null) {
                     fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction()
                             .replace(R.id.main_frame, fragment)
@@ -95,6 +101,7 @@ public class MainActivityNav extends AppCompatActivity {
                 }
             }
         });
+    }
     }
 
     private void setFragment(Fragment fragment) {
