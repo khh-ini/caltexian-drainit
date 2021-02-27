@@ -45,7 +45,7 @@ class RiwayatRecyclerAdapter(
             position = itemPosition
             data = currentItem
             root.rl_klik.setOnClickListener {
-                listener.onRecyclerViewItemClick(holder.binding.root.rl_klik, data)
+                listener.onRecyclerViewItemClick(holder.binding.root.rl_klik, data!!)
             }
         }
     }

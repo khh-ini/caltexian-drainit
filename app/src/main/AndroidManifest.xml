@@ -18,13 +18,13 @@
         android:theme="@style/Theme.Test">
 
         <activity android:name=".HistoryPage" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivityNav" />
         <activity android:name=".ui.daftar.DaftarActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".ui.laporan.LaporanActivity" />
         <activity android:name=".ui.laporan.MapFragment" />
-        <activity android:name=".MainActivityNav">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -33,10 +33,10 @@ public class MainActivityNav extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        if (SaveSharedPreference.getEmail(MainActivityNav.this).length() == 0) {
-            Intent activity = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(activity);
-        } else {
+//        if (SaveSharedPreference.getEmail(MainActivityNav.this).length() == 0) {
+//            Intent activity = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(activity);
+//        } else {
             // Stay at the current activity.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -101,7 +101,7 @@ public class MainActivityNav extends AppCompatActivity {
                 }
             }
         });
-    }
+    //}
     }
 
     private void setFragment(Fragment fragment) {
