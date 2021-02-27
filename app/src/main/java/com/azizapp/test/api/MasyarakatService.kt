@@ -2,10 +2,7 @@ package com.azizapp.test.api
 
 import com.azizapp.test.model.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 //define service class
 
@@ -28,15 +25,19 @@ interface MasyarakatService {
         @Body masyarakatDaftar: MasyarakatDaftar
     ): Response<MasyarakatDaftarResponse>
 
-
-    @POST("/api/pengaduan")
+    @Multipart
+    @POST("api/pengaduan")
     suspend fun pengaduanMasyarakat(
         @Header("Authorization") token: String,
         @Header("Accept") accept: String,
-        @Body dataPengaduan: DataPengaduanMasyarakat
+        @Part ("nama_jalan") nama_jalan: String,
+        @Part image: String?,
+        @Part ("tipe_pengaduan") tipe_pengaduan: String,
+        @Part ("deskripsi_pengaduan") deskripsi_pengaduan: String,
+        @Part ("geometry") geometry: String
     ): Response<DataPengaduanMasyarakat>
 
-    @POST("/api/masyarakat/")
+    @POST("api/masyarakat")
     suspend fun editPassword(
         @Header("Authorization") token: String,
         @Body editMasyarakatRequest: EditMasyarakatRequest

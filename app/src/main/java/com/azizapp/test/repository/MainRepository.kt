@@ -19,7 +19,7 @@ class MainRepository @Inject constructor(
         }
     }
 
-    suspend fun getMasyarakatData(bearer : String) : Resource<ProfileMasyarakat>{
+    suspend fun getMasyarakatData(bearer: String): Resource<ProfileMasyarakat> {
         masyarakatService.profileMasyarakat(bearer).let { response ->
             if (response.isSuccessful) {
                 response.body()?.let { return Resource.Success(it) }
@@ -28,27 +28,8 @@ class MainRepository @Inject constructor(
         }
     }
 
-    suspend fun masyarakatDaftar(masyarakatDaftar: MasyarakatDaftar) : Resource<MasyarakatDaftarResponse>{
-        masyarakatService.daftarMasyarakat("application/json",masyarakatDaftar).let { response ->
-            if (response.isSuccessful) {
-                response.body()?.let { return Resource.Success(it) }
-            }
-            return Resource.Error(response.message())
-        }
-    }
-    suspend fun masyarakatLaporan(bearer: String,dataPengaduanMasyarakat: DataPengaduanMasyarakat):Resource<DataPengaduanMasyarakat>{
-        masyarakatService.pengaduanMasyarakat(bearer,"application/json",dataPengaduanMasyarakat).let {response ->
-        if (response.isSuccessful){
-            response.body()?.let {
-                return Resource.Success(it)
-            }
-        }
-            return Resource.Error(response.message())
-        }
-    }
-
-    suspend fun editPassword(bearer: String, editMasyarakatRequest: EditMasyarakatRequest) : Resource<EditMasyarakatResponse>{
-        masyarakatService.editPassword(bearer,editMasyarakatRequest).let { response ->
+    suspend fun masyarakatDaftar(masyarakatDaftar: MasyarakatDaftar): Resource<MasyarakatDaftarResponse> {
+        masyarakatService.daftarMasyarakat("application/json", masyarakatDaftar).let { response ->
             if (response.isSuccessful) {
                 response.body()?.let { return Resource.Success(it) }
             }
@@ -56,7 +37,43 @@ class MainRepository @Inject constructor(
         }
     }
 
-    suspend fun getPengaduanMasyarakat(bearer : String) : Resource<PengaduanResponse>{
+    suspend fun masyarakatLaporan(
+        bearer: String,
+        nama_jalan: String,
+        image: String,
+        tipe_pengaduan: String,
+        deskripsi_pengaduan: String,
+        geometry: String
+    ): Resource<DataPengaduanMasyarakat> {
+        masyarakatService.pengaduanMasyarakat(bearer,
+            "application/json",
+            nama_jalan,
+            image,
+            tipe_pengaduan,
+            deskripsi_pengaduan,
+            geometry).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(response.message())
+        }
+    }
+
+    suspend fun editMasyarakat(
+        bearer: String,
+        editMasyarakatRequest: EditMasyarakatRequest
+    ): Resource<EditMasyarakatResponse> {
+        masyarakatService.editPassword(bearer, editMasyarakatRequest).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
+
+    suspend fun getPengaduanMasyarakat(bearer: String): Resource<PengaduanResponse> {
         masyarakatService.riwayatMasyarakat(bearer).let { response ->
             if (response.isSuccessful) {
                 response.body()?.let { return Resource.Success(it) }

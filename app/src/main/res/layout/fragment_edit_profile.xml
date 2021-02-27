@@ -213,7 +213,7 @@
         tools:visibility="gone" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonEdit"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="0"
@@ -223,6 +223,7 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp"
+        android:onClick="@{()->viewModeEditProfile.saveChanges()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

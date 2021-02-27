@@ -2,12 +2,16 @@ package com.azizapp.test.ui.laporan
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,6 +23,9 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_laporan.*
+import java.io.ByteArrayOutputStream
+import java.io.File
+
 
 @AndroidEntryPoint
 class LaporanFragment : Fragment() {
@@ -31,7 +38,7 @@ class LaporanFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         pilihLaporan()
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_laporan, container, false)
@@ -89,6 +96,19 @@ class LaporanFragment : Fragment() {
             imageUri = data.data
             editGambar.setImageURI(imageUri)
         }
+    }
+    private fun encodeImage(bm: Bitmap): String {
+        val baos = ByteArrayOutputStream()
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val b = baos.toByteArray()
+        return Base64.encodeToString(b, Base64.DEFAULT)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun encoder(filePath: String): String {
+        val bytes = File(filePath).readBytes()
+        val base64 = java.util.Base64.getEncoder().encodeToString(bytes)
+        return base64
     }
 
     fun pilihLaporan(): String {

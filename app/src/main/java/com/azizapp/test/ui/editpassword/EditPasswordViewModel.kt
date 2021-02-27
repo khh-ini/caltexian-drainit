@@ -45,7 +45,7 @@ class EditPasswordViewModel @ViewModelInject constructor(
                     method = "PUT"
                 )
                 when (val responseEdit =
-                    bearer.let { repository.editPassword(it, editMasyarakatRequest) }) {
+                    bearer.let { repository.editMasyarakat(it, editMasyarakatRequest) }) {
                     is Resource.Success -> {
                         if (responseEdit.data?.statusCode == 200) {
                            action.postValue(ACTION_EDIT_SUCCESS)
