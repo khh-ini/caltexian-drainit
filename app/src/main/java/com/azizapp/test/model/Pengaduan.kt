@@ -9,7 +9,7 @@ data class Pengaduan(
     @SerializedName("deskripsi_pengaduan")
     var deskripsiPengaduan: String? = null,
     @SerializedName("feedback_masyarakat")
-    var feedbackMasyarakat: Any? = null,
+    var feedbackMasyarakat: String? = null,
     @SerializedName("foto")
     var foto: String? = null,
     @SerializedName("geometry")
@@ -23,7 +23,7 @@ data class Pengaduan(
     @SerializedName("id_petugas")
     var idPetugas: Any? = null,
     @SerializedName("laporan_petugas")
-    var laporanPetugas: Any? = null,
+    var laporanPetugas: String? = null,
     @SerializedName("nama_jalan")
     var namaJalan: String? = null,
     @SerializedName("status_pengaduan")

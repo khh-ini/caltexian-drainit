@@ -5,18 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.lifecycle.AndroidViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.azizapp.test.databinding.ItemListRiwayatBinding
 import com.azizapp.test.model.Pengaduan
+import com.azizapp.test.ui.riwayat.DetilRiwayat
+import com.azizapp.test.ui.riwayat.RiwayatRecyclerViewListener
 import com.azizapp.test.ui.riwayat.RiwayatViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_list_riwayat.view.*
 import org.w3c.dom.Text
 
-class RiwayatRecyclerAdapter(val riwayatViewModel: RiwayatViewModel) : RecyclerView.Adapter<RiwayatRecyclerAdapter.RiwayatViewHolder>() {
+class RiwayatRecyclerAdapter(
+    val riwayatViewModel: RiwayatViewModel,
+    val listener: RiwayatRecyclerViewListener
+) : RecyclerView.Adapter<RiwayatRecyclerAdapter.RiwayatViewHolder>() {
 
     var items: ArrayList<Pengaduan>? = null
 
@@ -38,6 +44,9 @@ class RiwayatRecyclerAdapter(val riwayatViewModel: RiwayatViewModel) : RecyclerV
             viewModelRiwayat = riwayatViewModel
             position = itemPosition
             data = currentItem
+            root.rl_klik.setOnClickListener {
+                listener.onRecyclerViewItemClick(holder.binding.root.rl_klik, data)
+            }
         }
     }
 
