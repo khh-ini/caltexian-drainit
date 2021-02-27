@@ -3,6 +3,8 @@ package com.azizapp.test.repository
 import com.azizapp.test.api.MasyarakatService
 import com.azizapp.test.model.*
 import com.azizapp.test.utill.Resource
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 import javax.inject.Inject
 
@@ -39,11 +41,11 @@ class MainRepository @Inject constructor(
 
     suspend fun masyarakatLaporan(
         bearer: String,
-        nama_jalan: String,
-        image: String,
-        tipe_pengaduan: String,
-        deskripsi_pengaduan: String,
-        geometry: String
+        nama_jalan: RequestBody,
+        image: MultipartBody.Part,
+        tipe_pengaduan: RequestBody,
+        deskripsi_pengaduan: RequestBody,
+        geometry: RequestBody
     ): Resource<DataPengaduanMasyarakat> {
         masyarakatService.pengaduanMasyarakat(bearer,
             "application/json",

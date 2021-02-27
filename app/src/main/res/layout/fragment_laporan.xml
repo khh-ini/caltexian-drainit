@@ -240,7 +240,6 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/shape_rounded_white"
                     android:fontFamily="@font/poppins_bold"
-                    android:onClick="@{()->viewModelLaporan.btnLapor_Click()}"
                     android:text="Lapor"
                     android:textAllCaps="false"
                     android:textColor="@color/white"

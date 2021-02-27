@@ -14,6 +14,4 @@ data class DataPengaduanMasyarakat(
     var deskripsiPengaduan: String?="",
     @SerializedName("geometry")
     var geometry: String?
-
-
 )

@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
@@ -17,24 +18,36 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.azizapp.test.R
+import com.azizapp.test.api.MyAPI
 import com.azizapp.test.databinding.FragmentLaporanBinding
+import com.azizapp.test.model.DataPengaduanMasyarakat
+import com.azizapp.test.utill.Session
+import com.azizapp.test.utill.getFileName
+import com.azizapp.test.utill.snackbar
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_laporan.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class LaporanFragment : Fragment() {
+class LaporanFragment @Inject constructor(val typeUser : String) : Fragment() {
 
     lateinit var binding: FragmentLaporanBinding
     private val laporanViewModel: LaporanViewModel by viewModels()
-    var jenisPengaduan: String = ""
-    private var imageUri: Uri? = null
 
+    var imageUri: Uri? = null
+var sImage: String?=null
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,13 +73,24 @@ class LaporanFragment : Fragment() {
 
         })
         binding.editGambar.setOnClickListener {
-            var intent = Intent()
-            intent.setType("image/*")
-            intent.setAction(Intent.ACTION_GET_CONTENT)
-            startActivityForResult(intent, 1)
+            Intent(Intent.ACTION_PICK).also {
+                it.type = "image/*"
+                val mimeTypes = arrayOf("image/jpeg", "image/png")
+                it.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+                startActivityForResult(it, 1)
+            }
         }
+        binding.buttonLapor.setOnClickListener() {
+           when(typeUser){
+               "login" -> uploadImage()
+               "anonim" -> uploadImageAnonym()
+           }
+        }
+
         return binding.root
     }
+
+
 
     private fun actionFailed() {
         Snackbar.make(binding.root, "Action Failed", Snackbar.LENGTH_SHORT).show()
@@ -95,21 +119,16 @@ class LaporanFragment : Fragment() {
         } else if (requestCode == 1 && data != null) {
             imageUri = data.data
             editGambar.setImageURI(imageUri)
+            val bitmap : Bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver,imageUri)
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream)
+
+            val bytes = byteArrayOutputStream.toByteArray()
+            sImage = Base64.encodeToString(bytes,Base64.DEFAULT)
+
         }
     }
-    private fun encodeImage(bm: Bitmap): String {
-        val baos = ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val b = baos.toByteArray()
-        return Base64.encodeToString(b, Base64.DEFAULT)
-    }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun encoder(filePath: String): String {
-        val bytes = File(filePath).readBytes()
-        val base64 = java.util.Base64.getEncoder().encodeToString(bytes)
-        return base64
-    }
 
     fun pilihLaporan(): String {
         val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
@@ -139,4 +158,109 @@ class LaporanFragment : Fragment() {
         }
         return jenis
     }
+
+    private fun uploadImage() {
+        if (imageUri == null) {
+            this.view?.snackbar("Select an Image First")
+            return
+        }
+
+       // var base64 = "" //Your encoded string
+
+       // base64 = "data:image/" + getMimeType(imageUri!!) + ";base64," + base64
+//        val parcelFileDescriptor =
+//            requireActivity().contentResolver?.openFileDescriptor(imageUri!!, "r", null) ?: return
+//        val inputStream = FileInputStream(parcelFileDescriptor.fileDescriptor)
+//        val file =
+//            File(context?.cacheDir, requireActivity().contentResolver.getFileName(imageUri!!))
+//        val outputStream = FileOutputStream(file)
+//        inputStream.copyTo(outputStream)
+
+//        val body = UploadRequestBody(file, "image")
+
+        val bearer = "Bearer " + Session.bearer
+
+        val geometry = "{\"type\": \"Point\", \"coordinates\": ${editTextLokasi.text}}"
+        val masyarakat = DataPengaduanMasyarakat(editTextNamaJalan.text.toString(),
+            sImage,
+            tv_laporkan.text.toString().substring(
+                15),
+            editTextDeskripsi.text.toString(),
+            geometry)
+        MyAPI().pengaduanMasyarakat(
+            bearer,
+            "application/json",
+            masyarakat
+//            editTextNamaJalan.text.toString()
+//                .toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+//            //MultipartBody.Part.createFormData("foto", file.name, body),
+//            base64.toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+//            tv_laporkan.text.toString().substring(15)
+//                .toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+//            editTextDeskripsi.text.toString()
+//                .toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+//            geometry.toRequestBody("multipart/form-data".toMediaTypeOrNull())
+
+        ).enqueue(object : Callback<DataPengaduanMasyarakat> {
+            override fun onResponse(
+                call: Call<DataPengaduanMasyarakat>,
+                response: Response<DataPengaduanMasyarakat>
+            ) {
+                val intent = Intent(activity, SuccessPage::class.java)
+                intent.putExtra("type","login")
+                startActivity(intent)
+            }
+
+            override fun onFailure(call: Call<DataPengaduanMasyarakat>, t: Throwable) {
+                requireView().snackbar("gagal ${t.message}")
+            }
+
+        })
+
+    }
+    private fun uploadImageAnonym() {
+        if (imageUri == null) {
+            this.view?.snackbar("Select an Image First")
+            return
+        }
+        val geometry = "{\"type\": \"Point\", \"coordinates\": ${editTextLokasi.text}}"
+        val masyarakat = DataPengaduanMasyarakat(editTextNamaJalan.text.toString(),
+            sImage,
+            tv_laporkan.text.toString().substring(15),
+            editTextDeskripsi.text.toString(),
+            geometry)
+        MyAPI().pengaduanMasyarakatAnonim(
+            "application/json",
+            masyarakat
+//            editTextNamaJalan.text.toString()
+//                .toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+//            //MultipartBody.Part.createFormData("foto", file.name, body),
+//            base64.toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+//            tv_laporkan.text.toString().substring(15)
+//                .toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+//            editTextDeskripsi.text.toString()
+//                .toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+//            geometry.toRequestBody("multipart/form-data".toMediaTypeOrNull())
+
+        ).enqueue(object : Callback<DataPengaduanMasyarakat> {
+            override fun onResponse(
+                call: Call<DataPengaduanMasyarakat>,
+                response: Response<DataPengaduanMasyarakat>
+            ) {
+                val intent = Intent(activity, SuccessPage::class.java)
+                intent.putExtra("type","anonim")
+                startActivity(intent)
+            }
+
+            override fun onFailure(call: Call<DataPengaduanMasyarakat>, t: Throwable) {
+                requireView().snackbar("gagal ${t.message}")
+            }
+
+        })
+    }
+
+
+
 }
+
+

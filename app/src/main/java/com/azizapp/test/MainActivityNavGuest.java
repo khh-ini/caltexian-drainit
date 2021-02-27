@@ -10,11 +10,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.azizapp.test.fragment.HomeFragment;
-import com.azizapp.test.fragment.LaporanFragment;
 import com.azizapp.test.fragment.ProfileFragment;
 import com.azizapp.test.fragment.RiwayatFragment;
+import com.azizapp.test.repository.MainRepository;
+import com.azizapp.test.ui.laporan.LaporanFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivityNavGuest extends AppCompatActivity {
     private static final String TAG = MainActivityNav.class.getSimpleName();
     private ChipNavigationBar mMainNav;
@@ -45,7 +49,7 @@ public class MainActivityNavGuest extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (id){
                     case R.id.nav_new_guest:
-                        fragment = new LaporanFragment();
+                        fragment = new LaporanFragment("anonim");
                         break;
                     case R.id.nav_home_guest:
                         fragment = new HomeFragment();

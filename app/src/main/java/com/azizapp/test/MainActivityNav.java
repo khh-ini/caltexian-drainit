@@ -40,7 +40,7 @@ public class MainActivityNav extends AppCompatActivity {
         if (getIntent().hasExtra("lat")&&getIntent().hasExtra("long")){
             mMainNav.setItemSelected(R.id.nav_new, true);
             fragmentManager = getSupportFragmentManager();
-            LaporanFragment laporanFragment = new LaporanFragment();
+            LaporanFragment laporanFragment = new LaporanFragment("login");
             fragmentManager.beginTransaction()
                     .replace(R.id.main_frame, laporanFragment)
                     .commit();
@@ -56,7 +56,7 @@ public class MainActivityNav extends AppCompatActivity {
         if (getIntent().hasExtra("latLng")){
             mMainNav.setItemSelected(R.id.nav_new, true);
             fragmentManager = getSupportFragmentManager();
-            LaporanFragment laporanFragment = new LaporanFragment();
+            LaporanFragment laporanFragment = new LaporanFragment("login");
             fragmentManager.beginTransaction()
                     .replace(R.id.main_frame, laporanFragment)
                     .commit();
@@ -72,7 +72,7 @@ public class MainActivityNav extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (id){
                     case R.id.nav_new:
-                        fragment = new LaporanFragment();
+                        fragment = new LaporanFragment("login");
                         break;
                     case R.id.nav_home:
                         fragment = new HomeFragment();
