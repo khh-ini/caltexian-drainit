@@ -5,11 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.azizapp.test.model.EditMasyarakatRequest
-import com.azizapp.test.model.MasyarakatDaftar
 import com.azizapp.test.repository.MainRepository
-import com.azizapp.test.ui.daftar.DaftarViewModel
 import com.azizapp.test.utill.Resource
-import com.azizapp.test.utill.Session
 import kotlinx.coroutines.launch
 
 class EditPasswordViewModel @ViewModelInject constructor(

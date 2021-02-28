@@ -6,15 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.azizapp.test.R
 import com.azizapp.test.databinding.ActivityDetilRiwayatBinding
-import com.azizapp.test.databinding.FragmentEditProfileBinding
-import com.azizapp.test.databinding.FragmentRiwayatBinding
 import com.azizapp.test.model.Pengaduan
-import com.azizapp.test.ui.profile.EditProfileViewModel
-import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_detil_riwayat.*
 import kotlinx.android.synthetic.main.layout_persistent_bottom_sheet.*
-import kotlinx.android.synthetic.main.layout_persistent_bottom_sheet.gambar
 
 @AndroidEntryPoint
 class DetilRiwayat : AppCompatActivity() {

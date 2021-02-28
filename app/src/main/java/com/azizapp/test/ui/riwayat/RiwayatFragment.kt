@@ -1,4 +1,4 @@
-package com.azizapp.test.fragment
+package com.azizapp.test.ui.riwayat
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.azizapp.test.R
 import com.azizapp.test.RiwayatRecyclerAdapter
 import com.azizapp.test.databinding.FragmentRiwayatBinding
-import com.azizapp.test.ui.riwayat.DetilRiwayat
-import com.azizapp.test.ui.riwayat.RiwayatViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 

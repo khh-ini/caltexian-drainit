@@ -1,4 +1,4 @@
-package com.azizapp.test.fragment
+package com.azizapp.test.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,8 +13,6 @@ import com.azizapp.test.R
 import com.azizapp.test.databinding.FragmentProfileBinding
 import com.azizapp.test.ui.editpassword.EditPasswordActivity
 import com.azizapp.test.ui.login.LoginActivity
-import com.azizapp.test.ui.profile.ActivityEditProfile
-import com.azizapp.test.ui.profile.EditProfileViewModel
 import com.azizapp.test.utill.Session
 import dagger.hilt.android.AndroidEntryPoint
 

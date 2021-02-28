@@ -1,7 +1,6 @@
 package com.azizapp.test.ui.laporan
 
 import android.app.Application
-import android.content.ContentResolver
 import android.net.Uri
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData

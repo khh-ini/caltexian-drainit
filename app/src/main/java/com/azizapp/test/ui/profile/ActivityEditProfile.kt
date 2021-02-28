@@ -39,6 +39,7 @@ class ActivityEditProfile : AppCompatActivity() {
     }
 
     private fun editFailed() {
+
         Snackbar.make(binding.root, "Edit Failed", Snackbar.LENGTH_SHORT).show()
     }
 

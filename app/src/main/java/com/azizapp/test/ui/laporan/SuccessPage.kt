@@ -7,7 +7,6 @@ import com.azizapp.test.MainActivityNav
 import com.azizapp.test.MainActivityNavGuest
 import com.azizapp.test.R
 import kotlinx.android.synthetic.main.success_page.*
-import javax.inject.Inject
 
 class SuccessPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

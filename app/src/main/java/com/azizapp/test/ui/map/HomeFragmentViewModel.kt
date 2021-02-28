@@ -4,7 +4,6 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.azizapp.test.model.Pengaduan
 import com.azizapp.test.model.TitikBanjir
 import com.azizapp.test.repository.MainRepository
 import com.azizapp.test.ui.riwayat.RiwayatViewModel

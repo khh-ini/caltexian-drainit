@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.azizapp.test.MainActivityNav
 import com.azizapp.test.R
-import com.azizapp.test.SaveSharedPreference
 import com.azizapp.test.databinding.ActivityLoginBinding
 import com.azizapp.test.ui.daftar.DaftarActivity
 import com.google.android.material.snackbar.Snackbar

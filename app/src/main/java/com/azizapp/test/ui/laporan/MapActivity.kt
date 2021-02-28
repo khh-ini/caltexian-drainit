@@ -11,7 +11,6 @@ import com.azizapp.test.R
 import com.azizapp.test.databinding.FragmentNamaJalanBinding
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_map.map
 import kotlinx.android.synthetic.main.fragment_nama_jalan.*

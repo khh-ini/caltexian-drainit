@@ -1,12 +1,9 @@
 package com.azizapp.test.ui.map
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -28,9 +25,8 @@ import kotlinx.android.synthetic.main.layout_persistent_bottom_sheet.view.*
 @AndroidEntryPoint
 class HomeFragment : Fragment(), OnMapReadyCallback {
     private lateinit var googleMap: GoogleMap
-    private lateinit var marker: Marker
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
-    val HomeViewModel: HomeFragmentViewModel by viewModels()
+    private val HomeViewModel: HomeFragmentViewModel by viewModels()
     var markerList: ArrayList<Marker>? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -52,7 +48,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         // Inflate the layout for this fragment
         bottomSheetBehavior = BottomSheetBehavior.from(i.bottomsheet)
 
-        bottomSheetBehavior.setBottomSheetCallback(object :
+        bottomSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
@@ -81,48 +77,42 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             googleMap = it
         }
 
-        val pekanbaru = LatLng(0.510440, 101.438309)
-
         googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(this.activity))
 
         googleMap.setOnMapLoadedCallback {
             HomeViewModel.listTitikBanjir.forEach { titik ->
-                var mark = googleMap.addMarker(
+                val mark = googleMap.addMarker(
                     MarkerOptions()
                         .position(geoToLatLong(titik.geometry))
                         .title(titik.namaJalan)
                         .snippet("${titik.keterangan}|${titik.foto}")
                 )
                 markerList?.add(mark)
-                Log.d(TAG, "value on  ${geoToLatLong(titik.geometry)}")
             }
         }
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(0.510440, 101.438309)))
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(13.0f))
 
         googleMap.setOnMarkerClickListener { marker ->
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             tvTitle.text = marker.title
-            var keteranganFoto : List<String> = marker.snippet.split("|")
+            val keteranganFoto: List<String> = marker.snippet.split("|")
             tvSubtitle.text = keteranganFoto[0]
-            Glide.with(this).load("https://gis-drainase.pocari.id/storage/app/public/images/${keteranganFoto[1]}").into(gambar);
-            Log.d(TAG, "Clicked on  ${geoToLatLong(HomeViewModel.listTitikBanjir[0].geometry)}")
+            Glide.with(this)
+                .load("https://gis-drainase.pocari.id/storage/app/public/images/${keteranganFoto[1]}")
+                .into(gambar);
             true
-        }
-        googleMap.setOnMapClickListener { point ->
-            Toast.makeText(
-                context,
-                "Titik : ${point.latitude}, ${point.longitude}",
-                Toast.LENGTH_SHORT
-            )
         }
     }
 
-    fun geoToLatLong(string : String) : LatLng {
+    fun geoToLatLong(string: String): LatLng {
         val substring = string.substring(34, string.length - 2)
         val latlong: List<String> = substring.split(",")
         val latLng = LatLng(latlong[1].toDouble(), latlong[0].toDouble())
         return latLng
     }
 }
+
+
+

@@ -1,19 +1,13 @@
 package com.azizapp.test.ui.profile
 
-import android.se.omapi.Session
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.azizapp.test.model.Masyarakat
-import com.azizapp.test.repository.MainRepository
-import com.azizapp.test.ui.login.LoginViewModel
-import com.azizapp.test.utill.Resource
-import com.azizapp.test.utill.Session.bearer
 import androidx.lifecycle.viewModelScope
-import com.azizapp.test.R
 import com.azizapp.test.model.EditMasyarakatRequest
+import com.azizapp.test.repository.MainRepository
 import com.azizapp.test.ui.editpassword.EditPasswordViewModel
-import kotlinx.android.synthetic.main.fragment_edit_profile.view.*
+import com.azizapp.test.utill.Resource
 import kotlinx.coroutines.launch
 
 class EditProfileViewModel @ViewModelInject constructor(

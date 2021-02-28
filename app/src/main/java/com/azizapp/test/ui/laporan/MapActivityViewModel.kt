@@ -3,15 +3,10 @@ package com.azizapp.test.ui.laporan
 import android.content.Context
 import android.location.Address
 import android.location.Geocoder
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.azizapp.test.repository.MainRepository
-import com.azizapp.test.utill.Session
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import okhttp3.internal.wait
 import java.util.*
 
 class MapActivityViewModel : ViewModel() {

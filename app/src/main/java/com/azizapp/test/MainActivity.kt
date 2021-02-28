@@ -1,8 +1,8 @@
 package com.azizapp.test
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.azizapp.test.ui.daftar.DaftarActivity
 import com.azizapp.test.ui.login.LoginActivity
