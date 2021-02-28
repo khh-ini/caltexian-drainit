@@ -36,7 +36,7 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class LaporanFragment @Inject constructor(val typeUser: String) : Fragment() {
+class LaporanFragment @Inject constructor(private val typeUser: String) : Fragment() {
 
     lateinit var binding: FragmentLaporanBinding
     private val laporanViewModel: LaporanViewModel by viewModels()

@@ -1,10 +1,7 @@
 package com.azizapp.test.fragment
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,9 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.azizapp.test.R
 import com.azizapp.test.RiwayatRecyclerAdapter
 import com.azizapp.test.databinding.FragmentRiwayatBinding
-import com.azizapp.test.model.Pengaduan
 import com.azizapp.test.ui.riwayat.DetilRiwayat
-import com.azizapp.test.ui.riwayat.RiwayatRecyclerViewListener
 import com.azizapp.test.ui.riwayat.RiwayatViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

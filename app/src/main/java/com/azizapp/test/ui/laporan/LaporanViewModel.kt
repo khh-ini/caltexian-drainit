@@ -65,7 +65,7 @@ class LaporanViewModel @ViewModelInject constructor(
             } else {
 
                 val geometry = "{\"type\": \"Point\", \"coordinates\": ${lokasi.value}}"
-                when (val response = repository.masyarakatLaporan(
+                when (repository.masyarakatLaporan(
                     bearer,
                     namaJalan.value.toString()
                         .toRequestBody("multipart/form-data".toMediaTypeOrNull()),

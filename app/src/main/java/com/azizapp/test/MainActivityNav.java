@@ -22,7 +22,6 @@ import android.widget.EditText;
 @AndroidEntryPoint
 public class MainActivityNav extends AppCompatActivity {
     private static final String TAG = MainActivityNav.class.getSimpleName();
-    private ChipNavigationBar mMainNav;
     private HomeFragment homeFragment;
     private ProfileFragment profileFragment;
     private RiwayatFragment riwayatFragment;
@@ -32,16 +31,10 @@ public class MainActivityNav extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-//        if (SaveSharedPreference.getEmail(MainActivityNav.this).length() == 0) {
-//            Intent activity = new Intent(getApplicationContext(), MainActivity.class);
-//            startActivity(activity);
-  //      }
-//        else {
-            // Stay at the current activity.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mMainNav = findViewById(R.id.main_nav);
+        ChipNavigationBar mMainNav = findViewById(R.id.main_nav);
 
         if (savedInstanceState == null) {
             mMainNav.setItemSelected(R.id.nav_home, true);
@@ -52,33 +45,30 @@ public class MainActivityNav extends AppCompatActivity {
                     .commit();
         }
 
-        mMainNav.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(int id) {
-                Fragment fragment = null;
-                switch (id) {
-                    case R.id.nav_new:
-                        fragment = new LaporanFragment("login");
-                        break;
-                    case R.id.nav_home:
-                        fragment = new HomeFragment();
-                        break;
-                    case R.id.nav_history:
-                        fragment = new RiwayatFragment();
-                        break;
-                    case R.id.nav_profile:
-                        fragment = new ProfileFragment();
-                        break;
-                }
+        mMainNav.setOnItemSelectedListener(id -> {
+            Fragment fragment = null;
+            switch (id) {
+                case R.id.nav_new:
+                    fragment = new LaporanFragment("login");
+                    break;
+                case R.id.nav_home:
+                    fragment = new HomeFragment();
+                    break;
+                case R.id.nav_history:
+                    fragment = new RiwayatFragment();
+                    break;
+                case R.id.nav_profile:
+                    fragment = new ProfileFragment();
+                    break;
+            }
 
-                if (fragment != null) {
-                    fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.main_frame, fragment)
-                            .commit();
-                } else {
-                    Log.e(TAG, "Error in creating fragment");
-                }
+            if (fragment != null) {
+                fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.main_frame, fragment)
+                        .commit();
+            } else {
+                Log.e(TAG, "Error in creating fragment");
             }
         });
     }
