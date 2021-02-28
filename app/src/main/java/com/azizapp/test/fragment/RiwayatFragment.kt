@@ -1,6 +1,7 @@
 package com.azizapp.test.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -23,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class RiwayatFragment : Fragment(), RiwayatRecyclerViewListener {
+class RiwayatFragment : Fragment() {
 
     private val riwayatViewModel: RiwayatViewModel by viewModels()
     private lateinit var riwayatAdapter: RiwayatRecyclerAdapter
@@ -33,7 +34,7 @@ class RiwayatFragment : Fragment(), RiwayatRecyclerViewListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        riwayatAdapter = RiwayatRecyclerAdapter(riwayatViewModel, this)
+        riwayatAdapter = RiwayatRecyclerAdapter(riwayatViewModel)
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_riwayat, container, false)
         return dataBinding.root
     }
@@ -48,10 +49,20 @@ class RiwayatFragment : Fragment(), RiwayatRecyclerViewListener {
         riwayatViewModel.action.observe(viewLifecycleOwner, Observer { action ->
             when (action) {
                 RiwayatViewModel.ACTION_RIWAYAT_FETCHED -> listItemUpdate()
+                RiwayatViewModel.ACTION_RIWAYAT_ONCLICK -> listItemOnClick()
             }
         })
 
         riwayatViewModel.onLoad()
+    }
+
+    private fun listItemOnClick() {
+        val itemClicked = riwayatViewModel.listPengaduan[riwayatViewModel.actionItemPosition.value ?: 0]
+
+        val intent = Intent(requireContext(), DetilRiwayat::class.java)
+        intent.putExtra(DetilRiwayat.DETAIL_EXTRA_PARCEL, itemClicked)
+
+        startActivity(intent)
     }
 
     private fun setupRecyclerView() {
@@ -67,19 +78,4 @@ class RiwayatFragment : Fragment(), RiwayatRecyclerViewListener {
         riwayatAdapter.notifyDataSetChanged()
     }
 
-    override fun onRecyclerViewItemClick(view: View, pengaduan: Pengaduan) {
-        when (view.id) {
-            R.id.rl_klik -> {
-//                dataBinding = DataBindingUtil.setContentView(
-//                    requireActivity(),
-//                    R.layout.activity_detil_riwayat
-//                )
-//                dataBinding.apply {
-//                    lifecycleOwner = activity@DetilRiwayat
-//                    viewModel = riwayatViewModel
-//                }
-//                riwayatViewModel.onLoad()
-            }
-        }
-    }
 }

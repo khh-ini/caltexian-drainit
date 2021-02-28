@@ -9,10 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.azizapp.test.fragment.HomeFragment;
+import com.azizapp.test.ui.map.HomeFragment;
 import com.azizapp.test.fragment.ProfileFragment;
 import com.azizapp.test.fragment.RiwayatFragment;
-import com.azizapp.test.repository.MainRepository;
 import com.azizapp.test.ui.laporan.LaporanFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 

@@ -18,16 +18,17 @@
         >
 
         <activity android:name=".HistoryPage" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivityNav" />
         <activity android:name=".ui.daftar.DaftarActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".SplashScreen" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.laporan.LaporanActivity" />
         <activity android:name=".ui.laporan.MapActivity" />
         <activity android:name=".ui.laporan.SuccessPage" />
         <activity android:name=".MainActivityNavGuest" />
         <activity android:name=".ui.editpassword.EditPasswordActivity" />
-        <activity android:name=".MainActivityNav">
+        <activity android:name=".ui.riwayat.DetilRiwayat" />
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

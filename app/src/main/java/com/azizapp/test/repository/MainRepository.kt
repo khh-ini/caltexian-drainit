@@ -47,13 +47,15 @@ class MainRepository @Inject constructor(
         deskripsi_pengaduan: RequestBody,
         geometry: RequestBody
     ): Resource<DataPengaduanMasyarakat> {
-        masyarakatService.pengaduanMasyarakat(bearer,
+        masyarakatService.pengaduanMasyarakat(
+            bearer,
             "application/json",
             nama_jalan,
             image,
             tipe_pengaduan,
             deskripsi_pengaduan,
-            geometry).let { response ->
+            geometry
+        ).let { response ->
             if (response.isSuccessful) {
                 response.body()?.let {
                     return Resource.Success(it)
@@ -77,6 +79,15 @@ class MainRepository @Inject constructor(
 
     suspend fun getPengaduanMasyarakat(bearer: String): Resource<PengaduanResponse> {
         masyarakatService.riwayatMasyarakat(bearer).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
+
+    suspend fun getTitikBanjir(): Resource<TitikBanjirResponse> {
+        masyarakatService.titikBanjir().let { response ->
             if (response.isSuccessful) {
                 response.body()?.let { return Resource.Success(it) }
             }

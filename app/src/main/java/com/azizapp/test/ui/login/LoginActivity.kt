@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding
     private val loginViewModel: LoginViewModel by viewModels()
-    private lateinit var SaveSharedPreference: SaveSharedPreference
+    //private lateinit var SaveSharedPreference: SaveSharedPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +59,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginSuccess() {
         startActivity(Intent(this,MainActivityNav::class.java))
-        SaveSharedPreference.setEmail(this, tvEmail.text.toString())
+        //SaveSharedPreference.setEmail(this, tvEmail.text.toString())
     }
 }

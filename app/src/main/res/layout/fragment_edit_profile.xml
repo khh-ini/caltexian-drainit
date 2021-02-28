@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:background="#ffc736"
-                app:layout_constraintHeight_percent=".22"
+                app:layout_constraintHeight_percent=".28"
                 tools:ignore="MissingConstraints">
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -51,11 +51,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_user1"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/header"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.048"
                 tools:ignore="MissingConstraints" />
 
             <RelativeLayout
@@ -159,7 +158,7 @@
                     android:layout_width="0dp"
                     android:layout_height="56dp"
                     android:layout_marginTop="16dp"
-                    android:hint="Tempat Lahir"
+                    android:hint="Alamat"
                     android:text="@={viewModeEditProfile.alamat}"
                     android:textColor="@color/textColorSecondary"
                     app:activeHintColor="@color/primaryVariant"
@@ -169,35 +168,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/email"
                     app:layout_constraintWidth_percent=".85" />
 
-                <com.zigis.materialtextfield.MaterialTextField
-                    android:id="@+id/tanggalLahir"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="16dp"
-                    android:hint="Tanggal Lahir"
-                    android:text="@string/tanggalLahir_user"
-                    android:textColor="@color/textColorSecondary"
-                    app:activeHintColor="@color/primaryVariant"
-                    app:activeUnderlineColor="@color/primaryVariant"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tempatLahir"
-                    app:layout_constraintWidth_percent=".85" />
-
-                <com.zigis.materialtextfield.MaterialTextField
-                    android:id="@+id/alamat"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="16dp"
-                    android:hint="Alamat"
-                    android:text="@string/alamat_user"
-                    android:textColor="@color/textColorSecondary"
-                    app:activeHintColor="@color/primaryVariant"
-                    app:activeUnderlineColor="@color/primaryVariant"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tanggalLahir"
-                    app:layout_constraintWidth_percent=".85" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -20,8 +20,7 @@ import kotlinx.android.synthetic.main.item_list_riwayat.view.*
 import org.w3c.dom.Text
 
 class RiwayatRecyclerAdapter(
-    val riwayatViewModel: RiwayatViewModel,
-    val listener: RiwayatRecyclerViewListener
+    val riwayatViewModel: RiwayatViewModel
 ) : RecyclerView.Adapter<RiwayatRecyclerAdapter.RiwayatViewHolder>() {
 
     var items: ArrayList<Pengaduan>? = null
@@ -44,9 +43,6 @@ class RiwayatRecyclerAdapter(
             viewModelRiwayat = riwayatViewModel
             position = itemPosition
             data = currentItem
-            root.rl_klik.setOnClickListener {
-                listener.onRecyclerViewItemClick(holder.binding.root.rl_klik, data)
-            }
         }
     }
 

@@ -133,7 +133,8 @@
                             android:padding="10dp"
                             android:textColor="@color/textColorSecondary"
                             android:textColorHint="@color/textColorSecondary"
-                            android:textSize="16dp" />
+                            android:textSize="16dp"
+                            android:enabled="false"/>
 
                     </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
                 </RelativeLayout>
@@ -163,17 +164,18 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tvDeskripsi"
                         android:layout_marginTop="5dp"
-                        android:inputType="textMultiLine"
-                        android:lines="6"
                         android:text="@={viewModelLaporan.deskripsi}"
                         android:overScrollMode="always"
                         android:padding="10dp"
+                        android:inputType="textMultiLine"
+                        android:minLines="6"
                         android:scrollbarAlwaysDrawVerticalTrack="true"
                         android:scrollbarStyle="insideInset"
                         android:scrollbars="vertical"
                         android:textColor="@color/textColorSecondary"
                         android:textColorHint="@color/textColorSecondary"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:gravity="start"/>
 
                 </RelativeLayout>
 
@@ -208,7 +210,8 @@
                         android:inputType="text"
                         android:padding="10dp"
                         android:textSize="16dp"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        android:scaleType="centerCrop"/>
 
                 </RelativeLayout>
                 <RelativeLayout

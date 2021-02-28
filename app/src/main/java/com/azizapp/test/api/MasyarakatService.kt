@@ -49,4 +49,7 @@ interface MasyarakatService {
     suspend fun riwayatMasyarakat(
         @Header("Authorization") token: String
     ):Response<PengaduanResponse>
+
+    @GET("api/titik_banjir")
+    suspend fun titikBanjir():Response<TitikBanjirResponse>
 }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:behavior_hideable="true"
-    app:behavior_peekHeight="@dimen/dimen_32"
+    app:behavior_peekHeight="32dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     android:background="@color/white">
 
@@ -18,10 +18,20 @@
         android:layout_marginEnd="@dimen/dimen_16"
         android:text="@string/tv_title_bottomsheet"
         android:textSize="@dimen/font_size_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/gambar"
+        app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/textColorSecondary"/>
+
+    <ImageView
+        android:id="@+id/gambar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintBottom_toTopOf="@id/tvSubtitle"
+        android:scaleType="centerCrop"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSubtitle"
@@ -29,11 +39,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_16"
         android:text="@string/tv_description_bottomsheet"
+        android:textColor="@color/textColorSecondary"
         android:textSize="@dimen/font_size_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        android:textColor="@color/textColorSecondary"/>
+        app:layout_constraintTop_toBottomOf="@+id/gambar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

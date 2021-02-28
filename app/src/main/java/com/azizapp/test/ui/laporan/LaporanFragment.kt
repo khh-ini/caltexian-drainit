@@ -22,7 +22,6 @@ import com.azizapp.test.api.MyAPI
 import com.azizapp.test.databinding.FragmentLaporanBinding
 import com.azizapp.test.model.DataPengaduanMasyarakat
 import com.azizapp.test.utill.Session
-import com.azizapp.test.utill.getFileName
 import com.azizapp.test.utill.snackbar
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
@@ -33,21 +32,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class LaporanFragment @Inject constructor(val typeUser : String) : Fragment() {
+class LaporanFragment @Inject constructor(val typeUser: String) : Fragment() {
 
     lateinit var binding: FragmentLaporanBinding
     private val laporanViewModel: LaporanViewModel by viewModels()
 
     var imageUri: Uri? = null
-var sImage: String?=null
-    @RequiresApi(Build.VERSION_CODES.O)
+    var sImage: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,15 +77,14 @@ var sImage: String?=null
             }
         }
         binding.buttonLapor.setOnClickListener() {
-           when(typeUser){
-               "login" -> uploadImage()
-               "anonim" -> uploadImageAnonym()
-           }
+            when (typeUser) {
+                "login" -> uploadImage()
+                "anonim" -> uploadImageAnonym()
+            }
         }
 
         return binding.root
     }
-
 
 
     private fun actionFailed() {
@@ -105,10 +100,6 @@ var sImage: String?=null
         startActivity(intent)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
@@ -119,12 +110,13 @@ var sImage: String?=null
         } else if (requestCode == 1 && data != null) {
             imageUri = data.data
             editGambar.setImageURI(imageUri)
-            val bitmap : Bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver,imageUri)
+            val bitmap: Bitmap =
+                MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri)
             val byteArrayOutputStream = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
 
             val bytes = byteArrayOutputStream.toByteArray()
-            sImage = Base64.encodeToString(bytes,Base64.DEFAULT)
+            sImage = Base64.encodeToString(bytes, Base64.DEFAULT)
 
         }
     }
@@ -165,9 +157,9 @@ var sImage: String?=null
             return
         }
 
-       // var base64 = "" //Your encoded string
+        // var base64 = "" //Your encoded string
 
-       // base64 = "data:image/" + getMimeType(imageUri!!) + ";base64," + base64
+        // base64 = "data:image/" + getMimeType(imageUri!!) + ";base64," + base64
 //        val parcelFileDescriptor =
 //            requireActivity().contentResolver?.openFileDescriptor(imageUri!!, "r", null) ?: return
 //        val inputStream = FileInputStream(parcelFileDescriptor.fileDescriptor)
@@ -181,12 +173,15 @@ var sImage: String?=null
         val bearer = "Bearer " + Session.bearer
 
         val geometry = "{\"type\": \"Point\", \"coordinates\": ${editTextLokasi.text}}"
-        val masyarakat = DataPengaduanMasyarakat(editTextNamaJalan.text.toString(),
+        val masyarakat = DataPengaduanMasyarakat(
+            editTextNamaJalan.text.toString(),
             sImage,
             tv_laporkan.text.toString().substring(
-                15),
+                15
+            ),
             editTextDeskripsi.text.toString(),
-            geometry)
+            geometry
+        )
         MyAPI().pengaduanMasyarakat(
             bearer,
             "application/json",
@@ -207,7 +202,7 @@ var sImage: String?=null
                 response: Response<DataPengaduanMasyarakat>
             ) {
                 val intent = Intent(activity, SuccessPage::class.java)
-                intent.putExtra("type","login")
+                intent.putExtra("type", "login")
                 startActivity(intent)
             }
 
@@ -218,17 +213,20 @@ var sImage: String?=null
         })
 
     }
+
     private fun uploadImageAnonym() {
         if (imageUri == null) {
             this.view?.snackbar("Select an Image First")
             return
         }
         val geometry = "{\"type\": \"Point\", \"coordinates\": ${editTextLokasi.text}}"
-        val masyarakat = DataPengaduanMasyarakat(editTextNamaJalan.text.toString(),
+        val masyarakat = DataPengaduanMasyarakat(
+            editTextNamaJalan.text.toString(),
             sImage,
             tv_laporkan.text.toString().substring(15),
             editTextDeskripsi.text.toString(),
-            geometry)
+            geometry
+        )
         MyAPI().pengaduanMasyarakatAnonim(
             "application/json",
             masyarakat
@@ -248,7 +246,7 @@ var sImage: String?=null
                 response: Response<DataPengaduanMasyarakat>
             ) {
                 val intent = Intent(activity, SuccessPage::class.java)
-                intent.putExtra("type","anonim")
+                intent.putExtra("type", "anonim")
                 startActivity(intent)
             }
 
@@ -258,7 +256,6 @@ var sImage: String?=null
 
         })
     }
-
 
 
 }
