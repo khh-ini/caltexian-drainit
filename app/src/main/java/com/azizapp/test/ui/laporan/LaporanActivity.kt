@@ -49,13 +49,13 @@ class LaporanActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f))
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f))
         googleMap.setOnMapClickListener { point ->
             try {
                 val addresses: MutableList<Address>? =
                     geocoder.getFromLocation(point.latitude, point.longitude, 1)
                 address = addresses?.get(0)?.getAddressLine(0).toString()
-                city = addresses?.get(0)?.getLocality().toString()
+                city = addresses?.get(0)?.locality.toString()
                 lat = point.latitude
                 long = point.longitude
                 Toast.makeText(

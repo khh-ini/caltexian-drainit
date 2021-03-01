@@ -9,10 +9,9 @@ import com.azizapp.test.repository.MainRepository
 import com.azizapp.test.utill.Resource
 import kotlinx.coroutines.launch
 
-class RiwayatViewModel @ViewModelInject constructor(
+class DetilRiwayatViewModel@ViewModelInject constructor(
     public val repository: MainRepository
 ) : ViewModel() {
-
     val loadingEnable = MutableLiveData<Boolean>()
     val listPengaduan: ArrayList<Pengaduan> = arrayListOf()
     val action = MutableLiveData<String>()

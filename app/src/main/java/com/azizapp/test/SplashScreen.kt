@@ -1,9 +1,7 @@
 package com.azizapp.test
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import kotlinx.android.synthetic.main.splashscreen.*
 
 class SplashScreen : Activity() {

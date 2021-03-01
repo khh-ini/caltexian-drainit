@@ -16,7 +16,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.RiwayatFragment"
+    tools:context=".ui.riwayat.RiwayatFragment"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#ffc736"
-        app:layout_constraintHeight_percent=".23"
+        app:layout_constraintHeight_percent=".2"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
@@ -50,18 +50,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".35" />
+            app:layout_constraintVertical_bias=".25" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/shape_rounded_white"
         android:padding="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent=".85"
+        app:layout_constraintHeight_percent=".9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintVertical_bias="0.7" />
@@ -72,8 +71,7 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintVertical_bias="0."/>
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

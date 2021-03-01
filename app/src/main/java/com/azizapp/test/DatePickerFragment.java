@@ -1,14 +1,12 @@
 package com.azizapp.test;
 
-import androidx.fragment.app.Fragment;
 import android.app.DatePickerDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
