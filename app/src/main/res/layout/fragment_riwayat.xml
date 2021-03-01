@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#ffc736"
-        app:layout_constraintHeight_percent=".2"
+        app:layout_constraintHeight_percent=".23"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
@@ -50,21 +50,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".25" />
+            app:layout_constraintVertical_bias=".35" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/shape_very_rounded_white"
+        android:background="@drawable/shape_rounded_white"
         android:padding="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent=".9"
+        app:layout_constraintHeight_percent=".85"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintVertical_bias="0.7"
-        app:layout_constraintWidth_percent="2" />
+        app:layout_constraintVertical_bias="0.7" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -72,39 +72,8 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/first"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/shape_rounded_orange"-->
-<!--        android:padding="20dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/header"-->
-<!--        app:layout_constraintWidth_percent=".75"-->
-<!--        tools:ignore="MissingConstraints">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tvLokasi"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:fontFamily="@font/poppins_medium"-->
-<!--            android:text="@={viewModelRiwayat.nama_jalan}"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="18dp" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/tvLokasi"-->
-<!--            android:fontFamily="@font/poppins_medium"-->
-<!--            android:text="@={viewModelRiwayat.status_pengaduan}"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="16dp" />-->
-
-<!--    </RelativeLayout>-->
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintVertical_bias="0."/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
