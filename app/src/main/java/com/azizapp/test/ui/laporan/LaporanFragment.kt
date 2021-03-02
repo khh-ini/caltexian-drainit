@@ -178,6 +178,7 @@ class LaporanFragment @Inject constructor(private val typeUser: String) : Fragme
                 15
             ),
             editTextDeskripsi.text.toString(),
+            "Belum diverifikasi",
             geometry
         )
         MyAPI().pengaduanMasyarakat(
@@ -223,6 +224,7 @@ class LaporanFragment @Inject constructor(private val typeUser: String) : Fragme
             sImage,
             tv_laporkan.text.toString().substring(15),
             editTextDeskripsi.text.toString(),
+            "Belum diverifikasi",
             geometry
         )
         MyAPI().pengaduanMasyarakatAnonim(
