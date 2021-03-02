@@ -11,6 +11,7 @@ import com.azizapp.test.R
 import com.azizapp.test.databinding.FragmentNamaJalanBinding
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_map.map
 import kotlinx.android.synthetic.main.fragment_nama_jalan.*
@@ -71,6 +72,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(pekanbaru))
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(12.0f))
         googleMap.setOnMapClickListener { point ->
+            googleMap.clear()
+            googleMap.addMarker(
+                MarkerOptions()
+                    .position(LatLng(point.latitude, point.longitude))
+            )
             mapActivityViewModel.changeStreetName(this, point.latitude, point.latitude)
             address = mapActivityViewModel.namaJalan.value.toString()
             lat = mapActivityViewModel.latitude.value?.toDouble()!!

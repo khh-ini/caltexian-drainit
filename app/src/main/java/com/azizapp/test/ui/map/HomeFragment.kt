@@ -101,7 +101,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             tvSubtitle.text = keteranganFoto[0]
             Glide.with(this)
                 .load("https://gis-drainase.pocari.id/storage/app/public/images/${keteranganFoto[1]}")
-                .into(gambar);
+                .into(gambar)
             true
         }
     }

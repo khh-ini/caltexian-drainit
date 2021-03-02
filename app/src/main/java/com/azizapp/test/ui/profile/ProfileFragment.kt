@@ -13,6 +13,7 @@ import com.azizapp.test.R
 import com.azizapp.test.databinding.FragmentProfileBinding
 import com.azizapp.test.ui.editpassword.EditPasswordActivity
 import com.azizapp.test.ui.login.LoginActivity
+import com.azizapp.test.ui.tentang_kami.ActivityTentangKami
 import com.azizapp.test.utill.Session
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,6 +38,7 @@ class ProfileFragment : Fragment() {
         val ubahProfil : RelativeLayout = binding.root.findViewById(R.id.ubahProfil)
         val gantiPassword : RelativeLayout = binding.root.findViewById(R.id.ubahPassword)
         val keluar:RelativeLayout = binding.root.findViewById(R.id.keluar)
+        val tentang_kami:RelativeLayout = binding.root.findViewById(R.id.tentangKami)
 
         ubahProfil.setOnClickListener {
             val intent = Intent(activity, ActivityEditProfile::class.java)
@@ -50,6 +52,10 @@ class ProfileFragment : Fragment() {
         keluar.setOnClickListener{
             Session.bearer = ""
             val intent = Intent(activity, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        tentang_kami.setOnClickListener {
+            val intent = Intent(activity, ActivityTentangKami::class.java)
             startActivity(intent)
         }
         editProfileViewModel.onLoad()

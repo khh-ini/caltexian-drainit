@@ -28,6 +28,7 @@
         <activity android:name=".MainActivityNavGuest" />
         <activity android:name=".ui.editpassword.EditPasswordActivity" />
         <activity android:name=".ui.riwayat.DetilRiwayat" />
+        <activity android:name=".ui.tentang_kami.ActivityTentangKami" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
