@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.azizapp.test.R
 
 class ActivityTentangKami: AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tentang_kami)
-
     }
 }

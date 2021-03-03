@@ -38,7 +38,7 @@
                     android:id="@+id/header"
                     android:layout_width="420dp"
                     android:layout_height="97dp"
-                    android:background="@drawable/yellow_header_shape"
+                    android:background="@color/header"
                     app:layout_constraintHeight_percent=".16"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints"

@@ -1,7 +1,9 @@
 package com.azizapp.test.ui.login
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -26,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
         binding.apply {
@@ -49,11 +52,21 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginError() {
-        Snackbar.make(binding.root,"Login Error",Snackbar.LENGTH_SHORT).show()
+        val snackbar = Snackbar.make(binding.root,"Login Gagal, Email atau Password salah",Snackbar.LENGTH_SHORT)
+        val textView = snackbar.view.findViewById(R.id.snackbar_text) as TextView
+        // change Snackbar text color
+        textView.setTextColor(Color.parseColor("#FFFFFF"))
+        snackbar.view.setBackgroundColor(Color.parseColor("#F5365C"))
+        snackbar.show()
     }
 
     private fun loginFailed() {
-        Snackbar.make(binding.root,"Login Gagal",Snackbar.LENGTH_SHORT).show()
+        val snackbar = Snackbar.make(binding.root,"Login Error, server error",Snackbar.LENGTH_SHORT)
+        val textView = snackbar.view.findViewById(R.id.snackbar_text) as TextView
+        // change Snackbar text color
+        textView.setTextColor(Color.parseColor("#FFFFFF"))
+        snackbar.view.setBackgroundColor(Color.parseColor("#F0CE0E"))
+        snackbar.show()
     }
 
     private fun loginSuccess() {

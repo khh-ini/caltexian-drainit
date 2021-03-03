@@ -16,28 +16,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/header"
         tools:context=".ui.riwayat.RiwayatFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#ffc736"
+            android:background="@color/header"
             app:layout_constraintHeight_percent=".25"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
-
-            <RelativeLayout
-                android:id="@+id/api"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textView"
@@ -73,8 +62,7 @@
             android:layout_height="0dp"
             android:background="@drawable/shape_rounded_white"
             android:padding="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHeight_percent=".8"
+            app:layout_constraintHeight_percent=".82"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/header"
             app:layout_constraintVertical_bias="0.85" />
@@ -85,7 +73,8 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/header" />
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            android:layout_marginTop="@dimen/dimen_16"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

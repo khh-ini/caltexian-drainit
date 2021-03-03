@@ -16,7 +16,7 @@
             android:id="@+id/shapeableImageView"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@drawable/yellow_header_shape"
+            android:background="@color/header"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText

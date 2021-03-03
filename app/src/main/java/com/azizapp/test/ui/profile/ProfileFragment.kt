@@ -54,6 +54,7 @@ class ProfileFragment : Fragment() {
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
         }
+
         tentang_kami.setOnClickListener {
             val intent = Intent(activity, ActivityTentangKami::class.java)
             startActivity(intent)

@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azizapp.test.R
-import com.azizapp.test.RiwayatRecyclerAdapter
 import com.azizapp.test.databinding.FragmentRiwayatBinding
 import dagger.hilt.android.AndroidEntryPoint
 
