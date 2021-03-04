@@ -310,10 +310,9 @@
 
                     <Button
                         android:id="@+id/button"
-                        android:layout_width="200dp"
+                        android:layout_width="292dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="40dp"
-                        android:background="@drawable/shape_rounded_white"
                         android:fontFamily="@font/poppins_bold"
                         android:onClick="@{() -> viewModelDaftar.btnDaftar_Click()}"
                         android:text="Daftar"
