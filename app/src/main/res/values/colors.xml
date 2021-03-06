@@ -24,4 +24,11 @@
     <color name="lightGreyBackground">#F1F1F1</color>
     <color name="background">#F6F6F6</color>
 
+    <color name="textPrimaryVariant">#2D2B37</color>
+    <color name="primaryPetugas">#FF7000</color>
+    <color name="secondaryPetugas">#47B782</color>
+
+    <color name="textGrey">#868A8F</color>
+    <color name="header">#ffc736</color>
+
 </resources>

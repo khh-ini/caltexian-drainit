@@ -1,10 +1,10 @@
 package com.azizapp.test
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.azizapp.test.fragment.daftar
+import com.azizapp.test.ui.daftar.DaftarActivity
 import com.azizapp.test.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.splash.*
 import me.relex.circleindicator.CircleIndicator3
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     private var imagesList = mutableListOf<Int>()
 
     var desc = arrayOf("Laporkan kerusakan jaringan drainase manapun dengan mudah","Ditangani langsung oleh Pemerintah Kota Pekanbaru")
-    var image = intArrayOf(R.drawable.hprusak, R.drawable.pemerintahlogo)
+    var image = intArrayOf(R.raw.smartphone, R.raw.laborer)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         indicator.setViewPager(view_pager2)
 
         btnBuatAkun.setOnClickListener {
-            val intent = Intent(this, daftar::class.java)
+            val intent = Intent(this, DaftarActivity::class.java)
             startActivity(intent)
         }
 
