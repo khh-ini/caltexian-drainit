@@ -50,7 +50,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@={viewModeEditProfile.nama}"
                 android:textColor="@color/white"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@={viewModeEditProfile.noHp}"
                 android:textColor="@color/white"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
                 android:drawablePadding="10dp"
                 android:text="Ubah Profil"
                 android:textColor="@color/textPrimary"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -112,7 +112,7 @@
                 android:drawablePadding="10dp"
                 android:text="Ubah Password"
                 android:textColor="@color/textPrimary"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -133,7 +133,7 @@
                 android:drawablePadding="10dp"
                 android:text="Keluar"
                 android:textColor="@color/textPrimary"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
         </RelativeLayout>
 
         <LinearLayout
@@ -162,7 +162,7 @@
                 android:drawablePadding="10dp"
                 android:text="Tentang Kami"
                 android:textColor="@color/textPrimary"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
         </RelativeLayout>
 
         <LinearLayout

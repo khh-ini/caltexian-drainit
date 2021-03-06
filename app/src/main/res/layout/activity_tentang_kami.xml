@@ -29,7 +29,7 @@
                     android:fontFamily="@font/poppins_bold"
                     android:text="DRAIN"
                     android:textColor="@color/primary"
-                    android:textSize="50dp" />
+                    android:textSize="50sp" />
 
                 <TextView
                     android:id="@+id/it"
@@ -40,7 +40,7 @@
                     android:fontFamily="@font/poppins_bold"
                     android:text="IT"
                     android:textColor="@color/black"
-                    android:textSize="50dp" />
+                    android:textSize="50sp" />
 
                 <TextView
                     android:layout_width="wrap_content"

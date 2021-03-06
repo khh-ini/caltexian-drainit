@@ -14,7 +14,7 @@
         android:padding="15dp"
         android:text="Pilih Jenis Laporan"
         android:textColor="@color/white"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:id="@+id/titik_tersumbat"

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.ui.AppBarConfiguration
 import com.azizapp.test.R
 import com.azizapp.test.databinding.ActivityDetilRiwayatBinding
 import com.azizapp.test.model.Pengaduan
@@ -23,6 +24,8 @@ class DetilRiwayat : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detil_riwayat)
 
         val item: Pengaduan? = intent.getParcelableExtra(DETAIL_EXTRA_PARCEL)
@@ -31,5 +34,10 @@ class DetilRiwayat : AppCompatActivity() {
             lifecycleOwner = this@DetilRiwayat
             data = item
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 }

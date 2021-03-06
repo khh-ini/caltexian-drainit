@@ -40,7 +40,7 @@
             android:textColor="@color/textPrimary"
             android:text="Buat Akun"
             android:textAllCaps="true"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <RelativeLayout
             android:id="@+id/rl_masuk"

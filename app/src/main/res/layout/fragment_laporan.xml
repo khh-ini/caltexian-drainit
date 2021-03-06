@@ -29,7 +29,7 @@
             android:fontFamily="@font/poppins_bold"
             android:text="@={viewModelLaporan.tipe_pengaduan}"
             android:textColor="@color/textPrimary"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -74,7 +74,7 @@
                     android:text="@={viewModelLaporan.namaJalan}"
                     android:textColor="@color/textColorSecondary"
                     android:textColorHint="@color/textColorSecondary"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     app:layout_constraintTop_toTopOf="@id/constraintLayout"
                     tools:ignore="MissingConstraints" />
 
@@ -95,7 +95,7 @@
                     android:text="@={viewModelLaporan.lokasi}"
                     android:textColor="@color/textColorSecondary"
                     android:textColorHint="@color/textColorSecondary"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     app:layout_constraintTop_toBottomOf="@id/editTextNamaJalan" />
 
 
@@ -127,7 +127,7 @@
                         android:text="@={viewModelLaporan.deskripsi}"
                         android:textColor="@color/textColorSecondary"
                         android:textColorHint="@color/textColorSecondary"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -162,7 +162,7 @@
                         android:padding="10dp"
                         android:scaleType="centerCrop"
                         android:src="@{viewModelLaporan.img}"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         tools:ignore="MissingConstraints" />
 
                 </RelativeLayout>
@@ -199,7 +199,7 @@
                     android:text="Lapor"
                     android:textAllCaps="true"
                     android:textColor="@color/textPrimary"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/foto"
