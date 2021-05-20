@@ -71,11 +71,28 @@ class MasyarakatController extends Controller
 
         return response()->json(['message'=>'log in successfully!','user'=>$user,'access_token'=>$accessToken,'status_code'=>200],200);
     }
+    public function reset_password(request $request){
+      $validated = $request->validate([
+        'newpassword'=> 'required|confirmed',
+        'oldpassword' => 'required'
+      ]);
+      $id = auth()->user()->id;
+
+      $data = Petugas::find($id);
+      if(!Hash::check( $validated['oldpassword'],$data->password)){
+          return response(['message'=>'password salah','status_code'=>401],401);
+      }else{
+        $data->password = Hash::make($request->newpassword);
+        $data->save();
+        return response()->json(["message" => "Password Updated Successfully!",'status_code'=>200],200);
+      }
+
+    }
     public function update(request $request){
         $validated = $request->validate([
             'nama' => 'required|max:55',
             'email' => 'email|required',
-            'password'=> 'required|confirmed',
+            'password'=> 'nullabe|confirmed',
             'foto'=> 'nullable',
             'no_hp'=> 'required',
             'alamat'=> 'required',
@@ -86,7 +103,9 @@ class MasyarakatController extends Controller
         $data->nama = $request->nama;
         $data->no_hp = $request->no_hp;
         $data->email = $request->email;
-        $data->password = Hash::make($request->password);
+        if(!is_null($request->password)){
+          $data->password = Hash::make($request->password);
+        }
         $data->alamat = $request->alamat;
 
         if(!is_null($request->foto)){

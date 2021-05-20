@@ -18,7 +18,7 @@ class CreatePengaduansTable extends Migration
             $table->uuid('id_masyarakat');
             $table->uuid('id_admin')->nullable();
             $table->uuid('id_petugas')->nullable();
-            $table->string('nama_jalan',50);
+            $table->text('nama_jalan');
             $table->geometry('geometry');
             $table->string('foto');
             $table->string('tipe_pengaduan',20);

@@ -67,7 +67,7 @@ class PetugasController extends Controller
         $user = Petugas::where('email',$loginData['email'])->first();
 
         if(!$user || !Hash::check( $loginData['password'],$user->password)){
-            return response(['message'=>'invalid credentials']);
+            return response(['message'=>'invalid credentials','status_code'=>401],401);
         }
 
         $accessToken = $user->createToken('authToken')->accessToken;
@@ -78,7 +78,6 @@ class PetugasController extends Controller
         $validated = $request->validate([
             'nama' => 'required|max:55',
             'email' => 'email|required',
-            'password'=> 'required|confirmed',
             'foto'=> 'nullable',
             'posisi_petugas' => 'required',
             'tempat_lahir' => 'required',
@@ -92,7 +91,6 @@ class PetugasController extends Controller
         $data->nama = $request->nama;
         $data->no_hp = $request->no_hp;
         $data->email = $request->email;
-        $data->password = Hash::make($request->password);
         $data->posisi_petugas = $request->posisi_petugas;
         $data->tempat_lahir = $request->tempat_lahir;
         $data->tgl_lahir = $request->tgl_lahir;
@@ -100,7 +98,6 @@ class PetugasController extends Controller
 
         if(!is_null($request->foto)){
           $fileUploadHelper = new CustomHelpper();
-
           $encoded_img = $request->foto;
           $decoded = base64_decode($encoded_img);
           $mime_type = finfo_buffer(finfo_open(), $decoded, FILEINFO_MIME_TYPE);
@@ -114,6 +111,23 @@ class PetugasController extends Controller
         $data->save();
 
         return response()->json(["message" => "Data Updated Successfully!", "data" => $data,'status_code'=>200],200);
+    }
+    public function reset_password(request $request){
+      $validated = $request->validate([
+        'newpassword'=> 'required|confirmed',
+        'oldpassword' => 'required'
+      ]);
+      $id = auth()->user()->id;
+
+      $data = Petugas::find($id);
+      if(!Hash::check( $validated['oldpassword'],$data->password)){
+          return response(['message'=>'password salah','status_code'=>401],401);
+      }else{
+        $data->password = Hash::make($request->newpassword);
+        $data->save();
+        return response()->json(["message" => "Password Updated Successfully!",'status_code'=>200],200);
+      }
+
     }
 
     public function update_by_admin(request $request, $id){
@@ -139,7 +153,6 @@ class PetugasController extends Controller
 
         if(!is_null($request->foto)){
           $fileUploadHelper = new CustomHelpper();
-
           $encoded_img = $request->foto;
           $decoded = base64_decode($encoded_img);
           $mime_type = finfo_buffer(finfo_open(), $decoded, FILEINFO_MIME_TYPE);
@@ -147,7 +160,7 @@ class PetugasController extends Controller
           $file = uniqid() .'.'. $extension;
           $file_dir = storage_path('app/public/images/'). $file;
           file_put_contents($file_dir, $decoded);
-          $validated['foto'] = $file;
+          $data->foto = $file;
         }
 
         $data->save();
@@ -169,7 +182,7 @@ class PetugasController extends Controller
     {
         $data = DB::table('oauth_access_tokens')->where('user_id', auth()->user()->id);
         if($data){
-            $data->delete();
+          $data->delete();
         }
         return response()->json(['status_code'=>200],200);
     }

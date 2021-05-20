@@ -17,6 +17,7 @@ class TitikBanjirController extends Controller
             'kondisi_kerusakan',
             'foto',
             'keterangan',
+            'status',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->get();
     }
@@ -29,6 +30,7 @@ class TitikBanjirController extends Controller
             'kondisi_kerusakan',
             'foto',
             'keterangan',
+            'status',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->where('id',$id)->first();;
     }
@@ -40,6 +42,7 @@ class TitikBanjirController extends Controller
             'foto'=> 'nullable',
             'keterangan' => 'nullable',
             'kondisi_kerusakan' => 'required',
+            'status'=> 'nullable',
         ]);
 
         $validated['id_admin'] = auth()->user()->id;
@@ -75,6 +78,7 @@ class TitikBanjirController extends Controller
             'foto'=> 'nullable',
             'keterangan' => 'nullable',
             'kondisi_kerusakan' => 'required',
+            'status'=> 'nullable',
         ]);
 
         $data = TitikBanjir::find($id);

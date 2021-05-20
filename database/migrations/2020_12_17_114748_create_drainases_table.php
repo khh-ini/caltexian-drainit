@@ -16,7 +16,7 @@ class CreateDrainasesTable extends Migration
         Schema::create('drainases', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('id_admin');
-            $table->string('nama_jalan',50);
+            $table->text('nama_jalan');
             $table->float('panjang',10);
             $table->float('lebar',10);
             $table->float('kedalaman',10);

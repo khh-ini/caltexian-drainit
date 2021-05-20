@@ -15,6 +15,7 @@ class TitikTersumbatController extends Controller
             'id_admin',
             'nama_jalan',
             'keterangan',
+            'status',
             'foto',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->get();
@@ -26,6 +27,7 @@ class TitikTersumbatController extends Controller
             'id_admin',
             'nama_jalan',
             'keterangan',
+            'status',
             'foto',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->where('id',$id)->first();;
@@ -38,6 +40,7 @@ class TitikTersumbatController extends Controller
             'geometry' => 'required',
             'foto'=> 'required',
             'keterangan' => 'nullable',
+            'status'=> 'nullable',
         ]);
 
         $validated['id_admin'] = auth()->user()->id;
@@ -72,6 +75,7 @@ class TitikTersumbatController extends Controller
             'geometry' => 'required',
             'foto'=> 'nullable',
             'keterangan' => 'nullable',
+            'status'=> 'nullable',
         ]);
 
         $data = TitikTersumbat::find($id);

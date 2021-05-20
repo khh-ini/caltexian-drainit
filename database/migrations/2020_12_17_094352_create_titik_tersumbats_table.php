@@ -17,7 +17,7 @@ class CreateTitikTersumbatsTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('id_admin');
             $table->geometry('geometry');
-            $table->string('nama_jalan',50);
+            $table->text('nama_jalan');
             $table->string('foto');
             $table->text('keterangan')->nullable();
             $table->timestamps();

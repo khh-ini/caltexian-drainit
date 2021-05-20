@@ -94,6 +94,7 @@ Route::prefix('drainase')->group(function (){
     Route::get('/','DrainaseController@index')->name('get.drainase');
     Route::get('/{id}','DrainaseController@show')->name('get_by_id.drainase');
 
+
     Route::middleware('auth:api-admin')->group(function (){
         Route::post('/','DrainaseController@create')->name('create.drainase');
         Route::put('/{i}','DrainaseController@update')->name('update.drainase');
@@ -104,6 +105,7 @@ Route::prefix('drainase')->group(function (){
 Route::prefix('pengaduan')->group(function (){
     Route::get('/','PengaduanController@index')->name('get.pengaduan');
     Route::get('/{id}','PengaduanController@show')->name('get_by_id.pengaduan');
+    Route::post('/anonim','PengaduanController@anonim')->name('create_anonim.pengaduan');
 
     Route::middleware('auth:api-masyarakat')->group(function (){
         Route::post('/','PengaduanController@create')->name('create.pengaduan');
@@ -114,8 +116,31 @@ Route::prefix('pengaduan')->group(function (){
         Route::delete('/{id}','PengaduanController@delete')->name('delete.pengaduan');;
     });
 });
+Route::get('/pengaduan_by_tipe/{tipe}','PengaduanController@get_by_tipe')->name('get_by_tipe.pengaduan');
+Route::get('/pengaduan_by_status/{status}','PengaduanController@get_by_status')->name('get_by_status.pengaduan');
+Route::get('/pengaduan_by_tipe_n_status/{tipe}/{status}','PengaduanController@get_by_tipe_n_status')->name('get_by_tipe_n_status.pengaduan');
+
+Route::prefix('kategori')->group(function (){
+    Route::get('/','KategoriController@index')->name('get.kategori');
+    Route::get('/{id}','KategoriController@show')->name('get_by_id.kategori');
+
+    Route::middleware('auth:api-admin')->group(function (){
+        Route::post('/','KategoriController@create')->name('create.kategori');
+        Route::put('/{id}','KategoriController@update')->name('update.kategori');
+        Route::delete('/{id}','KategoriController@delete')->name('delete.kategori');
+    });
+});
+
+Route::prefix('change_password')->group(function(){
+  Route::put('/admin','AdminController@reset_password')->name('reset_password.admin')->middleware('auth:api-admin');
+  Route::put('/petugas','PetugasController@reset_password')->name('reset_password.petugas')->middleware('auth:api-petugas');
+  Route::put('/masyarakat','MasyarakatController@reset_password')->name('reset_password.masyarakat')->middleware('auth:api-masyarakat');
+});
 
 Route::get('/pengaduan_by_masyarakat','PengaduanController@get_by_masyarakat')->name('get_by_masyarakat.pengaduan')->middleware('auth:api-masyarakat');
+Route::get('/pengaduan_by_petugas','PengaduanController@get_by_petugas')->name('get_by_petugas.pengaduan')->middleware('auth:api-petugas');
+Route::get('/pengaduan_not_assign','PengaduanController@get_not_assign')->name('get_not_assign.pengaduan');
+Route::get('/pengaduan_not_verified','PengaduanController@get_not_verified')->name('get_not_verified.pengaduan');
 
 Route::prefix('update_pengaduan')->group(function(){
     Route::put('/admin/{id}','PengaduanController@updateAdmin')->middleware('auth:api-admin')->name('update_pengaduan.admin');

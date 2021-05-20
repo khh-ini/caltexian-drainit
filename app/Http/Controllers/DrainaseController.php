@@ -17,6 +17,7 @@ class DrainaseController extends Controller
             'bahan','kondisi',
             'akhir_pembuangan','arah_alir',
             'foto','tipe_drainase',
+            'status',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->get();
     }
@@ -29,6 +30,7 @@ class DrainaseController extends Controller
             'bahan','kondisi',
             'akhir_pembuangan','arah_alir',
             'foto','tipe_drainase',
+            'status',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->where('id',$id)->first();
     }
@@ -46,7 +48,8 @@ class DrainaseController extends Controller
             'arah_alir' => 'required',
             'foto'=> 'nullable',
             'tipe_drainase' => 'required',
-            'geometry' => 'required|JSON'
+            'geometry' => 'required|JSON',
+            'status'=> 'nullable'
         ]);
 
 
@@ -88,7 +91,8 @@ class DrainaseController extends Controller
             'arah_alir' => 'required',
             'foto'=> 'nullable',
             'tipe_drainase' => 'required',
-            'geometry' => 'required|JSON'
+            'geometry' => 'required|JSON',
+            'status'=> 'nullable'
         ]);
 
         $data = Drainase::find($id);
