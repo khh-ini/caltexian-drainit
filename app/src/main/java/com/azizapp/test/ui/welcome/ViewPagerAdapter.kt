@@ -1,4 +1,4 @@
-package com.azizapp.test
+package com.azizapp.test.ui.welcome
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.azizapp.test.R
 
 class ViewPagerAdapter(
     private var details: List<String>,
@@ -32,7 +33,7 @@ class ViewPagerAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ViewPagerAdapter.Pager2ViewHolder {
+    ): Pager2ViewHolder {
         return Pager2ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_splash, parent, false)
         )
@@ -42,7 +43,7 @@ class ViewPagerAdapter(
         return details.size
     }
 
-    override fun onBindViewHolder(holder: ViewPagerAdapter.Pager2ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: Pager2ViewHolder, position: Int) {
         holder.itemDetails.text = details[position]
         holder.itemImage.setAnimation(images[position])
     }

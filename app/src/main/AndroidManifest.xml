@@ -26,7 +26,7 @@
         <activity android:name=".ui.navigationbar.MainActivityNav" />
         <activity android:name=".ui.daftar.DaftarActivity" />
         <activity android:name=".ui.login.LoginActivity" android:noHistory="true"/>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.welcome.MainActivity" />
         <activity android:name=".ui.laporan.LaporanActivity" />
         <activity android:name=".ui.laporan.MapActivity" />
         <activity android:name=".ui.laporan.SuccessPage" />
