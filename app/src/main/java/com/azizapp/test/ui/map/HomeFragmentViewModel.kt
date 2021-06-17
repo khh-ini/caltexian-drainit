@@ -18,17 +18,20 @@ class HomeFragmentViewModel @Inject constructor(
     val listTitikBanjir: ArrayList<TitikBanjir> = arrayListOf()
     val listTitikTersumbat: ArrayList<TitikTersumbat> = arrayListOf()
     val action = MutableLiveData<String>()
-    val actionItemPosition = MutableLiveData<Int>()
+    val loadingEnable = MutableLiveData<Boolean>()
 
     fun onLoad() {
+        loadingEnable.value = true
         viewModelScope.launch {
             when (val response = repository.getTitikBanjir()) {
                 is Resource.Success -> {
                     response.data?.forEach {
                         listTitikBanjir.add(it)
                     }
+                    loadingEnable.postValue(false)
                 }
                 is Resource.Error -> {
+                    loadingEnable.postValue(false)
                 }
             }
 
@@ -36,14 +39,17 @@ class HomeFragmentViewModel @Inject constructor(
     }
 
     fun titikTersumbat() {
+        loadingEnable.value = true
         viewModelScope.launch {
             when (val response = repository.getTitikTersumbat()) {
                 is Resource.Success -> {
                     response.data?.forEach {
                         listTitikTersumbat.add(it)
                     }
+                    loadingEnable.postValue(false)
                 }
                 is Resource.Error -> {
+                    loadingEnable.postValue(false)
                 }
             }
         }

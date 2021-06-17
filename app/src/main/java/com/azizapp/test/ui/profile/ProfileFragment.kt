@@ -35,30 +35,31 @@ class ProfileFragment : Fragment() {
             viewModeEditProfile = editProfileViewModel
         }
 
-        val ubahProfil: RelativeLayout = binding.root.findViewById(R.id.ubahProfil)
-        val gantiPassword: RelativeLayout = binding.root.findViewById(R.id.ubahPassword)
-        val keluar: RelativeLayout = binding.root.findViewById(R.id.keluar)
-        val tentang_kami: RelativeLayout = binding.root.findViewById(R.id.tentangKami)
+        with(binding){
+            ubahProfil.setOnClickListener {
+                val intent = Intent(activity, ActivityEditProfile::class.java)
+                startActivity(intent)
+            }
 
-        ubahProfil.setOnClickListener {
-            val intent = Intent(activity, ActivityEditProfile::class.java)
-            startActivity(intent)
+            ubahPassword.setOnClickListener {
+                val intent = Intent(activity, EditPasswordActivity::class.java)
+                startActivity(intent)
+            }
+            keluar.setOnClickListener {
+                Session.unset()
+                val intent = Intent(activity, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intent)
+            }
+
+            tentangKami.setOnClickListener {
+                val intent = Intent(activity, ActivityTentangKami::class.java)
+                startActivity(intent)
+            }
         }
 
-        gantiPassword.setOnClickListener {
-            val intent = Intent(activity, EditPasswordActivity::class.java)
-            startActivity(intent)
-        }
-        keluar.setOnClickListener {
-            Session.bearer = ""
-            val intent = Intent(activity, LoginActivity::class.java)
-            startActivity(intent)
-        }
 
-        tentang_kami.setOnClickListener {
-            val intent = Intent(activity, ActivityTentangKami::class.java)
-            startActivity(intent)
-        }
+
         editProfileViewModel.onLoad()
         // Inflate the layout for this fragment
         return binding.root

@@ -47,4 +47,5 @@
     <string name="nama_jalan">Nama Jalan</string>
     <string name="koordinat">Koordinat</string>
     <string name="deskripsi">Deskripsi</string>
+    <string name="daftar_titik_banjir_dan_tersumbat">Daftar Titik Banjir dan Tersumbat</string>
 </resources>

@@ -3,8 +3,8 @@ package com.azizapp.test.ui.laporan
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.azizapp.test.MainActivityNav
-import com.azizapp.test.MainActivityNavGuest
+import com.azizapp.test.ui.navigationbar.MainActivityNav
+import com.azizapp.test.ui.navigationbar.MainActivityNavGuest
 import com.azizapp.test.R
 import kotlinx.android.synthetic.main.success_page.*
 

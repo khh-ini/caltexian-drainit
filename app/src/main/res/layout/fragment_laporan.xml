@@ -178,11 +178,12 @@
                     tools:ignore="MissingConstraints">
 
                     <ProgressBar
+                        android:translationZ="100dp"
                         android:id="@+id/pb_login_loading"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:visibility="@{viewModelLaporan.loadingEnable ? View.VISIBLE : View.GONE}"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         tools:ignore="NotSibling"
                         tools:visibility="gone" />

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.azizapp.test.ui.daftar.DaftarActivity
 import com.azizapp.test.ui.login.LoginActivity
+import com.azizapp.test.ui.navigationbar.MainActivityNavGuest
 import kotlinx.android.synthetic.main.splash.*
 import me.relex.circleindicator.CircleIndicator3
 
