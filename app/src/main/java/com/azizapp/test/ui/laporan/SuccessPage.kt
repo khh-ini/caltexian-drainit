@@ -13,14 +13,14 @@ class SuccessPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.success_page)
         val type = intent.getStringExtra("type")
-        btnKembali.setOnClickListener(){
+        btnKembali.setOnClickListener {
             when (type) {
                 "login" -> {
-                    val intent = Intent(this,MainActivityNav::class.java)
+                    val intent = Intent(this, MainActivityNav::class.java)
                     startActivity(intent)
                 }
                 "anonim" -> {
-                    val intent = Intent(this,MainActivityNavGuest::class.java)
+                    val intent = Intent(this, MainActivityNavGuest::class.java)
                     startActivity(intent)
                 }
             }

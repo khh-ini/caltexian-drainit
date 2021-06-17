@@ -14,7 +14,10 @@ class MainActivity : AppCompatActivity() {
     private var descList = mutableListOf<String>()
     private var imagesList = mutableListOf<Int>()
 
-    var desc = arrayOf("Laporkan kerusakan jaringan drainase manapun dengan mudah","Ditangani langsung oleh Pemerintah Kota Pekanbaru")
+    var desc = arrayOf(
+        "Laporkan kerusakan jaringan drainase manapun dengan mudah",
+        "Ditangani langsung oleh Pemerintah Kota Pekanbaru"
+    )
     var image = intArrayOf(R.raw.smartphone, R.raw.laborer)
 
     override fun onCreate(savedInstanceState: Bundle?) {

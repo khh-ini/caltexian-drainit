@@ -13,7 +13,10 @@ import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -28,14 +31,14 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private var markerList: ArrayList<Marker>? = null
     var markerListTersumbat: ArrayList<Marker>? = null
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         mapView2.onCreate(savedInstanceState)
         mapView2.onResume()
 
         mapView2.getMapAsync(this)
         HomeViewModel.onLoad()
-       HomeViewModel.titikTersumbat()
+        HomeViewModel.titikTersumbat()
     }
 
     override fun onCreateView(

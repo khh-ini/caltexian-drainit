@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.ui.AppBarConfiguration
 import com.azizapp.test.R
 import com.azizapp.test.databinding.ActivityDetilRiwayatBinding
 import com.azizapp.test.model.Pengaduan
@@ -18,7 +17,7 @@ class DetilRiwayat : AppCompatActivity() {
     lateinit var binding: ActivityDetilRiwayatBinding
     private val detilRiwayatViewModel: DetilRiwayatViewModel by viewModels()
 
-    companion object{
+    companion object {
         const val DETAIL_EXTRA_PARCEL = "DETAIL_EXTRA_PARCEL"
     }
 

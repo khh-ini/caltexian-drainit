@@ -32,11 +32,11 @@ interface MasyarakatService {
     suspend fun pengaduanMasyarakat(
         @Header("Authorization") token: String,
         @Header("Accept") accept: String,
-        @Part ("nama_jalan") nama_jalan: RequestBody,
+        @Part("nama_jalan") nama_jalan: RequestBody,
         @Part image: MultipartBody.Part,
-        @Part ("tipe_pengaduan") tipe_pengaduan: RequestBody,
-        @Part ("deskripsi_pengaduan") deskripsi_pengaduan: RequestBody,
-        @Part ("geometry") geometry: RequestBody
+        @Part("tipe_pengaduan") tipe_pengaduan: RequestBody,
+        @Part("deskripsi_pengaduan") deskripsi_pengaduan: RequestBody,
+        @Part("geometry") geometry: RequestBody
     ): Response<DataPengaduanMasyarakat>
 
     @POST("api/masyarakat")
@@ -48,11 +48,11 @@ interface MasyarakatService {
     @GET("api/pengaduan_by_masyarakat")
     suspend fun riwayatMasyarakat(
         @Header("Authorization") token: String
-    ):Response<PengaduanResponse>
+    ): Response<PengaduanResponse>
 
     @GET("api/titik_banjir")
-    suspend fun titikBanjir():Response<TitikBanjirResponse>
+    suspend fun titikBanjir(): Response<TitikBanjirResponse>
 
     @GET("api/titik_tersumbat")
-    suspend fun titikTersumbat():Response<TitikTersumbatResponse>
+    suspend fun titikTersumbat(): Response<TitikTersumbatResponse>
 }

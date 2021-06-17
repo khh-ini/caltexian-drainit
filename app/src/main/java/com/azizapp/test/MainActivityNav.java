@@ -28,6 +28,7 @@ public class MainActivityNav extends AppCompatActivity {
     private EditText editText;
     private SaveSharedPreference SaveSharedPreference;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -18,8 +18,8 @@ import kotlinx.android.synthetic.main.fragment_nama_jalan.*
 
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
-    var city = "";
-    var address = "";
+    var city = ""
+    var address = ""
     var lat: Double = 0.0
     var long: Double = 0.0
 

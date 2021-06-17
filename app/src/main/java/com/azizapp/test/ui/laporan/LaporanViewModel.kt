@@ -2,7 +2,6 @@ package com.azizapp.test.ui.laporan
 
 import android.app.Application
 import android.net.Uri
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,6 +9,7 @@ import com.azizapp.test.repository.MainRepository
 import com.azizapp.test.utill.Resource
 import com.azizapp.test.utill.Session
 import com.azizapp.test.utill.getFileName
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -17,16 +17,18 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import javax.inject.Inject
 
-class LaporanViewModel @ViewModelInject constructor(
-    val repository: MainRepository,
-    val application: Application
+@HiltViewModel
+class LaporanViewModel @Inject constructor(
+    private val repository: MainRepository,
+    private val application: Application
 ) : ViewModel() {
 
     private val context by lazy {
         application.baseContext.applicationContext
     }
-    private  val contentResolver by lazy {
+    private val contentResolver by lazy {
         application.baseContext.contentResolver
     }
 

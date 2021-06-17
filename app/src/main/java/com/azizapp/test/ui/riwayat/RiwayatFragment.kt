@@ -49,7 +49,8 @@ class RiwayatFragment : Fragment() {
     }
 
     private fun listItemOnClick() {
-        val itemClicked = riwayatViewModel.listPengaduan[riwayatViewModel.actionItemPosition.value ?: 0]
+        val itemClicked =
+            riwayatViewModel.listPengaduan[riwayatViewModel.actionItemPosition.value ?: 0]
 
         val intent = Intent(requireContext(), DetilRiwayat::class.java)
         intent.putExtra(DetilRiwayat.DETAIL_EXTRA_PARCEL, itemClicked)

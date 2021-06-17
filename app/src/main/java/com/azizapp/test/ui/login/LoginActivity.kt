@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginViewModel.action.observe(this, Observer { action ->
-            when(action) {
+            when (action) {
                 LoginViewModel.ACTION_LOGIN_SUCCESS -> loginSuccess()
                 LoginViewModel.ACTION_LOGIN_FAILED -> loginFailed()
                 LoginViewModel.ACTION_LOGIN_ERROR -> loginError()
@@ -45,14 +45,18 @@ class LoginActivity : AppCompatActivity() {
 
         })
 
-        tv_login_daftar.setOnClickListener{
+        tv_login_daftar.setOnClickListener {
             val intent = Intent(this, DaftarActivity::class.java)
             startActivity(intent)
         }
     }
 
     private fun loginError() {
-        val snackbar = Snackbar.make(binding.root,"Login Gagal, Email atau Password salah",Snackbar.LENGTH_SHORT)
+        val snackbar = Snackbar.make(
+            binding.root,
+            "Login Gagal, Email atau Password salah",
+            Snackbar.LENGTH_SHORT
+        )
         val textView = snackbar.view.findViewById(R.id.snackbar_text) as TextView
         // change Snackbar text color
         textView.setTextColor(Color.parseColor("#FFFFFF"))
@@ -61,7 +65,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginFailed() {
-        val snackbar = Snackbar.make(binding.root,"Login Error, server error",Snackbar.LENGTH_SHORT)
+        val snackbar =
+            Snackbar.make(binding.root, "Login Error, server error", Snackbar.LENGTH_SHORT)
         val textView = snackbar.view.findViewById(R.id.snackbar_text) as TextView
         // change Snackbar text color
         textView.setTextColor(Color.parseColor("#FFFFFF"))
@@ -70,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginSuccess() {
-        startActivity(Intent(this,MainActivityNav::class.java))
+        startActivity(Intent(this, MainActivityNav::class.java))
         //SaveSharedPreference.setEmail(this, tvEmail.text.toString())
     }
 }

@@ -35,10 +35,10 @@ class ProfileFragment : Fragment() {
             viewModeEditProfile = editProfileViewModel
         }
 
-        val ubahProfil : RelativeLayout = binding.root.findViewById(R.id.ubahProfil)
-        val gantiPassword : RelativeLayout = binding.root.findViewById(R.id.ubahPassword)
-        val keluar:RelativeLayout = binding.root.findViewById(R.id.keluar)
-        val tentang_kami:RelativeLayout = binding.root.findViewById(R.id.tentangKami)
+        val ubahProfil: RelativeLayout = binding.root.findViewById(R.id.ubahProfil)
+        val gantiPassword: RelativeLayout = binding.root.findViewById(R.id.ubahPassword)
+        val keluar: RelativeLayout = binding.root.findViewById(R.id.keluar)
+        val tentang_kami: RelativeLayout = binding.root.findViewById(R.id.tentangKami)
 
         ubahProfil.setOnClickListener {
             val intent = Intent(activity, ActivityEditProfile::class.java)
@@ -49,7 +49,7 @@ class ProfileFragment : Fragment() {
             val intent = Intent(activity, EditPasswordActivity::class.java)
             startActivity(intent)
         }
-        keluar.setOnClickListener{
+        keluar.setOnClickListener {
             Session.bearer = ""
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)

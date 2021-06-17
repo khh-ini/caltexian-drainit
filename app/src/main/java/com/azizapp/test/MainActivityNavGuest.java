@@ -46,7 +46,7 @@ public class MainActivityNavGuest extends AppCompatActivity {
             @Override
             public void onItemSelected(int id) {
                 Fragment fragment = null;
-                switch (id){
+                switch (id) {
                     case R.id.nav_new_guest:
                         fragment = new LaporanFragment("anonim");
                         break;
@@ -55,7 +55,7 @@ public class MainActivityNavGuest extends AppCompatActivity {
                         break;
                 }
 
-                if (fragment!=null){
+                if (fragment != null) {
                     fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction()
                             .replace(R.id.main_frame_guest, fragment)

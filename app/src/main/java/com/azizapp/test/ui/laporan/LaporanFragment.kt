@@ -74,7 +74,7 @@ class LaporanFragment @Inject constructor(private val typeUser: String) : Fragme
                 startActivityForResult(it, 1)
             }
         }
-        binding.buttonLapor.setOnClickListener() {
+        binding.buttonLapor.setOnClickListener {
             when (typeUser) {
                 "login" -> uploadImage()
                 "anonim" -> uploadImageAnonym()

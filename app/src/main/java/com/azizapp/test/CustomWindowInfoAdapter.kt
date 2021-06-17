@@ -12,17 +12,17 @@ class CustomWindowInfoAdapter(context: Context) : GoogleMap.InfoWindowAdapter {
     var mContext = context
     var mWindow = (context as Activity).layoutInflater.inflate(R.layout.custom_info_layout, null)
 
-    private fun rendowWindowText(marker: Marker, view: View){
+    private fun rendowWindowText(marker: Marker, view: View) {
         val title = marker.title
         val tvTitle = view.findViewById<TextView>(R.id.tvTitleMarker)
-        if (title != ""){
+        if (title != "") {
             tvTitle.text = title
         }
 
         val snippet = marker.snippet
         val tvSnippet = view.findViewById<TextView>(R.id.tvSnippet)
 
-        if (snippet != ""){
+        if (snippet != "") {
             tvSnippet.text = snippet
         }
         //val image = view.findViewById<ImageView>(R.id.imageInfo)
