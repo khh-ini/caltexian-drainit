@@ -20,6 +20,7 @@ class CreateTitikBanjirsTable extends Migration
             $table->text('nama_jalan');
             $table->text('kondisi_kerusakan');
             $table->text('keterangan')->nullable();
+            $table->text('status');
             $table->string('foto');
             $table->timestamps();
         });

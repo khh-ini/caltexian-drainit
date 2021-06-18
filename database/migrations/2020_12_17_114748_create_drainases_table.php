@@ -25,6 +25,7 @@ class CreateDrainasesTable extends Migration
             $table->string('arah_alir',15);
             $table->string('akhir_pembuangan',15);
             $table->string('foto');
+            $table->text('status');
             $table->string('tipe_drainase',15);
             $table->geometry('geometry');
             $table->timestamps();
