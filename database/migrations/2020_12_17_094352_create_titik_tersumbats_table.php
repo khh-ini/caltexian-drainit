@@ -19,6 +19,7 @@ class CreateTitikTersumbatsTable extends Migration
             $table->geometry('geometry');
             $table->text('nama_jalan');
             $table->string('foto');
+            $table->text('status');
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });
