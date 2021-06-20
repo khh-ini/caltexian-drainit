@@ -1,47 +1,46 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\TitikBanjir;
+use App\TitikTersumbat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\CustomHelpper;
+use App\Http\Controllers\Controller;
 
-class TitikBanjirController extends Controller
+class TitikTersumbatController extends Controller
 {
     public function index(){
-        return TitikBanjir::select(
+        return TitikTersumbat::select(
             'id',
             'id_admin',
             'nama_jalan',
-            'kondisi_kerusakan',
-            'foto',
             'keterangan',
             'status',
+            'foto',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->get();
     }
 
     public function show($id){
-        return TitikBanjir::select(
+        return TitikTersumbat::select(
             'id',
             'id_admin',
             'nama_jalan',
-            'kondisi_kerusakan',
-            'foto',
             'keterangan',
             'status',
+            'foto',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->where('id',$id)->first();;
     }
 
     public function create(request $request){
+
         $validated = $request->validate([
             'nama_jalan' => 'required',
             'geometry' => 'required',
-            'foto'=> 'nullable',
+            'foto'=> 'required',
             'keterangan' => 'nullable',
-            'kondisi_kerusakan' => 'required',
             'status'=> 'nullable',
         ]);
 
@@ -49,7 +48,7 @@ class TitikBanjirController extends Controller
         $validated['geometry'] = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
 
         if(is_null($request->foto)){
-            $validated['foto'] = 'defaultbanjir.png';
+            $validated['foto'] = 'defaulttersumbat.png';
         }else{
           $fileUploadHelper = new CustomHelpper();
 
@@ -63,8 +62,7 @@ class TitikBanjirController extends Controller
           $validated['foto'] = $file;
         }
 
-
-        $data = TitikBanjir::create($validated);
+        $data = TitikTersumbat::create($validated);
 
         $data->geometry = json_decode($request->geometry);
 
@@ -72,21 +70,21 @@ class TitikBanjirController extends Controller
     }
 
     public function update(request $request, $id){
+
         $validated = $request->validate([
             'nama_jalan' => 'required',
             'geometry' => 'required',
             'foto'=> 'nullable',
             'keterangan' => 'nullable',
-            'kondisi_kerusakan' => 'required',
             'status'=> 'nullable',
         ]);
 
-        $data = TitikBanjir::find($id);
+        $data = TitikTersumbat::find($id);
         $data->id_admin = auth()->user()->id;
         $data->geometry = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
         $data->nama_jalan = $request->nama_jalan;
-        $data->kondisi_kerusakan = $request->kondisi_kerusakan;
         $data->keterangan = $request->keterangan;
+
         if(!is_null($request->foto)){
           $fileUploadHelper = new CustomHelpper();
 
@@ -107,7 +105,7 @@ class TitikBanjirController extends Controller
     }
 
     public function delete($id){
-        $data = TitikBanjir::find($id);
+        $data = TitikTersumbat::find($id);
         if($data){
           $data->delete();
         }else{

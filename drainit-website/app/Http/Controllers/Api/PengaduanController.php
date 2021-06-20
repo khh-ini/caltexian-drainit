@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Pengaduan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\CustomHelpper;
+use App\Http\Controllers\Controller;
 
 class PengaduanController extends Controller
 {

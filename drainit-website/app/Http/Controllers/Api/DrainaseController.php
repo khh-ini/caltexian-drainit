@@ -1,53 +1,65 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\TitikTersumbat;
+use App\Drainase;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\CustomHelpper;
 
-class TitikTersumbatController extends Controller
+class DrainaseController extends Controller
 {
     public function index(){
-        return TitikTersumbat::select(
-            'id',
-            'id_admin',
-            'nama_jalan',
-            'keterangan',
+        return Drainase::select(
+            'id','id_admin',
+            'nama_jalan','lebar',
+            'panjang','kedalaman',
+            'bahan','kondisi',
+            'akhir_pembuangan','arah_alir',
+            'foto','tipe_drainase',
             'status',
-            'foto',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
         )->get();
     }
 
     public function show($id){
-        return TitikTersumbat::select(
-            'id',
-            'id_admin',
-            'nama_jalan',
-            'keterangan',
+        return Drainase::select(
+            'id','id_admin',
+            'nama_jalan','lebar',
+            'panjang','kedalaman',
+            'bahan','kondisi',
+            'akhir_pembuangan','arah_alir',
+            'foto','tipe_drainase',
             'status',
-            'foto',
             DB::Raw('ST_AsGeoJSON(geometry) as geometry')
-        )->where('id',$id)->first();;
+        )->where('id',$id)->first();
     }
 
     public function create(request $request){
 
         $validated = $request->validate([
             'nama_jalan' => 'required',
-            'geometry' => 'required',
-            'foto'=> 'required',
-            'keterangan' => 'nullable',
-            'status'=> 'nullable',
+            'lebar' => 'required|numeric',
+            'panjang' => 'required|numeric',
+            'kedalaman' => 'required|numeric',
+            'bahan' => 'required',
+            'kondisi' => 'required',
+            'akhir_pembuangan' => 'required',
+            'arah_alir' => 'required',
+            'foto'=> 'nullable',
+            'tipe_drainase' => 'required',
+            'geometry' => 'required|JSON',
+            'status'=> 'nullable'
         ]);
+
+
 
         $validated['id_admin'] = auth()->user()->id;
         $validated['geometry'] = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
 
         if(is_null($request->foto)){
-            $validated['foto'] = 'defaulttersumbat.png';
+            $validated['foto'] = 'defaultmasyarakat.png';
         }else{
           $fileUploadHelper = new CustomHelpper();
 
@@ -61,7 +73,7 @@ class TitikTersumbatController extends Controller
           $validated['foto'] = $file;
         }
 
-        $data = TitikTersumbat::create($validated);
+        $data = Drainase::create($validated);
 
         $data->geometry = json_decode($request->geometry);
 
@@ -69,20 +81,33 @@ class TitikTersumbatController extends Controller
     }
 
     public function update(request $request, $id){
-
         $validated = $request->validate([
             'nama_jalan' => 'required',
-            'geometry' => 'required',
+            'lebar' => 'required|numeric',
+            'panjang' => 'required|numeric',
+            'kedalaman' => 'required|numeric',
+            'bahan' => 'required',
+            'kondisi' => 'required',
+            'akhir_pembuangan' => 'required',
+            'arah_alir' => 'required',
             'foto'=> 'nullable',
-            'keterangan' => 'nullable',
-            'status'=> 'nullable',
+            'tipe_drainase' => 'required',
+            'geometry' => 'required|JSON',
+            'status'=> 'nullable'
         ]);
 
-        $data = TitikTersumbat::find($id);
+        $data = Drainase::find($id);
         $data->id_admin = auth()->user()->id;
-        $data->geometry = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
         $data->nama_jalan = $request->nama_jalan;
-        $data->keterangan = $request->keterangan;
+        $data->lebar = $request->lebar;
+        $data->panjang = $request->panjang;
+        $data->kedalaman = $request->kedalaman;
+        $data->bahan = $request->bahan;
+        $data->kondisi = $request->kondisi;
+        $data->akhir_pembuangan = $request->akhir_pembuangan;
+        $data->arah_alir = $request->arah_alir;
+        $data->tipe_drainase = $request->tipe_drainase;
+        $data->geometry = DB::Raw("ST_GeomFromGeoJSON('".$request->geometry."')");
 
         if(!is_null($request->foto)){
           $fileUploadHelper = new CustomHelpper();
@@ -96,6 +121,7 @@ class TitikTersumbatController extends Controller
           file_put_contents($file_dir, $decoded);
           $data->foto = $file;
         }
+
         $data->save();
 
         $data->geometry = json_decode($request->geometry);
@@ -104,7 +130,7 @@ class TitikTersumbatController extends Controller
     }
 
     public function delete($id){
-        $data = TitikTersumbat::find($id);
+        $data = Drainase::find($id);
         if($data){
           $data->delete();
         }else{
@@ -113,4 +139,6 @@ class TitikTersumbatController extends Controller
 
         return response()->json(['status_code'=>204],204);
     }
+
+
 }
