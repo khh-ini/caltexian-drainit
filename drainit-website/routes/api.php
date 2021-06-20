@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -96,7 +97,7 @@ Route::prefix('drainase')->group(function (){
 
 
     Route::middleware('auth:api-admin')->group(function (){
-        Route::post('/','DrainaseController@create')->name('create.drainase');
+        Route::post('/','API\DrainaseController@create')->name('create.drainase');
         Route::put('/{i}','DrainaseController@update')->name('update.drainase');
         Route::delete('/{i}','DrainaseController@delete')->name('delete.drainase');
     });
