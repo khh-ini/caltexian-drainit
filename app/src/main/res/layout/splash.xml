@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.welcome.MainActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".74"
+        tools:ignore="MissingConstraints" />
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:ci_drawable="@drawable/circleindicator"
+        app:layout_constraintBottom_toTopOf="@id/action"
+        tools:ignore="MissingConstraints" />
+
+    <RelativeLayout
+        android:id="@+id/action"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent=".2"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btnBuatAkun"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Buat Akun"
+            android:textAllCaps="true"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_masuk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnBuatAkun"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tvMasuk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Sudah punya akun?"
+                android:textColor="@color/textColorSecondary" />
+
+            <TextView
+                android:id="@+id/linkMasuk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/tvMasuk"
+                android:clickable="true"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Masuk"
+                android:textColor="@color/primary" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_masuk"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-8dp">
+
+            <TextView
+                android:id="@+id/tvGuest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="atau lanjutkan sebagai"
+                android:textColor="@color/textColorSecondary" />
+
+            <TextView
+                android:id="@+id/linkGuest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/tvGuest"
+                android:clickable="true"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Tamu"
+                android:textColor="@color/primary" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
