@@ -20,6 +20,7 @@ class DaftarActivity : AppCompatActivity() {
     lateinit var binding: FragmentDaftarBinding
     private val daftarViewModel: DaftarViewModel by viewModels()
 
+    val name = "zeekands"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_daftar)
