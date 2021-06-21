@@ -3,6 +3,9 @@ package com.azizapp.test.repository
 import com.azizapp.test.api.MasyarakatService
 import com.azizapp.test.model.*
 import com.azizapp.test.utill.Resource
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(

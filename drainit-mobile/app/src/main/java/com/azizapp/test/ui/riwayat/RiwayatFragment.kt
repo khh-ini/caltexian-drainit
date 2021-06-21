@@ -1,6 +1,7 @@
 package com.azizapp.test.ui.riwayat
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,17 +10,22 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azizapp.test.databinding.FragmentRiwayatBinding
 import com.azizapp.test.model.Pengaduan
+import com.azizapp.test.ui.timeline.FragmentTimelineViewModel
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_riwayat.*
 import kotlinx.android.synthetic.main.item_list_riwayat.view.*
 import kotlinx.android.synthetic.main.splashscreen.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 
 
 @AndroidEntryPoint
 class RiwayatFragment : Fragment() {
 
     private val riwayatViewModel: RiwayatViewModel by viewModels()
+    private val semuaLaporanViewModel : FragmentTimelineViewModel by viewModels()
     private lateinit var recyclerAdapter: RiwayatAdapter
     private lateinit var dataBinding: FragmentRiwayatBinding
 
@@ -35,6 +41,12 @@ class RiwayatFragment : Fragment() {
 
         riwayatViewModel.onLoad()
         setupRecyclerView()
+        semuaLaporanViewModel.getLaporan()
+        semuaLaporanViewModel.semuaLaporan.observe(viewLifecycleOwner,{
+            for (pengaduan in it) {
+                Log.d("dataku",pengaduan.namaJalan.toString())
+            }
+        })
     }
 
     private fun setupRecyclerView() {
