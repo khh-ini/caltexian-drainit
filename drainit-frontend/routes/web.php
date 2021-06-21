@@ -12,6 +12,7 @@ use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\RiwayatDitolakController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\DashboardPetugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,17 @@ Route::prefix('riwayatditolak')->group(function(){
     Route::get('/',[$controller, 'index']);
     Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/verifikasi/{id}', [$controller, 'verifikasi']);
+});
+
+Route::prefix('dashboard-petugas')->group(function(){
+    $controller = DashboardPetugasController::class;
+    Route::get('/laporan', [$controller, 'laporan']);
+    Route::get('/proses/{id}',[$controller, 'prosesLaporan']);
+    Route::get('/detail/{id}',[$controller, 'detailLaporan']);
+    Route::get('/riwayat',[$controller, 'riwayatLaporan']);
+    Route::post('/update/{id}', [$controller, 'updateLaporan']);
+    Route::get('/profile', [$controller, 'profilePetugas']);
+
 });
 
 Route::get('/', [ViewController::class, "index"]);

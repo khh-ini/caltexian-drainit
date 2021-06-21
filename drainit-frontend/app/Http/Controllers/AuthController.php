@@ -26,6 +26,7 @@ class AuthController extends Controller
         if($data['status_code'] == 200) {
             $token = $data['access_token'];
             $id_admin = $data['user']['id'];
+            $request->session()->put('role','admin');
             $request->session()->put('token', $token);
             $request->session()->put('id_admin', $id_admin);
             return redirect('/petugas');
@@ -43,14 +44,15 @@ class AuthController extends Controller
         if($data['status_code'] == 200) {
             $token = $data['access_token'];
             $id_petugas = $data['user']['id'];
+            $request->session()->put('role','petugas');
             $request->session()->put('token', $token);
             $request->session()->put('id_petugas', $id_petugas);
-            return redirect('/petugas');
+            return redirect('/dashboard-petugas/laporan');
         }
 
-        dd($data);
+        // dd($data);
         
-        // return redirect('/');
+        return redirect('/');
         
 
         // return dd($data);

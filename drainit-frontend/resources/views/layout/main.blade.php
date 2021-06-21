@@ -46,6 +46,7 @@
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li> -->
+            @if(session()->get('role') == 'admin')
             <li class="nav-item">
               <a class="nav-link {!! request()->is('petugas/*') || request()->is('petugas') ? 'active' : '' !!}" href="/petugas">
                 <i class="ni ni-badge text-orange"></i>
@@ -88,6 +89,26 @@
                 <span class="nav-link-text">Riwayat</span>
               </a>
             </li>
+            @elseif(session()->get('role') == 'petugas')
+            <li class="nav-item">
+              <a class="nav-link {!! request()->is('dashboard-petugas/laporan') || request()->is('laporan/*') ? 'active' : '' !!}" href="/dashboard-petugas/laporan">
+                <i class="ni ni-collection text-info"></i>
+                <span class="nav-link-text">Laporan Pengaduan</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {!! request()->is('dashboard-petugas/riwayat') ? 'active' : '' !!}" href="/dashboard-petugas/riwayat">
+                <i class="ni ni-bullet-list-67 text-danger"></i>
+                <span class="nav-link-text">Riwayat</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {!! request()->is('dashboard-petugas/profile') ? 'active' : '' !!}" href="/dashboard-petugas/profile">
+                <i class="ni ni-single-02 text-danger"></i>
+                <span class="nav-link-text">Profile</span>
+              </a>
+            </li>
+            @endif
           </ul>
           <!-- Divider -->
           <hr class="my-3">
