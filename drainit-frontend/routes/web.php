@@ -110,6 +110,8 @@ Route::prefix('dashboard-petugas')->group(function(){
     $controller = DashboardPetugasController::class;
     Route::get('/laporan', [$controller, 'laporan']);
     Route::get('/proses/{id}',[$controller, 'prosesLaporan']);
+    Route::get('/detail/{id}',[$controller, 'detailLaporan']);
+    Route::get('/riwayat',[$controller, 'riwayatLaporan']);
 
 });
 

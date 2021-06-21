@@ -91,9 +91,15 @@
             </li>
             @elseif(session()->get('role') == 'petugas')
             <li class="nav-item">
-              <a class="nav-link {!! request()->is('dashboard-petugas/laporan') ? 'active' : '' !!}" href="/dashboard-petugas/laporan">
+              <a class="nav-link {!! request()->is('dashboard-petugas/laporan') || request()->is('laporan/*') ? 'active' : '' !!}" href="/dashboard-petugas/laporan">
                 <i class="ni ni-collection text-info"></i>
                 <span class="nav-link-text">Laporan Pengaduan</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {!! request()->is('dashboard-petugas/riwayat') ? 'active' : '' !!}" href="/dashboard-petugas/riwayat">
+                <i class="ni ni-bullet-list-67 text-danger"></i>
+                <span class="nav-link-text">Riwayat</span>
               </a>
             </li>
             @endif
