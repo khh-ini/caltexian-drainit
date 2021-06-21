@@ -71,4 +71,8 @@ interface MasyarakatService {
     //Get Semua Titik Tersumbat
     @GET("api/titik_tersumbat")
     suspend fun titikTersumbat(): Response<TitikTersumbatResponse>
+
+    //Get Semua laporan
+    @GET("api/pengaduan/")
+    suspend fun semuaLaporan() : Response<PengaduanResponse>
 }
