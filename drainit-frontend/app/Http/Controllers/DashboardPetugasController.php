@@ -30,7 +30,7 @@ class DashboardPetugasController extends Controller
         ]);
 
         // dd($response->json()["data"]["id"]);
-        return redirect('/dashborad-petugas/detail/'.$id);   
+        return redirect('/dashboard-petugas/detail/'.$id);   
     }
     public function detailLaporan(Request $request, $id){
         $token = $request->session()->get('token', 'default');
@@ -38,7 +38,7 @@ class DashboardPetugasController extends Controller
             'Authorization' => "Bearer $token"
         ])->get('http://gis-drainase.pocari.id/api/pengaduan/' . $id);
 
-        $tersumbat = $data->json();
+        $laporan = $data->json();
         
         // dd($drainase);
         $point = [
@@ -48,14 +48,14 @@ class DashboardPetugasController extends Controller
                 "amenity" => "Baseball Stadium",
                 "popupContent" => "This is where the Rockies play!"
             ],
-            "geometry" => json_decode($tersumbat['geometry'], true),
+            "geometry" => json_decode($laporan['geometry'], true),
         ];
 
         $point['view'] = $point['geometry']['coordinates'];
 
         // dd($point['geometry']->{'coordinates'});
 
-        return view('petugas/detailLaporan', ['data' => json_encode($point), 'item' => $tersumbat]);
+        return view('petugas/detailLaporan', ['data' => json_encode($point), 'item' => $laporan]);
     }
 
     public function riwayatLaporan(Request $request)
@@ -67,5 +67,27 @@ class DashboardPetugasController extends Controller
           
         // dd($data->json());
         return view('petugas/riwayatLaporan', ['data' => $data->json()]);
+    }
+
+    public function updateLaporan(Request $request, $id) {
+        $token = $request->session()->get('token', 'default');
+
+        $validate = $request->validate([
+            'status_pengaduan' => 'required',
+            'laporan_petugas' => 'required'
+        ]);
+
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorization' => "Bearer $token"
+            ])->post('http://gis-drainase.pocari.id/api/update_pengaduan/petugas/' . $id, [
+            '_method' => 'put',
+            'status_pengaduan' => $request->post('status_pengaduan'),
+            'laporan_petugas' => $request->post('laporan_petugas')
+        ]);
+
+        // dd($response->json());
+
+        return redirect('/dashboard-petugas/detail/'.$id);
     }
 }

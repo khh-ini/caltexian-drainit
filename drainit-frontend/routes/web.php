@@ -112,6 +112,7 @@ Route::prefix('dashboard-petugas')->group(function(){
     Route::get('/proses/{id}',[$controller, 'prosesLaporan']);
     Route::get('/detail/{id}',[$controller, 'detailLaporan']);
     Route::get('/riwayat',[$controller, 'riwayatLaporan']);
+    Route::post('/update/{id}', [$controller, 'updateLaporan']);
 
 });
 
