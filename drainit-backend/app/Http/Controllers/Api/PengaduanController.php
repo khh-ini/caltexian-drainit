@@ -100,7 +100,7 @@ class PengaduanController extends Controller
           'foto','tipe_pengaduan','deskripsi_pengaduan',
           'status_pengaduan','laporan_petugas','feedback_masyarakat'
           ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
-        ->whereNull('id_petugas')->where('status_pengaduan','verified')
+        ->whereNull('id_petugas')->where('status_pengaduan','Sudah diverifikasi')
         ->orderBy('created_at','desc')->get();
         foreach ($data as $d) {
           if(!is_null($d->nama_pelapor)){
