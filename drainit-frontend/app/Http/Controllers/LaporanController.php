@@ -23,9 +23,9 @@ class LaporanController extends Controller
         $token = $request->session()->get('token', 'default');
         $id_admin = $request->session()->get('id_admin', 'default');
 
-        $validated = $request->validate([
-            'status_pengaduan' => "Sudah diverifikasi"
-        ]);
+        // $validated = $request->validate([
+        //     'status_pengaduan' => "Sudah diverifikasi"
+        // ]);
 
         $response = Http::withHeaders([
             'accept' => 'application/json',
