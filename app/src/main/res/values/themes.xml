@@ -1,0 +1,85 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Test" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariant</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondaryVariant</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/header</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/PoppinsTextViewStyle.</item>
+        <item name="android:editTextStyle">@style/PoppinsTextViewStyle.</item>
+        <item name="buttonStyle">@style/PoppinsButtonStyle.</item>
+    </style>
+
+    <style name="PoppinsTextViewStyle." parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="PoppinsButtonStyle." parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TextView.Bold" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="TextView.Medium" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="TextView.Regular" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:background">@drawable/bg_edittext_rounded</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:paddingTop">@dimen/dimen2x</item>
+        <item name="android:paddingBottom">@dimen/dimen2x</item>
+        <item name="android:paddingLeft">@dimen/dimen5x</item>
+        <item name="android:paddingRight">@dimen/dimen5x</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--button-->
+    <style name="ButtonWithStroke">
+        <item name="android:fillColor">@null</item>
+        <item name="android:background">@drawable/shape_rounded_border_yellow</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="Windowactionbar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+        <item name="actionBarItemBackground">@color/header</item>
+    </style>
+
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
+    </style>
+
+    <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme" parent="Base.Theme.MaterialComponents.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+</resources>
