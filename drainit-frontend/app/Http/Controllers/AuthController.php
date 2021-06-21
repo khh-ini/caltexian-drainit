@@ -29,9 +29,29 @@ class AuthController extends Controller
             $request->session()->put('token', $token);
             $request->session()->put('id_admin', $id_admin);
             return redirect('/petugas');
-        } else {
-            return redirect('/');
         }
+
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
+        ])->post('http://gis-drainase.pocari.id/api/login/petugas', [
+            'email' => $request->post('email'),
+            'password' => $request->post('password'),
+        ]);
+
+        $data = $response->json();
+
+        if($data['status_code'] == 200) {
+            $token = $data['access_token'];
+            $id_petugas = $data['user']['id'];
+            $request->session()->put('token', $token);
+            $request->session()->put('id_petugas', $id_petugas);
+            return redirect('/petugas');
+        }
+
+        dd($data);
+        
+        // return redirect('/');
+        
 
         // return dd($data);
     }
