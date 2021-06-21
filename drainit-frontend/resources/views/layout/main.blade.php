@@ -102,6 +102,12 @@
                 <span class="nav-link-text">Riwayat</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link {!! request()->is('dashboard-petugas/profile') ? 'active' : '' !!}" href="/dashboard-petugas/profile">
+                <i class="ni ni-single-02 text-danger"></i>
+                <span class="nav-link-text">Profile</span>
+              </a>
+            </li>
             @endif
           </ul>
           <!-- Divider -->

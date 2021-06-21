@@ -90,4 +90,16 @@ class DashboardPetugasController extends Controller
 
         return redirect('/dashboard-petugas/detail/'.$id);
     }
+
+    public function profilePetugas(Request $request){
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+            ])->get('http://gis-drainase.pocari.id/api/petugas/profile');
+
+        
+        // dd($data->json());
+        return view('petugas/profilePetugas', ['data' => $data->json()]);
+
+    }
 }
