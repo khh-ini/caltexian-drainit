@@ -64,5 +64,6 @@ class DaftarActivity : AppCompatActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
+
     val id = 100
 }

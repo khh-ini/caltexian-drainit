@@ -57,7 +57,7 @@ class TimelineAdapter(val timelineViewModel: FragmentTimelineViewModel) :
                                 timelineViewModel.vote(laporan.id, true)
                                 tvUpvote.text = (laporan.upvote + 1).toString()
                             }
-                            if (!toggleDownvote.isChecked){
+                            if (!toggleDownvote.isChecked) {
                                 toggleDownvote.isChecked = true
                                 timelineViewModel.voteUpdate(laporan.id, false)
                                 tvUpvote.text = (laporan.upvote - 1).toString()

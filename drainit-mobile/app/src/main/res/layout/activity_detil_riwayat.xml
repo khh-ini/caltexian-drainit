@@ -32,9 +32,9 @@
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 app:contentScrim="@color/header"
-                app:title="Detail Pengaduan"
                 app:expandedTitleTextAppearance="@android:color/transparent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="Detail Pengaduan">
 
                 <ImageView
                     android:layout_width="match_parent"

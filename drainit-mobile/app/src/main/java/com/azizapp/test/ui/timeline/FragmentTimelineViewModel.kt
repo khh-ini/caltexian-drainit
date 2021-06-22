@@ -27,6 +27,7 @@ class FragmentTimelineViewModel @Inject constructor(
     val voteAction = MutableLiveData<String>()
 
     val name = "zee"
+
     companion object {
         const val VOTE_EXIST = "VOTE_EXIST"
         const val VOTE_OK = "VOTE_OK"
@@ -49,6 +50,7 @@ class FragmentTimelineViewModel @Inject constructor(
             }
         }
     }
+
     fun getLaporanVote() {
         loadingEnable.value = true
         val bearer = "Bearer " + Session.bearer
@@ -77,7 +79,7 @@ class FragmentTimelineViewModel @Inject constructor(
                     if (response.message != "vote sudah ada") {
                         voteAction.postValue(VOTE_EXIST)
                         loadingEnable.postValue(false)
-                    }else{
+                    } else {
                         voteAction.postValue(VOTE_OK)
                         loadingEnable.postValue(false)
                     }
@@ -89,16 +91,16 @@ class FragmentTimelineViewModel @Inject constructor(
         }
     }
 
-    fun voteUpdate(idPengaduan : String , vote: Boolean) {
-        val vote = VoteUpdate("put",vote)
+    fun voteUpdate(idPengaduan: String, vote: Boolean) {
+        val vote = VoteUpdate("put", vote)
         val bearer = "Bearer " + Session.bearer
         viewModelScope.launch {
-            when (val response = repository.voteUpdate(idPengaduan,bearer, vote)) {
+            when (val response = repository.voteUpdate(idPengaduan, bearer, vote)) {
                 is Resource.Success -> {
                     if (response.message != "vote sudah ada") {
                         voteAction.postValue(VOTE_EXIST)
                         loadingEnable.postValue(false)
-                    }else{
+                    } else {
                         voteAction.postValue(VOTE_OK)
                         loadingEnable.postValue(false)
                     }

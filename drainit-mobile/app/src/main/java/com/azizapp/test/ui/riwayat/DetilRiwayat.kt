@@ -1,15 +1,11 @@
 package com.azizapp.test.ui.riwayat
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.azizapp.test.R
-import com.azizapp.test.databinding.ActivityDetailTimelineBinding
 import com.azizapp.test.databinding.ActivityDetilRiwayatBinding
 import com.azizapp.test.model.Pengaduan
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_detil_riwayat.*
 import kotlinx.android.synthetic.main.bottom_sheet_detail.*
