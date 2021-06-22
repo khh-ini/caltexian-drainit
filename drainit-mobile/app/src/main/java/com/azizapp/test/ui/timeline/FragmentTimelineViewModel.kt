@@ -49,7 +49,6 @@ class FragmentTimelineViewModel @Inject constructor(
             }
         }
     }
-
     fun getLaporanVote() {
         loadingEnable.value = true
         val bearer = "Bearer " + Session.bearer
@@ -110,5 +109,4 @@ class FragmentTimelineViewModel @Inject constructor(
             }
         }
     }
-
 }

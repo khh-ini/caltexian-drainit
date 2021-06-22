@@ -29,16 +29,28 @@ class Fragment_Timeline : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = TimelineAdapter(viewModel)
         viewModel.getLaporanVote()
+        setupRecyclerView()
+        viewModel.semuaLaporanVote.observe(viewLifecycleOwner) {
+            binding.pullToRefresh.setOnRefreshListener {
+                setupRecyclerView()
+                binding.pullToRefresh.isRefreshing = false
+            }
+        }
+    }
+
+    private fun setupRecyclerView() {
+        viewModel.getLaporan()
         viewModel.semuaLaporanVote.observe(viewLifecycleOwner) {
             adapter.setData(it)
             with(binding.rvLaporan) {
                 adapter = this@Fragment_Timeline.adapter
                 setHasFixedSize(true)
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                layoutManager =
+                    LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             }
         }
-        viewModel.loadingEnable.observe(viewLifecycleOwner, {
+        viewModel.loadingEnable.observe(viewLifecycleOwner) {
             binding.pbLoadTimeline.visibility = if (it) View.VISIBLE else View.GONE
-        })
+        }
     }
 }

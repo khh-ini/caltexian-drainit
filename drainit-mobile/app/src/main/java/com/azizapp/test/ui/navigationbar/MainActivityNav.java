@@ -43,7 +43,6 @@ public class MainActivityNav extends AppCompatActivity {
                     .commit();
         }
 
-
         mMainNav.setOnItemSelectedListener(id -> {
             fragmentManager = getSupportFragmentManager();
             switch (id) {
