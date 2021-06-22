@@ -16,7 +16,9 @@ class DetailTimelineActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Detail Laporan"
+
+        val collapsingToolbarLayout = binding.collapsingToolbar
+        collapsingToolbarLayout.title = "Detail Laporan"
     }
 
     override fun onSupportNavigateUp(): Boolean {

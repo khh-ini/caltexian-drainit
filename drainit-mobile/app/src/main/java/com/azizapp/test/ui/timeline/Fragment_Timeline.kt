@@ -27,6 +27,16 @@ class Fragment_Timeline : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupRecyclerview()
+
+        binding.pullToRefresh.setOnRefreshListener {
+            setupRecyclerview()
+            binding.pullToRefresh.isRefreshing = false
+        }
+    }
+
+    private fun setupRecyclerview() {
         adapter = TimelineAdapter()
         viewModel.getLaporan()
         viewModel.semuaLaporan.observe(viewLifecycleOwner) {
@@ -37,8 +47,8 @@ class Fragment_Timeline : Fragment() {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             }
         }
-        viewModel.loadingEnable.observe(viewLifecycleOwner, {
+        viewModel.loadingEnable.observe(viewLifecycleOwner) {
             binding.pbLoadTimeline.visibility = if (it) View.VISIBLE else View.GONE
-        })
+        }
     }
 }

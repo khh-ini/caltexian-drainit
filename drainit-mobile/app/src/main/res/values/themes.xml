@@ -22,6 +22,11 @@
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 
+    <style name="WindowNoActionBar" parent="Theme.Test">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="PoppinsButtonStyle." parent="android:Widget.Holo.Button">
         <item name="android:fontFamily">sans-serif-light</item>
     </style>

@@ -27,7 +27,8 @@
         <activity android:name=".ui.laporan.SuccessPage" />
         <activity android:name=".ui.navigationbar.MainActivityNavGuest" />
         <activity android:name=".ui.editpassword.EditPasswordActivity" />
-        <activity android:name=".ui.riwayat.DetilRiwayat" />
+        <activity android:name=".ui.riwayat.DetilRiwayat"
+            android:theme="@style/WindowNoActionBar"/>
         <activity
             android:name=".ui.tentang_kami.ActivityTentangKami"
             android:label="Tentang DRAINIT"

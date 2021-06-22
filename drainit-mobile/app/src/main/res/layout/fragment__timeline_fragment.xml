@@ -1,23 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pull_to_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".ui.timeline.Fragment_Timeline">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_laporan"
-        tools:listitem="@layout/item_timeline"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/header"
+        tools:context=".ui.riwayat.RiwayatFragment">
 
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16"
+            android:text="Timeline"
+            android:textColor="@color/textPrimary"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/frame_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".3" />
 
-    <ProgressBar
-        android:id="@+id/pb_load_timeline"
-        android:layout_width="@dimen/dimen8x"
-        android:layout_height="@dimen/dimen8x"
-        android:layout_gravity="center"
-        tools:visibility="visible" />
+        <TextView
+            android:id="@+id/tv_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_16"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Lihat seluruh laporan masyarakat di sini"
+            android:textColor="@color/textPrimary"
+            android:textSize="@dimen/dimen_16"
+            app:layout_constraintBottom_toTopOf="@id/frame_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
-</FrameLayout>
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/shape_rounded_top_white"
+            android:paddingTop="@dimen/dimen_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_laporan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_timeline"
+                android:background="@color/grey"/>
+
+            <ProgressBar
+                android:id="@+id/pb_load_timeline"
+                android:layout_width="@dimen/dimen8x"
+                android:layout_height="@dimen/dimen8x"
+                android:layout_gravity="center"
+                tools:visibility="visible" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
