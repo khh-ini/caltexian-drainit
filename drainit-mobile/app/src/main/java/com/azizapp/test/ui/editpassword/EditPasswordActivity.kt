@@ -20,6 +20,8 @@ class EditPasswordActivity : AppCompatActivity() {
         setContentView(R.layout.ganti_password_layout)
         binding = DataBindingUtil.setContentView(this, R.layout.ganti_password_layout)
 
+        supportActionBar?.hide()
+
         binding.apply {
             lifecycleOwner = this@EditPasswordActivity
             viewModelEditPassword = editPasswordViewModel

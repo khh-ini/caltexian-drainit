@@ -26,6 +26,8 @@ class DaftarActivity : AppCompatActivity() {
         setContentView(R.layout.fragment_daftar)
         binding = DataBindingUtil.setContentView(this, R.layout.fragment_daftar)
 
+        supportActionBar?.hide()
+
         binding.apply {
             lifecycleOwner = this@DaftarActivity
             viewModelDaftar = daftarViewModel

@@ -30,6 +30,8 @@ class LoginActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
+        supportActionBar?.hide()
+
         binding.apply {
             lifecycleOwner = this@LoginActivity
             viewModel = loginViewModel

@@ -12,6 +12,9 @@ class SuccessPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.success_page)
+
+        supportActionBar?.hide()
+
         val type = intent.getStringExtra("type")
         btnKembali.setOnClickListener {
             when (type) {

@@ -19,17 +19,18 @@
         android:background="@color/lightGreyBackground">
 
         <ImageView
-            android:translationZ="100dp"
             android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back"
+            android:translationZ="100dp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_gambar_detail_pengaduan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.06"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_gambar_detail_pengaduan"
             app:layout_constraintVertical_bias="0.07999998" />
+
         <ImageView
             android:id="@+id/iv_gambar_detail_pengaduan"
             android:layout_width="match_parent"
@@ -71,9 +72,10 @@
                     android:layout_marginEnd="@dimen/dimen4x"
                     android:fontFamily="@font/poppins_medium"
                     android:text="@{data.tipePengaduan}"
-                    android:textColor="@color/primaryPetugas"
+                    android:textColor="@color/secondary"
                     android:textSize="13sp"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_lokasi_detail_pengaduan"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_lokasi_detail_pengaduan"
                     tools:text="Jenis Pengaduan" />
@@ -87,6 +89,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_lokasi_detail_pengaduan" />
 
                 <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen1x"

@@ -11,15 +11,8 @@ class ActivityTentangKami : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tentang_kami)
 
-        supportActionBar?.setBackgroundDrawable(
-            ColorDrawable(
-                ContextCompat.getColor(
-                    this,
-                    R.color.header
-                )
-            )
-        )
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Tentang Kami"
     }
 
     override fun onSupportNavigateUp(): Boolean {

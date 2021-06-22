@@ -31,6 +31,8 @@ public class MainActivityNav extends AppCompatActivity {
 
         ChipNavigationBar mMainNav = findViewById(R.id.main_nav);
 
+        getSupportActionBar().hide();
+
         if (savedInstanceState == null) {
             mMainNav.setItemSelected(R.id.nav_home, true);
             fragmentManager = getSupportFragmentManager();
