@@ -55,8 +55,6 @@
         android:layout_marginTop="@dimen/dimen_16"
         android:ellipsize="start"
         android:fontFamily="@font/poppins_regular"
-        android:textAlignment="textStart"
-        android:gravity="start"
         android:justificationMode="inter_word"
         android:maxLines="4"
         android:textColor="@color/textColorSecondary"

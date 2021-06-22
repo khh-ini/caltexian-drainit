@@ -7,7 +7,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_laporan"
+        tools:listitem="@layout/item_timeline"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
+    <ProgressBar
+        android:id="@+id/pb_load_timeline"
+        android:layout_width="@dimen/dimen8x"
+        android:layout_height="@dimen/dimen8x"
+        android:layout_gravity="center"
+        tools:visibility="visible" />
 
 </FrameLayout>
