@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/background"
     android:padding="@dimen/dimen_16"
     app:cardElevation="@dimen/dimen_16">
 
@@ -76,10 +76,12 @@
 
     <ImageView
         android:id="@+id/iv_laporan"
+        android:scaleType="centerCrop"
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginVertical="8dp"
-        android:src="@color/primary"
+        android:src="@drawable/bottom_menu_rounded"
+        app:layout_constraintWidth_percent="1"
         app:layout_constraintBottom_toTopOf="@id/tv_deskripsi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

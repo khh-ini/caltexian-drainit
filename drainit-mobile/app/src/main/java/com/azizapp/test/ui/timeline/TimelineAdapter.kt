@@ -2,45 +2,92 @@ package com.azizapp.test.ui.timeline
 
 import android.os.Build
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.azizapp.test.R
+import com.azizapp.test.binding.loadImgFromUrl
 import com.azizapp.test.databinding.ItemTimelineBinding
-import com.azizapp.test.model.Pengaduan
+import com.azizapp.test.model.pengaduanvote.PengaduanWithVoteItem
 import java.sql.Timestamp
-import java.time.*
+import java.time.LocalDate
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class TimelineAdapter : RecyclerView.Adapter<TimelineAdapter.LaporanViewHolder>() {
-    private var listLaporan = ArrayList<Pengaduan>()
+class TimelineAdapter(val timelineViewModel: FragmentTimelineViewModel) :
+    RecyclerView.Adapter<TimelineAdapter.LaporanViewHolder>() {
+    private var listLaporan = ArrayList<PengaduanWithVoteItem>()
 
-    fun setData(items: ArrayList<Pengaduan>) {
+    fun setData(items: ArrayList<PengaduanWithVoteItem>) {
         listLaporan.clear()
         listLaporan.addAll(items)
         notifyDataSetChanged()
     }
 
-    inner class LaporanViewHolder(private val binding: ItemTimelineBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class LaporanViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
+        val binding = ItemTimelineBinding.bind(itemView)
+
         @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(laporan: Pengaduan) {
+        fun bind(laporan: PengaduanWithVoteItem) {
             with(binding) {
                 tvNama.text = laporan.namaPelapor
                 tvTipe.text = laporan.tipePengaduan
                 tvStatus.text = laporan.statusPengaduan
                 tvDeskripsi.text = laporan.deskripsiPengaduan
                 tvWaktu.text = printDifference(laporan.createdAt!!)
-//                tvId.text = laporan.id
-//                tvUpvote.text = laporan.upvote
-//                tvDownvote.text = laporan.downvote
+                tvDownvote.text = laporan.downvote.toString()
+                tvUpvote.text = laporan.upvote.toString()
+                ivLaporan.loadImgFromUrl(laporan.foto)
+                if (laporan.vote != 0 && laporan.vote != 1) {
+                    toggleDownvote.isChecked = false
+                    toggleUpvote.isChecked = false
+                } else {
+                    if (laporan.vote == 1) toggleUpvote.isChecked = true
+                    if (laporan.vote == 0) toggleDownvote.isChecked = true
+                }
+
+                toggleUpvote.setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) {
+                        if (laporan.vote == 1 || laporan.vote == null) {
+                            if (toggleDownvote.isChecked) {
+                                toggleDownvote.isChecked = false
+                                timelineViewModel.vote(laporan.id, true)
+                                tvUpvote.text = (laporan.upvote + 1).toString()
+                            }
+                            if (!toggleDownvote.isChecked){
+                                toggleDownvote.isChecked = true
+                                timelineViewModel.voteUpdate(laporan.id, false)
+                                tvUpvote.text = (laporan.upvote - 1).toString()
+                            }
+                        }
+                    }
+                }
+                toggleDownvote.setOnCheckedChangeListener { buttonView, isChecked ->
+                    if (isChecked) {
+                        if (laporan.vote == 0 || laporan.vote == null) {
+                            if (toggleUpvote.isChecked) {
+                                toggleUpvote.isChecked = false
+                                timelineViewModel.vote(laporan.id, false)
+                                tvDownvote.text = (laporan.downvote + 1).toString()
+                            }
+                            if (!toggleUpvote.isChecked) {
+                                toggleUpvote.isChecked = true
+                                timelineViewModel.voteUpdate(laporan.id, true)
+                                tvDownvote.text = (laporan.downvote - 1).toString()
+                            }
+                        }
+                    }
+                }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaporanViewHolder {
-        val itemLaporanBinding =
-            ItemTimelineBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemLaporanBinding: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_timeline, parent, false)
         return LaporanViewHolder(itemLaporanBinding)
     }
 
@@ -65,9 +112,6 @@ class TimelineAdapter : RecyclerView.Adapter<TimelineAdapter.LaporanViewHolder>(
         val endDateDateformat = Date.from(now.atStartOfDay(ZoneId.systemDefault()).toInstant())
         //milliseconds
         var different = endDateDateformat.time - startDateDateformat.time
-        println("startDate : $startDate")
-        println("endDate : $endDate")
-        println("different : $different")
         val secondsInMilli: Long = 1000
         val minutesInMilli = secondsInMilli * 60
         val hoursInMilli = minutesInMilli * 60
@@ -79,14 +123,6 @@ class TimelineAdapter : RecyclerView.Adapter<TimelineAdapter.LaporanViewHolder>(
         val elapsedMinutes = different / minutesInMilli
         different %= minutesInMilli
         val elapsedSeconds = different / secondsInMilli
-//    System.out.printf(
-//        "%d hari yang lalu",
-//        elapsedDays
-//    )
         return "$elapsedDays hari yang lalu"
-//    System.out.printf(
-//        "%d hari, %d jam, %d menit, %d detik yang lalu",
-//        elapsedDays, elapsedHours, elapsedMinutes, elapsedSeconds
-//    )
     }
 }

@@ -27,9 +27,9 @@ class Fragment_Timeline : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = TimelineAdapter()
-        viewModel.getLaporan()
-        viewModel.semuaLaporan.observe(viewLifecycleOwner) {
+        adapter = TimelineAdapter(viewModel)
+        viewModel.getLaporanVote()
+        viewModel.semuaLaporanVote.observe(viewLifecycleOwner) {
             adapter.setData(it)
             with(binding.rvLaporan) {
                 adapter = this@Fragment_Timeline.adapter
@@ -41,5 +41,4 @@ class Fragment_Timeline : Fragment() {
             binding.pbLoadTimeline.visibility = if (it) View.VISIBLE else View.GONE
         })
     }
-
 }

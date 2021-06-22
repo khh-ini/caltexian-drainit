@@ -16,5 +16,6 @@ fun ImageView.loadImgFromUrl(url: String) {
     Glide.with(this.context)
         .load(fullUrl)
         .placeholder(circularProgressDrawable)
+        .centerCrop()
         .into(this)
 }

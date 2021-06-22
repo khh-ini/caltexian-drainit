@@ -35,6 +35,11 @@ data class Pengaduan(
     @SerializedName("created_at")
     var createdAt: String? = null,
     @SerializedName("updated_at")
-    var updatedAT: String? = null
+    var updatedAT: String? = null,
+    @SerializedName("upvote")
+    var upvote: Int? = 0,
+    @SerializedName("downvote")
+    var downvote: Int? = 0
+
 
 ) : Parcelable
