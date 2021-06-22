@@ -148,3 +148,16 @@ Route::prefix('update_pengaduan')->group(function(){
     Route::put('/petugas/{id}','PengaduanController@updatePetugas')->middleware('auth:api-petugas')->name('update_pengaduan.petugas');
     Route::put('/masyarakat/{id}','PengaduanController@feedbackMasyarakat')->middleware('auth:api-masyarakat')->name('feedback_pengaduan.masyarakat');;
 });
+
+Route::get('/pengaduanwithvote','PengaduanController@listwithvote')->middleware('auth:api-masyarakat');
+
+Route::prefix('votes')->group(function(){
+    Route::get('/','VoteController@index');
+    Route::get('/upcount/{id}','VoteController@upcount');
+    Route::get('/downcount/{id}','VoteController@downcount');
+    Route::post('/', 'VoteController@create')->middleware('auth:api-masyarakat');
+    Route::put('/{id}','VoteController@update')->middleware('auth:api-masyarakat');
+    Route::delete('/{id}','VoteController@destroy')->middleware('auth:api-masyarakat');
+
+});
+

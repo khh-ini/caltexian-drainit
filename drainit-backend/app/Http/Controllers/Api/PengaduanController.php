@@ -14,9 +14,10 @@ class PengaduanController extends Controller
       $data = Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
           'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
           'foto','tipe_pengaduan','deskripsi_pengaduan',
-          'status_pengaduan','laporan_petugas','feedback_masyarakat'
+          'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
           ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
         ->orderBy('created_at','desc')->get();
+      
       foreach ($data as $d) {
         if(!is_null($d->nama_pelapor)){
           $d->nama_pelapor = DB::table('masyarakats')->where('id',$d->nama_pelapor)->first()->nama;
@@ -27,6 +28,74 @@ class PengaduanController extends Controller
         if(!is_null($d->nama_admin)){
             $d->nama_admin = DB::table('admins')->where('id',$d->nama_admin)->first()->nama;
         }
+        $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+        ->where('vote',1)->groupBy('id_pengaduan')
+        ->having('id_pengaduan',$d->id)->first();
+        if($upvote){
+          $d->upvote = $upvote->jumlah_vote;
+        }else{
+          $d->upvote = 0;
+        }
+        
+        $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+        ->where('vote',0)->groupBy('id_pengaduan')
+        ->having('id_pengaduan',$d->id)->first();
+        if($downvote){
+          $d->downvote = $upvote->jumlah_vote;
+        }else{
+          $d->downvote = 0;
+        }
+        
+      }
+      return $data;
+        // return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->orderBy('created_at','desc')->get();
+    }
+
+    public function listwithvote(){
+      $data = Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
+          'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
+          'foto','tipe_pengaduan','deskripsi_pengaduan',
+          'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
+          ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
+        ->orderBy('created_at','desc')->get();
+      
+      foreach ($data as $d) {
+        if(!is_null($d->nama_pelapor)){
+          $d->nama_pelapor = DB::table('masyarakats')->where('id',$d->nama_pelapor)->first()->nama;
+        }
+        if(!is_null($d->nama_petugas)){
+            $d->nama_petugas = DB::table('petugas')->where('id',$d->nama_petugas)->first()->nama;
+        }
+        if(!is_null($d->nama_admin)){
+            $d->nama_admin = DB::table('admins')->where('id',$d->nama_admin)->first()->nama;
+        }
+
+        $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+        ->where('vote',1)->groupBy('id_pengaduan')
+        ->having('id_pengaduan',$d->id)->first();
+
+        if($upvote){
+          $d->upvote = $upvote->jumlah_vote;
+        }else{
+          $d->upvote = 0;
+        }
+        
+        $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+        ->where('vote',0)->groupBy('id_pengaduan')
+        ->having('id_pengaduan',$d->id)->first();
+        if($downvote){
+          $d->downvote = $upvote->jumlah_vote;
+        }else{
+          $d->downvote = 0;
+        }
+
+        $vote = DB::table('votes')->select('vote')
+        ->where('id_pengaduan',$d->id)->where('id_voter',auth()->user()->id)->first();
+        if($vote){
+          $d->vote = $vote->vote;
+        }else{
+          $d->vote = null;
+        }
       }
       return $data;
         // return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->orderBy('created_at','desc')->get();
@@ -34,10 +103,10 @@ class PengaduanController extends Controller
 
     public function show($id){
       $data = Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
-          'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
-          'foto','tipe_pengaduan','deskripsi_pengaduan',
-          'status_pengaduan','laporan_petugas','feedback_masyarakat'
-          ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->where('id',$id)->first();
+      'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
+      'foto','tipe_pengaduan','deskripsi_pengaduan',
+      'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
+      ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->where('id',$id)->first();
 
       $data->nama_pelapor = DB::table('masyarakats')->where('id',$data->nama_pelapor)->first()->nama;
       if(!is_null($data->nama_petugas)){
@@ -46,6 +115,24 @@ class PengaduanController extends Controller
       if(!is_null($data->nama_admin)){
           $data->nama_admin = DB::table('admins')->where('id',$data->nama_admin)->first()->nama;
       }
+      $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+        ->where('vote',1)->groupBy('id_pengaduan')
+        ->having('id_pengaduan',$data->id)->first();
+
+        if($upvote){
+          $data->upvote = $upvote->jumlah_vote;
+        }else{
+          $data->upvote = 0;
+        }
+        
+        $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+        ->where('vote',0)->groupBy('id_pengaduan')
+        ->having('id_pengaduan',$data->id)->first();
+        if($downvote){
+          $data->downvote = $upvote->jumlah_vote;
+        }else{
+          $data->downvote = 0;
+        }
 
       return $data;
 
@@ -53,10 +140,10 @@ class PengaduanController extends Controller
     public function get_by_masyarakat(){
         $id = auth()->user()->id;
         $data =  Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
-            'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
-            'foto','tipe_pengaduan','deskripsi_pengaduan',
-            'status_pengaduan','laporan_petugas','feedback_masyarakat'
-            ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
+        'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
+        'foto','tipe_pengaduan','deskripsi_pengaduan',
+        'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
+        ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
           ->where('id_masyarakat',$id)->orderBy('created_at','desc')->get();
           foreach ($data as $d) {
             if(!is_null($d->nama_pelapor)){
@@ -74,10 +161,10 @@ class PengaduanController extends Controller
     public function get_by_petugas(){
         $id = auth()->user()->id;
         $data =  Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
-            'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
-            'foto','tipe_pengaduan','deskripsi_pengaduan',
-            'status_pengaduan','laporan_petugas','feedback_masyarakat'
-            ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
+        'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
+        'foto','tipe_pengaduan','deskripsi_pengaduan',
+        'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
+        ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
           ->where('id_petugas',$id)->orderBy('created_at','desc')->get();
           foreach ($data as $d) {
             if(!is_null($d->nama_pelapor)){
@@ -89,6 +176,24 @@ class PengaduanController extends Controller
             if(!is_null($d->nama_admin)){
                 $d->nama_admin = DB::table('admins')->where('id',$d->nama_admin)->first()->nama;
             }
+            $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',1)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+
+            if($upvote){
+              $d->upvote = $upvote->jumlah_vote;
+            }else{
+              $d->upvote = 0;
+            }
+            
+            $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',0)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+            if($downvote){
+              $d->downvote = $upvote->jumlah_vote;
+            }else{
+              $d->downvote = 0;
+            }
           }
         return $data;
         // return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->where('id_petugas',$id)->orderBy('created_at','desc')->get();
@@ -96,10 +201,10 @@ class PengaduanController extends Controller
 
     public function get_not_assign(){
       $data =  Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
-          'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
-          'foto','tipe_pengaduan','deskripsi_pengaduan',
-          'status_pengaduan','laporan_petugas','feedback_masyarakat'
-          ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
+      'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
+      'foto','tipe_pengaduan','deskripsi_pengaduan',
+      'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
+      ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
         ->whereNull('id_petugas')->where('status_pengaduan','verified')
         ->orderBy('created_at','desc')->get();
         foreach ($data as $d) {
@@ -112,6 +217,24 @@ class PengaduanController extends Controller
           if(!is_null($d->nama_admin)){
               $d->nama_admin = DB::table('admins')->where('id',$d->nama_admin)->first()->nama;
           }
+          $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',1)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+
+            if($upvote){
+              $d->upvote = $upvote->jumlah_vote;
+            }else{
+              $d->upvote = 0;
+            }
+            
+            $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',0)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+            if($downvote){
+              $d->downvote = $upvote->jumlah_vote;
+            }else{
+              $d->downvote = 0;
+            }
         }
       return $data;
         // return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->whereNull('id_petugas')->whereNotNull('id_admin')->orderBy('created_at','desc')->get();
@@ -119,10 +242,10 @@ class PengaduanController extends Controller
 
     public function get_not_verified(){
       $data =  Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
-          'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
-          'foto','tipe_pengaduan','deskripsi_pengaduan',
-          'status_pengaduan','laporan_petugas','feedback_masyarakat'
-          ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
+      'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
+      'foto','tipe_pengaduan','deskripsi_pengaduan',
+      'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
+      ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
         ->whereNull('id_admin')->where('status_pengaduan','belum diverifikasi')
         ->orderBy('created_at','desc')->get();
         foreach ($data as $d) {
@@ -135,6 +258,24 @@ class PengaduanController extends Controller
           if(!is_null($d->nama_admin)){
               $d->nama_admin = DB::table('admins')->where('id',$d->nama_admin)->first()->nama;
           }
+          $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',1)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+
+            if($upvote){
+              $d->upvote = $upvote->jumlah_vote;
+            }else{
+              $d->upvote = 0;
+            }
+            
+            $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',0)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+            if($downvote){
+              $d->downvote = $upvote->jumlah_vote;
+            }else{
+              $d->downvote = 0;
+            }
         }
       return $data;
         // return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->whereNull('id_admin')->orderBy('created_at','desc')->get();
@@ -142,10 +283,10 @@ class PengaduanController extends Controller
 
     public function get_by_tipe($tipe){
       $data =  Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
-          'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
-          'foto','tipe_pengaduan','deskripsi_pengaduan',
-          'status_pengaduan','laporan_petugas','feedback_masyarakat'
-          ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
+      'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
+      'foto','tipe_pengaduan','deskripsi_pengaduan',
+      'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
+      ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
         ->where('tipe_pengaduan',$tipe)
         ->orderBy('created_at','desc')->get();
         foreach ($data as $d) {
@@ -158,16 +299,34 @@ class PengaduanController extends Controller
           if(!is_null($d->nama_admin)){
               $d->nama_admin = DB::table('admins')->where('id',$d->nama_admin)->first()->nama;
           }
+          $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',1)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+
+            if($upvote){
+              $d->upvote = $upvote->jumlah_vote;
+            }else{
+              $d->upvote = 0;
+            }
+            
+            $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',0)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+            if($downvote){
+              $d->downvote = $upvote->jumlah_vote;
+            }else{
+              $d->downvote = 0;
+            }
         }
       return $data;
         // return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->where('tipe_pengaduan',$tipe)->orderBy('created_at','desc')->get();
     }
     public function get_by_status($status){
       $data =  Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
-          'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
-          'foto','tipe_pengaduan','deskripsi_pengaduan',
-          'status_pengaduan','laporan_petugas','feedback_masyarakat'
-          ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
+      'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
+      'foto','tipe_pengaduan','deskripsi_pengaduan',
+      'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
+      ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
         ->where('status_pengaduan',$status)
         ->orderBy('created_at','desc')->get();
         foreach ($data as $d) {
@@ -180,6 +339,24 @@ class PengaduanController extends Controller
           if(!is_null($d->nama_admin)){
               $d->nama_admin = DB::table('admins')->where('id',$d->nama_admin)->first()->nama;
           }
+          $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',1)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+
+            if($upvote){
+              $d->upvote = $upvote->jumlah_vote;
+            }else{
+              $d->upvote = 0;
+            }
+            
+            $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',0)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+            if($downvote){
+              $d->downvote = $upvote->jumlah_vote;
+            }else{
+              $d->downvote = 0;
+            }
         }
       return $data;
         // return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->where('status_pengaduan',$status)->orderBy('created_at','desc')->get();
@@ -187,10 +364,10 @@ class PengaduanController extends Controller
 
     public function get_by_tipe_n_status($tipe,$status){
       $data =  Pengaduan::select('id','id_masyarakat','id_masyarakat as nama_pelapor',
-          'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
-          'foto','tipe_pengaduan','deskripsi_pengaduan',
-          'status_pengaduan','laporan_petugas','feedback_masyarakat'
-          ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
+      'id_admin','id_admin as nama_admin','id_petugas','id_petugas as nama_petugas','nama_jalan',
+      'foto','tipe_pengaduan','deskripsi_pengaduan',
+      'status_pengaduan','laporan_petugas','feedback_masyarakat','created_at','updated_at'
+      ,DB::Raw('ST_AsGeoJSON(geometry) as geometry'))
         ->where('status_pengaduan',$status)->where('tipe_pengaduan',$tipe)
         ->orderBy('created_at','desc')->get();
         foreach ($data as $d) {
@@ -203,6 +380,24 @@ class PengaduanController extends Controller
           if(!is_null($d->nama_admin)){
               $d->nama_admin = DB::table('admins')->where('id',$d->nama_admin)->first()->nama;
           }
+          $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',1)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+
+            if($upvote){
+              $d->upvote = $upvote->jumlah_vote;
+            }else{
+              $d->upvote = 0;
+            }
+            
+            $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',0)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+            if($downvote){
+              $d->downvote = $upvote->jumlah_vote;
+            }else{
+              $d->downvote = 0;
+            }
         }
       return $data;
       // return Pengaduan::select('id','id_masyarakat','id_admin','id_petugas','nama_jalan','foto','tipe_pengaduan','deskripsi_pengaduan','status_pengaduan','laporan_petugas','feedback_masyarakat',DB::Raw('ST_AsGeoJSON(geometry) as geometry'))->where('status_pengaduan',$status)->where('tipe_pengaduan',$tipe)->get();
