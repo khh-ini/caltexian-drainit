@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.timeline.DetailTimelineActivity"></activity>
+        <activity android:name=".ui.timeline.DetailTimelineActivity" />
         <activity android:name=".ui.navigationbar.MainActivityNav" />
         <activity android:name=".ui.daftar.DaftarActivity" />
         <activity android:name=".ui.login.LoginActivity" />
@@ -30,9 +30,7 @@
         <activity android:name=".ui.riwayat.DetilRiwayat"
             android:theme="@style/WindowNoActionBar"/>
         <activity
-            android:name=".ui.tentang_kami.ActivityTentangKami"
-            android:label="Tentang DRAINIT"
-            android:theme="@style/Windowactionbar" />
+            android:name=".ui.tentang_kami.ActivityTentangKami"/>
         <activity android:name=".ui.splashscreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

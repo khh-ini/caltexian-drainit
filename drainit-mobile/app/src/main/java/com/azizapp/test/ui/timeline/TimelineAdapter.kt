@@ -37,62 +37,58 @@ class TimelineAdapter(val timelineViewModel: FragmentTimelineViewModel) :
                 tvTipe.text = laporan.tipePengaduan
                 tvStatus.text = laporan.statusPengaduan
                 tvDeskripsi.text = laporan.deskripsiPengaduan
-                tvWaktu.text = printDifference(laporan.createdAt!!)
+                tvWaktu.text = printDifference(laporan.createdAt)
                 tvDownvote.text = laporan.downvote.toString()
                 tvUpvote.text = laporan.upvote.toString()
                 ivLaporan.loadImgFromUrl(laporan.foto)
-                if (laporan.vote != 0 && laporan.vote != 1) {
-                    toggleDownvote.isChecked = false
-                    toggleUpvote.isChecked = false
-                } else {
-                    if (laporan.vote == 1) toggleUpvote.isChecked = true
-                    if (laporan.vote == 0) toggleDownvote.isChecked = true
+
+                when (laporan.vote) {
+                    0 -> {
+                        toggleDownvote.isChecked = true
+                        toggleUpvote.isChecked = false
+                    }
+                    1 -> {
+                        toggleUpvote.isChecked = true
+                        toggleDownvote.isChecked = false
+                    }
                 }
 
                 toggleUpvote.setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
-                        if (laporan.vote == 1 || laporan.vote == null) {
-                            if (toggleDownvote.isChecked) {
-                                toggleDownvote.isChecked = false
-                                timelineViewModel.vote(laporan.id, true)
-                                tvUpvote.text = (laporan.upvote + 1).toString()
-                            }
-                            if (!toggleDownvote.isChecked){
-                                toggleDownvote.isChecked = true
-                                timelineViewModel.voteUpdate(laporan.id, false)
-                                tvUpvote.text = (laporan.upvote - 1).toString()
-                            }
-                        }
+                        toggleDownvote.isChecked = false
+                        timelineViewModel.vote(laporan.id, true)
+                        tvUpvote.text = (laporan.upvote + 1).toString()
+                    } else {
+                        //timelineViewModel.voteUpdate(laporan.id, null)
+                        tvUpvote.text = (laporan.upvote - 1).toString()
                     }
                 }
+
                 toggleDownvote.setOnCheckedChangeListener { buttonView, isChecked ->
                     if (isChecked) {
-                        if (laporan.vote == 0 || laporan.vote == null) {
-                            if (toggleUpvote.isChecked) {
-                                toggleUpvote.isChecked = false
-                                timelineViewModel.vote(laporan.id, false)
-                                tvDownvote.text = (laporan.downvote + 1).toString()
-                            }
-                            if (!toggleUpvote.isChecked) {
-                                toggleUpvote.isChecked = true
-                                timelineViewModel.voteUpdate(laporan.id, true)
-                                tvDownvote.text = (laporan.downvote - 1).toString()
-                            }
-                        }
+                        toggleUpvote.isChecked = false
+                        timelineViewModel.vote(laporan.id, false)
+                        tvDownvote.text = (laporan.downvote + 1).toString()
+                    } else {
+                        //timelineViewModel.voteUpdate(laporan.id, null)
+                        tvDownvote.text = (laporan.downvote - 1).toString()
                     }
                 }
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaporanViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): LaporanViewHolder {
         val itemLaporanBinding: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_timeline, parent, false)
         return LaporanViewHolder(itemLaporanBinding)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onBindViewHolder(holder: LaporanViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TimelineAdapter.LaporanViewHolder, position: Int) {
         val laporan = listLaporan[position]
         holder.bind(laporan)
     }

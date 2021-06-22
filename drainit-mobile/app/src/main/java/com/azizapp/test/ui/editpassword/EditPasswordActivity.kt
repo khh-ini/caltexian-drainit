@@ -20,7 +20,8 @@ class EditPasswordActivity : AppCompatActivity() {
         setContentView(R.layout.ganti_password_layout)
         binding = DataBindingUtil.setContentView(this, R.layout.ganti_password_layout)
 
-        supportActionBar?.hide()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Ganti Password"
 
         binding.apply {
             lifecycleOwner = this@EditPasswordActivity
@@ -34,7 +35,11 @@ class EditPasswordActivity : AppCompatActivity() {
             }
         }
         )
+    }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 
     private fun editFailed() {

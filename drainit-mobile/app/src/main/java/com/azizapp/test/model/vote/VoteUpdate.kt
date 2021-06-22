@@ -6,5 +6,5 @@ class VoteUpdate(
     @SerializedName("_method")
     val method: String = "put",
     @SerializedName("vote")
-    val vote: Boolean
+    val vote: Any
 )
