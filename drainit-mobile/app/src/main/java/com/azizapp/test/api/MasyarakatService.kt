@@ -92,7 +92,7 @@ interface MasyarakatService {
 
     @POST("api/votes/{id_pengaduan}")
     suspend fun updateVote(
-        @Path(value = "id_pengaduan") idPengaduan : String,
+        @Path(value = "id_pengaduan") idPengaduan: String,
         @Header("Authorization") token: String,
         @Body voteUpdate: VoteUpdate
     ): Response<VoteResponse>

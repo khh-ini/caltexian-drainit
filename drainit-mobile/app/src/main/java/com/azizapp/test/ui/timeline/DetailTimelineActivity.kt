@@ -1,13 +1,12 @@
 package com.azizapp.test.ui.timeline
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.azizapp.test.R
+import androidx.appcompat.app.AppCompatActivity
 import com.azizapp.test.databinding.ActivityDetailTimelineBinding
 
 class DetailTimelineActivity : AppCompatActivity() {
 
-    private lateinit var binding:ActivityDetailTimelineBinding
+    private lateinit var binding: ActivityDetailTimelineBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

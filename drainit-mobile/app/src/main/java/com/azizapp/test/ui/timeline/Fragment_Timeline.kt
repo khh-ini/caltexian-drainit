@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azizapp.test.databinding.FragmentTimelineFragmentBinding
+import com.azizapp.test.model.pengaduanvote.PengaduanWithVoteItem
+import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class Fragment_Timeline : Fragment() {
@@ -40,13 +43,30 @@ class Fragment_Timeline : Fragment() {
 
     private fun setupRecyclerView() {
         viewModel.getLaporan()
-        viewModel.semuaLaporanVote.observe(viewLifecycleOwner) {
-            adapter.setData(it)
-            with(binding.rvLaporan) {
-                adapter = this@Fragment_Timeline.adapter
-                setHasFixedSize(true)
+        viewModel.semuaLaporanVote.observe(viewLifecycleOwner) { data ->
+            binding.chipGrouoTimeline.setOnCheckedChangeListener { group, checkedId ->
+                val chip: Chip? = group.findViewById(checkedId)
+                val filterDown = data.sortedByDescending { it.downvote }
+                val filterUp = data.sortedByDescending { it.upvote }
+                val listUp: ArrayList<PengaduanWithVoteItem> = arrayListOf()
+                val listDown: ArrayList<PengaduanWithVoteItem> = arrayListOf()
+                filterUp.forEach {
+                    listUp.add(it)
+                }
+                filterDown.forEach {
+                    listDown.add(it)
+                }
+                chip?.let { chipView ->
+                    if (chipView.text == "Semua Laporan") adapter.setData(data)
+                    if (chipView.text == "Terhangat") adapter.setData(listUp)
+                    if (chipView.text == "Terburuk") adapter.setData(listDown)
+                }
+            }
+            adapter.setData(data)
+            binding.rvLaporan.apply {
                 layoutManager =
-                    LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                adapter = this@Fragment_Timeline.adapter
             }
         }
         viewModel.loadingEnable.observe(viewLifecycleOwner) {
