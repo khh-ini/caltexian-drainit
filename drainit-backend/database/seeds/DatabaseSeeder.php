@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             MasyarakatSeeder::class,
             PetugasSeeder::class,
+            PengaduansSeeders::class,
         ]);
     }
 }
