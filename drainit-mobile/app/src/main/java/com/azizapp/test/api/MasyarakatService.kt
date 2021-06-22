@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
+
 //define service class
 interface MasyarakatService {
 
@@ -74,5 +75,5 @@ interface MasyarakatService {
 
     //Get Semua laporan
     @GET("api/pengaduan/")
-    suspend fun semuaLaporan() : Response<PengaduanResponse>
+    suspend fun semuaLaporan(): Response<PengaduanResponse>
 }
