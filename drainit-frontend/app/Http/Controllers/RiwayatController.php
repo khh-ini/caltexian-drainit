@@ -16,7 +16,26 @@ class RiwayatController extends Controller
         ])->get('http://gis-drainase.pocari.id/api/pengaduan_by_status/Sudah diverifikasi');
           
         return view('riwayat', ['data' => $data->json()]);
-    }  
+    } 
+    
+    public function sorted_up(Request $request)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/pengaduan_by_status_sortedup/Sudah diverifikasi');
+          
+        return view('riwayat', ['data' => $data->json()]);
+    }
+    public function sorted_down(Request $request)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/pengaduan_by_status_sorteddown/Sudah diverifikasi');
+          
+        return view('riwayat', ['data' => $data->json()]);
+    }    
 
     public function detail(Request $request, $id)
     {
