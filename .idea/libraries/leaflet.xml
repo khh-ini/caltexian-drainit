@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="leaflet">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/drainit-frontend/public/assets/leaflet.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
