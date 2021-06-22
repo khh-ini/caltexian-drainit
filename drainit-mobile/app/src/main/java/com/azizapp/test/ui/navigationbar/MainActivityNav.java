@@ -13,6 +13,7 @@ import com.azizapp.test.ui.laporan.LaporanFragment;
 import com.azizapp.test.ui.map.HomeFragment;
 import com.azizapp.test.ui.profile.ProfileFragment;
 import com.azizapp.test.ui.riwayat.RiwayatFragment;
+import com.azizapp.test.ui.timeline.Fragment_Timeline;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +42,6 @@ public class MainActivityNav extends AppCompatActivity {
                     .replace(R.id.main_frame, homeFragment)
                     .commit();
         }
-
 
         mMainNav.setOnItemSelectedListener(id -> {
             fragmentManager = getSupportFragmentManager();

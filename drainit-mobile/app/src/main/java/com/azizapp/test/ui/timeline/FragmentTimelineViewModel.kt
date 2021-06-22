@@ -38,5 +38,4 @@ class FragmentTimelineViewModel @Inject constructor(
             }
         }
     }
-
 }
