@@ -19,6 +19,28 @@ class DashboardPetugasController extends Controller
         return view('petugas/laporan', ['data' => $data->json()]);
     }
 
+    public function laporan_sorted_up(Request $request)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/pengaduan_not_assign_sortedup');
+        
+        // dd($data->json());
+        return view('petugas/laporan', ['data' => $data->json()]);
+    }
+
+    public function laporan_sorted_down(Request $request)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/pengaduan_not_assign_sorteddown');
+        
+        // dd($data->json());
+        return view('petugas/laporan', ['data' => $data->json()]);
+    }
+
     public function prosesLaporan(Request $request, $id){
         $token = $request->session()->get('token', 'default');
         $response = Http::withHeaders([
@@ -64,6 +86,28 @@ class DashboardPetugasController extends Controller
         $data = Http::withHeaders([
             'Authorization' => "Bearer $token"
         ])->get('http://gis-drainase.pocari.id/api/pengaduan_by_petugas');
+          
+        // dd($data->json());
+        return view('petugas/riwayatLaporan', ['data' => $data->json()]);
+    }
+
+    public function riwayatLaporan_sortedup(Request $request)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/pengaduan_by_petugas_sortedup');
+          
+        // dd($data->json());
+        return view('petugas/riwayatLaporan', ['data' => $data->json()]);
+    }
+
+    public function riwayatLaporan_sorteddown(Request $request)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/pengaduan_by_petugas_sorteddown');
           
         // dd($data->json());
         return view('petugas/riwayatLaporan', ['data' => $data->json()]);

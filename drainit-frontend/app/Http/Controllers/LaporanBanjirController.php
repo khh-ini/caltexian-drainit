@@ -14,9 +14,30 @@ class LaporanBanjirController extends Controller
         $data = Http::withHeaders([
             'Authorization' => "Bearer $token"
         ])->get('http://gis-drainase.pocari.id/api/pengaduan_by_tipe_n_status/Banjir/Belum diverifikasi');
-          
+        
         return view('/laporanbanjir', ['data' => $data->json()]);
     }
+
+    public function sorted_up(Request $request)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/pengaduan_by_tipe_n_status_sortedup/Banjir/Belum diverifikasi');
+        
+        return view('/laporanbanjir', ['data' => $data->json()]);
+    }
+
+    public function sorted_down(Request $request)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/pengaduan_by_tipe_n_status_sorteddown/Banjir/Belum diverifikasi');
+        
+        return view('/laporanbanjir', ['data' => $data->json()]);
+    }
+
 
     public function verifikasi(Request $request, $id)
     {

@@ -82,6 +82,8 @@ Route::prefix('laporan')->group(function(){
     Route::get('/verifikasi/{id}', [$controller, 'verifikasi']);
     Route::get('/tolak/{id}', [$controller, 'tolak']);
     Route::get('/detail/{id}', [$controller, 'detail']);
+    Route::get('/sortedup', [$controller, 'sorted_up']);
+    Route::get('/sorteddown', [$controller, 'sorted_down']);
 });
 
 Route::prefix('laporanbanjir')->group(function(){
@@ -90,6 +92,8 @@ Route::prefix('laporanbanjir')->group(function(){
     Route::get('/verifikasi/{id}', [$controller, 'verifikasi']);
     Route::get('/tolak/{id}', [$controller, 'tolak']);
     Route::get('/detail/{id}', [$controller, 'detail']);
+    Route::get('/sortedup', [$controller, 'sorted_up']);
+    Route::get('/sorteddown', [$controller, 'sorted_down']);
 });
 
 Route::prefix('riwayat')->group(function(){
@@ -97,6 +101,8 @@ Route::prefix('riwayat')->group(function(){
     Route::get('/',[$controller, 'index']);
     Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/verifikasi/{id}', [$controller, 'verifikasi']);
+    Route::get('/sortedup', [$controller, 'sorted_up']);
+    Route::get('/sorteddown', [$controller, 'sorted_down']);
 });
 
 Route::prefix('riwayatditolak')->group(function(){
@@ -104,14 +110,20 @@ Route::prefix('riwayatditolak')->group(function(){
     Route::get('/',[$controller, 'index']);
     Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/verifikasi/{id}', [$controller, 'verifikasi']);
+    Route::get('/sortedup', [$controller, 'sorted_up']);
+    Route::get('/sorteddown', [$controller, 'sorted_down']);
 });
 
 Route::prefix('dashboard-petugas')->group(function(){
     $controller = DashboardPetugasController::class;
     Route::get('/laporan', [$controller, 'laporan']);
+    Route::get('/laporan_sortedup', [$controller, 'laporan_sorted_up']);
+    Route::get('/laporan_sorteddown', [$controller, 'laporan_sorted_down']);
     Route::get('/proses/{id}',[$controller, 'prosesLaporan']);
     Route::get('/detail/{id}',[$controller, 'detailLaporan']);
     Route::get('/riwayat',[$controller, 'riwayatLaporan']);
+    Route::get('/riwayat_sortedup',[$controller, 'riwayatLaporan_sortedup']);
+    Route::get('/riwayat_sorteddown',[$controller, 'riwayatLaporan_sorteddown']);
     Route::post('/update/{id}', [$controller, 'updateLaporan']);
     Route::get('/profile', [$controller, 'profilePetugas']);
 
