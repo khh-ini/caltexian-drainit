@@ -31,7 +31,7 @@ class TimelineAdapter : RecyclerView.Adapter<TimelineAdapter.LaporanViewHolder>(
                 tvStatus.text = laporan.statusPengaduan
                 tvDeskripsi.text = laporan.deskripsiPengaduan
                 tvWaktu.text = printDifference(laporan.createdAt!!)
-                tvId.text = laporan.id
+//                tvId.text = laporan.id
 //                tvUpvote.text = laporan.upvote
 //                tvDownvote.text = laporan.downvote
             }

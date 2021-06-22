@@ -16,9 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_riwayat.*
 import kotlinx.android.synthetic.main.item_list_riwayat.view.*
 import kotlinx.android.synthetic.main.splashscreen.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 
 
 @AndroidEntryPoint

@@ -8,12 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azizapp.test.databinding.FragmentTimelineFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Fragment_Timeline : Fragment() {
-
-    companion object {
-        fun newInstance() = Fragment_Timeline()
-    }
 
     private val viewModel: FragmentTimelineViewModel by viewModels()
     private lateinit var binding: FragmentTimelineFragmentBinding
@@ -23,14 +21,14 @@ class Fragment_Timeline : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTimelineFragmentBinding.inflate(layoutInflater, container, false)
+        binding = FragmentTimelineFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         adapter = TimelineAdapter()
-
+        viewModel.getLaporan()
         viewModel.semuaLaporan.observe(viewLifecycleOwner) {
             adapter.setData(it)
             with(binding.rvLaporan) {
@@ -39,5 +37,8 @@ class Fragment_Timeline : Fragment() {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             }
         }
+        viewModel.loadingEnable.observe(viewLifecycleOwner, {
+            binding.pbLoadTimeline.visibility = if (it) View.VISIBLE else View.GONE
+        })
     }
 }

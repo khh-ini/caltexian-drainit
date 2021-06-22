@@ -56,6 +56,9 @@ public class MainActivityNav extends AppCompatActivity {
                 case R.id.nav_home:
                     replace_fragment(new HomeFragment());
                     break;
+                case R.id.nav_timeline:
+                    replace_fragment(new Fragment_Timeline());
+                    break;
                 case R.id.nav_history:
                     replace_fragment(new RiwayatFragment());
                     break;

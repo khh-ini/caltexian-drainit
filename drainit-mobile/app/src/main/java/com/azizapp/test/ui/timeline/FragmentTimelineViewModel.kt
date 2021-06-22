@@ -23,6 +23,7 @@ class FragmentTimelineViewModel @Inject constructor(
     val loadingEnable = MutableLiveData<Boolean>()
 
     fun getLaporan() {
+        loadingEnable.value = true
         viewModelScope.launch {
             when (val response = repository.getSemuaLaporan()) {
                 is Resource.Success -> {
