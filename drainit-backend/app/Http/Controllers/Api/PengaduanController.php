@@ -41,7 +41,7 @@ class PengaduanController extends Controller
         ->where('vote',0)->groupBy('id_pengaduan')
         ->having('id_pengaduan',$d->id)->first();
         if($downvote){
-          $d->downvote = $upvote->jumlah_vote;
+          $d->downvote = $downvote->jumlah_vote;
         }else{
           $d->downvote = 0;
         }
@@ -84,7 +84,7 @@ class PengaduanController extends Controller
         ->where('vote',0)->groupBy('id_pengaduan')
         ->having('id_pengaduan',$d->id)->first();
         if($downvote){
-          $d->downvote = $upvote->jumlah_vote;
+          $d->downvote = $downvote->jumlah_vote;
         }else{
           $d->downvote = 0;
         }
@@ -129,7 +129,7 @@ class PengaduanController extends Controller
         ->where('vote',0)->groupBy('id_pengaduan')
         ->having('id_pengaduan',$data->id)->first();
         if($downvote){
-          $data->downvote = $upvote->jumlah_vote;
+          $data->downvote = $downvote->jumlah_vote;
         }else{
           $data->downvote = 0;
         }
@@ -154,6 +154,24 @@ class PengaduanController extends Controller
             }
             if(!is_null($d->nama_admin)){
                 $d->nama_admin = DB::table('admins')->where('id',$d->nama_admin)->first()->nama;
+            }
+            $upvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',1)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+
+            if($upvote){
+              $d->upvote = $upvote->jumlah_vote;
+            }else{
+              $d->upvote = 0;
+            }
+            
+            $downvote = DB::table('votes')->select('id_pengaduan',DB::raw('count(id_voter) as jumlah_vote'))
+            ->where('vote',0)->groupBy('id_pengaduan')
+            ->having('id_pengaduan',$d->id)->first();
+            if($downvote){
+              $d->downvote = $downvote->jumlah_vote;
+            }else{
+              $d->downvote = 0;
             }
           }
         return $data;
@@ -190,7 +208,7 @@ class PengaduanController extends Controller
             ->where('vote',0)->groupBy('id_pengaduan')
             ->having('id_pengaduan',$d->id)->first();
             if($downvote){
-              $d->downvote = $upvote->jumlah_vote;
+              $d->downvote = $downvote->jumlah_vote;
             }else{
               $d->downvote = 0;
             }
@@ -231,7 +249,7 @@ class PengaduanController extends Controller
             ->where('vote',0)->groupBy('id_pengaduan')
             ->having('id_pengaduan',$d->id)->first();
             if($downvote){
-              $d->downvote = $upvote->jumlah_vote;
+              $d->downvote = $downvote->jumlah_vote;
             }else{
               $d->downvote = 0;
             }
@@ -272,7 +290,7 @@ class PengaduanController extends Controller
             ->where('vote',0)->groupBy('id_pengaduan')
             ->having('id_pengaduan',$d->id)->first();
             if($downvote){
-              $d->downvote = $upvote->jumlah_vote;
+              $d->downvote = $downvote->jumlah_vote;
             }else{
               $d->downvote = 0;
             }
@@ -313,7 +331,7 @@ class PengaduanController extends Controller
             ->where('vote',0)->groupBy('id_pengaduan')
             ->having('id_pengaduan',$d->id)->first();
             if($downvote){
-              $d->downvote = $upvote->jumlah_vote;
+              $d->downvote = $downvote->jumlah_vote;
             }else{
               $d->downvote = 0;
             }
@@ -353,7 +371,7 @@ class PengaduanController extends Controller
             ->where('vote',0)->groupBy('id_pengaduan')
             ->having('id_pengaduan',$d->id)->first();
             if($downvote){
-              $d->downvote = $upvote->jumlah_vote;
+              $d->downvote = $downvote->jumlah_vote;
             }else{
               $d->downvote = 0;
             }
@@ -394,7 +412,7 @@ class PengaduanController extends Controller
             ->where('vote',0)->groupBy('id_pengaduan')
             ->having('id_pengaduan',$d->id)->first();
             if($downvote){
-              $d->downvote = $upvote->jumlah_vote;
+              $d->downvote = $downvote->jumlah_vote;
             }else{
               $d->downvote = 0;
             }
