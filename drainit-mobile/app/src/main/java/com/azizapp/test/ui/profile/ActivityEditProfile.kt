@@ -23,6 +23,8 @@ class ActivityEditProfile : AppCompatActivity() {
         setContentView(R.layout.activity_edit_profile)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile)
 
+        supportActionBar?.hide()
+
         binding.apply {
             lifecycleOwner = this@ActivityEditProfile
             viewModeEditProfile = editProfileViewModel

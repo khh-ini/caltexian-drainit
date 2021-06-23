@@ -2,6 +2,10 @@ package com.azizapp.test.repository
 
 import com.azizapp.test.api.MasyarakatService
 import com.azizapp.test.model.*
+import com.azizapp.test.model.pengaduanvote.PengaduanWithVote
+import com.azizapp.test.model.vote.Vote
+import com.azizapp.test.model.vote.VoteResponse
+import com.azizapp.test.model.vote.VoteUpdate
 import com.azizapp.test.utill.Resource
 import javax.inject.Inject
 
@@ -110,4 +114,43 @@ class MainRepository @Inject constructor(
         }
     }
 
+    suspend fun getSemuaLaporan(): Resource<PengaduanResponse> {
+        masyarakatService.semuaLaporan().let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
+
+    suspend fun getSemuaLaporanVote(bearer: String): Resource<PengaduanWithVote> {
+        masyarakatService.semuaLaporanVote(bearer).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
+
+    suspend fun vote(bearer: String, vote: Vote): Resource<VoteResponse> {
+        masyarakatService.firstVote(bearer, vote).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
+
+    suspend fun voteUpdate(
+        idPengaduan: String,
+        bearer: String,
+        vote: VoteUpdate
+    ): Resource<VoteResponse> {
+        masyarakatService.updateVote(idPengaduan, bearer, vote).let { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(response.message())
+        }
+    }
 }

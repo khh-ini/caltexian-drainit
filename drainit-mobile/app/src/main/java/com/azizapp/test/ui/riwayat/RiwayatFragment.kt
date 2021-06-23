@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azizapp.test.databinding.FragmentRiwayatBinding
 import com.azizapp.test.model.Pengaduan
+import com.azizapp.test.ui.timeline.FragmentTimelineViewModel
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_riwayat.*
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.splashscreen.*
 class RiwayatFragment : Fragment() {
 
     private val riwayatViewModel: RiwayatViewModel by viewModels()
+    private val semuaLaporanViewModel: FragmentTimelineViewModel by viewModels()
     private lateinit var recyclerAdapter: RiwayatAdapter
     private lateinit var dataBinding: FragmentRiwayatBinding
 
@@ -35,6 +37,7 @@ class RiwayatFragment : Fragment() {
 
         riwayatViewModel.onLoad()
         setupRecyclerView()
+        semuaLaporanViewModel.getLaporan()
     }
 
     private fun setupRecyclerView() {

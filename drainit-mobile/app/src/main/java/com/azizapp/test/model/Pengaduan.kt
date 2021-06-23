@@ -29,5 +29,17 @@ data class Pengaduan(
     @SerializedName("status_pengaduan")
     var statusPengaduan: String? = null,
     @SerializedName("tipe_pengaduan")
-    var tipePengaduan: String? = null
+    var tipePengaduan: String? = null,
+    @SerializedName("nama_pelapor")
+    var namaPelapor: String? = null,
+    @SerializedName("created_at")
+    var createdAt: String? = null,
+    @SerializedName("updated_at")
+    var updatedAT: String? = null,
+    @SerializedName("upvote")
+    var upvote: Int? = 0,
+    @SerializedName("downvote")
+    var downvote: Int? = 0
+
+
 ) : Parcelable

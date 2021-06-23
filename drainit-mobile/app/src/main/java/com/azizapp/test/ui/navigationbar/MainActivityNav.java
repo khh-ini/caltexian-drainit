@@ -13,6 +13,7 @@ import com.azizapp.test.ui.laporan.LaporanFragment;
 import com.azizapp.test.ui.map.HomeFragment;
 import com.azizapp.test.ui.profile.ProfileFragment;
 import com.azizapp.test.ui.riwayat.RiwayatFragment;
+import com.azizapp.test.ui.timeline.Fragment_Timeline;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import org.jetbrains.annotations.NotNull;
@@ -31,15 +32,16 @@ public class MainActivityNav extends AppCompatActivity {
 
         ChipNavigationBar mMainNav = findViewById(R.id.main_nav);
 
+        getSupportActionBar().hide();
+
         if (savedInstanceState == null) {
-            mMainNav.setItemSelected(R.id.nav_home, true);
+            mMainNav.setItemSelected(R.id.nav_timeline, true);
             fragmentManager = getSupportFragmentManager();
-            HomeFragment homeFragment = new HomeFragment();
+            Fragment_Timeline timelineFragment = new Fragment_Timeline();
             fragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, homeFragment)
+                    .replace(R.id.main_frame, timelineFragment)
                     .commit();
         }
-
 
         mMainNav.setOnItemSelectedListener(id -> {
             fragmentManager = getSupportFragmentManager();
@@ -53,6 +55,9 @@ public class MainActivityNav extends AppCompatActivity {
                     break;
                 case R.id.nav_home:
                     replace_fragment(new HomeFragment());
+                    break;
+                case R.id.nav_timeline:
+                    replace_fragment(new Fragment_Timeline());
                     break;
                 case R.id.nav_history:
                     replace_fragment(new RiwayatFragment());

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimen_16"
+    android:background="@color/white"
+    android:padding="@dimen/dimen_16"
+    app:cardElevation="@dimen/dimen_16">
+
+    <TextView
+        android:id="@+id/tv_nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Deanira Fadrinaldi" />
+
+    <TextView
+        android:id="@+id/tv_tipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tv_waktu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_nama"
+        tools:text="Banjir" />
+
+    <TextView
+        android:id="@+id/tv_waktu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColorSecondary"
+        app:layout_constraintStart_toStartOf="@id/tv_nama"
+        app:layout_constraintTop_toBottomOf="@id/tv_nama"
+        tools:text="2 jam yang lalu" />
+
+    <TextView
+        android:id="@+id/tv_deskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:ellipsize="start"
+        android:fontFamily="@font/poppins_regular"
+        android:justificationMode="inter_word"
+        android:maxLines="4"
+        android:textColor="@color/textColorSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_laporan"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Lihat Selengkapnya..."
+        android:textColor="@color/primaryVariant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_deskripsi" />
+
+    <ImageView
+        android:id="@+id/iv_laporan"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginVertical="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bottom_menu_rounded"
+        app:layout_constraintBottom_toTopOf="@id/tv_deskripsi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_waktu"
+        app:layout_constraintWidth_percent="1" />
+
+    <ToggleButton
+        android:id="@+id/toggle_upvote"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginHorizontal="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/toggle_upvote"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_deskripsi" />
+
+    <TextView
+        android:id="@+id/tv_upvote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/toggle_upvote"
+        app:layout_constraintStart_toStartOf="@id/toggle_upvote"
+        app:layout_constraintTop_toBottomOf="@id/toggle_upvote"
+        tools:text="0" />
+
+    <ToggleButton
+        android:id="@+id/toggle_downvote"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginHorizontal="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/toggle_downvote"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintEnd_toStartOf="@id/toggle_upvote"
+        app:layout_constraintTop_toBottomOf="@id/tv_deskripsi" />
+
+    <TextView
+        android:id="@+id/tv_downvote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/toggle_downvote"
+        app:layout_constraintStart_toStartOf="@id/toggle_downvote"
+        app:layout_constraintTop_toBottomOf="@id/toggle_downvote"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status : "
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tv_upvote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/toggle_upvote" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primaryVariant"
+        app:layout_constraintBottom_toBottomOf="@id/tv_upvote"
+        app:layout_constraintStart_toEndOf="@id/status"
+        app:layout_constraintTop_toTopOf="@id/toggle_upvote"
+        tools:text="Sedang diverifikasi" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

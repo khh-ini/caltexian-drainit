@@ -56,6 +56,8 @@ class LaporanActivity : AppCompatActivity(), OnMapReadyCallback {
         map.onCreate(savedInstanceState)
         map.onResume()
 
+        supportActionBar?.hide()
+
         map.getMapAsync(this)
 
         btn_simpan.setOnClickListener {

@@ -61,6 +61,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivityNav::class.java))
         }
 
+        supportActionBar?.hide()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
 

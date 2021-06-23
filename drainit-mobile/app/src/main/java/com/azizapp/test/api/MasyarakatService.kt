@@ -1,11 +1,13 @@
 package com.azizapp.test.api
 
 import com.azizapp.test.model.*
+import com.azizapp.test.model.pengaduanvote.PengaduanWithVote
+import com.azizapp.test.model.vote.Vote
+import com.azizapp.test.model.vote.VoteResponse
+import com.azizapp.test.model.vote.VoteUpdate
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
+
 
 //define service class
 interface MasyarakatService {
@@ -71,4 +73,27 @@ interface MasyarakatService {
     //Get Semua Titik Tersumbat
     @GET("api/titik_tersumbat")
     suspend fun titikTersumbat(): Response<TitikTersumbatResponse>
+
+    //Get Semua laporan
+    @GET("api/pengaduan")
+    suspend fun semuaLaporan(): Response<PengaduanResponse>
+
+    //Get Semua laporan with vote
+    @GET("api/pengaduanwithvote")
+    suspend fun semuaLaporanVote(
+        @Header("Authorization") token: String
+    ): Response<PengaduanWithVote>
+
+    @POST("api/votes")
+    suspend fun firstVote(
+        @Header("Authorization") token: String,
+        @Body vote: Vote
+    ): Response<VoteResponse>
+
+    @POST("api/votes/{id_pengaduan}")
+    suspend fun updateVote(
+        @Path(value = "id_pengaduan") idPengaduan: String,
+        @Header("Authorization") token: String,
+        @Body voteUpdate: VoteUpdate
+    ): Response<VoteResponse>
 }
