@@ -92,7 +92,7 @@ class FragmentTimelineViewModel @Inject constructor(
     }
 
     fun voteUpdate(idPengaduan: String, vote: Any?) {
-        val voteUpdate = VoteUpdate("put", vote!!)
+        val voteUpdate = VoteUpdate("put", vote)
         val bearer = "Bearer " + Session.bearer
         viewModelScope.launch {
             when (val response = repository.voteUpdate(idPengaduan, bearer, voteUpdate)) {

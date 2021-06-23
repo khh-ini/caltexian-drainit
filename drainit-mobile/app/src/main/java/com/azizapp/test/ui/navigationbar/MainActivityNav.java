@@ -35,11 +35,11 @@ public class MainActivityNav extends AppCompatActivity {
         getSupportActionBar().hide();
 
         if (savedInstanceState == null) {
-            mMainNav.setItemSelected(R.id.nav_home, true);
+            mMainNav.setItemSelected(R.id.nav_timeline, true);
             fragmentManager = getSupportFragmentManager();
-            HomeFragment homeFragment = new HomeFragment();
+            Fragment_Timeline timelineFragment = new Fragment_Timeline();
             fragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, homeFragment)
+                    .replace(R.id.main_frame, timelineFragment)
                     .commit();
         }
 

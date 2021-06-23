@@ -59,7 +59,7 @@ class TimelineAdapter(val timelineViewModel: FragmentTimelineViewModel) :
                         timelineViewModel.vote(laporan.id, true)
                         tvUpvote.text = (laporan.upvote + 1).toString()
                     } else {
-                        //timelineViewModel.voteUpdate(laporan.id, null)
+                        timelineViewModel.voteUpdate(laporan.id, null)
                         tvUpvote.text = (laporan.upvote - 1).toString()
                     }
                 }
@@ -70,7 +70,7 @@ class TimelineAdapter(val timelineViewModel: FragmentTimelineViewModel) :
                         timelineViewModel.vote(laporan.id, false)
                         tvDownvote.text = (laporan.downvote + 1).toString()
                     } else {
-                        //timelineViewModel.voteUpdate(laporan.id, null)
+                        timelineViewModel.voteUpdate(laporan.id, null)
                         tvDownvote.text = (laporan.downvote - 1).toString()
                     }
                 }
